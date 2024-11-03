@@ -1,0 +1,19 @@
+name = 'hugo-theme-reimu'
+license = 'MIT'
+licenselink = 'https://github.com/D-Sketon/hugo-theme-reimu/blob/main/LICENSE'
+description = 'A Hakurei Reimu style Hugo theme'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/D-Sketon/hugo-theme-reimu'
+
+# If you have a running demo of the theme
+demosite = 'https://github.com/D-Sketon/hugo-theme-reimu'
+
+# Taxonomy terms
+tags = ['blog', 'reimu', 'touhou']
+features = ['some', 'awesome', 'features']
+
+# If the theme has a single author
+[author]
+  name = 'D-Sketon'
+  homepage = 'https://d-sketon.github.io/'

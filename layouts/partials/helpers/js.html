@@ -1,0 +1,17 @@
+{{ $items := . }}
+{{ if not (reflect.IsSlice $items) }}
+  {{ $src := index "src" $items }}
+  {{ $defer := index "defer" $items }}
+  {{ $async := index "async" $items }}
+  {{ $pjax :=  index "pjax" $items }}
+  <script
+    src="{{ $src }}"
+    {{ if $defer }}defer{{ end }}
+    {{ if $async }}async{{ end }}
+    {{ if $pjax }}data-pjax{{ end }}
+  ></script>
+{{ else }}
+  {{ range $items }}
+    <script src="{{ . }}"></script>
+  {{ end }}
+{{ end }}

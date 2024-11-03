@@ -1,0 +1,27 @@
+{{ $site := .Site }}
+{{ $js := .Site.Data.vendor.js }}
+{{ $css := .Site.Data.vendor.css }}
+
+{{ partial "helpers/ts.html" (dict "source" "js/main.ts") }}
+
+{{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.lazysizes "ctx" $site)) }}
+{{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.clipboard "ctx" $site)) }}
+
+{{ if $site.Params.animation.enable }}
+  {{ partial "helpers/ts.html" (dict "source" "js/aos.ts") }}
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+{{ end }}

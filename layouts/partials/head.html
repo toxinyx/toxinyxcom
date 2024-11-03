@@ -1,0 +1,54 @@
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+<title>
+  {{ if .IsHome }}
+    {{ site.Title }}
+  {{ else }}
+    {{ printf "%s | %s" .Title site.Title }}
+  {{ end }}
+</title>
+{{ $site := .Site }}
+{{ partial "head/analytics.html" . }}
+
+{{ partial "helpers/vendorFont.html" . }}
+
+{{ $js := .Site.Data.vendor.js }}
+{{ $css := .Site.Data.vendor.css }}
+<!-- icon -->
+{{ if .Site.Params.icon_font }}
+  <link rel="preload" href="//at.alicdn.com/t/c/font_{{ .Site.Params.icon_font }}.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+{{ else }}
+  {{ partial "helpers/css.html" (partial "helpers/vendorCdn.html" (dict "item" $css.fontawesome.high_priority "ctx" $site)) }}
+  {{ partial "helpers/asyncCss.html" (partial "helpers/vendorCdn.html" (dict "item" $css.fontawesome.low_priority "ctx" $site)) }}
+{{ end }}
+<!-- loader -->
+{{ if .Site.Params.preloader.enable }}
+  {{ partial "helpers/scss.html" (dict "source" "css/loader.scss" "temp" "loader.scss" "target" "css/loader.css" "ctx" .) }}
+{{ end }}
+<!-- open-graph -->
+<!-- feed -->
+<!-- rss -->
+<!-- favicon use default -->
+{{ partial "helpers/scss.html" (dict "source" "css/main.scss" "temp" "main.scss" "target" "css/main.css" "ctx" .) }}
+<!-- photo-swipe -->
+{{ partial "helpers/asyncCss.html" (partial "helpers/vendorCdn.html" (dict "item" $css.photoswipe "ctx" $site)) }}
+<!-- katex -->
+<!-- waline -->
+{{ if and .Site.Params.waline.enable .Site.Params.waline.serverURL }}
+  {{ partial "helpers/css.html" (partial "helpers/vendorCdn.html" (dict "item" $css.waline "ctx" $site)) }}
+{{ end }}
+<!-- gitalk -->
+{{ if and .Site.Params.gitalk.enable .Site.Params.gitalk.clientID .Site.Params.gitalk.clientSecret }}
+  {{ partial "helpers/css.html" (partial "helpers/vendorCdn.html" (dict "item" $css.gitalk "ctx" $site)) }}
+{{ end }}
+<!-- pace -->
+{{ if .Site.Params.pace.enable }}
+  {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.pace "ctx" $site)) }}
+{{ end }}
+<!-- aos -->
+{{ if .Site.Params.animation.enable }}
+  {{ partial "helpers/css.html" (partial "helpers/vendorCdn.html" (dict "item" $css.aos "ctx" $site)) }}
+{{ end }}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    {{ partial "head.html" . }}
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+  </head>
+  <body>
+    {{ partial "loader.html" . }}
+    <div id="container">
+      <div id="wrap">
+        {{ partial "header.html" . }}
+        <main id="content">
+          <section id="main">{{ block "main" . }}{{ end }}</section>
+        </main>
+        {{ partial "footer.html" . }}
+        <div class="sidebar-top"></div>
+        <div id="mask"></div>
+      </div>
+    </div>
+    {{ partial "afterFooter.html" . }}
+  </body>
+</html>
