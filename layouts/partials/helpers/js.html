@@ -1,14 +1,16 @@
 {{ $items := . }}
 {{ if not (reflect.IsSlice $items) }}
-  {{ $src := index "src" $items }}
-  {{ $defer := index "defer" $items }}
-  {{ $async := index "async" $items }}
-  {{ $pjax :=  index "pjax" $items }}
+  {{ $src := index $items "src" }}
+  {{ $defer := index $items "defer" }}
+  {{ $async := index $items "async" }}
+  {{ $pjax :=  index $items "pjax" }}
+  {{ $onload := index $items "onload" }}
   <script
     src="{{ $src }}"
     {{ if $defer }}defer{{ end }}
     {{ if $async }}async{{ end }}
     {{ if $pjax }}data-pjax{{ end }}
+    {{ if $onload }}onload="{{ $onload | safeJS }}"{{ end }}
   ></script>
 {{ else }}
   {{ range $items }}
