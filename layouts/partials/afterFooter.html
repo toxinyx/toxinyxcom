@@ -162,6 +162,29 @@
 </script>
 {{ end }}
 
+{{ if $params.algolia_search.enable }}
+  <script>
+    var ALGOLIA_CONFIG = {
+      root: '/',
+      algolia: {
+        applicationID: "{{ $params.algolia_search.appID }}",
+        apiKey: "{{ $params.algolia_search.apiKey }}",
+        indexName: "{{ $params.algolia_search.indexName }}",
+        hits: {
+          "per_page": parseInt("{{ $params.algolia_search.hits.per_page }}")
+        },
+        labels: {
+          "input_placeholder": "{{ $params.algolia_search.labels.input_placeholder }}",
+          "hits_empty": "{{ $params.algolia_search.labels.hits_empty }}",
+          "hits_stats": "{{ $params.algolia_search.labels.hits_stats }}"
+        }
+      }
+    };
+  </script>
+  {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.algolia "ctx" $site)) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.instantsearch "ctx" $site)) 0) "defer" true) }}
+  {{ partial "helpers/ts.html" (dict "source" "js/algolia_search.ts") }}
+{{ end }}
 
 <!-- search -->
 
@@ -180,7 +203,7 @@
 
 <!-- pjax -->
 
-{{ if true }}
+{{ if $params.live2d.enable }}
 <script>
   function initLive2d() {
     live2d.init('{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d.base "ctx" $site)) 0 }}', {themeTipsPath: ""});
@@ -188,3 +211,36 @@
 </script> {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d.js "ctx" $site)) 0) "async" true "onload" "initLive2d()") }}
 {{ end }}
 
+{{ if $params.quicklink.enable }}
+  {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.quicklink "ctx" $site)) }}
+  <script data-pjax>
+    window.quicklink?.listen({
+      timeout: {{ $params.quicklink.timeout }},
+      priority: {{ $params.quicklink.priority }},
+      ignores: JSON.parse({{ $params.quicklink.ignores | jsonify }})
+    });
+  </script>
+{{ end }}
+
+<!-- mermaid -->
+
+<!-- outdate -->
+
+{{ if $params.footer.busuanzi }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.busuanzi "ctx" $site)) 0) "async" true) }}
+{{ end }}
+
+<!-- service_worker -->
+
+<script>
+  const reimuCopyright = String.raw`
+  ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+  \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`,'color: #ff5252;')
+  console.log('%c Theme.Reimu'+ ' %c https://github.com/D-Sketon/hugo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+</script>

@@ -1,9 +1,9 @@
 (function () {
   // A Simple EventListener
   [Element, Document, Window].forEach((target) => {
-    target.prototype._addEventListener = target.prototype.addEventListener;
+    target.prototype._addEventListener = target.prototype.addEventListener as any;
     target.prototype._removeEventListener =
-      target.prototype.removeEventListener;
+      target.prototype.removeEventListener as any;
     target.prototype.addEventListener = target.prototype.on = function (
       name: any,
       listener: any,

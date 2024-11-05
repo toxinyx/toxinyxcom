@@ -10,7 +10,7 @@
     </div>
   </div>
   
-  {{ if or .Site.Params.theme.algolia_search.enable .Site.Params.theme.generator_search.enable }}
+  {{ if .Site.Params.algolia_search.enable }}
     <div class="site-search">
       <div class="reimu-popup popup">
         <div class="reimu-search">

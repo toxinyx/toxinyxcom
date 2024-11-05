@@ -10,7 +10,7 @@ declare global {
   function _$<K extends keyof MathMLElementTagNameMap>(
     selectors: K,
   ): MathMLElementTagNameMap[K] | null;
-  function _$<E extends Element = Element>(selectors: string): E | null;
+  function _$<E extends Element = HTMLElement>(selectors: string): E | null;
 
   function _$$<K extends keyof HTMLElementTagNameMap>(
     selectors: K,
@@ -21,7 +21,7 @@ declare global {
   function _$$<K extends keyof MathMLElementTagNameMap>(
     selectors: K,
   ): NodeListOf<MathMLElementTagNameMap[K]>;
-  function _$$<E extends Element = Element>(selectors: string): NodeListOf<E>;
+  function _$$<E extends Element = HTMLElement>(selectors: string): NodeListOf<E>;
   /**
    * Pace.js
    *
@@ -75,29 +75,44 @@ declare global {
    * Record the difference between the current scroll position and the previous scroll position
    */
   var diffY: number;
+  var ALGOLIA_CONFIG: {
+    root: string;
+    algolia: {
+      applicationID: string;
+      apiKey: string;
+      indexName: string;
+      hits: {
+        per_page: number;
+      };
+      labels: {
+        input_placeholder: string;
+        hits_empty: string;
+        hits_stats: string;
+      };
+    }
+  }
+  var instantsearch: any;
+  var algoliasearch: any;
 
   interface Window {
-    on: typeof addEventListener;
-    off: typeof removeEventListener;
-    _addEventListener: typeof addEventListener;
-    _removeEventListener: typeof removeEventListener;
+    on: (type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => Element;
+    off:(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) => Element;
+    _addEventListener: (type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => Element;
+    _removeEventListener: (type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) => Element;
 
-    Pace: typeof Pace;
-    AOS: typeof AOS;
-    diffY: typeof diffY;
   }
 
   interface Element {
-    on: typeof addEventListener;
-    off: typeof removeEventListener;
-    _addEventListener: typeof addEventListener;
-    _removeEventListener: typeof removeEventListener;
+    on: typeof window.on;
+    off: typeof window.off;
+    _addEventListener: typeof window._addEventListener;
+    _removeEventListener: typeof window._removeEventListener;
   }
 
   interface Document {
-    on: typeof addEventListener;
-    off: typeof removeEventListener;
-    _addEventListener: typeof addEventListener;
-    _removeEventListener: typeof removeEventListener;
+    on: typeof window.on;
+    off: typeof window.off;
+    _addEventListener: typeof window._addEventListener;
+    _removeEventListener: typeof window._removeEventListener;
   }
 }
