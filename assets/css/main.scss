@@ -77,6 +77,14 @@ a {
     }
   }
 }
+
+.code-copy, .code-lang, .code-expand {
+  cursor: var(--cursor-pointer) !important;
+}
+{{ else }}
+.code-copy, .code-lang, .code-expand {
+  cursor: pointer !important;
+}
 {{ end }}
 
 #container {
@@ -149,6 +157,7 @@ a {
 @import "partials/pagination";
 @import "partials/article";
 @import "partials/search";
+@import "partials/highlight";
 
 [data-theme="dark"] {
   ::-webkit-scrollbar, ::-webkit-scrollbar-track {
