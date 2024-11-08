@@ -1,14 +1,15 @@
 {{ $source := .source }}
+{{ $pjax := .pjax }}
 
 {{- with resources.Get $source }}
   {{- if eq hugo.Environment "development" }}
     {{- with . | js.Build }}
-      <script src="{{ .RelPermalink }}"></script>
+      <script src="{{ .RelPermalink }}" {{ if $pjax }}data-pjax{{ end }}></script>
     {{- end }}
   {{- else }}
     {{- $opts := dict "minify" true }}
     {{- with . | js.Build $opts | fingerprint }}
-      <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
+      <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous" {{ if $pjax }}data-pjax{{ end }}></script>
     {{- end }}
   {{- end }}
 {{- end }}

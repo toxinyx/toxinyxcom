@@ -21,7 +21,9 @@ declare global {
   function _$$<K extends keyof MathMLElementTagNameMap>(
     selectors: K,
   ): NodeListOf<MathMLElementTagNameMap[K]>;
-  function _$$<E extends Element = HTMLElement>(selectors: string): NodeListOf<E>;
+  function _$$<E extends Element = HTMLElement>(
+    selectors: string,
+  ): NodeListOf<E>;
   /**
    * Pace.js
    *
@@ -89,17 +91,66 @@ declare global {
         hits_empty: string;
         hits_stats: string;
       };
-    }
-  }
+    };
+  };
   var instantsearch: any;
   var algoliasearch: any;
+  var walineInstance: any;
+  var ClipboardJS: any;
+  var Pjax: any;
+  /**
+   * Lightbox status
+   */
+  var lightboxStatus: string | undefined;
+  /**
+   * Start loading
+   */
+  var startLoading: (() => void) | undefined;
+  /**
+   * End loading
+   */
+  var endLoading: (() => void) | undefined;
+  /**
+   * AOS init
+   */
+  var aosInit: (() => void) | undefined;
+
+  var siteConfig: {
+    icon_font?: string | boolean;
+    clipboard?: {
+      success: string;
+      fail: string;
+      copyright: {
+        enable: boolean;
+        count: number;
+        content?: string;
+      }
+    };
+    swPath?: string;
+    outdate?: string;
+  }
 
   interface Window {
-    on: (type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => Element;
-    off:(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) => Element;
-    _addEventListener: (type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => Element;
-    _removeEventListener: (type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) => Element;
-
+    on: (
+      type: string,
+      listener?: EventListenerOrEventListenerObject,
+      options?: boolean | AddEventListenerOptions,
+    ) => Element;
+    off: (
+      type: string,
+      listener?: EventListenerOrEventListenerObject,
+      options?: boolean | EventListenerOptions,
+    ) => Element;
+    _addEventListener: (
+      type: string,
+      listener?: EventListenerOrEventListenerObject,
+      options?: boolean | AddEventListenerOptions,
+    ) => Element;
+    _removeEventListener: (
+      type: string,
+      listener?: EventListenerOrEventListenerObject,
+      options?: boolean | EventListenerOptions,
+    ) => Element;
   }
 
   interface Element {
