@@ -10,7 +10,13 @@
       <div id="wrap">
         {{ partial "header.html" . }}
         <main id="content">
+          {{ if eq .Site.Params.sidebar "left" }}
+            {{ partial "sidebar.html" . }}
+          {{ end }}
           <section id="main">{{ block "main" . }}{{ end }}</section>
+          {{ if eq .Site.Params.sidebar "right" }}
+            {{ partial "sidebar.html" . }}
+          {{ end }}
         </main>
         {{ partial "footer.html" . }}
         <div class="sidebar-top">
@@ -19,6 +25,7 @@
         </div>
         <div id="mask"></div>
       </div>
+      {{ partial "mobilebar.html" . }}
     </div>
     {{ if .Site.Params.algolia_search.enable }}
       <div class="site-search">

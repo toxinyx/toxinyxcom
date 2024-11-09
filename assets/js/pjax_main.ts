@@ -31,10 +31,8 @@ _$$(
   ".article-entry h1>a, .article-entry h2>a, .article-entry h3>a, .article-entry h4>a, .article-entry h5>a, .article-entry h6>a"
 ).forEach((element) => {
   if (window.siteConfig.icon_font) {
-    // iconfont
     element.innerHTML = "&#xe635;";
   } else {
-    // fontawesome
     element.innerHTML = "&#xf292;";
   }
 });
@@ -176,7 +174,7 @@ __sidebarTopScrollHandler = () => {
 window.on("scroll", __sidebarTopScrollHandler);
 
 // toc
-_$$(".toc a").forEach((element) => {
+_$$("#TableOfContents li").forEach((element) => {
   element.off("click").on("click", () => {
     if (isMobileNavAnim || !document.body.classList.contains("mobile-nav-on"))
       return;
@@ -215,7 +213,7 @@ function tocInit() {
   };
 
   const sections = [...navItems].map((element, index) => {
-    const link = element.querySelector("a.toc-link");
+    const link = element.querySelector("a");
     link!.off("click").on("click", (e) => anchorScroll(e, index));
     const anchor = _$(decodeURI(link!.getAttribute("href")!));
     if (!anchor) return null;
@@ -246,7 +244,7 @@ function tocInit() {
       if (parent.matches("li")) {
         parent.classList.add("active");
         const t = _$(
-          decodeURI(parent.querySelector("a.toc-link").getAttribute("href"))
+          decodeURI(parent.querySelector("a").getAttribute("href"))
         );
         if (t) {
           t.classList.add("active");
@@ -305,16 +303,6 @@ function tocInit() {
   });
 }
 
-// hexo-blog-encrypt
-window
-  .off("hexo-blog-decrypt")
-  .on("hexo-blog-decrypt", tocInit)
-  .on("hexo-blog-decrypt", () => {
-    const script = document.createElement("script");
-    script.src = "/js/insert_highlight.js";
-    script.setAttribute("data-pjax", true as any);
-    document.body.appendChild(script);
-  });
 tocInit();
 
 _$('.sponsor-button-wrapper')?.off('click').on('click', () => {
