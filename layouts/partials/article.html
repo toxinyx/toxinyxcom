@@ -15,7 +15,7 @@
     <div class="hr-line"></div>
     {{ partial "post/gallery.html" . }}
     <div class="e-content article-entry" itemprop="articleBody">
-      {{ if .Site.Params.outdate.enable }}article-type-
+      {{ if .Site.Params.outdate.enable }}
         <blockquote id="outdate-blockquote" style="display: none;">
           <p></p>
         </blockquote>
@@ -34,11 +34,12 @@
       {{ end }}
     </div>
     <footer class="article-footer">
-      {{ if eq .Params.copyright true }}
-      {{ else if and (not (eq .Params.copyright false)) .Site.Params.article_copyright.enable }}
+      {{ if or (eq .Params.copyright true) (and (not (eq .Params.copyright false)) .Site.Params.article_copyright.enable) }}
+        {{ partial "post/copyright.html" . }}
       {{ end }}
 
       {{ if or (eq .Params.sponsor true) (and (not (eq .Params.sponsor false)) .Site.Params.sponsor.enable) }}
+        {{ partial "post/sponsor.html" . }}
       {{ end }}
 
       {{ if and (not (eq .Params.comments false)) .Site.Params.valine.enable .Site.Params.valine.appId .Site.Params.valine.appKey }}
@@ -130,4 +131,4 @@
   </div>
   {{ partial "post/nav.html" . }}
 </article>
-{{ partial "partials/comment.html" }}
+{{ partial "partials/comment.html" . }}

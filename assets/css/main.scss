@@ -1,6 +1,7 @@
 {{ $params := .Site.Params }}
 
 $icon_font: {{ $params.icon_font }};
+$reimu_cursor: {{ $params.reimu_cursor }};
 $basic-families: {{ default "-apple-system" (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }};
 $code-families: {{ default "Menlo" (delimit (apply (default slice $params.font.code) "printf" "'%s'" "." ) ",") }};
 
@@ -158,6 +159,7 @@ a {
 @import "partials/article";
 @import "partials/search";
 @import "partials/highlight";
+@import "partials/sponsor";
 
 [data-theme="dark"] {
   ::-webkit-scrollbar, ::-webkit-scrollbar-track {

@@ -15,7 +15,9 @@ mainSections: ["post"]
 yearFormat: "2006"
 monthFormat: "01-02"
 dateFormat: "2006-01-02"
-timeFormat: "2006-01-02T15:04:05-07:00"
+timeFormat: "2006-01-02 15:04:05"
+
+author: D-Sketon
 
 
 banner: "/images/banner.webp" # themes/reimu/source/images/banner.webp
@@ -56,16 +58,6 @@ excerpt_link: Read More
 baidu_analytics: false
 google_analytics: false
 clarity: false
-
-# Footer copyright
-copyright:
-# Need help choosing? Please see...
-# https://creativecommons.org/choose/
-# https://choosealicense.com/
-# You can use pug like below...
-# copyright: |-
-#   <div style="flex-direction:column;align-items: center;"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
-#   All website licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></div>
 
 article_copyright:
   enable: false
