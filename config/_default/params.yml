@@ -3,11 +3,11 @@ menu:
   - name: home
     url: "/"
   - name: archives
-    url: "/archives.html"
+    url: "/archives"
   - name: about
-    url: "/about.html"
+    url: "/about"
   - name: friend
-    url: "/friend.html"
+    url: "/friend"
 
 mainSections: ["post"]
 # 年，月，日及时间的格式化样式

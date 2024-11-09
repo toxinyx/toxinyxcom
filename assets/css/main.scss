@@ -160,6 +160,9 @@ a {
 @import "partials/search";
 @import "partials/highlight";
 @import "partials/sponsor";
+@import "partials/top";
+@import "partials/friend";
+@import "partials/card";
 
 [data-theme="dark"] {
   ::-webkit-scrollbar, ::-webkit-scrollbar-track {

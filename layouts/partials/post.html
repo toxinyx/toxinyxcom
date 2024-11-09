@@ -83,7 +83,7 @@
       <h2 class="post-title">{{ $page.Title }}</h2>
       <article class="post-article">
         {{ if $page.Summary }}
-          {{ $page.Summary }}
+          {{ $page.Summary  | plainify | truncate 300 }}
         {{ else }}
           {{ $page.RawContent | truncate 300 }}
         {{ end }}

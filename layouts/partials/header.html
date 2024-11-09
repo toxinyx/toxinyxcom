@@ -12,9 +12,6 @@
     {{ with .OutputFormats.Get "rss" -}}
       <a id="nav-rss-link" class="nav-icon" href="{{ .Permalink }}" title="{{ i18n "rss_feed" }}" target="_blank"></a>
     {{ end }}
-    {{ if .Site.Params.rss }}
-      <a id="nav-rss-link" class="nav-icon" href="{{ .Site.Params.rss | relURL }}" title="{{ i18n "rss_feed" }}"></a>
-    {{ end }}
     {{ if .Site.Params.algolia_search.enable }}
       <a id="nav-search-btn" class="nav-icon popup-trigger" title="{{ i18n "search" }}"></a>
     {{ end }}
