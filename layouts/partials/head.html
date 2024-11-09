@@ -37,6 +37,7 @@
 <!-- photo-swipe -->
 {{ partial "helpers/asyncCss.html" (partial "helpers/vendorCdn.html" (dict "item" $css.photoswipe "ctx" $site)) }}
 <!-- katex -->
+{{ partial "helpers/asyncCss.html" (partial "helpers/vendorCdn.html" (dict "item" $css.katex "ctx" $site)) }}
 <!-- waline -->
 {{ if and .Site.Params.waline.enable .Site.Params.waline.serverURL }}
   {{ partial "helpers/css.html" (partial "helpers/vendorCdn.html" (dict "item" $css.waline "ctx" $site)) }}

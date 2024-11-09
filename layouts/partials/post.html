@@ -85,7 +85,7 @@
         {{ if $page.Summary }}
           {{ $page.Summary }}
         {{ else }}
-          {{ $page.Content | truncate 300 }}
+          {{ $page.RawContent | truncate 300 }}
         {{ end }}
       </article>
     </div>

@@ -27,6 +27,8 @@ js:
     js: fastly_jsdelivr_gh|D-Sketon/plugin-live2d/js/live2d-autoload.js
   md5: webcache|blueimp-md5@2.19.0/js/md5.min.js
   quicklink: webcache|quicklink@2.3.0/dist/quicklink.umd.js
+  katex: webcache|katex@0.16.9/dist/katex.min.js
+  katex_auto_render: webcache|katex@0.16.9/dist/contrib/auto-render.min.js
 
   
 css:
