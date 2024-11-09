@@ -46,6 +46,12 @@
         {{ $title := "" }}
         {{ if .IsHome }}
           {{ $title = .Site.Title }}
+        {{ else if eq .Type "archives" }}
+          {{ $title = i18n "archive_a" }}
+        {{ else if eq .Type "tags" }}
+          {{ $title = i18n "tag" }}
+        {{ else if eq .Type "categories" }}
+          {{ $title = i18n "category" }}
         {{ else if .Title }}
           {{ $title = .Title }}
         {{ else }}
@@ -67,10 +73,11 @@
         {{ $subtitle := "" }}
         {{ if .IsHome }}
           {{ $subtitle = .Site.Params.theme.subtitle | default .Site.Params.subtitle }}
-        {{ else if not .IsHome }}
-          {{ $subtitle = "" }}
+        {{ else if and (eq .Type "categories") (not (eq .Title "Categories")) }}
+          {{ $subtitle = .Title }}
+        {{ else if and (eq .Type "tags") (not (eq .Title "Tags")) }}
+          {{ $subtitle = .Title }}
         {{ end }}
-        
         <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.theme.animation.options.header.subTitle }}">
           {{ if $subtitle }}
             <a href="{{ "/" | relURL }}" id="subtitle">{{ $subtitle }}</a>

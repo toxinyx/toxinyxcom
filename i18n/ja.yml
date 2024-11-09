@@ -8,8 +8,8 @@ next: 次へ
 comment: コメント
 reading: 閲覧数
 archive_a: アーカイブ
-archive_b: "アーカイブ: %s"
-page: ページ %d
+archive_b: "アーカイブ:  {{ . -}}"
+page: "ページ {{ . -}}"
 recent_posts: 最近の投稿
 newer: 次の記事
 older: 前の記事

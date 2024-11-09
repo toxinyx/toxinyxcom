@@ -6,8 +6,30 @@
 <title>
   {{ if .IsHome }}
     {{ site.Title }}
+  {{ else if eq .Type "archives" }}
+    {{ i18n "archive_a" }} |
+    {{ .Site.Params.author }}
+  {{ else if eq .Type "tags" }}
+    {{ if eq .Title "Tags" }}
+      {{ i18n "tag" }}
+    {{ else }}
+      {{ .Title }}
+    {{ end }}
+    |
+    {{ .Site.Params.author }}
+  {{ else if eq .Type "categories" }}
+    {{ if eq .Title "Categories" }}
+      {{ i18n "category" }}
+    {{ else }}
+      {{ .Title }}
+    {{ end }}
+    |
+    {{ .Site.Params.author }}
+  {{ else if .Title }}
+    {{ .Title }} |
+    {{ .Site.Params.author }}
   {{ else }}
-    {{ printf "%s | %s" .Title site.Title }}
+    {{ printf "%s | %s" .Title .Site.Params.author }}
   {{ end }}
 </title>
 {{ $site := .Site }}
@@ -15,14 +37,18 @@
 {{ partial "head/config.html" . }}
 
 {{ partial "helpers/vendorFont.html" . }}
-{{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
-{{ end }}
+
 {{ $js := .Site.Data.vendor.js }}
 {{ $css := .Site.Data.vendor.css }}
 <!-- icon -->
 {{ if .Site.Params.icon_font }}
-  <link rel="preload" href="//at.alicdn.com/t/c/font_{{ .Site.Params.icon_font }}.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_{{ .Site.Params.icon_font }}.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
 {{ else }}
   {{ partial "helpers/css.html" (partial "helpers/vendorCdn.html" (dict "item" $css.fontawesome.high_priority "ctx" $site)) }}
   {{ partial "helpers/asyncCss.html" (partial "helpers/vendorCdn.html" (dict "item" $css.fontawesome.low_priority "ctx" $site)) }}
@@ -32,8 +58,10 @@
   {{ partial "helpers/scss.html" (dict "source" "css/loader.scss" "temp" "loader.scss" "target" "css/loader.css" "ctx" .) }}
 {{ end }}
 <!-- open-graph -->
-<!-- feed -->
 <!-- rss -->
+{{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end }}
 <!-- favicon use default -->
 {{ partial "helpers/scss.html" (dict "source" "css/main.scss" "temp" "main.scss" "target" "css/main.css" "ctx" .) }}
 <!-- photo-swipe -->

@@ -8,8 +8,8 @@ next: Next
 comment: Comments
 reading: Readings
 archive_a: Archives
-archive_b: "Archives: %s"
-page: Page %d
+archive_b: "Archives: {{ . -}}"
+page: "Page {{ . -}}"
 recent_posts: Recent Posts
 newer: Newer
 older: Older

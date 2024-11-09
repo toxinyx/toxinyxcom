@@ -1,8 +1,2 @@
-{{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
-{{ end }}
+{{ $paginator := .Paginator.Pages.GroupByDate "2006" }}
+{{ partial "list.html" (dict "paginator" $paginator "ctx" .) }}
