@@ -15,7 +15,9 @@
 {{ partial "head/config.html" . }}
 
 {{ partial "helpers/vendorFont.html" . }}
-
+{{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end }}
 {{ $js := .Site.Data.vendor.js }}
 {{ $css := .Site.Data.vendor.css }}
 <!-- icon -->

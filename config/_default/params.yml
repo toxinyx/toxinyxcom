@@ -52,10 +52,6 @@ open_graph:
 # Content
 excerpt_link: Read More
 
-# RSS
-# need https://github.com/hexojs/hexo-generator-feed
-rss: atom.xml
-
 # analytics
 baidu_analytics: false
 google_analytics: false
@@ -127,15 +123,6 @@ footer:
   powered: true
   count: true
   busuanzi: true
-
-# need https://github.com/CHENXCHEN/hexo-renderer-markdown-it-plus
-# use katex
-math:
-  enable: false
-
-# need https://github.com/webappdevelp/hexo-filter-mermaid-diagrams
-mermaid: ## mermaid url https://github.com/knsv/mermaid
-  enable: false
 
 # valine comment system. https://valine.js.org
 # version 1.5.1
@@ -226,14 +213,6 @@ algolia_search:
     input_placeholder: "搜索....."
     hits_empty: "未发现与 「${query}」相关内容"
     hits_stats: "找到${hits}条结果（用时 ${time} ms）"
-# need https://github.com/wzpan/hexo-generator-search
-# please add the following config in your _config.yml
-# search:
-#   path: search.json # The filename must be search.json
-#   field: post
-#   content: true
-generator_search:
-  enable: false
 
 preloader:
   enable: true
