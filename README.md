@@ -13,7 +13,9 @@
 
 </div>
 
-本人是车车人，所以制作了这样一款博丽灵梦风格的 Hugo 主题
+A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu).
+
+---
 
 [Hexo](https://hexo.io) 主题请参见 [hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu)
 

@@ -14,7 +14,9 @@
 
 </div>
 
-A Hakurei Reimu style Hugo theme.
+A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu).
+
+---
 
 [Hexo](https://hexo.io) theme please see [hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu)
 
