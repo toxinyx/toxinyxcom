@@ -42,14 +42,3 @@
 
 <div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
 </div>
-
-{{ if .Site.Params.service_worker.enable }}
-  <div class="notification-wrapper">
-    <h1>{{ i18n "service_worker.title" }}</h1>
-    <p>{{ i18n "service_worker.content" }}</p>
-    <div class="notification-btn">
-      <button id="notification-update-btn">{{ i18n "service_worker.confirm" }}</button>
-      <button id="notification-close-btn">{{ i18n "service_worker.cancel" }}</button>
-    </div>
-  </div>
-{{ end }}

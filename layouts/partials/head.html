@@ -3,6 +3,7 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
+{{ partial "head/init.html" . }}
 {{ $title := .Title }}
 {{ if .IsHome }}
   {{ $title = site.Title }}
