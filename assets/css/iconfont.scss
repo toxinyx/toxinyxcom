@@ -4,7 +4,7 @@ $icon-url: "//at.alicdn.com/t/c/font_#{$icon_font}.woff2";
 
 @font-face {
   font-family: $font-icon;
-  src: url($icon-url) format('woff2');
+  src: url($icon-url) format("woff2");
   font-display: swap;
 }
 

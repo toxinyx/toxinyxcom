@@ -19,7 +19,7 @@
   a {
     color: var(--grey-9);
     text-decoration: none;
-    transition: .2s;
+    transition: 0.2s;
 
     &:hover {
       background: var(--red-2);
@@ -43,7 +43,7 @@
     border-radius: $post-radius;
     margin: 5px;
 
-    @media #{mq-mobile} {
+    @media #{$mq-mobile} {
       display: none;
     }
   }

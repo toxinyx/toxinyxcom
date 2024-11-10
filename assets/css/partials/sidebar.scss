@@ -426,7 +426,8 @@
     }
   }
 
-  nav > ul ul {
+  nav > ul ul,
+  nav > ol ol {
     transform: scaleY(0);
     height: 0;
     overflow: hidden;
@@ -439,7 +440,9 @@
   }
 
   .active > ul,
-  .current > ul {
+  .current > ul,
+  .active > ol,
+  .current > ol {
     height: auto;
     transform: scaleY(1);
   }
@@ -448,11 +451,6 @@
   .current > a {
     color: var(--red-0);
     opacity: 1;
-
-    & > span {
-      color: var(--red-0);
-      opacity: 1;
-    }
   }
 
   li {

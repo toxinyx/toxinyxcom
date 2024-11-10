@@ -13,7 +13,7 @@
   color: var(--color-link);
   opacity: 0.8;
   text-decoration: none;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   display: block;
   padding: 10px 0;
   font-weight: 700;
@@ -32,7 +32,7 @@
   width: fit-content;
   justify-content: center;
   border: 10px rgba(255, 88, 88, 0.3) double;
-  transition: border .5s;
+  transition: border 0.5s;
 
   @if $reimu_cursor {
     cursor: var(--cursor-pointer);
@@ -45,7 +45,7 @@
   }
 
   &:hover + .sponsor-tip {
-    opacity: .8;
+    opacity: 0.8;
   }
 
   &.active {
@@ -54,7 +54,7 @@
 }
 
 .sponsor-tip {
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   color: var(--color-link);
   opacity: 0;
   font-size: 14px;
@@ -62,7 +62,7 @@
   letter-spacing: 1px;
 
   &.active {
-    opacity: .8;
+    opacity: 0.8;
   }
 }
 

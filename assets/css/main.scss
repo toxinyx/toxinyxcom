@@ -57,7 +57,7 @@ body {
 }
 
 {{ if $params.reimu_cursor }}
-a {
+a .main-nav-icon, .popup-btn-close {
   cursor: var(--cursor-pointer) !important;
 }
 
@@ -82,8 +82,16 @@ a {
 .code-copy, .code-lang, .code-expand {
   cursor: var(--cursor-pointer) !important;
 }
+
+.reimu-powered {
+  cursor: var(--cursor-default) !important;
+}
 {{ else }}
 .code-copy, .code-lang, .code-expand {
+  cursor: pointer !important;
+}
+
+.main-nav-icon, .popup-btn-close {
   cursor: pointer !important;
 }
 {{ end }}
@@ -158,16 +166,25 @@ a {
 @import "partials/post";
 @import "partials/pagination";
 @import "partials/article";
-@import "partials/search";
 @import "partials/highlight";
 @import "partials/sponsor";
 @import "partials/top";
 @import "partials/comment";
-@import "partials/widget";
-@import "partials/sidebar";
 @import "partials/mobile";
 @import "partials/friend";
 @import "partials/card";
+
+{{ if $params.algolia_search.enable }}
+@import "partials/search";
+{{ end }}
+
+{{ if and (reflect.IsSlice $params.widgets) (len $params.widgets) }}
+@import "partials/widget";
+{{ end }}
+
+{{ if $params.sidebar }}
+@import "partials/sidebar";
+{{ end }}
 
 [data-theme="dark"] {
   ::-webkit-scrollbar, ::-webkit-scrollbar-track {

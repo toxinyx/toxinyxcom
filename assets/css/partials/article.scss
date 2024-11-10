@@ -82,7 +82,12 @@
     margin: $line-height 0;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: bold;
     line-height: $line-height-title;
     margin: $line-height-title 0;
@@ -132,7 +137,9 @@
     }
   }
 
-  ul, ol, dl {
+  ul,
+  ol,
+  dl {
     margin-top: $line-height;
     margin-bottom: $line-height;
   }
@@ -146,7 +153,8 @@
     }
   }
 
-  img, video {
+  img,
+  video {
     max-width: 100%;
     height: auto;
     display: block;
@@ -207,22 +215,6 @@
     }
   }
 
-  .pullquote {
-    text-align: left;
-    width: 45%;
-    margin: 0;
-
-    &.left {
-      margin-left: 0.5em;
-      margin-right: 1em;
-    }
-
-    &.right {
-      margin-right: 0.5em;
-      margin-left: 1em;
-    }
-  }
-
   .caption {
     color: var(--grey-9);
     display: block;
@@ -239,7 +231,9 @@
     height: 0;
     overflow: hidden;
 
-    iframe, object, embed {
+    iframe,
+    object,
+    embed {
       position: absolute;
       top: 0;
       left: 0;
@@ -283,7 +277,11 @@
     margin-top: 10px;
     opacity: 0.3;
     height: 4px;
-    background-image: linear-gradient(to right, var(--red-0) 50%, transparent 0%);
+    background-image: linear-gradient(
+      to right,
+      var(--red-0) 50%,
+      transparent 0%
+    );
     background-size: 50px 4px;
     background-repeat: repeat-x;
     filter: drop-shadow(0px 0px 2px red);
@@ -366,7 +364,8 @@
   min-height: 150px;
   flex-shrink: 0;
 
-  a, img {
+  a,
+  img {
     position: absolute;
     top: 0;
     left: 0;
@@ -381,7 +380,7 @@
     object-fit: cover;
     z-index: -1;
   }
-  
+
   img.lazyloaded {
     opacity: 1;
   }
@@ -404,9 +403,9 @@
 
 .article-nav-title {
   font-size: 1.2em;
-  line-height: line-height;
+  line-height: $line-height;
   margin-top: 0.8em;
-  text-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.5);
+  text-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.5);
 }
 
 .article-gallery {
@@ -443,4 +442,3 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
-

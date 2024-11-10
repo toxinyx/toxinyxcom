@@ -30,7 +30,7 @@
     left: 0;
     border-radius: 10px;
     box-shadow: 0 2px 12px var(--color-h2-after-shadow);
-    transition: .3s;
+    transition: 0.3s;
   }
 
   &:hover:after {
@@ -60,8 +60,8 @@
     background: var(--color-h2-after);
     margin: -2px 11px 0 -25px;
     box-shadow: 0 2px 12px var(--color-h2-after-shadow);
-    opacity: .5;
-    transition: .2s;
+    opacity: 0.5;
+    transition: 0.2s;
     flex-shrink: 0;
   }
 
@@ -97,83 +97,13 @@
   text-decoration: none;
   font-weight: bold;
   color: var(--red-0);
-  transition: .3s;
-  opacity: .7;
+  transition: 0.3s;
+  opacity: 0.7;
   margin-left: 15px;
 }
 
-#page-nav {
-  margin: $block-margin auto;
-  background: var(--color-wrap);
-  border-radius: $post-radius;
-  text-align: center;
-  color: var(--grey-9);
-  overflow: hidden;
-  transition: 1s;
-
-  &:hover {
-    box-shadow: 0 0 10px 3px var(--color-hover-shadow);
-  }
-
-  a, span {
-    padding: 10px 15px;
-  }
-
-  a {
-    color: var(--grey-9);
-    text-decoration: none;
-    transition: .2s;
-
-    &:hover {
-      background: var(--red-2);
-      box-shadow: 0 0 10px rgba(255, 78, 106, 0.55);
-      color: #fff;
-    }
-  }
-
-  .prev {
-    float: left;
-    padding: 15px;
-  }
-
-  .next {
-    float: right;
-    padding: 15px;
-  }
-
-  .page-number {
-    display: inline-block;
-    border-radius: $post-radius;
-    margin: 5px;
-
-    @media mq-mobile {
-      display: none;
-    }
-  }
-
-  .current {
-    background: var(--red-1);
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(255, 78, 106, 0.55);
-
-    @media mq-mobile {
-      display: inline-block;
-    }
-  }
-
-  .space {
-    display: inline-block;
-    margin: 5px;
-    color: var(--color-border);
-
-    @media mq-mobile {
-      display: none;
-    }
-  }
-}
-
-.tag-wrap, .category-wrap {
+.tag-wrap,
+.category-wrap {
   display: flex;
   flex-wrap: wrap;
   padding: 10px $block-margin;
@@ -183,7 +113,8 @@
   }
 }
 
-.archives-tag-list-item, .archives-category-list-item {
+.archives-tag-list-item,
+.archives-category-list-item {
   display: flex;
   text-transform: uppercase;
   background: var(--red-5);
@@ -193,7 +124,8 @@
   box-shadow: 0 0 5px 3px var(--color-meta-shadow);
 }
 
-.archives-tag-list-link, .archives-category-list-link {
+.archives-tag-list-link,
+.archives-category-list-link {
   color: var(--red-1);
   font-size: 12px;
 
