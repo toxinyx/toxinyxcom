@@ -20,7 +20,7 @@
 <header id="header">
   {{ if .Params.cover }}
     {{ if strings.HasPrefix .Params.cover "rgb" }}
-      <div style="position: absolute;top: 0;left: 0;width: 100%;height: 150%;z-index: -2;display: block;background: {{ .Params.cover }}"></div>
+      <div style="position: absolute;top: 0;left: 0;width: 100%;height: 150%;z-index: -2;display: block;background: {{ .Params.cover | safeCSS }};mask: linear-gradient(to top, transparent, #fff 50%);"></div>
     {{ else }}
       <img fetchpriority="high" src="{{ .Params.cover | relURL }}" alt="{{ .Title }}">
     {{ end }}
