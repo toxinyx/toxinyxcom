@@ -39,8 +39,8 @@
   <div id="header-outer">
     <div id="header-title">
       {{ if eq .Type "404" }}
-        <a href="/" id="logo">
-          <h1 data-aos="{{ .Site.Params.theme.animation.options.header.title }}">{{ i18n "not_found.title" }}</h1>
+        <a href="{{ "" | relURL }}" id="logo">
+          <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ i18n "not_found.title" }}</h1>
         </a>
       {{ else }}
         {{ $title := "" }}
@@ -59,28 +59,28 @@
         {{ end }}
   
         {{ if $title }}
-          <a href="{{ "/" | relURL }}" id="logo">
-            <h1 data-aos="{{ .Site.Params.theme.animation.options.header.title }}">{{ $title }}</h1>
+          <a href="{{ "" | relURL }}" id="logo">
+            <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ $title }}</h1>
           </a>
         {{ end }}
       {{ end }}
   
       {{ if eq .Type "404" }}
-        <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.theme.animation.options.header.subTitle }}">
-          <a href="/" id="subtitle">{{ i18n "not_found.subtitle" }}</a>
+        <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
+          <a href="{{ "" | relURL }}" id="subtitle">{{ i18n "not_found.subtitle" }}</a>
         </h2>
       {{ else }}
         {{ $subtitle := "" }}
         {{ if .IsHome }}
-          {{ $subtitle = .Site.Params.theme.subtitle | default .Site.Params.subtitle }}
+          {{ $subtitle = .Site.Params.subtitle | default .Site.Params.subtitle }}
         {{ else if and (eq .Type "categories") (not (eq .Title "Categories")) }}
           {{ $subtitle = .Title }}
         {{ else if and (eq .Type "tags") (not (eq .Title "Tags")) }}
           {{ $subtitle = .Title }}
         {{ end }}
-        <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.theme.animation.options.header.subTitle }}">
+        <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
           {{ if $subtitle }}
-            <a href="{{ "/" | relURL }}" id="subtitle">{{ $subtitle }}</a>
+            <a href="{{ "" | relURL }}" id="subtitle">{{ $subtitle }}</a>
           {{ end }}
         </h2>
       {{ end }}

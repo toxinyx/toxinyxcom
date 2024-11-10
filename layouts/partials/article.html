@@ -57,9 +57,9 @@
         </a>
       {{ end }}
 
-      {{ if and (not (eq .Params.comments false)) .Site.Params.theme.waline.enable .Site.Params.theme.waline.serverURL }}
+      {{ if and (not (eq .Params.comments false)) .Site.Params.waline.enable .Site.Params.waline.serverURL }}
         <a
-          data-aos="{{ .Site.Params.theme.animation.options.article.comment }}"
+          data-aos="{{ .Site.Params.animation.options.article.comment }}"
           href="{{ .Permalink }}#comments"
           class="article-comment-link"
         >
@@ -72,9 +72,9 @@
         </a>
       {{ end }}
 
-      {{ if and (not (eq .Params.comments false)) .Site.Params.theme.twikoo.enable .Site.Params.theme.twikoo.envId }}
+      {{ if and (not (eq .Params.comments false)) .Site.Params.twikoo.enable .Site.Params.twikoo.envId }}
         <a
-          data-aos="{{ .Site.Params.theme.animation.options.article.comment }}"
+          data-aos="{{ .Site.Params.animation.options.article.comment }}"
           href="{{ .Permalink }}#comments"
           class="article-comment-link"
         >
@@ -87,8 +87,8 @@
         </a>
         <script>
           twikoo.getCommentsCount({
-            envId: '{{ .Site.Params.theme.twikoo.envId }}',
-            region: '{{ .Site.Params.theme.twikoo.region }}',
+            envId: '{{ .Site.Params.twikoo.envId }}',
+            region: '{{ .Site.Params.twikoo.region }}',
             urls: [
               '{{ .Permalink | urlize }}'
             ],
@@ -101,10 +101,10 @@
         </script>
       {{ end }}
 
-      {{ if and (not (eq .Params.comments false)) .Site.Params.theme.valine.enable .Site.Params.theme.valine.appId .Site.Params.theme.valine.appKey .Site.Params.theme.valine.visitor }}
+      {{ if and (not (eq .Params.comments false)) .Site.Params.valine.enable .Site.Params.valine.appId .Site.Params.valine.appKey .Site.Params.valine.visitor }}
         <span
-          data-aos="{{ .Site.Params.theme.animation.options.article.reading }}"
-          id="{{ .Permalink | urlize }}"
+          data-aos="{{ .Site.Params.animation.options.article.reading }}"
+          id="{{ .Permalink | relURL }}"
           class="leancloud_visitors article-visitor-link"
           data-flag-title="{{ .Title }}"
         >
@@ -113,14 +113,14 @@
         </span>
       {{ end }}
 
-      {{ if and (not (eq .Params.comments false)) .Site.Params.theme.waline.enable .Site.Params.theme.waline.serverURL .Site.Params.theme.waline.pageview }}
+      {{ if and (not (eq .Params.comments false)) .Site.Params.waline.enable .Site.Params.waline.serverURL .Site.Params.waline.pageview }}
         <span
-          data-aos="{{ .Site.Params.theme.animation.options.article.reading }}"
+          data-aos="{{ .Site.Params.animation.options.article.reading }}"
           class="article-visitor-link"
         >
           <span
             class="waline-pageview-count"
-            data-path="{{ .Permalink | urlize }}"
+            data-path="{{ .Permalink | relURL }}"
             >0</span
           >
           <em class="post-meta-item-text">{{ i18n "reading" }}</em>
