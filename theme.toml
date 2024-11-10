@@ -6,24 +6,8 @@ homepage = 'https://github.com/D-Sketon/hugo-theme-reimu'
 demosite = 'https://github.com/D-Sketon/hugo-theme-reimu'
 min_version = "0.116.0"
 
-tags = [
-  'Blog',
-  'Touhou',
-  'Chinese',
-  'Responsive',
-  'Dark',
-  'Light',
-  'Customizable',
-]
-features = [
-  'Blog',
-  'Touhou',
-  'Chinese',
-  'Responsive',
-  'Dark',
-  'Light',
-  'Customizable',
-]
+tags = ['Blog', 'Chinese', 'Responsive', 'Dark', 'Light']
+features = ['Blog', 'Chinese', 'Responsive', 'Dark', 'Light']
 
 [author]
 name = 'D-Sketon'

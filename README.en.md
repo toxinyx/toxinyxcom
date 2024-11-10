@@ -46,7 +46,7 @@ A Hakurei Reimu style Hugo theme.
 - ~~ServiceWorker~~
 - live2d
 - reimu Mouse Pointer
-- Internal tag plugin for providing internal/external/friendly link cards
+- Internal shortcode for providing internal/external/friendly link cards
 - Support the bottom of the article copyright statement
 - Support for configuring custom CDN sources
 
