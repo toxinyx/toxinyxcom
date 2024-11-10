@@ -13,7 +13,7 @@ mainSections: ["post"]
 # 年，月，日及时间的格式化样式
 # Format style for year,month,date & time
 yearFormat: "2006"
-monthFormat: "01-02"
+monthFormat: "2006-01"
 dateFormat: "2006-01-02"
 timeFormat: "2006-01-02 15:04:05"
 
@@ -72,15 +72,12 @@ article_copyright:
 # Sidebar
 sidebar: right
 widgets:
-  # - category
-  # - tag
-  # - tagcloud
-  # - archive
-  # - recent_posts
+  - category
+  - tag
+  - tagcloud
+  - recent_posts
 
 # Widget behavior
-archive_type: "monthly"
-show_count: false
 recent_posts_limits: 5
 
 social:

@@ -14,7 +14,7 @@
                 class="dt-published"
                 datetime="{{ .Date }}"
                 itemprop="datePublished"
-                >{{ .Date.Format "2006-01" }}</time
+                >{{ .Date.Format $ctx.Site.Params.monthFormat }}</time
               >
             </a>
           </div>

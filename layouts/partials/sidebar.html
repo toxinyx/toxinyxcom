@@ -23,4 +23,10 @@
       {{ end }}
     </div>
   </div>
+
+  {{ if and (not (eq .Type "post")) .Site.Params.widgets }}
+    {{ range .Site.Params.widgets }}
+      {{ partial (printf "widget/%s.html" .) $ }}
+    {{ end }}
+  {{ end }}
 </aside>
