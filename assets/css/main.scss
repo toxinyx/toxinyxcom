@@ -57,7 +57,7 @@ body {
 }
 
 {{ if $params.reimu_cursor }}
-a .main-nav-icon, .popup-btn-close {
+a, .main-nav-icon, .popup-btn-close {
   cursor: var(--cursor-pointer) !important;
 }
 

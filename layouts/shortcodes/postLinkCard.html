@@ -42,7 +42,9 @@
         {{ end }}
       </div>
       <div class="post-link-card-excerpt">
-        {{ if $page.Summary }}
+        {{ if $page.Params.description }}
+          {{ $page.Params.description | plainify | truncate 300 }}
+        {{ else if $page.Summary }}
           {{ $page.Summary | plainify | truncate 200 }}
         {{ else }}
           {{ $page.RawContent | truncate 200 }}

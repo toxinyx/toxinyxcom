@@ -3,12 +3,14 @@
 {{ $js := .Site.Data.vendor.js }}
 {{ $css := .Site.Data.vendor.css }}
 
-{{ partial "helpers/ts.html" (dict "source" "js/main.ts") }}
-
 {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.lazysizes "ctx" $site)) }}
 {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.clipboard "ctx" $site)) }}
 
-{{ partial "helpers/ts.html" (dict "source" "js/insert_highlight.ts") }}
+{{ partial "helpers/ts.html" (dict "source" "js/main.ts") }}
+
+{{ if not .IsHome }}
+  {{ partial "helpers/ts.html" (dict "source" "js/insert_highlight.ts" "pjax" true) }}
+{{ end }}
 
 {{ if $params.animation.enable }}
   {{ partial "helpers/ts.html" (dict "source" "js/aos.ts") }}
@@ -190,8 +192,6 @@
   {{ partial "helpers/ts.html" (dict "source" "js/algolia_search.ts") }}
 {{ end }}
 
-
-<!-- search -->
 
 {{ if $params.firework.enable }}
   {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.firework "ctx" $site)) }}

@@ -1,6 +1,6 @@
 <nav id="mobile-nav">
   <div class="sidebar-wrap">
-    {{ if eq .Type "post" }}
+    {{ if in .Site.Params.mainSections .Type }}
       <div class="sidebar-toc-sidebar">
         {{ partial "sidebar/tocBar.html" . }}
       </div>
@@ -11,7 +11,7 @@
       {{ partial "sidebar/commonBar.html" . }}
     {{ end }}
   </div>
-  {{ if eq .Type "post" }}
+  {{ if in .Site.Params.mainSections .Type }}
     <div class="sidebar-btn-wrapper">
       <div class="sidebar-toc-btn current"></div>
       <div class="sidebar-common-btn"></div>
