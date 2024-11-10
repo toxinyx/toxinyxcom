@@ -56,7 +56,6 @@ _$$(
   a.appendChild(element);
 });
 _$$(".article-gallery a.article-gallery-img").forEach((a) => {
-  console.log(a.children[0]);
   a.dataset.pswpWidth = (a.children[0] as HTMLImageElement).naturalWidth as any;
   a.dataset.pswpHeight = (a.children[0] as HTMLImageElement).naturalHeight as any;
 });
