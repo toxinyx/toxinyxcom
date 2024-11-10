@@ -327,6 +327,6 @@ sponsor:
   tip: 请作者喝杯咖啡吧！
   qr:
     # - name: 支付宝
-    #   src: "/sponsor/alipay.jpg"
+    #   src: "sponsor/alipay.jpg"
     # - name: 微信
-    #   src: "/sponsor/wechat.png"
+    #   src: "sponsor/wechat.png"

@@ -55,7 +55,7 @@ _$$(
   element.parentNode?.removeChild(element);
   a.appendChild(element);
 });
-_$$(".article-gallery a.article-gallery-img").forEach((a) => {
+_$$("a.article-gallery-img").forEach((a) => {
   a.dataset.pswpWidth = (a.children[0] as HTMLImageElement).naturalWidth as any;
   a.dataset.pswpHeight = (a.children[0] as HTMLImageElement).naturalHeight as any;
 });
