@@ -1,4 +1,4 @@
-<img src="https://fastly.jsdelivr.net/gh/D-Sketon/hexo-theme-reimu@main/_screenshot/Reimu_dark.png"/>
+<img src="https://fastly.jsdelivr.net/gh/D-Sketon/hugo-theme-reimu@main/images/screenshot.png"/>
 <div align = center>
   <h1>hugo-theme-reimu</h1>
   <img alt="GitHub License" src="https://img.shields.io/github/license/D-Sketon/hugo-theme-reimu">
