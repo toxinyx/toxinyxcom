@@ -292,9 +292,9 @@
   </script>
 {{ end }}
 
-{{ if and (.Store.Get "hasMermaid") .Params.mermaid }}
-  <div id="lazy-script">
-    <div>
+<div id="lazy-script">
+  <div>
+    {{ if and (.Store.Get "hasMermaid") .Params.mermaid }}
       {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mermaid "ctx" $site)) 0) "pjax" true) }}
       <script data-pjax>
         if (window.mermaid) {
@@ -372,9 +372,9 @@
           }
         }
       </script>
-    </div>
+      {{ end }}
   </div>
-{{ end }}
+</div>
 
 {{ if $params.outdate.enable }}
   <script data-pjax>
