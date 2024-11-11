@@ -7,7 +7,7 @@
   💘 博麗 霊夢 💘
   </p>
 
-[演示网站](https://d-sketon.github.io/hugo-theme-reimu)
+[演示网站](https://d-sketon.github.io/hugo-theme-reimu) | [迁移指南](https://d-sketon.github.io/20241110/hexo-to-hugo-guide/)
 
 简体中文 | [English](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/README.en.md)
 
@@ -88,6 +88,19 @@ theme = 'hugo-theme-reimu'
 主题的静态资源（favicon，头图等）位于 `static` 文件夹内，你可以在外层 `static` 文件夹下创建相应的文件夹，然后将主题内的文件复制到外层文件夹下，以覆盖主题内的默认文件
 
 > 总之一句话，不建议直接修改主题内的文件，而是在外层创建相应的文件夹，然后将主题内的文件复制到外层文件夹下，以覆盖主题内的默认文件，这样便于主题升级
+
+#### 语言配置
+
+reimu 支持多语言。如果你想要使用中文，请在 `hugo.toml` 中添加如下配置
+
+```toml
+languageCode = 'zh-CN'
+defaultContentLanguage = 'zh-CN'
+[languages]
+[languages.zh-CN]
+languageName = '简体中文'
+weight = 1
+```
 
 </details>
 <details>
