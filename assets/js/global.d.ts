@@ -130,6 +130,8 @@ declare global {
     outdate?: string;
   }
 
+  var safeImport: (url: string, integrity?: string) => Promise<any>;
+
   interface Window {
     on: (
       type: string,

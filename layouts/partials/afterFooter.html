@@ -3,8 +3,8 @@
 {{ $js := .Site.Data.vendor.js }}
 {{ $css := .Site.Data.vendor.css }}
 
-{{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.lazysizes "ctx" $site)) }}
-{{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.clipboard "ctx" $site)) }}
+{{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.lazysizes "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.lazysizes)) 0)) }}
+{{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.clipboard "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.clipboard)) 0)) }}
 
 {{ partial "helpers/ts.html" (dict "source" "js/main.ts") }}
 
@@ -48,14 +48,13 @@
       }
     };
   </script>
-  {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.algolia "ctx" $site)) }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.instantsearch "ctx" $site)) 0) "defer" true) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.algolia "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.algolia)) 0)) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.instantsearch "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.instantsearch)) 0)) }}
   {{ partial "helpers/ts.html" (dict "source" "js/algolia_search.ts") }}
 {{ end }}
 
-
 {{ if $params.firework.enable }}
-  {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.firework "ctx" $site)) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.firework "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.firework)) 0)) }}
 <script>
   if (window.firework) {
     const options = JSON.parse({{ $params.firework.options | jsonify }});
@@ -67,7 +66,7 @@
 {{ end }}
 
 {{ if $params.pjax.enable }}
-  {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.pjax "ctx" $site)) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.pjax "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.pjax)) 0)) }}
   <script>
     function loadScripts(scripts, index) {
       if (index < scripts.length) {
@@ -148,7 +147,7 @@
 {{ end }}
 
 {{ if $params.quicklink.enable }}
-  {{ partial "helpers/js.html"  (partial "helpers/vendorCdn.html" (dict "item" $js.quicklink "ctx" $site)) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.quicklink "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.quicklink)) 0)) }}
   <script data-pjax>
     window.quicklink?.listen({
       timeout: {{ $params.quicklink.timeout }},
@@ -161,7 +160,7 @@
 <div id="lazy-script">
   <div>
     {{ if and (.Store.Get "hasMermaid") .Params.mermaid }}
-      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mermaid "ctx" $site)) 0) "pjax" true) }}
+      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mermaid "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mermaid)) 0)) }}
       <script data-pjax>
         if (window.mermaid) {
           // https://github.com/mermaid-js/mermaid/issues/1945
@@ -241,24 +240,26 @@
     {{ end }}
     {{ if not .IsHome }}
       {{ partial "helpers/ts.html" (dict "source" "js/insert_highlight.ts" "pjax" true) }}
-      {{ $phtotswipe_lightbox := index (partial "helpers/vendorCdn.html" (dict "item" $js.photoswipe_lightbox "ctx" $site)) 0 }}
+      {{ $photoswipe_lightbox := index (partial "helpers/vendorCdn.html" (dict "item" $js.photoswipe_lightbox "ctx" $site)) 0 }}
+      {{ $photoswipe_lightbox_integrity := index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.photoswipe_lightbox)) 0 }}
       {{ $photoswipe := index (partial "helpers/vendorCdn.html" (dict "item" $js.photoswipe "ctx" $site)) 0 }}
+      {{ $photoswipe_integrity := index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.photoswipe)) 0 }}
       <script type="module" data-pjax>
-        import PhotoSwipeLightbox from "{{ $phtotswipe_lightbox }}";
+        const PhotoSwipeLightbox = (await safeImport("{{ $photoswipe_lightbox }}", "{{ $photoswipe_lightbox_integrity }}")).default;
 
         const pswp = () => {
           if (_$$('.article-entry a.article-gallery-item').length > 0) {
             new PhotoSwipeLightbox({
               gallery: '.article-entry',
               children: 'a.article-gallery-item',
-              pswpModule: () => import("{{ $photoswipe }}")
+              pswpModule: () => safeImport("{{ $photoswipe }}", "{{ $photoswipe_integrity }}")
             }).init();
           }
           if(_$$('.article-gallery a.article-gallery-item').length > 0) {
             new PhotoSwipeLightbox({
               gallery: '.article-gallery',
               children: 'a.article-gallery-item',
-              pswpModule: () => import("{{ $photoswipe }}")
+              pswpModule: () => safeImport("{{ $photoswipe }}", "{{ $photoswipe_integrity }}")
             }).init();
           }
           window.lightboxStatus = 'done';
@@ -273,8 +274,8 @@
       {{ partial "post/comment.html" . }}
     {{ end }}
     {{ if .Params.math }}
-      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex "ctx" $site)) 0) "pjax" true) }}
-      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex_auto_render "ctx" $site)) 0) "pjax" true) }}
+      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex)) 0)) }}
+      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex_auto_render "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex_auto_render)) 0)) }}
       <script>
         var renderMath = () => {
           if (!window.renderMathInElement) return;
@@ -320,7 +321,7 @@
 {{ end }}
 
 {{ if $params.footer.busuanzi }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.busuanzi "ctx" $site)) 0) "async" true) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.busuanzi "ctx" $site)) 0) "async" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.busuanzi)) 0)) }}
 {{ end }}
 
 <script>

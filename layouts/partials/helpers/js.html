@@ -3,7 +3,8 @@
   {{ $src := index $items "src" }}
   {{ $defer := index $items "defer" }}
   {{ $async := index $items "async" }}
-  {{ $pjax :=  index $items "pjax" }}
+  {{ $pjax := index $items "pjax" }}
+  {{ $integrity := index $items "integrity" }}
   {{ $onload := index $items "onload" }}
   <script
     src="{{ $src }}"
@@ -11,6 +12,7 @@
     {{ if $async }}async{{ end }}
     {{ if $pjax }}data-pjax{{ end }}
     {{ if $onload }}onload="{{ $onload | safeJS }}"{{ end }}
+    {{ if $integrity }}integrity="{{ $integrity }}" crossorigin="anonymous"{{ end }}
   ></script>
 {{ else }}
   {{ range $items }}

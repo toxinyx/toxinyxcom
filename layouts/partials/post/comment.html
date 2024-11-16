@@ -3,7 +3,7 @@
 {{ $js := .Site.Data.vendor.js }}
 
 {{ if and $params.valine.enable $params.valine.appId $params.valine.appKey }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.valine "ctx" $site)) 0) "pjax" true) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.valine "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.valine)) 0)) }}
   <script data-pjax>
     var GUEST_INFO = ['nick', 'mail', 'link'];
     var guest_info = '{{ $params.valine.guest_info }}'.split(',').filter((item) => {
@@ -32,7 +32,7 @@
 
 {{ if and $params.waline.enable $params.waline.serverURL }}
 <script data-pjax  type="module">
-  import { init } from '{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.waline "ctx" $site)) 0 }}';
+  const { init } = await safeImport('{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.waline "ctx" $site)) 0 }}', '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.waline "ctx" $site)) 0 }}');
   if(_$('.wcomment')) {
     window.walineInstance = init({
       el: '.wcomment',
@@ -53,9 +53,9 @@
 {{ end }}
 
 {{ if and $params.gitalk.enable $params.gitalk.clientID $params.gitalk.clientSecret }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.gitalk "ctx" $site)) 0) "pjax" true) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.gitalk "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.gitalk)) 0)) }}
   {{ if $params.gitalk.md5 }}
-    {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.md5 "ctx" $site)) 0) "pjax" true) }}
+    {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.md5 "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.md5)) 0)) }}
   {{ end }}
   <script data-pjax>
     var gitalkId = {{ if $params.gitalk.md5 }}'md5(location.pathname)'{{else }}'location.pathname'{{end}};
@@ -75,7 +75,7 @@
 {{ end }}
 
 {{ if and $params.twikoo.enable $params.twikoo.envId }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.twikoo "ctx" $site)) 0) "pjax" true) }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.twikoo "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.twikoo)) 0)) }}
   <script data-pjax>
     twikoo.init({
       envId: '{{ $params.twikoo.envId }}',

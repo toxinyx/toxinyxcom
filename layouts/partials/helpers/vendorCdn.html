@@ -5,9 +5,13 @@
 {{ end }}
 {{ $result := slice }}
 {{ range $items }}
-  {{ $contentToken := split . "|" }}
+  {{ $src := . }}
+  {{ if reflect.IsMap . }}
+    {{ $src = .src }}
+  {{ end }}
+  {{ $contentToken := split $src "|" }}
   {{ if ne (len $contentToken) 2 }}
-    {{ errorf "invalid vendor format: %s" . }}
+    {{ errorf "invalid vendor format: %s" $src }}
   {{ end }}
 
   {{ $cdn := index $contentToken 0 }}
@@ -15,7 +19,7 @@
 
   {{ $vendorConfig := index $site.Data.vendor $cdn }}
   {{ if not $vendorConfig }}
-    {{ errorf "invalid cdn: %s" . }}
+    {{ errorf "invalid cdn: %s" $src }}
   {{ end }}
   {{ $result = $result | append (printf "%s%s" $vendorConfig $path) }}
 {{ end }}
