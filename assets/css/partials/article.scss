@@ -103,6 +103,11 @@
         opacity: 0.5;
         margin-right: 5px;
         transition: 0.3s;
+
+        &:hover {
+          opacity: 0.8;
+          text-decoration: none !important;
+        }
       }
     } @else {
       &:before {
@@ -115,11 +120,11 @@
         opacity: 0.5;
         margin-right: 5px;
         transition: 0.3s;
-      }
 
-      &:hover {
-        opacity: 1;
-        text-decoration: none !important;
+        &:hover {
+          opacity: 0.8;
+          text-decoration: none !important;
+        }
       }
     }
   }
