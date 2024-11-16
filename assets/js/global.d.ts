@@ -78,7 +78,7 @@ declare global {
    */
   var diffY: number;
   var ALGOLIA_CONFIG: {
-    root: string;
+    logo: string;
     algolia: {
       applicationID: string;
       apiKey: string;

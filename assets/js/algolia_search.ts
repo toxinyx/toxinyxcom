@@ -82,8 +82,8 @@ const algoliaHandler = () => {
             stats +
             '<span class="reimu-powered">' +
             '  <img src="' +
-            ALGOLIA_CONFIG.root +
-            'images/algolia_logo.svg" alt="Algolia" />' +
+            ALGOLIA_CONFIG.logo +
+            '" alt="Algolia" />' +
             "</span>" +
             "<hr />"
           );

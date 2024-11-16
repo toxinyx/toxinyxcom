@@ -32,7 +32,7 @@
 {{ if $params.algolia_search.enable }}
   <script>
     var ALGOLIA_CONFIG = {
-      root: '/',
+      logo: '{{ "images/algolia_logo.svg" | relURL }}',
       algolia: {
         applicationID: "{{ $params.algolia_search.appID }}",
         apiKey: "{{ $params.algolia_search.apiKey }}",
