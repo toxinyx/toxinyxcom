@@ -38,30 +38,36 @@ _$$(
 });
 
 // lightbox
-(_$$(".article-entry img") as unknown as HTMLImageElement[]).forEach((element) => {
-  if (
-    element.parentElement?.classList.contains("friend-icon") ||
-    element.parentElement?.tagName === "A" ||
-    element.classList.contains("no-lightbox")
-  )
-    return;
-  const a = document.createElement("a");
-  a.href ? (a.href = element.src) : a.setAttribute("href", element.src);
-  a.dataset.pswpWidth = element.naturalWidth as any;
-  a.dataset.pswpHeight = element.naturalHeight as any;
-  a.target = "_blank";
-  a.classList.add("article-gallery-item");
-  element.parentNode?.insertBefore(a, element);
-  element.parentNode?.removeChild(element);
-  a.appendChild(element);
-});
-_$$(".article-gallery a.article-gallery-img").forEach((a) => {
-  a.dataset.pswpWidth = (a.children[0] as HTMLImageElement).naturalWidth as any;
-  a.dataset.pswpHeight = (a.children[0] as HTMLImageElement).naturalHeight as any;
-});
-window.lightboxStatus = "ready";
-window.dispatchEvent(new Event("lightbox:ready"));
-
+var lightboxHandler = () => {
+  (_$$(".article-entry img") as unknown as HTMLImageElement[]).forEach((element) => {
+    if (
+      element.parentElement?.classList.contains("friend-icon") ||
+      element.parentElement?.tagName === "A" ||
+      element.classList.contains("no-lightbox")
+    )
+      return;
+    const a = document.createElement("a");
+    a.href ? (a.href = element.src) : a.setAttribute("href", element.src);
+    a.dataset.pswpWidth = element.naturalWidth as any;
+    a.dataset.pswpHeight = element.naturalHeight as any;
+    a.target = "_blank";
+    a.classList.add("article-gallery-item");
+    element.parentNode?.insertBefore(a, element);
+    element.parentNode?.removeChild(element);
+    a.appendChild(element);
+  });
+  _$$(".article-gallery a.article-gallery-img").forEach((a) => {
+    a.dataset.pswpWidth = (a.children[0] as HTMLImageElement).naturalWidth as any;
+    a.dataset.pswpHeight = (a.children[0] as HTMLImageElement).naturalHeight as any;
+  });
+  window.lightboxStatus = "ready";
+  window.dispatchEvent(new Event("lightbox:ready"));  
+}
+if (document.readyState === "complete") {
+  lightboxHandler();
+} else {
+  window.addEventListener("load", lightboxHandler);
+}
 // Mobile nav
 var isMobileNavAnim = false;
 
