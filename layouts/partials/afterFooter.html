@@ -6,10 +6,10 @@
 {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.lazysizes "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.lazysizes)) 0)) }}
 {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.clipboard "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.clipboard)) 0)) }}
 
-{{ partial "helpers/ts.html" (dict "source" "js/main.ts") }}
+{{ partial "helpers/ts.html" (dict "source" "js/main.ts" "ctx" .) }}
 
 {{ if $params.animation.enable }}
-  {{ partial "helpers/ts.html" (dict "source" "js/aos.ts") }}
+  {{ partial "helpers/ts.html" (dict "source" "js/aos.ts" "ctx" .) }}
   <script>
     var aosInit = () => {
       AOS.init({
@@ -27,7 +27,7 @@
   </script>
 {{ end }}
 
-{{ partial "helpers/ts.html" (dict "source" "js/pjax_main.ts" "pjax" true) }}
+{{ partial "helpers/ts.html" (dict "source" "js/pjax_main.ts" "pjax" true "ctx" .) }}
 
 {{ if $params.algolia_search.enable }}
   <script>
@@ -50,7 +50,7 @@
   </script>
   {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.algolia "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.algolia)) 0)) }}
   {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.instantsearch "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.instantsearch)) 0)) }}
-  {{ partial "helpers/ts.html" (dict "source" "js/algolia_search.ts") }}
+  {{ partial "helpers/ts.html" (dict "source" "js/algolia_search.ts" "ctx" .) }}
 {{ end }}
 
 {{ if $params.firework.enable }}
@@ -136,7 +136,7 @@
         cacheBust: false,
       });
   </script>
-  {{ partial "helpers/ts.html" (dict "source" "js/pjax.ts") }}
+  {{ partial "helpers/ts.html" (dict "source" "js/pjax.ts" "ctx" .) }}
 {{ end }}
 
 {{ if $params.live2d.enable }}
@@ -240,7 +240,7 @@
       </script>
     {{ end }}
     {{ if not .IsHome }}
-      {{ partial "helpers/ts.html" (dict "source" "js/insert_highlight.ts" "pjax" true) }}
+      {{ partial "helpers/ts.html" (dict "source" "js/insert_highlight.ts" "pjax" true "ctx" .) }}
       {{ $photoswipe_lightbox := index (partial "helpers/vendorCdn.html" (dict "item" $js.photoswipe_lightbox "ctx" $site)) 0 }}
       {{ $photoswipe_lightbox_integrity := index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.photoswipe_lightbox)) 0 }}
       {{ $photoswipe := index (partial "helpers/vendorCdn.html" (dict "item" $js.photoswipe "ctx" $site)) 0 }}
@@ -323,6 +323,21 @@
 
 {{ if $params.footer.busuanzi }}
   {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.busuanzi "ctx" $site)) 0) "async" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.busuanzi)) 0)) }}
+{{ end }}
+
+{{ if $params.service_worker.enable }}
+  {{ partial "helpers/ts.html" (dict "source" "js/sw.ts" "ctx" . "inline" false "target" "sw.js") }}
+  {{ partial "helpers/ts.html" (dict "source" "js/service_worker.ts" "ctx" .) }}
+{{ else }}
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script>
 {{ end }}
 
 <script>

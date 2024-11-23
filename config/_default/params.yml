@@ -293,6 +293,10 @@ quicklink:
   ignores: []
 
 # Experimental
+service_worker:
+  enable: false
+
+# Experimental
 live2d:
   enable: false
 
