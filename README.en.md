@@ -48,7 +48,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - Back to top
 - Mouse firework animation
 - pjax
-- ~~ServiceWorker~~
+- ServiceWorker
 - live2d
 - reimu Mouse Pointer
 - Internal shortcode for providing internal/external/friendly link cards
@@ -416,7 +416,12 @@ pjax:
 
 #### ServiceWorker
 
-Under development
+Disabled by default
+
+```yaml
+service_worker:
+  enable: false
+```
 
 #### live2d
 

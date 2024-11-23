@@ -47,7 +47,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 回到顶部
 - 鼠标动画
 - pjax
-- ~~ServiceWorker~~
+- ServiceWorker
 - live2d
 - reimu 鼠标指针
 - 内部提供内链/外链/友链卡片的短代码
@@ -436,7 +436,12 @@ pjax:
 
 #### ServiceWorker
 
-暂不支持
+默认关闭
+
+```yaml
+service_worker:
+  enable: false
+```
 
 #### live2d
 
