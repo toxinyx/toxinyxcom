@@ -5,7 +5,7 @@
   background-image: linear-gradient(to right, var(--red-0) 50%, transparent 0%);
   background-size: 50px 4px;
   background-repeat: repeat-x;
-  filter: drop-shadow(0px 0px 2px red);
+  filter: drop-shadow(0px 0px 2px var(--red-1));
   transition: opacity 0.3s;
 
   &:hover {
@@ -289,7 +289,7 @@
     );
     background-size: 50px 4px;
     background-repeat: repeat-x;
-    filter: drop-shadow(0px 0px 2px red);
+    filter: drop-shadow(0px 0px 2px var(--red-1));
     transition: 0.3s;
   }
 
@@ -446,4 +446,25 @@
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.katex {
+  width: calc(100% - 2px);
+}
+
+.katex-html {
+  padding: 3px;
+  .base {
+    margin: 0 auto;
+  }
+}
+
+.katex-html:has(span.tag) {
+  display: flex !important;
+}
+
+.katex-display>.katex>.katex-html>.tag {
+  position: relative !important;
+  float: right;
+  margin-left: 0.25rem;
 }

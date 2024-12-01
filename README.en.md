@@ -369,7 +369,7 @@ RSS is built-in and does not require additional configuration
 Icon defaults to the iconfont provided with this project
 
 ```yml
-icon_font: 4552607_y484ez0be3f
+icon_font: 4552607_tq6stt6tcg
 ```
 
 If you want to continue using fontawesome icons, set `icon_font` to `false`, which will use the corresponding fontawesome in `vendor.yml`.

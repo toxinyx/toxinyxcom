@@ -15,9 +15,10 @@
   &:before {
     content: "";
     width: 100%;
-    border-bottom: 1px solid var(--color-background);
+    border-bottom: 1px solid var(--color-h2-border);
     position: absolute;
     bottom: -15px;
+    transition: 1s;
   }
 
   &:after {
@@ -29,7 +30,7 @@
     bottom: -18px;
     left: 0;
     border-radius: 10px;
-    box-shadow: 0 2px 12px var(--color-h2-after-shadow);
+    box-shadow: 0 2px 12px var(--color-red-6-shadow);
     transition: 0.3s;
   }
 
@@ -59,7 +60,7 @@
     height: 15px;
     background: var(--color-h2-after);
     margin: -2px 11px 0 -25px;
-    box-shadow: 0 2px 12px var(--color-h2-after-shadow);
+    box-shadow: 0 2px 12px var(--color-red-6-shadow);
     opacity: 0.5;
     transition: 0.2s;
     flex-shrink: 0;

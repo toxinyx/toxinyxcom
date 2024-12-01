@@ -389,7 +389,7 @@ RSS 自带，无需额外配置
 Icon 默认使用本项目提供的 iconfont
 
 ```yml
-icon_font: 4552607_y484ez0be3f
+icon_font: 4552607_tq6stt6tcg
 ```
 
 如果想要继续使用 fontawesome 图标，请将 `icon_font` 设置为 `false`，此时会使用 `vendor.yml` 中对应的 fontawesome
