@@ -287,7 +287,7 @@ giscus:
   reactionsEnabled: 1
   emitMetadata: 0
   inputPosition: bottom
-  commentTheme: preferred_color_scheme
+  # commentTheme: preferred_color_scheme invalid
   lang: zh-CN
 ```
 
