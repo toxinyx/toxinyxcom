@@ -31,9 +31,9 @@ _$$(
   ".article-entry h1>a, .article-entry h2>a, .article-entry h3>a, .article-entry h4>a, .article-entry h5>a, .article-entry h6>a"
 ).forEach((element) => {
   if (window.siteConfig.icon_font) {
-    element.innerHTML = "&#xe635;";
+    element.innerHTML = window.siteConfig.anchor_icon ? `&#x${window.siteConfig.anchor_icon};` : "&#xe635;";
   } else {
-    element.innerHTML = "&#xf292;";
+    element.innerHTML = window.siteConfig.anchor_icon ? `&#x${window.siteConfig.anchor_icon};` : "&#xf292;";
   }
 });
 

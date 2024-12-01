@@ -128,6 +128,7 @@ declare global {
     };
     swPath?: string;
     outdate?: string;
+    anchor_icon?: string;
   }
 
   var safeImport: (url: string, integrity?: string) => Promise<any>;
