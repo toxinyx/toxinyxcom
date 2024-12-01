@@ -4,6 +4,15 @@ $icon_font: {{ $params.icon_font }};
 $reimu_cursor: {{ $params.reimu_cursor }};
 $basic-families: {{ default "-apple-system" (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }};
 $code-families: {{ default "Menlo" (delimit (apply (default slice $params.font.code) "printf" "'%s'" "." ) ",") }};
+$footer_icon_mask: {{  $params.footer.icon.mask }};
+$top_icon_mask: {{  $params.top.icon.mask }};
+$sponsor_icon_mask: {{  $params.sponsor.icon.mask }};
+
+:root {
+  --footer-icon: url({{ $params.footer.icon.url }});
+  --top-icon: url({{ $params.top.icon.url }});
+  --sponsor-icon: url({{ $params.sponsor.icon.url }});
+}
 
 @import "_reset";
 @import "_variables";
@@ -168,11 +177,14 @@ a, .main-nav-icon, .popup-btn-close {
 @import "partials/article";
 @import "partials/highlight";
 @import "partials/sponsor";
-@import "partials/top";
 @import "partials/comment";
 @import "partials/mobile";
 @import "partials/friend";
 @import "partials/card";
+
+{{ if $params.top.enable }}
+@import "partials/top";
+{{ end }}
 
 {{ if $params.algolia_search.enable }}
 @import "partials/search";

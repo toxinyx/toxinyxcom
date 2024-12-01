@@ -112,6 +112,18 @@ footer:
   powered: true
   count: true
   busuanzi: true
+  icon:
+    url: "../images/taichi.png" # this path is relative to the css/style.css, so it needs to go up one level to reach the images folder
+    rotate: true
+    mask: true # whether to use the images as a mask
+
+# Back To Top
+top:
+  enable: true
+  icon:
+    url: "../images/taichi.png" # this path is relative to the css/style.css, so it needs to go up one level to reach the images folder
+    rotate: true
+    mask: true # whether to use the images as a mask
 
 # valine comment system. https://valine.js.org
 # version 1.5.1
@@ -329,6 +341,10 @@ icp:
 sponsor:
   enable: false
   tip: 请作者喝杯咖啡吧！
+  icon:
+    url: "../images/taichi.png" # this path is relative to the css/style.css, so it needs to go up one level to reach the images folder
+    rotate: true
+    mask: true # whether to use the images as a mask
   qr:
     # - name: 支付宝
     #   src: "sponsor/alipay.jpg"

@@ -16,7 +16,7 @@
       <span class="icon-copyright"></span>
       {{ .Site.Params.footer.since }} -
       {{ now.Format .Site.Params.yearFormat }}
-      <span class="footer-info-sep"></span>
+      <span class="footer-info-sep {{ if .Site.Params.footer.icon.rotate }}rotate{{ end }}"></span>
       {{ .Site.Params.author | default .Site.Title }}
     </div>
     {{ if .Site.Params.footer.powered }}
