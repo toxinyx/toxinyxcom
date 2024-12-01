@@ -1,4 +1,4 @@
-<img src="https://fastly.jsdelivr.net/gh/D-Sketon/hugo-theme-reimu@main/images/screenshot.png"/>
+<img src="https://cdn.jsdelivr.net/gh/D-Sketon/hugo-theme-reimu@main/images/screenshot.png"/>
 <div align = center>
   <h1>hugo-theme-reimu</h1>
   <img alt="version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FD-Sketon%2Fhugo-theme-reimu%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=version">
@@ -35,7 +35,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - Code Highlighting, Code Pasting
 - KaTeX for displaying math formulas
 - Mermaid for flowcharts
-- Algolia / hexo-generator-search search
+- Algolia search
 - valine / waline / twikoo / gitalk / giscus comment system
 - valine / waline article reading statistics
 - Busuanzi Visitor Statistics
@@ -45,7 +45,6 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - Lazy image loading
 - Load Animation
 - TOC
-- Back to top
 - Mouse firework animation
 - pjax
 - ServiceWorker
@@ -54,6 +53,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - Internal shortcode for providing internal/external/friendly link cards
 - Support the bottom of the article copyright statement
 - Support for configuring custom CDN sources
+- Highly customizable
 
 ## Installation
 
@@ -511,6 +511,10 @@ Disabled by default
 sponsor:
   enable: false # Whether to enable sponsorship
   tip: 请作者喝杯咖啡吧！ # Sponsorship prompt
+  icon:
+    url: "../images/taichi.png" # this path is relative to the css/style.css, so it needs to go up one level to reach the images folder
+    rotate: true
+    mask: true # whether to use the images as a mask
   qr:
     - name: 支付宝 # Payment method
       src: "sponsor/alipay.jpg" # QR code

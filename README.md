@@ -1,4 +1,4 @@
-<img src="https://fastly.jsdelivr.net/gh/D-Sketon/hugo-theme-reimu@main/images/screenshot.png"/>
+<img src="https://cdn.jsdelivr.net/gh/D-Sketon/hugo-theme-reimu@main/images/screenshot.png"/>
 <div align = center>
   <h1>hugo-theme-reimu</h1>
   <img alt="version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FD-Sketon%2Fhugo-theme-reimu%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=version">
@@ -34,7 +34,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 代码高亮，代码粘贴
 - KaTeX 展示数学公式
 - Mermaid 展示流程图
-- Algolia / hexo-generator-search 搜索
+- Algolia 搜索
 - valine / waline / twikoo / gitalk / giscus 评论系统
 - valine / waline 文章阅读统计
 - 不蒜子访客统计
@@ -44,7 +44,6 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 图片懒加载
 - 加载动画
 - TOC
-- 回到顶部
 - 鼠标动画
 - pjax
 - ServiceWorker
@@ -53,6 +52,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 内部提供内链/外链/友链卡片的短代码
 - 文章底部版权声明
 - 配置自定义 CDN 源
+- 高度自定义
 
 ## 安装
 
@@ -531,6 +531,10 @@ outdate:
 sponsor:
   enable: false # 是否展示赞助二维码？
   tip: 请作者喝杯咖啡吧！ # 赞助提示
+  icon:
+    url: "../images/taichi.png" # 赞助图标，相对于 css/style.css 的路径，所以需要向上一级才能找到 images 文件夹
+    rotate: true # 是否旋转图标
+    mask: true # 是否将图片作为遮罩（即只显示 png 图片的轮廓）
   qr:
     - name: 支付宝 # 二维码名称
       src: "sponsor/alipay.jpg" # 二维码路径，请自行填写
