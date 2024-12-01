@@ -1,8 +1,19 @@
+{{ $params := .Site.Params }}
 <div id="header-nav">
   <nav id="main-nav">
     {{ range .Site.Params.menu }}
       <span class="main-nav-link-wrap">
-        <div class="main-nav-icon icon-taichi"></div>
+        <div class='main-nav-icon icon {{ if or (and (eq .icon "e62b") ($params.icon_font)) (and (eq .icon "f6ad") (not $params.icon_font)) (not .icon) }}rotate{{ end }}'>
+          {{ if .icon }}
+            &#x{{ .icon }};
+          {{ else }}
+            {{ if $params.icon_font }}
+              &#xe62b;
+            {{ else }}
+              &#xf6ad;
+            {{ end }}
+          {{ end }}
+        </div>
         <a class="main-nav-link" href="{{ .url | relURL }}">{{ i18n .name }}</a>
       </span>
     {{ end }}

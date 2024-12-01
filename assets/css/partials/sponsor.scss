@@ -53,8 +53,7 @@
       background: var(--sponsor-icon) no-repeat center / 80%;
     }
   }
-}
-else {
+} @else {
   .sponsor-icon {
     background: var(--sponsor-icon) no-repeat center / 80%;
   }
