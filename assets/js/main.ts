@@ -1,9 +1,10 @@
 (function () {
   // A Simple EventListener
   [Element, Document, Window].forEach((target) => {
-    target.prototype._addEventListener = target.prototype.addEventListener as any;
-    target.prototype._removeEventListener =
-      target.prototype.removeEventListener as any;
+    target.prototype._addEventListener = target.prototype
+      .addEventListener as any;
+    target.prototype._removeEventListener = target.prototype
+      .removeEventListener as any;
     target.prototype.addEventListener = target.prototype.on = function (
       name: any,
       listener: any,
@@ -53,16 +54,7 @@
     };
   });
   // Simple Selector
-  window._$ = (selector: string) => {
-    if (
-      selector.startsWith("#") &&
-      !selector.includes(" ") &&
-      !selector.includes(".")
-    ) {
-      return document.getElementById(selector.slice(1));
-    }
-    return document.querySelector(selector);
-  };
+  window._$ = (selector: string) => document.querySelector(selector);
   window._$$ = (selector: string) => document.querySelectorAll(selector);
 
   // dark_mode
@@ -76,9 +68,7 @@
     const iconHtml = `<a id="nav-${
       isDark ? "sun" : "moon"
     }-btn" class="nav-icon dark-mode-btn"></a>`;
-    document
-      .getElementById("sub-nav")
-      ?.insertAdjacentHTML("beforeend", iconHtml);
+    _$("#sub-nav")?.insertAdjacentHTML("beforeend", iconHtml);
     document.body.dispatchEvent(
       new CustomEvent(isDark ? "dark-theme-set" : "light-theme-set"),
     );
@@ -90,22 +80,20 @@
   }
   setDarkMode(mode === "true");
 
-  document
-    .querySelector(".dark-mode-btn")
-    ?.addEventListener("click", function () {
-      const id = this.id;
-      if (id == "nav-sun-btn") {
-        window.localStorage.setItem("dark_mode", "false");
-        document.body.dispatchEvent(new CustomEvent("light-theme-set"));
-        document.documentElement.removeAttribute("data-theme");
-        this.id = "nav-moon-btn";
-      } else {
-        window.localStorage.setItem("dark_mode", "true");
-        document.body.dispatchEvent(new CustomEvent("dark-theme-set"));
-        document.documentElement.setAttribute("data-theme", "dark");
-        this.id = "nav-sun-btn";
-      }
-    });
+  _$(".dark-mode-btn")?.addEventListener("click", function () {
+    const id = this.id;
+    if (id == "nav-sun-btn") {
+      window.localStorage.setItem("dark_mode", "false");
+      document.body.dispatchEvent(new CustomEvent("light-theme-set"));
+      document.documentElement.removeAttribute("data-theme");
+      this.id = "nav-moon-btn";
+    } else {
+      window.localStorage.setItem("dark_mode", "true");
+      document.body.dispatchEvent(new CustomEvent("dark-theme-set"));
+      document.documentElement.setAttribute("data-theme", "dark");
+      this.id = "nav-sun-btn";
+    }
+  });
 
   let oldScrollTop = 0;
   document.addEventListener("scroll", () => {
@@ -115,9 +103,7 @@
     window.diffY = diffY;
     oldScrollTop = scrollTop;
     if (diffY < 0) {
-      document
-        .getElementById("header-nav")
-        ?.classList.remove("header-nav-hidden");
+      _$("#header-nav")?.classList.remove("header-nav-hidden");
     } else {
       _$("#header-nav")?.classList.add("header-nav-hidden");
     }
@@ -130,7 +116,7 @@
   }
 })();
 
-window.safeImport = async function(url: string, integrity?: string) {
+window.safeImport = async function (url: string, integrity?: string) {
   if (!integrity) {
     return import(url);
   }
@@ -138,18 +124,17 @@ window.safeImport = async function(url: string, integrity?: string) {
   const moduleContent = await response.text();
 
   const actualHash = await crypto.subtle.digest(
-    'SHA-384',
-    new TextEncoder().encode(moduleContent)
+    "SHA-384",
+    new TextEncoder().encode(moduleContent),
   );
-  const hashBase64 = 'sha384-' + btoa(
-    String.fromCharCode(...new Uint8Array(actualHash))
-  );
+  const hashBase64 =
+    "sha384-" + btoa(String.fromCharCode(...new Uint8Array(actualHash)));
 
   if (hashBase64 !== integrity) {
     throw new Error(`Integrity check failed for ${url}`);
   }
 
-  const blob = new Blob([moduleContent], { type: 'application/javascript' });
+  const blob = new Blob([moduleContent], { type: "application/javascript" });
   const blobUrl = URL.createObjectURL(blob);
   const module = await import(blobUrl);
   URL.revokeObjectURL(blobUrl);

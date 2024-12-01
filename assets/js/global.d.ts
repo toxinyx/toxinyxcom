@@ -124,12 +124,12 @@ declare global {
         enable: boolean;
         count: number;
         content?: string;
-      }
+      };
     };
     swPath?: string;
     outdate?: string;
     anchor_icon?: string;
-  }
+  };
 
   var safeImport: (url: string, integrity?: string) => Promise<any>;
 

@@ -28,74 +28,80 @@ var scrollIntoViewAndWait = (element: HTMLElement) => {
 
 // anchor
 _$$(
-  ".article-entry h1>a, .article-entry h2>a, .article-entry h3>a, .article-entry h4>a, .article-entry h5>a, .article-entry h6>a"
+  ".article-entry h1>a, .article-entry h2>a, .article-entry h3>a, .article-entry h4>a, .article-entry h5>a, .article-entry h6>a",
 ).forEach((element) => {
   if (window.siteConfig.icon_font) {
-    element.innerHTML = window.siteConfig.anchor_icon ? `&#x${window.siteConfig.anchor_icon};` : "&#xe635;";
+    element.innerHTML = window.siteConfig.anchor_icon
+      ? `&#x${window.siteConfig.anchor_icon};`
+      : "&#xe635;";
   } else {
-    element.innerHTML = window.siteConfig.anchor_icon ? `&#x${window.siteConfig.anchor_icon};` : "&#xf292;";
+    element.innerHTML = window.siteConfig.anchor_icon
+      ? `&#x${window.siteConfig.anchor_icon};`
+      : "&#xf292;";
   }
 });
 
 // lightbox
-(_$$(".article-entry img") as unknown as HTMLImageElement[]).forEach((element) => {
-  if (
-    element.parentElement?.classList.contains("friend-icon") ||
-    element.parentElement?.tagName === "A" ||
-    element.classList.contains("no-lightbox")
-  )
-    return;
-  const a = document.createElement("a");
-  a.href ? (a.href = element.src) : a.setAttribute("href", element.src);
-  a.dataset.pswpWidth = element.naturalWidth as any;
-  a.dataset.pswpHeight = element.naturalHeight as any;
-  a.target = "_blank";
-  a.classList.add("article-gallery-item");
-  element.parentNode?.insertBefore(a, element);
-  element.parentNode?.removeChild(element);
-  a.appendChild(element);
-});
+(_$$(".article-entry img") as unknown as HTMLImageElement[]).forEach(
+  (element) => {
+    if (
+      element.parentElement?.classList.contains("friend-icon") ||
+      element.parentElement?.tagName === "A" ||
+      element.classList.contains("no-lightbox")
+    )
+      return;
+    const a = document.createElement("a");
+    a.href ? (a.href = element.src) : a.setAttribute("href", element.src);
+    a.dataset.pswpWidth = element.naturalWidth as any;
+    a.dataset.pswpHeight = element.naturalHeight as any;
+    a.target = "_blank";
+    a.classList.add("article-gallery-item");
+    element.parentNode?.insertBefore(a, element);
+    element.parentNode?.removeChild(element);
+    a.appendChild(element);
+  },
+);
 
 window.lightboxStatus = "ready";
-window.dispatchEvent(new Event("lightbox:ready"));  
+window.dispatchEvent(new Event("lightbox:ready"));
 // Mobile nav
 var isMobileNavAnim = false;
 
-document
-  .getElementById("main-nav-toggle")
+_$("#main-nav-toggle")
   ?.off("click")
-  .on("click", function () {
+  .on("click", () => {
     if (isMobileNavAnim) return;
     isMobileNavAnim = true;
     document.body.classList.toggle("mobile-nav-on");
+    _$("#mask").classList.remove("hide");
     setTimeout(() => {
       isMobileNavAnim = false;
-    }, 200);
+    }, 300);
   });
 
-document
-  .getElementById("mask")
+_$("#mask")
   ?.off("click")
   .on("click", function () {
     if (isMobileNavAnim || !document.body.classList.contains("mobile-nav-on"))
       return;
     document.body.classList.remove("mobile-nav-on");
+    _$("#mask").classList.add("hide");
   });
 
 _$$(".sidebar-toc-btn").forEach((element) => {
   element.off("click").on("click", function () {
     if (this.classList.contains("current")) return;
     _$$(".sidebar-toc-btn").forEach((element) =>
-      element.classList.add("current")
+      element.classList.add("current"),
     );
     _$$(".sidebar-common-btn").forEach((element) =>
-      element.classList.remove("current")
+      element.classList.remove("current"),
     );
     _$$(".sidebar-toc-sidebar").forEach((element) =>
-      element.classList.remove("hidden")
+      element.classList.remove("hidden"),
     );
     _$$(".sidebar-common-sidebar").forEach((element) =>
-      element.classList.add("hidden")
+      element.classList.add("hidden"),
     );
   });
 });
@@ -104,16 +110,16 @@ _$$(".sidebar-common-btn").forEach((element) => {
   element.off("click").on("click", function () {
     if (this.classList.contains("current")) return;
     _$$(".sidebar-common-btn").forEach((element) =>
-      element.classList.add("current")
+      element.classList.add("current"),
     );
     _$$(".sidebar-toc-btn").forEach((element) =>
-      element.classList.remove("current")
+      element.classList.remove("current"),
     );
     _$$(".sidebar-common-sidebar").forEach((element) =>
-      element.classList.remove("hidden")
+      element.classList.remove("hidden"),
     );
     _$$(".sidebar-toc-sidebar").forEach((element) =>
-      element.classList.add("hidden")
+      element.classList.add("hidden"),
     );
   });
 });
@@ -129,13 +135,15 @@ _$$(".sidebar-common-btn").forEach((element) => {
 })();
 
 // lazyload
-(_$$(".article-entry img") as unknown as HTMLImageElement[]).forEach((element) => {
-  if (element.classList.contains("lazyload")) return;
-  element.classList.add("lazyload");
-  element.setAttribute("data-src", element.src);
-  element.setAttribute("data-sizes", "auto");
-  element.removeAttribute("src");
-});
+(_$$(".article-entry img") as unknown as HTMLImageElement[]).forEach(
+  (element) => {
+    if (element.classList.contains("lazyload")) return;
+    element.classList.add("lazyload");
+    element.setAttribute("data-src", element.src);
+    element.setAttribute("data-sizes", "auto");
+    element.removeAttribute("src");
+  },
+);
 
 // to top
 var sidebarTop = _$(".sidebar-top");
@@ -148,8 +156,8 @@ if (sidebarTop) {
     });
   });
   if (document.documentElement.scrollTop < 10) {
-    sidebarTop.style.opacity = '0';
-  }  
+    sidebarTop.style.opacity = "0";
+  }
 }
 
 var __sidebarTopScrollHandler;
@@ -161,9 +169,9 @@ if (__sidebarTopScrollHandler) {
 __sidebarTopScrollHandler = () => {
   const sidebarTop = _$(".sidebar-top")!;
   if (document.documentElement.scrollTop < 10) {
-    sidebarTop.style.opacity = '0';
+    sidebarTop.style.opacity = "0";
   } else {
-    sidebarTop.style.opacity = '1';
+    sidebarTop.style.opacity = "1";
   }
 };
 
@@ -175,6 +183,7 @@ _$$("#TableOfContents li").forEach((element) => {
     if (isMobileNavAnim || !document.body.classList.contains("mobile-nav-on"))
       return;
     document.body.classList.remove("mobile-nav-on");
+    _$("#mask").classList.add("hide");
   });
 });
 
@@ -184,6 +193,7 @@ _$$(".sidebar-menu-link-dummy").forEach((element) => {
       return;
     setTimeout(() => {
       document.body.classList.remove("mobile-nav-on");
+      _$("#mask").classList.add("hide");
     }, 200);
   });
 });
@@ -239,9 +249,7 @@ function tocInit() {
     while (!parent.matches(".sidebar-toc")) {
       if (parent.matches("li")) {
         parent.classList.add("active");
-        const t = _$(
-          decodeURI(parent.querySelector("a").getAttribute("href"))
-        );
+        const t = _$(decodeURI(parent.querySelector("a").getAttribute("href")));
         if (t) {
           t.classList.add("active");
         }
@@ -249,11 +257,7 @@ function tocInit() {
       parent = parent.parentNode as HTMLElement;
     }
     // Scrolling to center active TOC element if TOC content is taller than viewport.
-    if (
-      !document
-        .querySelector(".sidebar-toc-sidebar")
-        .classList.contains("hidden")
-    ) {
+    if (_$(".sidebar-toc-sidebar").classList.contains("hidden")) {
       const tocWrapper = _$(".sidebar-toc-wrapper");
       tocWrapper.scrollTo({
         top:
@@ -291,7 +295,7 @@ function tocInit() {
     {
       rootMargin: "0px 0px -100% 0px",
       threshold: 0,
-    }
+    },
   );
 
   sections.forEach((element) => {
@@ -301,8 +305,10 @@ function tocInit() {
 
 tocInit();
 
-_$('.sponsor-button-wrapper')?.off('click').on('click', () => {
-  _$('.sponsor-button-wrapper')?.classList.toggle('active');
-  _$('.sponsor-tip')?.classList.toggle('active');
-  _$('.sponsor-qr')?.classList.toggle('active');
-});
+_$(".sponsor-button-wrapper")
+  ?.off("click")
+  .on("click", () => {
+    _$(".sponsor-button-wrapper")?.classList.toggle("active");
+    _$(".sponsor-tip")?.classList.toggle("active");
+    _$(".sponsor-qr")?.classList.toggle("active");
+  });

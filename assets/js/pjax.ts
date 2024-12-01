@@ -28,7 +28,7 @@ window.addEventListener("pjax:complete", () => {
     document.body.dispatchEvent(new CustomEvent("light-theme-set"));
   }
   // destroy waline
-  if(window.walineInstance) {
+  if (window.walineInstance) {
     window.walineInstance.destroy();
     window.walineInstance = null;
   }

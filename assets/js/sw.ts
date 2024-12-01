@@ -2,7 +2,6 @@ const VERSION = "{{ time.Now.Unix }}";
 
 const preCache = [
   '{{ "images/taichi.png" | relURL }}',
-  '{{ "images/taichi-fill.png" | relURL }}',
   '{{ "css/loader.css" | relURL }}',
   '{{ "css/main.css" | relURL }}',
   '{{ "js/main.js" | relURL }}',
