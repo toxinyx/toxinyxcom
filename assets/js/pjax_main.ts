@@ -81,7 +81,7 @@ _$("#main-nav-toggle")
 
 _$("#mask")
   ?.off("click")
-  .on("click", function () {
+  .on("click", () => {
     if (isMobileNavAnim || !document.body.classList.contains("mobile-nav-on"))
       return;
     document.body.classList.remove("mobile-nav-on");

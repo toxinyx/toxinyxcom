@@ -10,12 +10,9 @@
       listener: any,
       options: any,
     ) {
-      if (!this.__listeners__) {
-        this.__listeners__ = {};
-      }
-      if (!this.__listeners__[name]) {
-        this.__listeners__[name] = [];
-      }
+      this.__listeners__ = this.__listeners__ || {};
+      this.__listeners__[name] = this.__listeners__[name] || [];
+
       // Check if the listener is already added
       for (let [l, o] of this.__listeners__[name]) {
         if (l === listener && JSON.stringify(o) === JSON.stringify(options)) {
@@ -110,13 +107,13 @@
   });
 
   if (window.Pace) {
-    Pace.on("done", function () {
+    Pace.on("done", () => {
       Pace.sources[0].elements = [];
     });
   }
 })();
 
-window.safeImport = async function (url: string, integrity?: string) {
+window.safeImport = async (url: string, integrity?: string) => {
   if (!integrity) {
     return import(url);
   }

@@ -10,14 +10,25 @@
       <div class="icon-chevron-down code-expand"></div>
     </div>
   </div>`;
+  const reimuConfig = window.siteConfig?.code_block || {};
+  const expandThreshold = reimuConfig.expand;
   _$$("div.highlight").forEach((element) => {
     if (!element.querySelector(".code-figcaption")) {
       element.insertAdjacentHTML("afterbegin", codeFigcaption);
     }
+    if (expandThreshold !== undefined) {
+      if (
+        expandThreshold === false ||
+        (typeof expandThreshold === "number" &&
+          element.querySelectorAll("code[data-lang] .line").length > expandThreshold)
+      ) {
+        element.classList.add("code-closed");
+      }
+    }
   });
   // 代码收缩
   _$$(".code-expand").forEach((element) => {
-    element.off("click").on("click", function () {
+    element.off("click").on("click", () => {
       const figure = element.closest("div.highlight");
       if (figure.classList.contains("code-closed")) {
         figure.classList.remove("code-closed");
@@ -96,7 +107,7 @@
       return selectedText;
     },
   });
-  clipboard.on("success", function (e) {
+  clipboard.on("success", (e) => {
     e.trigger.classList.add("icon-check");
     e.trigger.classList.remove("icon-copy");
     _$("#copy-tooltip").innerText = window.siteConfig.clipboard.success;
@@ -109,7 +120,7 @@
     e.clearSelection();
   });
 
-  clipboard.on("error", function (e) {
+  clipboard.on("error", (e) => {
     e.trigger.classList.add("icon-times");
     e.trigger.classList.remove("icon-copy");
     _$("#copy-tooltip").innerText = window.siteConfig.clipboard.fail;
