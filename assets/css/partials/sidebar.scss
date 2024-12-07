@@ -88,7 +88,7 @@
   .sidebar-author-name {
     font-weight: bold;
     font-size: 20px;
-    color: #ff7777;
+    color: var(--red-2);
     margin: 10px;
   }
 
@@ -180,7 +180,7 @@
 }
 
 .icon-email {
-  color: #ff7777;
+  color: var(--red-2);
 }
 
 .icon-github {
