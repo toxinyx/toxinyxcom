@@ -1,9 +1,14 @@
 {{ $params := .Site.Params }}
+{{ $local_basic_families := default "" (delimit (apply (default slice $params.local_font.article) "printf" "'%s'" ".") ",") }}
+{{ $local_code_families := default "" (delimit (apply (default slice $params.local_font.code) "printf" "'%s'" ".") ",") }}
 
 $icon_font: {{ $params.icon_font }};
 $reimu_cursor: {{ $params.reimu_cursor }};
-$basic-families: {{ default "-apple-system" (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }};
-$code-families: {{ default "Menlo" (delimit (apply (default slice $params.font.code) "printf" "'%s'" "." ) ",") }};
+$basic-families: {{ default $local_basic_families (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }};
+$code-families: {{ default $local_code_families (delimit (apply (default slice $params.font.code) "printf" "'%s'" "." ) ",") }};
+$local-basic-families: {{ $local_basic_families }};
+$local-code-families: {{ $local_code_families }};
+
 $footer_icon_mask: {{  $params.footer.icon.mask }};
 $top_icon_mask: {{  $params.top.icon.mask }};
 $sponsor_icon_mask: {{  $params.sponsor.icon.mask }};

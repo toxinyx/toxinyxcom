@@ -107,8 +107,8 @@
 }
 
 // Fonts
-$font-basic: $basic-families, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-$font-code: $code-families, Menlo, Monaco, Consolas, monospace;
+$font-basic: $basic-families, $local-basic-families;
+$font-code: $code-families, $local-code-families;
 
 $font-size: 14px;
 $line-height: 1.8em;
