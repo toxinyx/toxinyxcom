@@ -13,6 +13,14 @@ $footer_icon_mask: {{  $params.footer.icon.mask }};
 $top_icon_mask: {{  $params.top.icon.mask }};
 $sponsor_icon_mask: {{  $params.sponsor.icon.mask }};
 
+{{ $social := $params.social }}
+{{ $social_keys := slice }}
+{{ range $key, $value := $social }}
+  {{ $social_keys = $social_keys | append $key }}
+{{ end }}
+{{ $social_keys = $social_keys | append "__dummy__" }}
+$social-keys: {{ delimit (apply $social_keys "printf" "'%s'" "." ) "," }};
+
 :root {
   --footer-icon: url({{ $params.footer.icon.url }});
   --top-icon: url({{ $params.top.icon.url }});

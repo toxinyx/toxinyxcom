@@ -142,104 +142,154 @@
   content: "\f105";
 }
 
-.icon-github:before {
-  content: "\f09b";
+@if index($social-keys, "github") {
+  .icon-github:before {
+    content: "\f09b";
+  }
 }
 
-.icon-google:before {
-  content: "\f0d5";
+@if index($social-keys, "google") {
+  .icon-google:before {
+    content: "\f0d5";
+  }
 }
 
-.icon-facebook:before {
-  content: "\f09a";
+@if index($social-keys, "facebook") {
+  .icon-facebook:before {
+    content: "\f09a";
+  }
 }
 
-.icon-twitter:before {
-  content: "\e61b";
+@if index($social-keys, "twitter") {
+  .icon-twitter:before {
+    content: "\e61b";
+  }
 }
 
-.icon-instagram:before {
-  content: "\f16d";
+@if index($social-keys, "instagram") {
+  .icon-instagram:before {
+    content: "\f16d";
+  }
 }
 
-.icon-linkedin:before {
-  content: "\f08c";
+@if index($social-keys, "linkedin") {
+  .icon-linkedin:before {
+    content: "\f08c";
+  }
 }
 
-.icon-pinterest:before {
-  content: "\f0d2";
+@if index($social-keys, "pinterest") {
+  .icon-pinterest:before {
+    content: "\f0d2";
+  }
 }
 
-.icon-youtube:before {
-  content: "\f167";
+@if index($social-keys, "youtube") {
+  .icon-youtube:before {
+    content: "\f167";
+  }
 }
 
-.icon-vimeo:before {
-  content: "\f194";
+@if index($social-keys, "vimeo") {
+  .icon-vimeo:before {
+    content: "\f194";
+  }
 }
 
-.icon-flickr:before {
-  content: "\f16e";
+@if index($social-keys, "flickr") {
+  .icon-flickr:before {
+    content: "\f16e";
+  }
 }
 
-.icon-dribbble:before {
-  content: "\f17d";
+@if index($social-keys, "dribbble") {
+  .icon-dribbble:before {
+    content: "\f17d";
+  }
 }
 
-.icon-behance:before {
-  content: "\f1b4";
+@if index($social-keys, "behance") {
+  .icon-behance:before {
+    content: "\f1b4";
+  }
 }
 
-.icon-bilibili:before {
-  content: "\e3d9";
+@if index($social-keys, "bilibili") {
+  .icon-bilibili:before {
+    content: "\e3d9";
+  }
 }
 
-.icon-weibo:before {
-  content: "\f18a";
+@if index($social-keys, "weibo") {
+  .icon-weibo:before {
+    content: "\f18a";
+  }
 }
 
-.icon-zhihu:before {
-  content: "\f63f";
+@if index($social-keys, "zhihu") {
+  .icon-zhihu:before {
+    content: "\f63f";
+  }
 }
 
-.icon-reddit:before {
-  content: "\f1a1";
+@if index($social-keys, "reddit") {
+  .icon-reddit:before {
+    content: "\f1a1";
+  }
 }
 
-.icon-tumblr:before {
-  content: "\f173";
+@if index($social-keys, "tumblr") {
+  .icon-tumblr:before {
+    content: "\f173";
+  }
 }
 
-.icon-medium:before {
-  content: "\f23a";
+@if index($social-keys, "medium") {
+  .icon-medium:before {
+    content: "\f23a";
+  }
 }
 
-.icon-deviantart:before {
-  content: "\f1bd";
+@if index($social-keys, "deviantart") {
+  .icon-deviantart:before {
+    content: "\f1bd";
+  }
 }
 
-.icon-stackoverflow:before {
-  content: "\f16c";
+@if index($social-keys, "stackoverflow") {
+  .icon-stackoverflow:before {
+    content: "\f16c";
+  }
 }
 
-.icon-keybase:before {
-  content: "\f4f5";
+@if index($social-keys, "keybase") {
+  .icon-keybase:before {
+    content: "\f4f5";
+  }
 }
 
-.icon-telegram:before {
-  content: "\f2c6";
+@if index($social-keys, "telegram") {
+  .icon-telegram:before {
+    content: "\f2c6";
+  }
 }
 
-.icon-discord:before {
-  content: "\f392";
+@if index($social-keys, "discord") {
+  .icon-discord:before {
+    content: "\f392";
+  }
 }
 
-.icon-steam:before {
-  content: "\f1b6";
+@if index($social-keys, "steam") {
+  .icon-steam:before {
+    content: "\f1b6";
+  }
 }
 
-.icon-email:before {
-  content: "\f0e0";
+@if index($social-keys, "email") {
+  .icon-email:before {
+    content: "\f0e0";
+  }
 }
 
 .sidebar-btn-wrapper .sidebar-toc-btn:before {

@@ -179,113 +179,167 @@
   }
 }
 
-.icon-email {
-  color: var(--red-2);
+@if index($social-keys, "email") {
+  .icon-email {
+    color: var(--red-2);
+  }
 }
 
-.icon-github {
-  color: #191717;
-  transition: 1;
+@if index($social-keys, "github") {
+  .icon-github {
+    color: #191717;
+    transition: 1;
+  }
+
+  [data-theme="dark"] .icon-github {
+    color: #bc88ff;
+  }
 }
 
-[data-theme="dark"] .icon-github {
-  color: #bc88ff;
+@if index($social-keys, "google") {
+  .icon-google {
+    color: #4285f4;
+  }
 }
 
-.icon-google {
-  color: #4285f4;
+@if index($social-keys, "facebook") {
+  .icon-facebook {
+    color: #3b5998;
+  }
 }
 
-.icon-facebook {
-  color: #3b5998;
+@if index($social-keys, "twitter") {
+  .icon-twitter {
+    color: #191717;
+  }
+
+  [data-theme="dark"] .icon-twitter {
+    color: #bc88ff;
+  }
 }
 
-.icon-twitter {
-  color: #191717;
+@if index($social-keys, "instagram") {
+  .icon-instagram {
+    color: #e1306c;
+  }
 }
 
-.icon-instagram {
-  color: #e1306c;
+@if index($social-keys, "linkedin") {
+  .icon-linkedin {
+    color: #0e76a8;
+  }
 }
 
-.icon-linkedin {
-  color: #0e76a8;
+@if index($social-keys, "pinterest") {
+  .icon-pinterest {
+    color: #bd081c;
+  }
 }
 
-.icon-pinterest {
-  color: #bd081c;
+@if index($social-keys, "youtube") {
+  .icon-youtube {
+    color: #ff0000;
+  }
 }
 
-.icon-youtube {
-  color: #ff0000;
+@if index($social-keys, "vimeo") {
+  .icon-vimeo {
+    color: #1ab7ea;
+  }
 }
 
-.icon-vimeo {
-  color: #1ab7ea;
+@if index($social-keys, "flickr") {
+  .icon-flickr {
+    color: #ff0084;
+  }
 }
 
-.icon-flickr {
-  color: #ff0084;
+@if index($social-keys, "dribbble") {
+  .icon-dribbble {
+    color: #ea4c89;
+  }
 }
 
-.icon-dribbble {
-  color: #ea4c89;
+@if index($social-keys, "behance") {
+  .icon-behance {
+    color: #1769ff;
+  }
 }
 
-.icon-behance {
-  color: #1769ff;
+@if index($social-keys, "bilibili") {
+  .icon-bilibili {
+    color: #00a1d6;
+  }
 }
 
-.icon-bilibili {
-  color: #00a1d6;
+@if index($social-keys, "weibo") {
+  .icon-weibo {
+    color: #e6162d;
+  }
 }
 
-.icon-weibo {
-  color: #e6162d;
+@if index($social-keys, "zhihu") {
+  .icon-zhihu {
+    color: #0084ff;
+  }
 }
 
-.icon-zhihu {
-  color: #0084ff;
+@if index($social-keys, "reddit") {
+  .icon-reddit {
+    color: #ff4500;
+  }
 }
 
-.icon-douban {
-  color: #007722;
+@if index($social-keys, "tumblr") {
+  .icon-tumblr {
+    color: #35465c;
+  }
 }
 
-.icon-reddit {
-  color: #ff4500;
+@if index($social-keys, "medium") {
+  .icon-medium {
+    color: #00ab6c;
+  }
 }
 
-.icon-tumblr {
-  color: #35465c;
+@if index($social-keys, "deviantart") {
+  .icon-deviantart {
+    color: #05cc47;
+  }
 }
 
-.icon-medium {
-  color: #00ab6c;
+@if index($social-keys, "stackoverflow") {
+  .icon-stackoverflow {
+    color: #f48024;
+  }
 }
 
-.icon-deviantart {
-  color: #05cc47;
+@if index($social-keys, "keybase") {
+  .icon-keybase {
+    color: #33a0ff;
+  }
 }
 
-.icon-stackoverflow {
-  color: #f48024;
+@if index($social-keys, "telegram") {
+  .icon-telegram {
+    color: #0088cc;
+  }
 }
 
-.icon-keybase {
-  color: #33a0ff;
+@if index($social-keys, "discord") {
+  .icon-discord {
+    color: #7289da;
+  }
 }
 
-.icon-telegram {
-  color: #0088cc;
-}
+@if index($social-keys, "steam") {
+  .icon-steam {
+    color: #171a21;
+  }
 
-.icon-discord {
-  color: #7289da;
-}
-
-.icon-steam {
-  color: #171a21;
+  [data-theme="dark"] .icon-steam {
+    color: #bc88ff;
+  }
 }
 
 @mixin menu-link {
