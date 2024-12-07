@@ -136,7 +136,7 @@ weight = 1
 <details>
 <summary>封面、头图和图标</summary>
 
-### 封面、头图和图标
+### 封面、头图和favicon
 
 #### 封面
 
@@ -187,13 +187,15 @@ cover: rgb(255,117,117)
 banner: "images/banner.webp"
 ```
 
-#### 图标
+#### favicon
 
-图标保存于 `themes/hugo-theme-reimu/static/favicon.ico`，可自行覆盖替换
+favicon 保存于 `themes/hugo-theme-reimu/static/favicon.ico`，可自行覆盖替换
 
 </details>
 <details>
-<summary>代码高亮</summary>
+<summary>代码块</summary>
+
+### 代码块
 
 为保证代码块的正确显示，请保证 `hugo.toml` 中有如下配置
 
@@ -214,6 +216,13 @@ clipboard:
     enable: false
     count: 50 # 大于多少字符添加版权声明
     content: 本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！
+```
+
+v0.2.0 添加了配置用于控制代码块的默认展开状态，`expand` 可以设置为 `true`、`false` 或数字，数字表示当代码块的行数大于该数字时默认收缩。
+
+```yaml
+code_block:
+  expand: true # true | false | number
 ```
 
 </details>
@@ -412,6 +421,15 @@ fontawesome:
 
 ### 高级功能
 
+#### Pace 进度条
+
+默认开启
+
+```yaml
+pace:
+  enable: true
+```
+
 #### firework
 
 默认开启
@@ -550,6 +568,175 @@ sponsor: true # 是否展示赞助二维码？
 
 </details>
 
+<details>
+<summary>内置卡片shortcode</summary>
+
+### 内置卡片shortcode
+
+#### friendLink 友链卡片
+
+```yaml
+{{< friendsLink >}}
+```
+
+无参数，直接读取 `data/friends.yml` 文件
+
+#### postLinkCard 内链卡片
+
+```yaml
+{{<postLinkCard path="?" cover="?" escape="?" >}}
+```
+
+其中第一个参数为文章的 `path`；第二个参数（可选）为卡片展示的封面，如果设置为 `auto` 则自动使用博客的 `banner`；第三个参数（可选，`true | false`）表示文章标题是否被转义
+
+#### externalLinkCard 外链卡片
+
+```yaml
+{{<externalLinkCard title="?" link="?" cover="?">}}
+```
+
+其中第一个参数为文章的标题；第二个参数为文章的外部链接，第三个参数（可选）为卡片展示的封面，如果设置为 `auto` 则自动使用缺省封面
+
+</details>
+
+<details>
+<summary>自定义主题</summary>
+
+#### 定制主题颜色
+
+hugo-theme-reimu 主题支持通过 CSS 变量定制主题颜色，你可以通过修改 `:root` 伪类下的 CSS 变量来定制你的主题颜色。
+
+变量文件位于 `assets/css/_variables.scss`，你可以在这个文件中找到所有的 CSS 变量，但其实只需要修改以下伪类下的变量即可：
+
+```scss
+:root {
+  --red-0: hsl(0, 100%, 50%);
+  --red-1: hsl(0, 100%, 66%);
+  --red-2: hsl(0, 100%, 74%);
+  --red-3: hsl(0, 100%, 84%);
+  --red-4: hsl(0, 100%, 91%);
+  --red-5: hsl(0, 100%, 95%);
+  --red-5-5: hsl(0, 100%, 96%);
+  --red-6: hsl(0, 100%, 98%);
+
+  --color-red-6-shadow: hsla(0, 100%, 65%, 0.6);
+  --color-red-3-shadow: hsla(0, 100%, 65%, 0.3);
+}
+
+[data-theme="dark"] {
+  &:root {
+    --red-4: hsla(0, 100%, 91%, 0.5);
+    --red-5: hsla(0, 100%, 95%, 0.2);
+    --red-5-5: hsla(0, 100%, 96%, 0.1);
+    --red-6: hsla(0, 100%, 98%, 0.2);
+  }
+}
+```
+
+#### 自定义字体
+
+可通过以下配置定义谷歌字体：
+
+```yaml
+# https://fonts.google.com/
+font:
+  article:
+    - Mulish
+    - Noto Serif SC
+  code:
+    # - Ubuntu Mono
+    # - Source Code Pro
+    # - JetBrains Mono
+```
+
+v0.2.0 添加了 `local_font` 配置用于定义本机字体，其优先级比谷歌字体低：
+
+```yaml
+local_font:
+  article:
+    - "-apple-system"
+    - PingFang SC
+    - Microsoft YaHei
+    - sans-serif
+  code:
+    - Menlo
+    - Monaco
+    - Consolas
+    - monospace
+```
+
+#### 定制图标
+
+##### 头部 / 侧边栏图标
+
+v0.1.0 的 `menu` 配置的结构发生了变化，允许用户自定义 icon。icon 为空时默认使用太极图标，你可以填写一个十六进制的数字来自定义 icon，同时支持 fontawesome 和 icon font。
+
+```yaml
+menu:
+  - name: home
+    url: /
+    icon: # 不填默认使用太极图标
+  - name: archives
+    url: /archives
+    icon: f0c1 # 你可以填写一个十六进制的数字来自定义 icon，支持 fontawesome 和 icon font
+  - name: about
+    url: /about
+    icon:
+  - name: friend
+    url: /friend
+    icon:
+```
+
+##### 底部 / 回到顶部 / 赞助图标
+
+v0.1.0 的 `footer`、`top`、`sponsor` 配置均增加了 `icon` 配置用于自定义图标。
+
+- `url` 为图标的路径，相对于 `css/style.css` 的路径，所以需要向上一级才能找到 images 文件夹。
+- `rotate` 为是否旋转图标，默认为 `true`。
+- `mask` 是否将图片作为遮罩（即只显示 png 图片的轮廓），默认为 `true`。
+
+```yaml
+footer:
+  icon:
+    url: "../images/taichi.png" # 相对于 css/style.css 的路径，所以需要向上一级才能找到 images 文件夹
+    rotate: true
+    mask: true
+
+top:
+  icon:
+    url: "../images/taichi.png"
+    rotate: true
+    mask: true
+
+sponsor:
+  icon:
+    url: "../images/taichi.png"
+    rotate: true
+    mask: true
+```
+
+##### 加载图标
+
+v0.1.0 的 `preloader` 配置增加了 `icon` 配置用于自定义图标。icon 为空时默认使用内链的 svg（保证首屏加载速度），你可以填入一个链接来自定义加载图标。
+
+不建议使用过大的图标，以免影响加载速度。
+
+```yaml
+preloader:
+  enable: true
+  text: 少女祈祷中...
+  icon: # 不填默认使用内链的svg（保证首屏加载速度），你可以填入一个链接来自定义加载图标，如 '/images/taichi.png'
+```
+
+##### 锚点图标
+
+v0.1.0 增加了 `anchor_icon` 配置用于自定义锚点图标，默认使用 `#` 图标，你可以填写一个十六进制的数字来自定义 icon，同时支持 fontawesome 和 icon font。
+
+```yaml
+anchor_icon: # 不填默认使用 # 图标
+```
+
+</details>
 
 <details>
 <summary>Vendor</summary>

@@ -102,7 +102,7 @@
 
   img.lazyloaded {
     opacity: 1;
-    animation: blur-darken 0.8s ease-in-out forwards;
+    animation: blur-darken 0.8s ease-in-out forwards !important;
   }
 }
 
