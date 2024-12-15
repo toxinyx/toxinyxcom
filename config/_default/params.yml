@@ -167,6 +167,37 @@ code_block:
   # number means collapse the code block by default when the number of lines exceeds the specified value
   expand: true
 
+math:
+  katex:
+    enable: true
+  mathjax:
+    enable: false
+    options: # see https://docs.mathjax.org/en/latest/web/configuration.html
+    # we need to put the configuration in an array, because hugo will automatically convert the key to lowercase
+      [
+        {
+          tex:
+            {
+              tags: "ams",
+              useLabelIds: true,
+              inlineMath: [["$", "$"], ['\\(', '\\)']],
+              displayMath: [["$$", "$$"], ['\\[', '\\]']],
+              processEscapes: true,
+              processEnvironments: true,
+              autoload: { color: [], colorv2: ["color"] },
+              packages: { "[+]": ["noerrors"] },
+            },
+          options:
+            {
+              skipHtmlTags:
+                ["script", "noscript", "style", "textarea", "pre", "code"],
+              ignoreHtmlClass: "tex2jax_ignore",
+              processHtmlClass: "tex2jax_process",
+            },
+          loader: { load: ["input/asciimath", "[tex]/noerrors"] },
+        },
+      ]
+
 ########################################
 # Comment system
 ########################################
@@ -248,9 +279,9 @@ giscus:
 
 algolia_search:
   enable: false
-  appID: 
-  apiKey: 
-  indexName: 
+  appID:
+  apiKey:
+  indexName:
   hits:
     per_page: 10
   labels:
@@ -265,7 +296,7 @@ algolia_search:
 preloader:
   enable: true
   text: 少女祈祷中...
-  icon:  # default use inline svg for fast speed, you can use a image url, like '/images/taichi.png'
+  icon: # default use inline svg for fast speed, you can use a image url, like '/images/taichi.png'
 
 # see https://github.com/D-Sketon/aos.js
 animation:
@@ -360,7 +391,7 @@ outdate:
 # ICP 备案
 icp:
   icpnumber: # ICP备案号
-  beian:  # 网安备案号
+  beian: # 网安备案号
   recordcode: # 网安备案链接中的recordcode参数
 
 # Sponsor

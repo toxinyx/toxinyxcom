@@ -275,26 +275,34 @@
       {{ partial "post/comment.html" . }}
     {{ end }}
     {{ if .Params.math }}
-      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex)) 0)) }}
-      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex_auto_render "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex_auto_render)) 0)) }}
-      <script>
-        var renderMath = () => {
-          if (!window.renderMathInElement) return;
-          window.renderMathInElement(document.body, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "\\[", right: "\\]", display: true },
-              { left: "$", right: "$", display: false },
-              { left: "\\(", right: "\\)", display: false },
-            ],
-          });
-        };
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", renderMath, { once: true });
-        } else {
-          renderMath();
-        }
-      </script>
+      {{ if .Site.Params.math.katex.enable }}
+        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex)) 0)) }}
+        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex_auto_render "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex_auto_render)) 0)) }}
+        <script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(document.body, {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script>
+      {{ end }}
+      {{ if .Site.Params.math.mathjax.enable }}
+        <script data-pjax>
+          window.MathJax = JSON.parse({{ .Site.Params.math.mathjax.options | jsonify }})[0];
+        </script>
+        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mathjax "ctx" $site)) 0) "defer" true "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mathjax)) 0)) }}
+      {{ end }}
     {{ end }}
   </div>
 </div>

@@ -32,7 +32,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 兼容 Hugo 0.116.0 及以上版本
 - 响应式布局
 - 代码高亮，代码粘贴
-- KaTeX 展示数学公式
+- KaTeX / MathJax3 展示数学公式
 - Mermaid 展示流程图
 - Algolia 搜索
 - valine / waline / twikoo / gitalk / giscus 评论系统
@@ -349,7 +349,7 @@ algolia_search:
 
 ### 数学公式
 
-数学公式基于 [Katex](https://github.com/KaTeX/KaTeX)，请在外层 `hugo.toml` 中添加如下配置
+请在外层 `hugo.toml` 中添加如下配置
 
 ```toml
 [markup.goldmark.extensions.passthrough]
@@ -364,6 +364,29 @@ delimiters.inline = [["\\(", "\\)"], ["$", "$"]]
 ---
 math: true
 ---
+```
+
+> 注意不要同时开启 KaTeX 和 MathJax3
+
+#### KaTeX
+
+若基于 [Katex](https://github.com/KaTeX/KaTeX)，请在 `params.yml` 中将 `math.katex.enable` 改为 `true`
+
+```yaml
+math:
+  katex:
+    enable: true
+```
+
+#### MathJax3
+
+若基于 [MathJax3](https://www.mathjax.org/)，请在 `params.yml` 中将 `math.mathjax.enable` 改为 `true`，并可在 `options` 中添加配置（由于 Hugo 会自动将对象的key转变为全小写，所以配置需要放在一个数组中避免默认行为）
+
+```yaml
+math:
+  mathjax:
+    enable: true
+    options: [{}]
 ```
 
 </details>

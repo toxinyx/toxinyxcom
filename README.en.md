@@ -33,7 +33,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - Compatible with Hugo 0.116.0 and above
 - Responsive Layout
 - Code Highlighting, Code Pasting
-- KaTeX for displaying math formulas
+- KaTeX / MathJax3 for displaying math formulas
 - Mermaid for flowcharts
 - Algolia search
 - valine / waline / twikoo / gitalk / giscus comment system
@@ -327,7 +327,7 @@ algolia_search:
 
 ### Mathematical formulas
 
-Math formulas are based on [Katex](https://github.com/KaTeX/KaTeX), please add the following configuration in the outer `hugo.toml`
+Please add the following configuration in the outer `hugo.toml` first
 
 ```toml
 [markup.goldmark.extensions.passthrough]
@@ -342,6 +342,29 @@ And add `math` as `true` in the Front matter of the article that needs to use ma
 ---
 math: true
 ---
+```
+
+> Be careful not to enable KaTeX and MathJax3 at the same time
+
+#### KaTex
+
+If your math formulas are based on [Katex](https://github.com/KaTeX/KaTeX), please change `math.katex.enable` to `true` in the `params.yml`
+
+```yaml
+math:
+  katex:
+    enable: true
+```
+
+#### MathJax3
+
+If your math formulas are based on [MathJax3](https://www.mathjax.org/), please change `math.mathjax.enable` to `true` in the `params.yml`. And you can add configuration in `options` (since Hugo will automatically convert the key of the object to all lowercase, the configuration needs to be placed in an array to avoid the default behavior)
+
+```yaml
+math:
+  mathjax:
+    enable: true
+    options: [{}]
 ```
 
 </details>
