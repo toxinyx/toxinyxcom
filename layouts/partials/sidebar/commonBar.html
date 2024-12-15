@@ -12,7 +12,8 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>{{ i18n "sidebar.post" }}</div>
-    <div class="sidebar-state-number">{{ len .Site.Pages }}</div>
+    {{ $posts := (where .Page.Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
+    <div class="sidebar-state-number">{{ len $posts }}</div>
   </div>
   <div class="sidebar-state-category">
     <div>{{ i18n "sidebar.category" }}</div>

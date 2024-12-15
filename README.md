@@ -349,7 +349,7 @@ algolia_search:
 
 ### 数学公式
 
-请在外层 `hugo.toml` 中添加如下配置
+请先在外层 `hugo.toml` 中添加如下配置
 
 ```toml
 [markup.goldmark.extensions.passthrough]
