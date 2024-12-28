@@ -436,6 +436,7 @@ service_worker:
 # Experimental
 live2d:
   enable: false
+  position: left # left or right
 
 # https://github.com/CodeByZach/pace
 pace:
@@ -447,7 +448,7 @@ player:
   # if you enable meting, you must enable aplayer first
   aplayer:
     # https://github.com/DIYgod/APlayer
-    enable: true
+    enable: false
     options:
       audio: []
       fixed: true
@@ -460,7 +461,7 @@ player:
   meting:
     # https://github.com/metowolf/MetingJS
     # if you want to use meting, please enable aplayer first
-    enable: true
+    enable: false
     meting_api: # custom api
     options:
       id: 2265921590

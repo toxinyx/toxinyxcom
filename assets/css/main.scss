@@ -12,6 +12,7 @@ $local-code-families: {{ $local_code_families }};
 $footer_icon_mask: {{  $params.footer.icon.mask }};
 $top_icon_mask: {{  $params.top.icon.mask }};
 $sponsor_icon_mask: {{  $params.sponsor.icon.mask }};
+$live2d_position: {{ $params.live2d.position }};
 
 {{ $social := $params.social }}
 {{ $social_keys := slice }}
@@ -221,6 +222,10 @@ a, .main-nav-icon, .popup-btn-close {
 
 {{ if $params.player.aplayer.enable }}
 @import "partials/aplayer";
+{{ end }}
+
+{{ if $params.live2d.enable }}
+@import "partials/live2d";
 {{ end }}
 
 [data-theme="dark"] {
