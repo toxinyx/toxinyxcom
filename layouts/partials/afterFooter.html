@@ -383,6 +383,7 @@
           preload: '{{ $params.player.aplayer.options.preload }}' || 'auto',
           volume: {{ $params.player.aplayer.options.volume }} || 0.7,
           mutex: {{ $params.player.aplayer.options.mutex }} || true,
+          listFolded: {{ $params.player.aplayer.options.listFolded }} || false,
       });
     </script>
   {{ end }}
