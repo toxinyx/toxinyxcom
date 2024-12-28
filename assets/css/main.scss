@@ -14,6 +14,7 @@ $top_icon_mask: {{  $params.top.icon.mask }};
 $sponsor_icon_mask: {{  $params.sponsor.icon.mask }};
 $live2d_position: {{ $params.live2d.position }};
 $live2d_widgets_position: {{ $params.live2d_widgets.position }};
+$top_position: {{ $params.top.position }};
 
 {{ $social := $params.social }}
 {{ $social_keys := slice }}

@@ -377,6 +377,7 @@ clipboard:
 # Back To Top
 top:
   enable: true
+  position: right # left or right
   icon:
     url: "../images/taichi.png" # this path is relative to the css/style.css, so it needs to go up one level to reach the images folder
     rotate: true
@@ -440,8 +441,8 @@ live2d:
 
 # Experimental
 live2d_widgets:
-  enable: true
-  position: right # left or right
+  enable: false
+  position: left # left or right
 
 # https://github.com/CodeByZach/pace
 pace:
