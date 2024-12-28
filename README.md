@@ -47,11 +47,12 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 鼠标动画
 - pjax
 - ServiceWorker
-- live2d
+- live2d / live2d-widgets
 - reimu 鼠标指针
 - 内部提供内链/外链/友链卡片的短代码
 - 文章底部版权声明
 - 配置自定义 CDN 源
+- Aplayer / Meting 音乐播放器
 - 高度自定义
 
 ## 安装
@@ -491,6 +492,17 @@ service_worker:
 ```yaml
 live2d:
   enable: false
+  position: left # left | right
+```
+
+#### live2d-widgets
+
+默认关闭
+
+```yaml
+live2d_widgets:
+  enable: false
+  position: left # left | right
 ```
 
 #### reimu 鼠标指针
@@ -587,6 +599,60 @@ sponsor:
 ---
 sponsor: true # 是否展示赞助二维码？
 ---
+```
+
+#### 音乐播放器（v0.4.0+）
+
+> 使用前建议先打开 Pjax，否则会出现播放器自动暂停的问题
+
+使用Aplayer + Meting（可选）默认关闭
+
+##### 纯Aplayer
+
+将 `player.aplayer.enable` 设置为 `true`，并在 `player.aplayer.options` 中参考 [Aplayer Docs](https://aplayer.js.org/#/home?id=options) 进行配置
+
+```yml
+player:
+  aplayer:
+    enable: true
+    options:
+      audio: [] # audio list
+      fixed:
+      autoplay:
+      loop:
+      order:
+      preload: 
+      volume:
+      mutex:
+      listFolded:
+```
+
+##### Aplayer + Meting
+
+同时将 `player.aplayer.enable` 和 `player.meting.enable` 设置为 `true`，并在 `player.meting.options` 中参考 [Meting Docs](https://github.com/metowolf/MetingJS?tab=readme-ov-file#option) 进行配置，`player.aplayer.options` 为 Aplayer 配置
+
+```yml
+player:
+  aplayer:
+    enable: true
+    options:
+      audio: [] # this option will be overwritten by meting
+      fixed:
+      autoplay:
+      loop:
+      order:
+      preload: 
+      volume:
+      mutex:
+      listFolded:
+  meting:
+    enable: true
+    meting_api: # custom api
+    options:
+      id: 
+      server: 
+      type: 
+      auto:
 ```
 
 </details>
