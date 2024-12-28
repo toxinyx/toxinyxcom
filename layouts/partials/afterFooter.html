@@ -148,6 +148,8 @@
     live2d.init('{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d.base "ctx" $site)) 0 }}', {themeTipsPath: ""});
   }
 </script> {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d.js "ctx" $site)) 0) "async" true "onload" "initLive2d()") }}
+{{ else if $params.live2d_widgets.enable }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d_widgets "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.live2d_widgets)) 0)) }}
 {{ end }}
 
 {{ if $params.quicklink.enable }}

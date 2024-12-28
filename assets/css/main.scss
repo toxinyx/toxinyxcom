@@ -13,6 +13,7 @@ $footer_icon_mask: {{  $params.footer.icon.mask }};
 $top_icon_mask: {{  $params.top.icon.mask }};
 $sponsor_icon_mask: {{  $params.sponsor.icon.mask }};
 $live2d_position: {{ $params.live2d.position }};
+$live2d_widgets_position: {{ $params.live2d_widgets.position }};
 
 {{ $social := $params.social }}
 {{ $social_keys := slice }}
@@ -227,6 +228,11 @@ a, .main-nav-icon, .popup-btn-close {
 {{ if $params.live2d.enable }}
 @import "partials/live2d";
 {{ end }}
+
+{{ if $params.live2d_widgets.enable }}
+@import "partials/live2d-widgets";
+{{ end }}
+
 
 [data-theme="dark"] {
   ::-webkit-scrollbar, ::-webkit-scrollbar-track {

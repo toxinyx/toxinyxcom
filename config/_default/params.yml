@@ -438,6 +438,11 @@ live2d:
   enable: false
   position: left # left or right
 
+# Experimental
+live2d_widgets:
+  enable: true
+  position: right # left or right
+
 # https://github.com/CodeByZach/pace
 pace:
   enable: true
