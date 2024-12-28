@@ -219,6 +219,10 @@ a, .main-nav-icon, .popup-btn-close {
 @import "partials/notification";
 {{ end }}
 
+{{ if $params.player.aplayer.enable }}
+@import "partials/aplayer";
+{{ end }}
+
 [data-theme="dark"] {
   ::-webkit-scrollbar, ::-webkit-scrollbar-track {
     background-color: #616161;

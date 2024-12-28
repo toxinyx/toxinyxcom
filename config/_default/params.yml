@@ -440,3 +440,30 @@ live2d:
 # https://github.com/CodeByZach/pace
 pace:
   enable: true
+
+# Experimental
+# Please turn on pjax to use this feature
+player:
+  # if you enable meting, you must enable aplayer first
+  aplayer:
+    # https://github.com/DIYgod/APlayer
+    enable: true
+    options:
+      audio: []
+      fixed: true
+      autoplay:
+      loop:
+      order:
+      preload:
+      volume:
+      mutex:
+  meting:
+    # https://github.com/metowolf/MetingJS
+    # if you want to use meting, please enable aplayer first
+    enable: true
+    meting_api: # custom api
+    options:
+      id: 2265921590
+      server: netease
+      type: playlist
+      auto:

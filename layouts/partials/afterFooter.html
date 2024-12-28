@@ -112,7 +112,10 @@
           "head title",
           "#header-title",
           "#subtitle-wrap",
-          "#content",
+          "#main",
+          "#footer",
+          ".sidebar-widget",
+          ".sidebar-wrapper",
           "#mobile-nav",
           "#lazy-script",
         ],
@@ -364,3 +367,31 @@
     "padding:4px;border:1px solid #ff5252;",
   );
 </script>
+
+{{ if $params.player.aplayer.enable }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.aplayer "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.aplayer)) 0)) }}
+  {{ if not $params.player.meting.enable }}
+    <script>
+      const ap = new APlayer({
+          container: document.getElementById('aplayer'),
+          audio: JSON.parse({{ $params.player.aplayer.audio | jsonify }}) || [],
+          fixed: {{ $params.player.aplayer.options.fixed }} || false,
+          autoplay: {{ $params.player.aplayer.options.autoplay }} || false,
+          loop: '{{ $params.player.aplayer.options.loop }}' || 'all',
+          order: '{{ $params.player.aplayer.options.order }}' || 'list',
+          preload: '{{ $params.player.aplayer.options.preload }}' || 'auto',
+          volume: {{ $params.player.aplayer.options.volume }} || 0.7,
+          mutex: {{ $params.player.aplayer.options.mutex }} || true,
+      });
+    </script>
+  {{ end }}
+{{ end }}
+
+{{ if $params.player.meting.enable }}
+  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.meting "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.meting)) 0)) }}
+  {{ if $params.player.meting.meting_api }}
+    <script>
+      var meting_api = '{{ $params.player.meting.meting_api }}';
+    </script>
+  {{ end }}
+{{ end }}

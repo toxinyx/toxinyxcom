@@ -127,3 +127,7 @@
 {{ if .Site.Params.animation.enable }}
   {{ partial "helpers/css.html" (partial "helpers/vendorCdn.html" (dict "item" $css.aos "ctx" $site)) }}
 {{ end }}
+
+{{ if .Site.Params.player.aplayer.enable }}
+{{ partial "helpers/css.html" (partial "helpers/vendorCdn.html" (dict "item" $css.aplayer "ctx" $site)) }}
+{{ end }}
