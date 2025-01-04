@@ -141,6 +141,7 @@ a, .main-nav-icon, .popup-btn-close {
 }
 
 #main {
+  flex: 1;
   padding: 0 10px;
   max-width: 100%;
   box-sizing: border-box;
@@ -160,15 +161,20 @@ a, .main-nav-icon, .popup-btn-close {
   overflow: visible;
 }
 
-{{ if $params.sidebar }}
-#main {
-  @media #{$mq-large} {
-    padding: 0;
-    width: 73%;
-    margin: 0 1%;
+.sidebar-left,
+.sidebar-right {
+  #main {
+    @media #{$mq-large} {
+      padding: 0;
+      width: 73%;
+      margin: 0 1%;
+    }
   }
 }
-{{ end }}
+
+#content.sidebar-right {
+  flex-direction: row-reverse;
+}
 
 #mask {
   z-index: 1000;
@@ -201,6 +207,7 @@ a, .main-nav-icon, .popup-btn-close {
 @import "partials/mobile";
 @import "partials/friend";
 @import "partials/card";
+@import "partials/sidebar";
 
 {{ if $params.top.enable }}
 @import "partials/top";
@@ -212,10 +219,6 @@ a, .main-nav-icon, .popup-btn-close {
 
 {{ if and (reflect.IsSlice $params.widgets) (len $params.widgets) }}
 @import "partials/widget";
-{{ end }}
-
-{{ if $params.sidebar }}
-@import "partials/sidebar";
 {{ end }}
 
 {{ if $params.service_worker.enable }}

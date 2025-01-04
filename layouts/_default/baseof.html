@@ -11,15 +11,12 @@
     <div id="container">
       <div id="wrap">
         {{ partial "header.html" . }}
-        <main id="content">
-          {{ if eq .Site.Params.sidebar "left" }}
-            {{ partial "sidebar.html" . }}
-          {{ end }}
+        <div id="content"
+          {{ if or (and (eq .Site.Params.sidebar "left") (eq .Params.sidebar nil)) (eq .Params.sidebar "left") }}class="sidebar-left"{{ end }}
+          {{ if or (and (eq .Site.Params.sidebar "right") (eq .Params.sidebar nil)) (eq .Params.sidebar "right") }}class="sidebar-right"{{ end }}  >
+          {{ partial "sidebar.html" . }}
           <section id="main">{{ block "main" . }}{{ end }}</section>
-          {{ if eq .Site.Params.sidebar "right" }}
-            {{ partial "sidebar.html" . }}
-          {{ end }}
-        </main>
+        </div>
         {{ if and .Site.Params.player.aplayer.enable (not .Site.Params.player.meting.enable) .Site.Params.player.aplayer.options.fixed  }}
           <div id="aplayer" theme="var(--color-link)" data-aos="{{ .Site.Params.animation.options.home.sidebar }}"></div>
         {{ end }}
