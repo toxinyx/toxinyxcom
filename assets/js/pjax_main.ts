@@ -210,7 +210,9 @@ function tocInit() {
 
   const anchorScroll = (event, index) => {
     event.preventDefault();
-    const target = document.getElementById(decodeURI(event.currentTarget.getAttribute("href")).slice(1));
+    const target = document.getElementById(
+      decodeURI(event.currentTarget.getAttribute("href")).slice(1),
+    );
     activeLock = index;
     scrollIntoViewAndWait(target!).then(() => {
       activateNavByIndex(index);
@@ -221,7 +223,9 @@ function tocInit() {
   const sections = [...navItems].map((element, index) => {
     const link = element.querySelector("a");
     link!.off("click").on("click", (e) => anchorScroll(e, index));
-    const anchor = document.getElementById(decodeURI(link.getAttribute("href")).slice(1));
+    const anchor = document.getElementById(
+      decodeURI(link.getAttribute("href")).slice(1),
+    );
     if (!anchor) return null;
     const alink = anchor.querySelector("a");
     alink?.off("click").on("click", (e) => anchorScroll(e, index));
@@ -250,7 +254,9 @@ function tocInit() {
       if (parent.matches("li")) {
         parent.classList.add("active");
         const t = document.getElementById(
-          decodeURI(parent.querySelector("a.toc-link").getAttribute("href").slice(1))
+          decodeURI(
+            parent.querySelector("a").getAttribute("href").slice(1),
+          ),
         );
         if (t) {
           t.classList.add("active");
@@ -313,4 +319,49 @@ _$(".sponsor-button-wrapper")
     _$(".sponsor-button-wrapper")?.classList.toggle("active");
     _$(".sponsor-tip")?.classList.toggle("active");
     _$(".sponsor-qr")?.classList.toggle("active");
+  });
+
+_$(".share-icon.icon-weixin")
+  ?.off("click")
+  .on("click", function (e) {
+    const iconPosition = this.getBoundingClientRect();
+    const shareWeixin = this.querySelector("#share-weixin");
+
+    if (iconPosition.x - 148 < 0) {
+      shareWeixin.style.left = `-${iconPosition.x - 10}px`;
+    } else if (iconPosition.x + 172 > window.innerWidth) {
+      shareWeixin.style.left = `-${310 - window.innerWidth + iconPosition.x}px`;
+    } else {
+      shareWeixin.style.left = "-138px";
+    }
+    if (e.target === this) {
+      shareWeixin.classList.toggle("active");
+    }
+    // if contains img return
+    if (_$(".share-weixin-canvas").children.length) {
+      return;
+    }
+    const { cover, description, title, author } = window.REIMU_POST;
+    (_$("#share-weixin-banner") as HTMLImageElement).src = cover;
+    _$("#share-weixin-title").innerText = title;
+    _$("#share-weixin-desc").innerText = description.replace(/\s/g, "");
+    _$("#share-weixin-author").innerText = "By: " + author;
+    QRCode.toDataURL(window.REIMU_POST.url, function (error, dataUrl) {
+      if (error) {
+        console.error(error);
+        return;
+      }
+      (_$("#share-weixin-qr") as HTMLImageElement).src = dataUrl;
+      htmlToImage
+        .toPng(_$(".share-weixin-dom"), {
+          skipFonts: true,
+          preferredFontFormat: "woff2",
+          backgroundColor: "white",
+        })
+        .then((dataUrl) => {
+          const img = new Image();
+          img.src = dataUrl;
+          _$(".share-weixin-canvas").appendChild(img);
+        });
+    });
   });

@@ -154,13 +154,13 @@
   }
 }
 
-@if index($social-keys, "facebook") {
+@if index($social-keys, "facebook") or index($share-keys, "facebook") {
   .icon-facebook:before {
     content: "\f09a";
   }
 }
 
-@if index($social-keys, "twitter") {
+@if index($social-keys, "twitter") or index($share-keys, "twitter") {
   .icon-twitter:before {
     content: "\e61b";
   }
@@ -172,7 +172,7 @@
   }
 }
 
-@if index($social-keys, "linkedin") {
+@if index($social-keys, "linkedin") or index($share-keys, "linkedin") {
   .icon-linkedin:before {
     content: "\f08c";
   }
@@ -220,7 +220,7 @@
   }
 }
 
-@if index($social-keys, "weibo") {
+@if index($social-keys, "weibo") or index($share-keys, "weibo") {
   .icon-weibo:before {
     content: "\f18a";
   }
@@ -232,7 +232,7 @@
   }
 }
 
-@if index($social-keys, "reddit") {
+@if index($social-keys, "reddit") or index($share-keys, "reddit") {
   .icon-reddit:before {
     content: "\f1a1";
   }
@@ -325,6 +325,25 @@
 .icon-taichi:before {
   font-family: var(--font-icon);
   content: "\f6ad";
+}
+
+@if index($share-keys, "weixin") {
+  .icon-weixin:before {
+    font-family: var(--font-icon);
+    content: "\f1d7";
+  }
+}
+
+@if index($share-keys, "qq") {
+  .icon-qq:before {
+    font-family: var(--font-icon);
+    content: "\f1d6";
+  }
+}
+
+.icon-image:before {
+  font-family: var(--font-icon);
+  content: "\f03e";
 }
 
 .icon {

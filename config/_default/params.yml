@@ -124,7 +124,7 @@ reimu_cursor:
     pointer: ../images/cursor/reimu-cursor-pointer.png
     text: ../images/cursor/reimu-cursor-text.png
 
-icon_font: 4552607_tq6stt6tcg
+icon_font: 4552607_bq08450reo
 
 # https://fonts.google.com/
 # Google Fonts, higher priority than local_font
@@ -413,6 +413,15 @@ sponsor:
     #   src: "sponsor/alipay.jpg"
     # - name: 微信
     #   src: "sponsor/wechat.png"
+
+share:
+  # - facebook
+  # - twitter
+  # - linkedin
+  # - reddit
+  # - weibo
+  # - qq
+  # - weixin
 
 ########################################
 # Experimental features

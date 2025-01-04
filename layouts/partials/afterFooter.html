@@ -170,6 +170,25 @@
 
 <div id="lazy-script">
   <div>
+    {{ if .Permalink }}
+      {{ $desc := "" }}
+      {{ if .Params.description }}
+        {{ $desc = .Params.description | plainify | truncate 300 }}
+      {{ else if .Summary }}
+        {{ $desc = .Summary  | plainify | truncate 300 }}
+      {{ else }}
+        {{ $desc = .RawContent | truncate 300 }}
+      {{ end }}
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "{{ $params.author }}",
+          title: "{{ .Title }}",
+          url: "{{ .Permalink }}",
+          description: "{{ $desc }}",
+          cover: {{ if .Params.cover }}"{{ .Params.cover | absURL }}"{{ else }}"{{ .Site.Params.banner | absURL }}"{{ end }},
+        };
+      </script>
+    {{ end }}
     {{ if and (.Store.Get "hasMermaid") .Params.mermaid }}
       {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mermaid "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mermaid)) 0)) }}
       <script data-pjax>
@@ -283,6 +302,10 @@
         }
       </script>
       {{ partial "post/comment.html" . }}
+      {{ if and (reflect.IsSlice .Site.Params.share) (in .Site.Params.share "weixin") }}
+        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.qrcode "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.qrcode)) 0)) }}
+        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.html2image "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.html2image)) 0)) }}
+      {{ end }}
     {{ end }}
     {{ if .Params.math }}
       {{ if .Site.Params.math.katex.enable }}

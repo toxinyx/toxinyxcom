@@ -47,7 +47,7 @@
       {{ end }}
     </picture>
     {{ if .Site.Params.banner_srcset.enable }}
-      <img src="" alt="{{ .Title }}">
+      <img src="" alt="{{ .Title }}" style="visibility: hidden;">
     {{ else }}
       <img fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
     {{ end }}
