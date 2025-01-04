@@ -2,7 +2,7 @@
 
 <div class="share-wrapper">
   {{ range $share := .Site.Params.share }}
-    <a href="{{ index $shareMap $share }}" target="_blank" rel="noopener noreferrer" title="{{ $.Title }}">
+    <a href="{{ index $shareMap $share }}" {{ if not (eq $share "weixin") }}target="_blank" rel="noopener noreferrer"{{ end }} title="{{ $.Title }}">
       <div class="share-icon icon icon-{{ $share }}">
         {{  if eq $share "weixin" }}
           <div id="share-weixin">
