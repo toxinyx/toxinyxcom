@@ -107,8 +107,8 @@
     window.Pjax &&
       new window.Pjax({
         selectors: [
-          "#header img",
-          "#header picture",
+          "#header>img",
+          "#header>picture",
           "head title",
           "#header-title",
           "#subtitle-wrap",
@@ -121,7 +121,7 @@
         switches: {
           "#header-title": Pjax.switches.outerHTML,
           "#subtitle-wrap": Pjax.switches.outerHTML,
-          "#content": function (oldEl, newEl) {
+          "#main": function (oldEl, newEl) {
             const scripts = [...newEl.querySelectorAll("script")];
             loadScripts(scripts, 0);
             oldEl.outerHTML = newEl.outerHTML;

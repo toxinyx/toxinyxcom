@@ -31,20 +31,26 @@
 <header id="header">
   {{ if .Params.cover }}
     {{ if strings.HasPrefix .Params.cover "rgb" }}
+      <picture></picture>
       <div style="position: absolute;top: 0;left: 0;width: 100%;height: 150%;z-index: -2;display: block;background: {{ .Params.cover | safeCSS }};mask: linear-gradient(to top, transparent, #fff 50%);"></div>
     {{ else }}
+    <picture></picture>
       <img fetchpriority="high" src="{{ .Params.cover | relURL }}" alt="{{ .Title }}">
     {{ end }}
-  {{ else if .Site.Params.banner_srcset.enable }}
-    <picture>
-      {{ range .Site.Params.banner_srcset.srcset  }}
-        <div></div>
-        <source media="{{ .media }}" srcset="{{ .src | relURL }}">
-      {{ end }}
-      <img fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
-    </picture>
   {{ else }}
-    <img fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+    <picture>
+      {{ if .Site.Params.banner_srcset.enable }}
+        {{ range .Site.Params.banner_srcset.srcset  }}
+          <source media="{{ .media }}" srcset="{{ .src | relURL }}">
+        {{ end }}
+        <img fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+      {{ end }}
+    </picture>
+    {{ if .Site.Params.banner_srcset.enable }}
+      <img src="" alt="{{ .Title }}">
+    {{ else }}
+      <img fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+    {{ end }}
   {{ end }}
 
   <div id="header-outer">
