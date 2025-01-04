@@ -3,7 +3,7 @@
 {{ $local_code_families := default "" (delimit (apply (default slice $params.local_font.code) "printf" "'%s'" ".") ",") }}
 
 $icon_font: {{ $params.icon_font }};
-$reimu_cursor: {{ $params.reimu_cursor }};
+$reimu_cursor: {{ if reflect.IsMap $params.reimu_cursor }}{{ $params.reimu_cursor.enable }}{{ else }}{{ $params.reimu_cursor }}{{ end }};
 $basic-families: {{ default $local_basic_families (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }};
 $code-families: {{ default $local_code_families (delimit (apply (default slice $params.font.code) "printf" "'%s'" "." ) ",") }};
 $local-basic-families: {{ $local_basic_families }};
@@ -15,6 +15,10 @@ $sponsor_icon_mask: {{  $params.sponsor.icon.mask }};
 $live2d_position: {{ $params.live2d.position }};
 $live2d_widgets_position: {{ $params.live2d_widgets.position }};
 $top_position: {{ $params.top.position }};
+
+$cursor-default: {{ if reflect.IsMap $params.reimu_cursor }}"{{ $params.reimu_cursor.cursor.default }}"{{ else }}"../images/cursor/reimu-cursor-default.png"{{ end }};
+$cursor-pointer: {{ if reflect.IsMap $params.reimu_cursor }}"{{ $params.reimu_cursor.cursor.pointer }}"{{ else }}"../images/cursor/reimu-cursor-pointer.png"{{ end }};
+$cursor-text: {{ if reflect.IsMap $params.reimu_cursor }}"{{ $params.reimu_cursor.cursor.text }}"{{ else }}"../images/cursor/reimu-cursor-text.png"{{ end }};
 
 {{ $social := $params.social }}
 {{ $social_keys := slice }}
@@ -61,9 +65,9 @@ input, button {
 html, body, #container {
   height: 100%;
   scroll-behavior: smooth;
-  {{ if $params.reimu_cursor }}
-  cursor: var(--cursor-default);
-  {{ end }}
+  @if $reimu_cursor {
+    cursor: var(--cursor-default);
+  }
 }
 
 body {
@@ -81,45 +85,45 @@ body {
   }
 }
 
-{{ if $params.reimu_cursor }}
-a, .main-nav-icon, .popup-btn-close {
-  cursor: var(--cursor-pointer) !important;
-}
-
-.site-search {
-  input {
-    cursor: var(--cursor-text) !important;
-  }
-}
-
-#main {
-  span, p, code, kbd, input, textarea {
-    cursor: var(--cursor-text) !important;
+@if $reimu_cursor {
+  a, .main-nav-icon, .popup-btn-close {
+    cursor: var(--cursor-pointer) !important;
   }
 
-  nav {
-    span {
-      cursor: var(--cursor-default) !important;
+  .site-search {
+    input {
+      cursor: var(--cursor-text) !important;
     }
   }
-}
 
-.code-copy, .code-lang, .code-expand {
-  cursor: var(--cursor-pointer) !important;
-}
+  #main {
+    span, p, code, kbd, input, textarea {
+      cursor: var(--cursor-text) !important;
+    }
 
-.reimu-powered {
-  cursor: var(--cursor-default) !important;
-}
-{{ else }}
-.code-copy, .code-lang, .code-expand {
-  cursor: pointer !important;
-}
+    nav {
+      span {
+        cursor: var(--cursor-default) !important;
+      }
+    }
+  }
 
-.main-nav-icon, .popup-btn-close {
-  cursor: pointer !important;
+  .code-copy, .code-lang, .code-expand {
+    cursor: var(--cursor-pointer) !important;
+  }
+
+  .reimu-powered {
+    cursor: var(--cursor-default) !important;
+  }
+} @else {
+  .code-copy, .code-lang, .code-expand {
+    cursor: pointer !important;
+  }
+
+  .main-nav-icon, .popup-btn-close {
+    cursor: pointer !important;
+  }
 }
-{{ end }}
 
 #container {
   position: relative;

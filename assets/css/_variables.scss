@@ -46,9 +46,9 @@
   --highlight-blue: #1973b8;
   --highlight-purple: #7135ac;
 
-  --cursor-default: url(../images/cursor/reimu-cursor-default.png), auto;
-  --cursor-pointer: url(../images/cursor/reimu-cursor-pointer.png), pointer;
-  --cursor-text: url(../images/cursor/reimu-cursor-text.png), text;
+  --cursor-default: url(#{$cursor-default}), auto;
+  --cursor-pointer: url(#{$cursor-pointer}), pointer;
+  --cursor-text: url(#{$cursor-text}), text;
 }
 
 [data-theme="dark"] {
