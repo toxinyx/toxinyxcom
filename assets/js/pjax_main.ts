@@ -342,7 +342,7 @@ _$(".share-icon.icon-weixin")
     const { cover, description, title, author } = window.REIMU_POST;
     (_$("#share-weixin-banner") as HTMLImageElement).src = cover;
     _$("#share-weixin-title").innerText = title;
-    _$("#share-weixin-desc").innerText = description.replace(/\s/g, "");
+    _$("#share-weixin-desc").innerText = description.replace(/\s/g, " ");
     _$("#share-weixin-author").innerText = "By: " + author;
     QRCode.toDataURL(window.REIMU_POST.url, function (error, dataUrl) {
       if (error) {
