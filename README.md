@@ -53,6 +53,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 文章底部版权声明
 - 配置自定义 CDN 源
 - Aplayer / Meting 音乐播放器
+- 分享卡片
 - 高度自定义
 
 ## 安装
@@ -422,7 +423,7 @@ RSS 自带，无需额外配置
 Icon 默认使用本项目提供的 iconfont
 
 ```yml
-icon_font: 4552607_tq6stt6tcg
+icon_font: 4552607_bq08450reo
 ```
 
 如果想要继续使用 fontawesome 图标，请将 `icon_font` 设置为 `false`，此时会使用 `vendor.yml` 中对应的 fontawesome
@@ -585,7 +586,7 @@ sponsor:
   enable: false # 是否展示赞助二维码？
   tip: 请作者喝杯咖啡吧！ # 赞助提示
   icon:
-    url: "../images/taichi.png" # 赞助图标，相对于 css/style.css 的路径，所以需要向上一级才能找到 images 文件夹
+    url: "../images/taichi.png" # 赞助图标，相对于 css/main.css 的路径，所以需要向上一级才能找到 images 文件夹
     rotate: true # 是否旋转图标
     mask: true # 是否将图片作为遮罩（即只显示 png 图片的轮廓）
   qr:
@@ -654,6 +655,23 @@ player:
       type: 
       auto:
 ```
+
+#### 分享（v0.5.0+）
+
+默认关闭，目前支持 `facebook`、`twitter`、`linkedin`、`reddit`、`weibo`、`qq`、`weixin`。
+
+```yml
+share:
+  # - facebook
+  # - twitter
+  # - linkedin
+  # - reddit
+  # - weibo
+  # - qq
+  # - weixin
+```
+
+`weixin` 状态下会生成带有二维码的分享卡片，可保存到本地后分享到微信朋友圈（注意，当文章封面存在跨域问题时无法使用 html-to-image 正确生成含图片的卡片！）
 
 </details>
 
@@ -780,14 +798,14 @@ menu:
 
 v0.1.0 的 `footer`、`top`、`sponsor` 配置均增加了 `icon` 配置用于自定义图标。
 
-- `url` 为图标的路径，相对于 `css/style.css` 的路径，所以需要向上一级才能找到 images 文件夹。
+- `url` 为图标的路径，相对于 `css/main.css` 的路径，所以需要向上一级才能找到 images 文件夹。
 - `rotate` 为是否旋转图标，默认为 `true`。
 - `mask` 是否将图片作为遮罩（即只显示 png 图片的轮廓），默认为 `true`。
 
 ```yaml
 footer:
   icon:
-    url: "../images/taichi.png" # 相对于 css/style.css 的路径，所以需要向上一级才能找到 images 文件夹
+    url: "../images/taichi.png" # 相对于 css/main.css 的路径，所以需要向上一级才能找到 images 文件夹
     rotate: true
     mask: true
 
@@ -823,6 +841,19 @@ v0.1.0 增加了 `anchor_icon` 配置用于自定义锚点图标，默认使用 
 
 ```yaml
 anchor_icon: # 不填默认使用 # 图标
+```
+
+##### 鼠标图标（v0.5.0+）
+
+v0.5.0 增加了 `reimu_cursor.cursor` 配置用于自定义鼠标图标，你可以填写一个相对于 `css/main.css` 的路径来自定义鼠标图标。
+
+```yaml
+reimu_cursor:
+  enable: true
+  cursor:
+    default: ../images/cursor/reimu-cursor-default.png
+    pointer: ../images/cursor/reimu-cursor-pointer.png
+    text: ../images/cursor/reimu-cursor-text.png
 ```
 
 </details>

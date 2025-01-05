@@ -54,6 +54,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - Support the bottom of the article copyright statement
 - Support for configuring custom CDN sources
 - Aplayer / Meting music player
+- share card
 - Highly customizable
 
 ## Installation
@@ -400,7 +401,7 @@ RSS is built-in and does not require additional configuration
 Icon defaults to the iconfont provided with this project
 
 ```yml
-icon_font: 4552607_tq6stt6tcg
+icon_font: 4552607_bq08450reo
 ```
 
 If you want to continue using fontawesome icons, set `icon_font` to `false`, which will use the corresponding fontawesome in `vendor.yml`.
@@ -563,7 +564,7 @@ sponsor:
   enable: false # Whether to enable sponsorship
   tip: 请作者喝杯咖啡吧！ # Sponsorship prompt
   icon:
-    url: "../images/taichi.png" # this path is relative to the css/style.css, so it needs to go up one level to reach the images folder
+    url: "../images/taichi.png" # this path is relative to the css/main.css, so it needs to go up one level to reach the images folder
     rotate: true
     mask: true # whether to use the images as a mask
   qr:
@@ -632,6 +633,23 @@ player:
       type: 
       auto:
 ```
+
+#### Share Link / Card (v0.5.0+)
+
+Disabled by default, currently supports `facebook`, `twitter`, `linkedin`, `reddit`, `weibo`, `qq`, `weixin`.
+
+```yaml
+share:
+  # - facebook
+  # - twitter
+  # - linkedin
+  # - reddit
+  # - weibo
+  # - qq
+  # - weixin
+```
+
+`weixin` will generate a share card with a QR code, which can be saved locally and shared to WeChat Moments (Note: When there is a cross-domain issue with the article cover, html-to-image cannot correctly generate a card with an image!)
 
 </details>
 
@@ -761,7 +779,7 @@ menu:
 
 v0.1.0 add `icon` configuration to the `footer`, `top`, `sponsor` configuration for custom icons.
 
-- `url` is the path of the icon, which is relative to the path of `css/style.css`, so you need to go up one level to find the images folder.
+- `url` is the path of the icon, which is relative to the path of `css/main.css`, so you need to go up one level to find the images folder.
 - `rotate` is whether to rotate the icon, the default is `true`.
 - `mask` is whether to use the image as a mask (i.e., only display the outline of the png image), the default is `true`.
 
@@ -804,6 +822,19 @@ v0.1.0 adds the `icon` configuration to the `anchor_icon` configuration for cust
 
 ```yaml
 anchor_icon: # if the icon is empty, the default # icon is used
+```
+
+##### Cursor Icon (v0.5.0+)
+
+v0.5.0 adds the `reimu_cursor.cursor` configuration for customizing the mouse cursor icon. You can fill in a path relative to `css/main.css` to customize the mouse cursor icon.
+
+```yaml
+reimu_cursor:
+  enable: true
+  cursor:
+    default: ../images/cursor/reimu-cursor-default.png
+    pointer: ../images/cursor/reimu-cursor-pointer.png
+    text: ../images/cursor/reimu-cursor-text.png
 ```
 
 </details>
