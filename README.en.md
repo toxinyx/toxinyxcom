@@ -125,7 +125,18 @@ Friend link page
 </details>
 
 <details>
-<summary>Cover, Banner, and favicon</summary>
+<summary>Avatar, Cover, Banner, and favicon</summary>
+
+#### Avatar
+
+#### 头像
+
+Avatar should be saved in `static/avatar/avatar.webp`, and the file name can be modified in `params.yml`
+
+```yaml
+avatar: "avatar.webp"
+```
+
 
 #### Cover
 
@@ -569,7 +580,7 @@ sponsor:
     mask: true # whether to use the images as a mask
   qr:
     - name: 支付宝 # Payment method
-      src: "sponsor/alipay.jpg" # QR code
+      src: "sponsor/alipay.jpg" # QR code path, located in static/sponsor/alipay.jpg
 ```
 
 Besides, you can also control it through the front-matter of the article, which takes precedence over the global configuration

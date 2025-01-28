@@ -138,7 +138,15 @@ weight = 1
 <details>
 <summary>封面、头图和图标</summary>
 
-### 封面、头图和favicon
+### 头像、封面、头图和favicon
+
+#### 头像
+
+头像应保存于 `static/avatar/avatar.webp`，可在 `params.yml` 中修改文件名
+
+```yaml
+avatar: "avatar.webp"
+```
 
 #### 封面
 
@@ -591,7 +599,7 @@ sponsor:
     mask: true # 是否将图片作为遮罩（即只显示 png 图片的轮廓）
   qr:
     - name: 支付宝 # 二维码名称
-      src: "sponsor/alipay.jpg" # 二维码路径，请自行填写
+      src: "sponsor/alipay.jpg" # 示例二维码路径，位于 static/sponsor/aliapy.jpg
 ```
 
 此外，也可以通过文章的 front-matter 控制，其优先级高于全局配置
