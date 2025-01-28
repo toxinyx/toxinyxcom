@@ -127,9 +127,9 @@ Friend link page
 <details>
 <summary>Avatar, Cover, Banner, and favicon</summary>
 
-#### Avatar
+### Avatar, Cover, Banner, and favicon
 
-#### 头像
+#### Avatar
 
 Avatar should be saved in `static/avatar/avatar.webp`, and the file name can be modified in `params.yml`
 

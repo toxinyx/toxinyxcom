@@ -136,7 +136,7 @@ weight = 1
 
 </details>
 <details>
-<summary>封面、头图和图标</summary>
+<summary>头像、封面、头图和图标</summary>
 
 ### 头像、封面、头图和favicon
 
