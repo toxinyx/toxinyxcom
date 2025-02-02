@@ -57,6 +57,7 @@
   justify-content: center;
   align-items: center;
   transition: 0.3s;
+  interpolate-size: allow-keywords;
 
   .hidden {
     display: none;
@@ -367,12 +368,14 @@
 }
 
 .sidebar-menu-link-wrap {
-  margin: 8px 50px;
   display: flex;
   position: relative;
   justify-content: center;
   border: 10px var(--color-red-3-shadow) double;
   transition: border 0.5s;
+  width: 70%;
+  max-width: 200px;
+  margin: 8px auto;
 
   &:hover {
     border: 10px var(--color-h2-after) double;
@@ -458,7 +461,7 @@
 
 .sidebar-toc-wrapper {
   color: var(--color-link);
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 150px);
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -598,8 +601,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
 }
 
 .sidebar-toc-sidebar {
