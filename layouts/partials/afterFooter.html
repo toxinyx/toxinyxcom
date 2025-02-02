@@ -191,6 +191,7 @@
     {{ end }}
     {{ if and (.Store.Get "hasMermaid") .Params.mermaid }}
       {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mermaid "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mermaid)) 0)) }}
+      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.dompurify "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.dompurify)) 0)) }}
       <script data-pjax>
         if (window.mermaid) {
           // https://github.com/mermaid-js/mermaid/issues/1945
@@ -225,8 +226,7 @@
                 els.forEach((element) => {
                   if (element.getAttribute("data-original-code") != null) {
                     element.removeAttribute("data-processed");
-                    element.innerHTML =
-                      element.getAttribute("data-original-code");
+                    element.innerHTML = DOMPurify.sanitize(element.getAttribute("data-original-code"));
                   }
                   count--;
                   if (count == 0) {
