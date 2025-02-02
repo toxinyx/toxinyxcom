@@ -47,6 +47,15 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
     transition: 0.3s;
+    interpolate-size: allow-keywords;
+
+    &.code-closed {
+      pre {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+    }
 
     &:hover {
       box-shadow: 0 0.3125rem 0.625rem -0.125rem var(--highlight-scrollbar);
@@ -89,6 +98,7 @@
     tr td:first-of-type {
       width: 30px;
       padding-right: 10px;
+      vertical-align: top;
 
       pre code {
         color: #666;
@@ -186,12 +196,6 @@
 .code-closed .code-expand {
   transform: rotate(-180deg) !important;
   transition: 0.3s;
-}
-
-.code-closed {
-  pre {
-    display: none;
-  }
 }
 
 .chroma {
