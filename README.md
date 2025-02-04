@@ -223,7 +223,7 @@ cover: rgb(255,117,117)
 banner: "images/banner.webp"
 ```
 
-#### favicon
+#### Favicon
 
 favicon 保存于 `themes/hugo-theme-reimu/static/favicon.ico`，可自行覆盖替换
 
@@ -318,7 +318,8 @@ twikoo:
   region:
 ```
 
-若基于 [giscus](https://giscus.app/zh-CN)，请参考文档完成仓库的配置，并在 `params.yml` 中将 `giscus.enable` 改为 `true`，并填入对应的数据
+若基于 [giscus](https://giscus.app/zh-CN)  
+请参考文档完成仓库的配置，并在 `params.yml` 中将 `giscus.enable` 改为 `true`，并填入对应的数据
 
 ```yml
 giscus:
@@ -489,7 +490,7 @@ pace:
   enable: true
 ```
 
-#### firework
+#### Firework 鼠标特效
 
 默认开启
 
@@ -500,7 +501,7 @@ firework:
 
 具体配置请查看 [mouse-firework](https://github.com/D-Sketon/mouse-firework)
 
-#### pjax
+#### PJAX
 
 默认关闭
 
@@ -509,7 +510,7 @@ pjax:
   enable: false
 ```
 
-> pjax 用于那些需要添加音乐播放器等需要 SPA 的用户。但其仍然属于实验性质，引入后可能会出现诸如**脚本无法执行**、**脚本重复执行**、**页面渲染混乱**等 BUG。请慎重考虑！
+> PJAX 用于那些需要添加音乐播放器等需要 SPA 的用户。但其仍然属于实验性质，引入后可能会出现诸如**脚本无法执行**、**脚本重复执行**、**页面渲染混乱**等 BUG。请慎重考虑！
 
 #### ServiceWorker
 
@@ -520,7 +521,7 @@ service_worker:
   enable: false
 ```
 
-#### live2d
+#### Live2D
 
 默认关闭
 
@@ -530,7 +531,7 @@ live2d:
   position: left # left | right
 ```
 
-#### live2d-widgets
+#### Live2D Widgets
 
 默认关闭
 
@@ -540,7 +541,7 @@ live2d_widgets:
   position: left # left | right
 ```
 
-#### reimu 鼠标指针
+#### Reimu 鼠标指针
 
 默认开启
 
@@ -548,7 +549,7 @@ live2d_widgets:
 reimu_cursor: true
 ```
 
-#### 头图响应式
+#### 响应式头图
 
 默认关闭，打开后并提供对应尺寸的图片和媒体查询可以在一定程度上提高移动端的 LCP
 
@@ -564,7 +565,7 @@ srcset:
     media: "(min-width: 800px)"
 ```
 
-#### quicklink
+#### Quicklink
 
 默认开启，打开后可以在用户停留在页面时预加载链接，提高用户体验
 
@@ -600,7 +601,7 @@ copyright: true # 是否展示版权卡片？
 ---
 ```
 
-#### 过期提醒
+#### 文章过期提醒
 
 默认关闭
 
@@ -690,7 +691,7 @@ player:
       auto:
 ```
 
-#### 分享（v0.5.0+）
+#### 分享链接/卡片（v0.5.0+）
 
 默认关闭，目前支持 `facebook`、`twitter`、`linkedin`、`reddit`、`weibo`、`qq`、`weixin`。
 
