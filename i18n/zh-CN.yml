@@ -55,3 +55,8 @@ service_worker:
   cancel: 取消
 
 sponsor: 赞助
+
+home_categories:
+  count:
+    one: "{{- . }} 篇文章"
+    other: "{{- . }} 篇文章"

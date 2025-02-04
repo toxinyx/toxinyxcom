@@ -681,6 +681,19 @@ share:
 
 `weixin` 状态下会生成带有二维码的分享卡片，可保存到本地后分享到微信朋友圈（注意，当文章封面存在跨域问题时无法使用 html-to-image 正确生成含图片的卡片！）
 
+#### 首页目录卡片（v0.6.0+）
+
+默认关闭，打开后可以在首页展示目录卡片，用于代替 widget 中的目录
+```yml
+home_categories:
+  enable: false # 是否展示首页目录卡片？
+  content:
+    - categories: # 目录名称，字符串类型
+      cover: # 卡片封面，不填则使用随机封面
+    - categories:
+      cover:
+```
+
 </details>
 
 <details>

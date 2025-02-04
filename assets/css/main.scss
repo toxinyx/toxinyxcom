@@ -245,6 +245,10 @@ body {
 @import "partials/live2d-widgets";
 {{ end }}
 
+{{ if $params.home_categories.enable }}
+@import "partials/home-categories";
+{{ end }}
+
 {{ if reflect.IsSlice $params.share }}
 @import "partials/share";
 {{ end }}

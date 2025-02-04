@@ -424,6 +424,15 @@ share:
   # - qq
   # - weixin
 
+# show categories card on home page
+home_categories:
+  enable: false
+  content:
+    - categories: # string (single-layer category) or array (multi-layer category)
+      cover: # empty means random cover
+    - categories:
+      cover:
+
 ########################################
 # Experimental features
 ########################################

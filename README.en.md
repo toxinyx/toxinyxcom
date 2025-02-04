@@ -662,6 +662,20 @@ share:
 
 `weixin` will generate a share card with a QR code, which can be saved locally and shared to WeChat Moments (Note: When there is a cross-domain issue with the article cover, html-to-image cannot correctly generate a card with an image!)
 
+#### home categories card (v0.6.0+)
+
+Disable by default, enable it to display the category card on the homepage, which can replace the directory in the widget
+
+```yaml
+home_categories:
+  enable: false # Whether to display the home category card?
+  content:
+    - categories: # Category name, string type
+      cover: # Card cover, if not filled in, a random cover will be used
+    - categories:
+      cover:
+```
+
 </details>
 
 
