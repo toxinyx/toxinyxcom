@@ -314,7 +314,7 @@
         <script data-pjax>
           var renderMath = () => {
             if (!window.renderMathInElement) return;
-            window.renderMathInElement(document.body, {
+            window.renderMathInElement(_$("article"), {
               delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "\\[", right: "\\]", display: true },

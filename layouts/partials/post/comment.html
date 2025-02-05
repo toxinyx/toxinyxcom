@@ -31,7 +31,7 @@
 {{ end }}
 
 {{ if and $params.waline.enable $params.waline.serverURL }}
-<script data-pjax  type="module">
+<script data-pjax type="module">
   const { init } = await safeImport('{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.waline "ctx" $site)) 0 }}', '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.waline "ctx" $site)) 0 }}');
   if(_$('.wcomment')) {
     window.walineInstance = init({
@@ -47,7 +47,7 @@
       pageSize: {{ $params.waline.pageSize }},
       dark: 'html[data-theme="dark"]',
       pageview: {{ $params.waline.pageview }},
-  });
+    });
   }
 </script>
 {{ end }}
