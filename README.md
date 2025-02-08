@@ -32,7 +32,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - ✨ 完整的博客功能
 - 🔄 兼容 Hugo 0.116.0 及以上版本
 - 📱 响应式布局
-- 🎨 黑暗模式支持
+- 🌙 暗黑模式支持
 
 ### 代码与数学
 - 🖥️ 代码高亮与复制
@@ -58,7 +58,6 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - Meting
 - 🖼️ 图片懒加载
 - ⚡ 加载动画
-- 🌙 暗黑模式
 - 🖱️ 鼠标特效：
   - 动画效果
   - 灵梦鼠标指针

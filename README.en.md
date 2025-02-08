@@ -33,7 +33,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - ✨ Full blog functionality
 - 🔄 Compatible with Hugo 0.116.0+
 - 📱 Responsive layout
-- 🎨 Dark mode support
+- 🌙 Dark mode support
 
 ### Code & Math
 - 🖥️ Code highlighting and copying
@@ -59,7 +59,6 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - Meting
 - 🖼️ Lazy loading for images
 - ⚡ Loading animations
-- 🌙 Dark mode
 - 🖱️ Mouse effects:
   - Animation effects
   - Reimu cursor style
