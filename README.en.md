@@ -445,7 +445,7 @@ RSS is built-in, no additional configuration needed.
 Icons default to using the iconfont provided by this project:
 
 ```yml
-icon_font: 4552607_bq08450reo
+icon_font: 4552607_0khxww3tj3q9
 ```
 
 If you want to continue using FontAwesome icons, set `icon_font` to `false`. This will use the corresponding FontAwesome configuration from `vendor.yml`:
@@ -464,9 +464,21 @@ fontawesome:
 </details>
 
 <details>
-<summary>Advanced features</summary>
+<summary>Extended features</summary>
 
-### Advanced features
+### Extended features
+
+#### Dark Mode
+
+The default setting is `auto`, which automatically switches based on the user's system settings. It can be set to `true` or `false` to change the default state.
+
+```yaml
+dark_mode:
+  # true means that the dark mode is enabled by default
+  # false means that the dark mode is disabled by default
+  # auto means that the dark mode is automatically switched according to the system settings
+  enable: auto # true | false | auto
+```
 
 #### Pace Progress Bar
 

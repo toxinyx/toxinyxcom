@@ -88,6 +88,11 @@ $icon-url: "//at.alicdn.com/t/c/font_#{$icon_font}.woff2";
   content: "\e617";
 }
 
+#nav-circle-half-stroke-btn:before {
+  font-family: $font-icon;
+  content: "\e641";
+}
+
 .icon-copy:before {
   font-family: $font-icon;
   content: "\e60c";

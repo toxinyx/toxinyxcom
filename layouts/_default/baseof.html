@@ -1,7 +1,13 @@
 <!doctype html>
 <html
-  lang="{{ .Site.LanguageCode }}"
-  {{ if .Site.Params.dark_mode.enable }}data-theme="dark"{{ end }}
+  lang="{{ .Site.LanguageCode }}" 
+  {{ if eq .Site.Params.dark_mode.enable true }}
+    data-theme-mode="true"
+  {{ else if eq .Site.Params.dark_mode.enable false }}
+    data-theme-mode="false"
+  {{ else if eq .Site.Params.dark_mode.enable "auto" }}
+    data-theme-mode="auto"
+  {{ end }}
 >
   <head>
     {{ partial "head.html" . }}
