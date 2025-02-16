@@ -159,14 +159,17 @@
     }
   }
 
+  img {
+    opacity: 0;
+    transition: 0.3s;
+  }
+
   img,
   video {
     max-width: 100%;
     height: auto;
     display: block;
     margin: auto;
-    opacity: 0;
-    transition: 0.3s;
   }
 
   img.lazyloaded {
