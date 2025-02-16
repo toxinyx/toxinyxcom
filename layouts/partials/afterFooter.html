@@ -402,6 +402,7 @@
   {{ if not $params.player.meting.enable }}
     <script>
       const ap = new APlayer({
+          theme: "var(--color-link)",
           container: document.getElementById('aplayer'),
           audio: JSON.parse({{ $params.player.aplayer.options.audio | jsonify }}) || [],
           fixed: {{ $params.player.aplayer.options.fixed }} || false,
@@ -412,6 +413,7 @@
           volume: {{ $params.player.aplayer.options.volume }} || 0.7,
           mutex: {{ $params.player.aplayer.options.mutex }} || true,
           listFolded: {{ $params.player.aplayer.options.listFolded }} || false,
+          lrcType: {{ $params.player.aplayer.options.lrcType }} || 0,
       });
     </script>
   {{ end }}

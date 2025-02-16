@@ -660,6 +660,7 @@ player:
       volume:
       mutex:
       listFolded:
+      lrcType:
 ```
 
 ##### Aplayer + Meting
@@ -680,6 +681,7 @@ player:
       volume:
       mutex:
       listFolded:
+      lrcType:
   meting:
     enable: true
     meting_api: # custom api
