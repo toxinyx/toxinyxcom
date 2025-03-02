@@ -48,7 +48,7 @@
   justify-content: center;
   overflow: hidden;
   background: var(--color-header-background);
-  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px 3px var(--color-hover-shadow);
   transition: background 1s, top 0.3s;
   z-index: 200;
 
