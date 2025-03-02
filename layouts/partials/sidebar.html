@@ -1,4 +1,7 @@
 <aside id="sidebar">
+  {{ if .Site.Params.injector.sidebar_begin }}
+    {{ .Site.Params.injector.sidebar_begin | safeHTML }}
+  {{ end }}
   {{ if and .Site.Params.player.aplayer.enable (not .Site.Params.player.meting.enable) (not .Site.Params.player.aplayer.options.fixed)  }}
     <div id="aplayer" theme="var(--color-link)" data-aos="{{ .Site.Params.animation.options.home.sidebar }}"></div>
   {{ end }}
@@ -53,4 +56,7 @@
       {{ end }}
     {{ end }}
   </div>
+  {{ if .Site.Params.injector.sidebar_end }}
+    {{ .Site.Params.injector.sidebar_end | safeHTML }}
+  {{ end }}
 </aside>
