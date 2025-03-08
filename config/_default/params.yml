@@ -130,7 +130,10 @@ widgets:
   - recent_posts
 
 # Widget behavior
+category_limits: 10
+tag_limits: 10
 recent_posts_limits: 5
+tagcloud_limits: 20
 
 ########################################
 # CSS

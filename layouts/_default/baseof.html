@@ -22,7 +22,7 @@
     {{ if .Site.Params.injector.body_begin }}
       {{ .Site.Params.injector.body_begin | safeHTML }}
     {{ end }}
-    {{ partial "loader.html" . }}
+    {{ partialCached "loader.html" . }}
     <div id="container">
       <div id="wrap">
         {{ partial "header.html" . }}
@@ -54,7 +54,7 @@
             >
           </meting-js>
         {{ end }}
-        {{ partial "footer.html" . }}
+        {{ partialCached "footer.html" . }}
         {{ if .Site.Params.top.enable }}
           <div class="sidebar-top">
             <div class="sidebar-top-taichi {{ if .Site.Params.top.icon.rotate }}rotate{{ end }}"></div>

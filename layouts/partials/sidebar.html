@@ -34,10 +34,10 @@
           {{ partial "sidebar/tocBar.html" . }}
         </div>
         <div class="sidebar-common-sidebar hidden">
-          {{ partial "sidebar/commonBar.html" . }}
+          {{ partialCached "sidebar/commonBar.html" . }}
         </div>
       {{ else }}
-        {{ partial "sidebar/commonBar.html" . }}
+        {{ partialCached "sidebar/commonBar.html" . }}
       {{ end }}
 
       {{ if in .Site.Params.mainSections .Type }}
@@ -52,7 +52,7 @@
   <div class="sidebar-widget">
     {{ if and (not (in .Site.Params.mainSections .Type)) .Site.Params.widgets }}
       {{ range .Site.Params.widgets }}
-        {{ partial (printf "widget/%s.html" .) $ }}
+        {{ partialCached (printf "widget/%s.html" .) $ }}
       {{ end }}
     {{ end }}
   </div>

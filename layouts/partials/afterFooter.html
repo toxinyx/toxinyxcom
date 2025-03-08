@@ -300,7 +300,7 @@
           window.addEventListener('lightbox:ready', pswp);
         }
       </script>
-      {{ partial "post/comment.html" . }}
+      {{ partialCached "post/comment.html" . }}
       {{ if and (reflect.IsSlice .Site.Params.share) (in .Site.Params.share "weixin") }}
         {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.qrcode "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.qrcode)) 0)) }}
         {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.html2image "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.html2image)) 0)) }}
