@@ -84,6 +84,8 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 
 ## Installation
 
+> For beginners, you can directly use [hugo-reimu-template](https://github.com/D-Sketon/hugo-reimu-template). You only need to clone the repository and modify the configuration to get a basic blog!
+
 ```bash
 cd themes
 git clone --single-branch --branch main https://github.com/D-Sketon/hugo-theme-reimu.git

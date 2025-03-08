@@ -83,6 +83,8 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 
 ## 安装
 
+> 纯小白可以直接使用 [hugo-reimu-template](https://github.com/D-Sketon/hugo-reimu-template)。只需 克隆仓库-修改配置 即可获得一个基本的博客！
+
 ```bash
 cd themes
 git clone --single-branch --branch main https://github.com/D-Sketon/hugo-theme-reimu.git
