@@ -945,6 +945,10 @@ Both formats are supported. It's recommended to use SRI verification for externa
 
 </details>
 
+## Contributors
+
+[![](https://contributors-img.web.app/image?repo=D-Sketon/hugo-theme-reimu)](https://github.com/D-Sketon/hugo-theme-reimu/graphs/contributors)
+
 ## License
 
 MIT

@@ -956,6 +956,10 @@ js:
 以上两种形式均支持，建议对外部 CDN 资源使用 SRI 校验，以确保资源的完整性。
 </details>
 
+## 贡献者
+
+[![](https://contributors-img.web.app/image?repo=D-Sketon/hugo-theme-reimu)](https://github.com/D-Sketon/hugo-theme-reimu/graphs/contributors)
+
 ## 许可
 
 MIT
