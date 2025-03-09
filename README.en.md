@@ -86,16 +86,32 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 
 > For beginners, you can directly use [hugo-reimu-template](https://github.com/D-Sketon/hugo-reimu-template). You only need to clone the repository and modify the configuration to get a basic blog!
 
+### Method 1: Hugo Module (Recommended)
+
+Suitable for users familiar with the Go ecosystem, supports version management and automatic updates.
+
 ```bash
-cd themes
-git clone --single-branch --branch main https://github.com/D-Sketon/hugo-theme-reimu.git
+hugo new site quickstart
+cd quickstart
+hugo mod init github.com/<your-github-username>/quickstart  # Replace <your-github-username> with your actual GitHub username
+echo 'theme = ["github.com/D-Sketon/hugo-theme-reimu"]' >> hugo.toml
+hugo server
 ```
 
-And modify the theme in `hugo.toml`
+### Method 2: Git Submodule
 
-```toml
-theme = 'hugo-theme-reimu'
+Suitable for users who prefer manual management of theme versions.
+
+```bash
+hugo new site quickstart
+cd quickstart
+git init
+git submodule add https://github.com/D-Sketon/hugo-theme-reimu.git themes/reimu
+echo 'theme = "reimu"' >> hugo.toml
+hugo server
 ```
+
+Choose the installation method that suits you best, and you can start using **Hugo Theme Reimu** right away!
 
 ## Usage
 
