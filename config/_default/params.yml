@@ -135,6 +135,9 @@ tag_limits: 10
 recent_posts_limits: 5
 tagcloud_limits: 20
 
+# Archive behavior
+only_show_capsule_in_index: false # If you have hugo amounts of tags and categories, you can set this to true to only show the capsule in the index page for better performance
+
 ########################################
 # CSS
 ########################################
