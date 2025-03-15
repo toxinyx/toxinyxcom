@@ -52,6 +52,10 @@ avatar: "avatar.webp"
 # Its priority is lower than the cover in the Front-matter
 cover: # https://example.com / false / rgb(255,117,117)
 
+# Control the display of the post toc
+# Its priority is lower than the toc in the Front-matter
+toc: true
+
 # Open Graph
 open_graph:
   enable: true

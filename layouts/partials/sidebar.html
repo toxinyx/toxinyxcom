@@ -30,21 +30,31 @@
       data-aos="{{ .Site.Params.animation.options.home.sidebar }}"
     >
       {{ if in .Site.Params.mainSections .Type }}
-        <div class="sidebar-toc-sidebar">
-          {{ partial "sidebar/tocBar.html" . }}
-        </div>
-        <div class="sidebar-common-sidebar hidden">
+        {{ if eq .Params.toc false }}
           {{ partialCached "sidebar/commonBar.html" . }}
-        </div>
+        {{ else if and (ne .Params.toc true) (eq .Site.Params.toc false) }}
+          {{ partialCached "sidebar/commonBar.html" . }}
+        {{ else }}
+          <div class="sidebar-toc-sidebar">
+            {{ partial "sidebar/tocBar.html" . }}
+          </div>
+          <div class="sidebar-common-sidebar hidden">
+            {{ partialCached "sidebar/commonBar.html" . }}
+          </div>
+        {{ end }}
       {{ else }}
         {{ partialCached "sidebar/commonBar.html" . }}
       {{ end }}
 
       {{ if in .Site.Params.mainSections .Type }}
-        <div class="sidebar-btn-wrapper" style="position:static">
-          <div class="sidebar-toc-btn current"></div>
-          <div class="sidebar-common-btn"></div>
-        </div>
+        {{ if eq .Params.toc false }}
+        {{ else if and (ne .Params.toc true) (eq .Site.Params.toc false) }}
+        {{ else }}
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        {{ end }}
       {{ end }}
     </div>
   </div>
