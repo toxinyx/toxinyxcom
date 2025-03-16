@@ -100,6 +100,10 @@ declare global {
   var Pjax: any;
   var QRCode: any;
   var htmlToImage: any;
+  var materialTheme: any;
+  var bannerElement: HTMLImageElement | undefined;
+  var generateSchemeHandler: () => void;
+  var throttle:  (func: (...args: any[]) => void, limit: number) => (...args: any[]) => void;
   /**
    * Lightbox status
    */

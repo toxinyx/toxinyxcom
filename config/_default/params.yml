@@ -547,3 +547,13 @@ player:
 pangu:
   # more information: https://github.com/vinta/pangu.js 
   enable: false  # enable pangu.js to add space between Chinese and English
+
+########################################
+# Material Theme
+########################################
+
+# experimental, may have a lot of bugs, open with caution!
+# A dynamic color generation tool based on Google's Material You design guidelines, capable of extracting primary colors from any image and generating complete light and dark color schemes.
+material_theme:
+  # more information: https://github.com/2061360308/material-theme
+  enable: false # enable material_theme to generate dynamic color schemes based on the banner image
