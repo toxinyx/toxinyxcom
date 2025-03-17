@@ -47,8 +47,8 @@ js:
     src: webcache|mermaid@9.4.3/dist/mermaid.min.js
     integrity: sha384-aG3Gai4tbCHF0iXo48HwLoOZyut7mBl50oMC9GD1m75xyHfJDv6w8hD/kZRD47aJ
   firework:
-    src: webcache|mouse-firework@0.1.0/dist/index.umd.js
-    integrity: sha384-KM6i7tu43nYd6e0beIljxHMC5tZc58XBDu7pPA58w50h18Jsx7gLdimfS09RXlKv
+    src: webcache|mouse-firework@0.1.1/dist/index.umd.js
+    integrity: sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d
   pjax:
     src: webcache|theme-shokax-pjax@0.0.3/dist/index.umd.js
     integrity: sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD+jAPU55x/jj3wlf

@@ -377,7 +377,7 @@ firework:
       - shape: circle
         move: ["emit"]
         easing: easeOutExpo
-        colors: ["#ff5252", "#ff7c7c", "#ffafaf", "#ffd0d0"]
+        colors: ["var(--red-1)", "var(--red-2)", "var(--red-3)", "var(--red-4)"]
         number: 20
         duration: [1200, 1800]
         shapeOptions:
@@ -386,7 +386,7 @@ firework:
       - shape: circle
         move: ["diffuse"]
         easing: easeOutExpo
-        colors: ["#ff0000"]
+        colors: ["var(--red-0)"]
         number: 1
         duration: [1200, 1800]
         shapeOptions:
