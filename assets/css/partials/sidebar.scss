@@ -125,7 +125,7 @@
   padding: 25px 0;
   color: var(--red-0);
   opacity: 0.8;
-  transition: opacity 0.5s;
+  transition: opacity 0.5s, color 0.5s;
 
   &:hover {
     opacity: 1;
@@ -356,7 +356,7 @@
   color: var(--color-link);
   opacity: 0.8;
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, color 0.2s;
   display: block;
   padding: 10px 15px;
   font-weight: 700;
@@ -372,7 +372,7 @@
   position: relative;
   justify-content: center;
   border: 10px var(--color-red-3-shadow) double;
-  transition: border 0.5s;
+  transition: border 0.5s, background 0.5s, color 0.5s;
   width: 70%;
   max-width: 200px;
   margin: 8px auto;
@@ -398,7 +398,7 @@
   @include menu-link;
   font-size: 24px;
   font-weight: 400;
-  transition: transform 0.3s;
+  transition: transform 0.3s, color 0.3s, opacity 0.3s;
   will-change: transform;
 
   &.rotate {

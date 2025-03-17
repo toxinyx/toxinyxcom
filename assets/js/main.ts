@@ -142,24 +142,24 @@ window.throttle = (func: (...args: any[]) => void, limit: number) => {
     async function generateScheme(imageFile: HTMLImageElement) {
       const scheme = await extractor.generateThemeSchemeFromImage(imageFile);
       extractor.applyTheme(scheme, {
-        target: document.body,
-        dark: document.documentElement.dataset.theme === "dark",
+        target: document.documentElement,
+        brightnessSuffix: true
       });
 
-      const existingStyle = _$("reimu-generated-theme-style");
+      const existingStyle = _$("#reimu-generated-theme-style");
       if (existingStyle) {
         return;
       }
       const css = `
-    body {
-      --red-0: var(--md-sys-color-primary);
-      --red-1: color-mix(in srgb, var(--md-sys-color-primary) 90%, white);
-      --red-2: color-mix(in srgb, var(--md-sys-color-primary) 75%, white);
-      --red-3: color-mix(in srgb, var(--md-sys-color-primary) 55%, white);
-      --red-4: color-mix(in srgb, var(--md-sys-color-primary) 40%, white);
-      --red-5: color-mix(in srgb, var(--md-sys-color-primary) 15%, white);
-      --red-5-5: color-mix(in srgb, var(--md-sys-color-primary) 10%, white);
-      --red-6: color-mix(in srgb, var(--md-sys-color-primary) 5%, white);
+    :root {
+      --red-0: var(--md-sys-color-primary-light);
+      --red-1: color-mix(in srgb, var(--md-sys-color-primary-light) 90%, white);
+      --red-2: color-mix(in srgb, var(--md-sys-color-primary-light) 75%, white);
+      --red-3: color-mix(in srgb, var(--md-sys-color-primary-light) 55%, white);
+      --red-4: color-mix(in srgb, var(--md-sys-color-primary-light) 40%, white);
+      --red-5: color-mix(in srgb, var(--md-sys-color-primary-light) 15%, white);
+      --red-5-5: color-mix(in srgb, var(--md-sys-color-primary-light) 10%, white);
+      --red-6: color-mix(in srgb, var(--md-sys-color-primary-light) 5%, white);
     
       --color-border: var(--red-3);
       --color-link: var(--red-1);
@@ -169,12 +169,16 @@ window.throttle = (func: (...args: any[]) => void, limit: number) => {
       --color-red-3-shadow: var(--red-3);
     }
     
-    [data-theme="dark"]:root body {
+    [data-theme="dark"]:root {
       --red-0: var(--red-1);
-      --red-4: color-mix(in srgb, var(--md-sys-color-primary) 30%, transparent);
-      --red-5: color-mix(in srgb, var(--md-sys-color-primary) 20%, transparent);
-      --red-5-5: color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
-      --red-6: color-mix(in srgb, var(--md-sys-color-primary) 5%, transparent);
+      --red-1: color-mix(in srgb, var(--md-sys-color-primary-dark) 90%, white);
+      --red-2: color-mix(in srgb, var(--md-sys-color-primary-dark) 80%, white);
+      --red-3: color-mix(in srgb, var(--md-sys-color-primary-dark) 75%, white);
+      --red-4: color-mix(in srgb, var(--md-sys-color-primary-dark) 30%, transparent);
+      --red-5: color-mix(in srgb, var(--md-sys-color-primary-dark) 20%, transparent);
+      --red-5-5: color-mix(in srgb, var(--md-sys-color-primary-dark) 10%, transparent);
+      --red-6: color-mix(in srgb, var(--md-sys-color-primary-dark) 5%, transparent);
+      
       --color-border: var(--red-5);
     }
     `;
@@ -200,15 +204,6 @@ window.throttle = (func: (...args: any[]) => void, limit: number) => {
         }
       }
     };
-
-    document.body.addEventListener(
-      "dark-theme-set",
-      window.generateSchemeHandler,
-    );
-    document.body.addEventListener(
-      "light-theme-set",
-      window.generateSchemeHandler,
-    );
   }
 })();
 
