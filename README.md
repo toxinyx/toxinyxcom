@@ -148,6 +148,7 @@ defaultContentLanguage = 'zh-CN'
 [languages.zh-CN]
 languageName = '简体中文'
 weight = 1
+hasCJKLanguage = true
 ```
 
 </details>
