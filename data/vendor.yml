@@ -98,7 +98,7 @@ css:
   photoswipe: webcache|photoswipe@5.4.4/dist/photoswipe.css
   katex: webcache|katex@0.16.9/dist/katex.min.css
   waline: webcache|@waline/client@2.15.8/dist/waline.css
-  gitalk: webcache|gitalk/dist/gitalk.css
+  gitalk: webcache|gitalk@1.8.0/dist/gitalk.css
   fontawesome:
     high_priority:
       - webcache|@fortawesome/fontawesome-free@6.5.1/css/regular.min.css
