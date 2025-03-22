@@ -19,7 +19,7 @@
   -}}
 {{- end -}}
 
-
+{{ partial "helpers/scss.html" (dict "source" "css/heat-map.scss" "temp" "heat-map.scss" "target" "css/heat-map.css" "ctx" .) }}
 <div id="heatmap"></div>
 
 <script>
@@ -56,157 +56,6 @@ function getTooltip(contributionDay, contributionDate) {
   const wordText = pluralize(contributionDay.count, "word");
 
   return `${postText} ${wordText} on ${formattedDate}`;
-}
-
-function setStyle() {
-  const styleText = `
-    .outer-box {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .calendar-container  {
-      display: grid;
-      grid-template-columns: auto repeat(53, 10px);
-      grid-template-rows: auto repeat(7, 10px) auto;
-      gap: 3px;
-
-      width: fit-content;
-      font-size: 12px;
-      padding: 14px;
-      border: solid 1px #d1d9e0;
-      border-radius: 0.375rem;
-    }
-
-    .month {
-      grid-row: 1/2;
-      margin-bottom: -3px;
-    }
-
-    .week {
-      grid-row: 3;
-      grid-column: 1/2;
-      line-height: 10px;
-      margin-right: 3px;
-    }
-    .week + .week {
-      grid-row: 5;
-    }
-    .week + .week + .week {
-      grid-row: 7;
-    }
-
-    .tiles {
-      grid-column: 2/55;
-      grid-row: 2/9;
-
-      display: grid;
-      grid-auto-flow: column;
-      grid-template-columns: subgrid;
-      grid-template-rows: subgrid;
-    }
-
-    .tile {
-      display: block;
-      width: 10px;
-      height: 10px;
-      border-radius: 2px;
-      outline: 1px solid rgba(27, 35, 36, 0.06);
-      outline-offset: -1px;
-    }
-    .tile[data-level="0"] {
-      background: color-mix(in srgb, var(--red-0) 10%, white);
-    }
-    .tile[data-level="1"] {
-      background: color-mix(in srgb, var(--red-0) 40%, white);
-    }
-    .tile[data-level="2"] {
-      background: color-mix(in srgb, var(--red-0) 80%, white);
-    }
-    .tile[data-level="3"] {
-      background: var(--red-0)
-    }
-    .tile[data-level="4"] {
-      background: color-mix(in srgb, var(--red-0) 80%, black);
-    }
-
-    .total {
-      grid-column: 2/30;
-      grid-row: 9;
-      margin-top: 4px;
-    }
-
-    .legend {
-      grid-column: 30/53;
-      grid-row: 9;
-      margin-top: 4px;
-
-      display: flex;
-      gap: 5px;
-      justify-content: right;
-      align-items: center;
-    }
-
-    .year-select {
-      height: 140px;
-      padding: 5px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      justify-items: center;
-      gap: 4px;
-    }
-
-    .year-option {
-      padding: 5px 20px;
-      border-radius: 0.375rem;
-      cursor: pointer;
-    }
-
-    .year-option:hover {
-      background-color: color-mix(in srgb, var(--red-0) 20%, white);
-    }
-
-    .year-option.active {
-      background-color: color-mix(in srgb, var(--red-0) 50%, white);
-    }
-
-
-    @media screen and (max-width: 768px) {
-      .year-select {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        align-items: center;
-      }
-
-      .outer-box {
-        flex-direction: column;
-      }
-
-      .inner-box {
-        width: 100%;
-        overflow-x: auto;
-      }
-    }
-  `;
-  const styleId = "calendar-style";
-  let styleInserted = document.getElementById(styleId) !== null;
-  if (!styleInserted) {
-    const style = document.createElement("style");
-    style.id = styleId;
-    style.textContent = styleText;
-    if (document.head.firstChild) {
-      document.head.insertBefore(style, document.head.firstChild);
-    } else {
-      document.head.appendChild(style);
-    }
-  }
 }
 
 function createCalendar(selector, contributionData) {
@@ -310,9 +159,6 @@ function createCalendar(selector, contributionData) {
 
   // 初始化显示当前年份的日历
   generateYearContributions(currentDisplayYear);
-
-  // 添加样式
-  setStyle();
 }
 
 function completeContributionData(userData) {
