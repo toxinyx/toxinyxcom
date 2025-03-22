@@ -1,3 +1,57 @@
+## v0.8.0
+
+### 特性
+
+- 新增了 `heatMapCard` shortcode 用于展示文章热力图
+  ```yaml
+  {{< heatMapCard levelStandard="?" >}}
+  ```
+  其中第一个参数为热力图的等级标准（按照文章字数分级），默认为 `"1000,5000,10000"`
+- 新增了 `material_theme` 配置，打开后会基于 Google's Material You 的设计规范根据文章头图的主色调动态生成主题色
+  ```yml
+  material_theme:
+    enable: false # true | false
+  ```
+
+  > 注意：当开启该功能时，会在 banner 的 img 元素上添加 `crossorigin="anonymous"` 属性，以获取图片的主色调，所以请确保你的图片服务器支持跨域访问，或使用第三方图片代理。
+- `vendor.yml` 中新增 `local` 字段用于从本地读取资源
+  ```yaml
+  local: /resources/ # 本地资源路径，如果 baseURL 包含子目录，需要在前面加上子目录
+  ```
+  将 `:cdn` 替换为 `local` 即可从本地读取资源
+  ```yaml
+  clipboard: 
+    src: local|clipboard@2.0.11/dist/clipboard.min.js
+    integrity: sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q
+  ```
+
+---
+
+### Features
+
+- Added the `heatMapCard` shortcode to display an article heatmap
+  ```yaml
+  {{< heatMapCard levelStandard="?" >}}
+  ```
+  The first parameter is the level standard for the heatmap (graded based on the word count of the articles), with the default value being `"1000,5000,10000"`.
+- Added the `material_theme` configuration, which dynamically generates theme colors based on the dominant color of the article's banner image, following Google's Material You design guidelines when enabled
+  ```yml
+  material_theme:
+    enable: false # true | false
+  ```
+
+  > Note: When this feature is enabled, the `crossorigin="anonymous"` attribute will be added to the `img` element of the banner to fetch the dominant color of the image. Please ensure your image server supports cross-origin access or use a third-party image proxy.
+- Added the `local` field in `vendor.yml` to load resources locally
+  ```yaml
+  local: /resources/ # Local resource path. If baseURL includes a subdirectory, prepend the subdirectory.
+  ```
+  Replace `:cdn` with `local` to load resources locally
+  ```yaml
+  clipboard: 
+    src: local|clipboard@2.0.11/dist/clipboard.min.js
+    integrity: sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q
+  ```
+
 ## v0.7.0
 
 **2025-03-16**
