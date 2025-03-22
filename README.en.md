@@ -9,7 +9,7 @@
   💘 Hakurei Reimu 💘
   </p>
 
-[Demo](https://d-sketon.github.io/hugo-theme-reimu)
+[Demo](https://d-sketon.github.io/hugo-theme-reimu) | [Change Log](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/CHANGELOG.md)
 
 [简体中文](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/README.md) | English
 
@@ -78,8 +78,10 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - Internal links
   - External links
   - Friend links
+  - Heatmap
+- 🎨 Dynamic theme color adaptation
 - ©️ Article copyright declaration
-- 🌐 Custom CDN source configuration
+- 🌐 Custom CDN source / local source configuration
 - 🎨 Share card functionality
 
 ## Installation

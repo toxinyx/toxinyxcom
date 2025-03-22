@@ -8,7 +8,7 @@
   💘 博麗 霊夢 💘
   </p>
 
-[演示网站](https://d-sketon.github.io/hugo-theme-reimu) | [迁移指南](https://d-sketon.github.io/20241110/hexo-to-hugo-guide/)
+[演示网站](https://d-sketon.github.io/hugo-theme-reimu) | [迁移指南](https://d-sketon.github.io/20241110/hexo-to-hugo-guide/) | [Change Log](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/CHANGELOG.md)
 
 简体中文 | [English](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/README.en.md)
 
@@ -77,8 +77,10 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - 内部链接
   - 外部链接
   - 友情链接
+  - 热力图
+- 🎨 动态适配主题色
 - ©️ 文章版权声明
-- 🌐 自定义 CDN 源配置
+- 🌐 自定义 CDN 源 / 本地配置
 - 🎨 分享卡片功能
 
 ## 安装
