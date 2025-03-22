@@ -19,6 +19,7 @@
   -}}
 {{- end -}}
 
+
 <div id="heatmap"></div>
 
 <script>
@@ -37,40 +38,27 @@ const MONTH_NAMES = [
   "Dec",
 ];
 
+const pluralize = (num, word) => (`${num} ${word}${num <= 1 ? '' : 's'}`);
+
 function getTooltip(contributionDay, contributionDate) {
   // 修正日期转换逻辑，确保日期一致
-  const formattedDate = new Date(contributionDate.getTime() - contributionDate.getTimezoneOffset() * 60000)
+  const formattedDate = new Date(
+    contributionDate.getTime() - contributionDate.getTimezoneOffset() * 60000,
+  )
     .toISOString()
     .split("T")[0];
 
-  switch (contributionDay.count) {
-    case 0:
-      return `No writing on ${formattedDate}`;
-    case 1:
-      switch (contributionDay.post) {
-        case 1:
-          return `1 post 1 word on ${formattedDate}`;
-        default:
-          return `${contributionDay.post} posts 1 word and on ${formattedDate}`;
-      }
-    default:
-      switch (contributionDay.post) {
-        case 1:
-          return `1 post ${contributionDay.count} words on ${formattedDate}`;
-        default:
-          return `${contributionDay.post} posts ${contributionDay.count} words and on ${formattedDate}`;
-      }
+  if (contributionDay.count === 0) {
+    return `No writing on ${formattedDate}`;
   }
+
+  const postText = pluralize(contributionDay.post, "post");
+  const wordText = pluralize(contributionDay.count, "word");
+
+  return `${postText} ${wordText} on ${formattedDate}`;
 }
 
-function setStyle(calendarContainerClassName) {
-  // if (!calendarCustomColor) calendarCustomColor = "#30a14e";
-  // const lightestColor = getAdjustedColor(calendarCustomColor, 0.1);
-  // const lightColor = getAdjustedColor(calendarCustomColor, 0.5);
-  // const mediumColor = getAdjustedColor(calendarCustomColor, 0.8);
-  // const darkestColor = getAdjustedColor(calendarCustomColor, 1.2);
-
-  // console.log(lightestColor, lightColor, mediumColor, darkestColor);
+function setStyle() {
   const styleText = `
     .outer-box {
       width: 100%;
@@ -80,7 +68,7 @@ function setStyle(calendarContainerClassName) {
       align-items: center;
     }
 
-    .${calendarContainerClassName}  {
+    .calendar-container  {
       display: grid;
       grid-template-columns: auto repeat(53, 10px);
       grid-template-rows: auto repeat(7, 10px) auto;
@@ -207,27 +195,6 @@ function setStyle(calendarContainerClassName) {
       }
     }
   `;
-
-  // function getAdjustedColor(color, amount) {
-  //   const factor = amount < 1 ? 1 - amount : amount - 1;
-  //   const [r, g, b] = color
-  //     .slice(1)
-  //     .match(/.{2}/g)
-  //     .map((c) => parseInt(c, 16));
-  //   const newR = Math.round(
-  //     amount < 1 ? r + (255 - r) * factor : r - r * factor
-  //   );
-  //   const newG = Math.round(
-  //     amount < 1 ? g + (255 - g) * factor : g - g * factor
-  //   );
-  //   const newB = Math.round(
-  //     amount < 1 ? b + (255 - b) * factor : b - b * factor
-  //   );
-  //   return `#${newR.toString(16).padStart(2, "0")}${newG
-  //     .toString(16)
-  //     .padStart(2, "0")}${newB.toString(16).padStart(2, "0")}`;
-  // }
-
   const styleId = "calendar-style";
   let styleInserted = document.getElementById(styleId) !== null;
   if (!styleInserted) {
@@ -242,150 +209,113 @@ function setStyle(calendarContainerClassName) {
   }
 }
 
-function createCalendar(
-  selector,
-  contributionData,
-  containerClassName
-) {
+function createCalendar(selector, contributionData) {
   const element = document.querySelector(selector);
-  const outerBox = document.createElement("div");
-  outerBox.className = "outer-box";
-  element.appendChild(outerBox);
 
-  const innerBox = document.createElement("div");
-  innerBox.className = "inner-box";
+  element.innerHTML = `
+    <div class="outer-box">
+      <div class="year-select"></div>
+      <div class="inner-box">
+        <div class="calendar-container">
+          ${["Mon", "Wed", "Fri"].map((t) => `<span class="week">${t}</span>`).join("")}
+          <div class="legend">Less${new Array(5)
+            .fill(0)
+            .map((_, i) => `<i class="tile" data-level="${i}"></i>`)
+            .join("")}More</div>
+          <div class="tiles"></div>
+        </div>
+      </div>
+    </div>
+  `;
 
-  outerBox.appendChild(innerBox);
-  const calendarContainer = document.createElement("div");
-  if (!containerClassName) containerClassName = "calendar-container";
-  calendarContainer.classList.add(containerClassName);
+  const calendarContainer = element.querySelector(".calendar-container");
+  const yearSelector = element.querySelector(".year-select");
+  const tilesContainer = element.querySelector(".tiles");
+
   const allContributionData = completeContributionData(contributionData);
+  const currentDisplayYear = new Date().getFullYear();
 
-  let currentDisplayYear = new Date().getFullYear();
+  yearSelector.innerHTML = Object.keys(allContributionData)
+    .sort((a, b) => b - a)
+    .map(
+      (year) =>
+        `<div class="year-option ${year == currentDisplayYear ? "active" : ""}">${year}</div>`,
+    )
+    .join("");
 
-  // 创建周标签
-  ["Mon", "Wed", "Fri"].forEach((text) => {
-    const weekLabel = document.createElement("span");
-    weekLabel.className = "week";
-    weekLabel.textContent = text;
-    calendarContainer.appendChild(weekLabel);
+  yearSelector.addEventListener("click", ({ target }) => {
+    if (target.classList.contains("year-option")) {
+      document.querySelector(".active")?.classList.remove("active");
+      target.classList.add("active");
+      generateYearContributions(target.textContent);
+    }
   });
-
-  // 添加图例
-  const legend = document.createElement("div");
-  legend.className = "legend";
-  legend.append(
-    "Less",
-    ...Array(5)
-      .fill()
-      .map((_, l) => {
-        const icon = document.createElement("i");
-        icon.className = "tile";
-        icon.dataset.level = l;
-        return icon;
-      }),
-    "More"
-  );
-
-  calendarContainer.appendChild(legend);
-
-  // 添加右侧的年份选择器
-  const availableYears = Object.keys(allContributionData);
-  availableYears.sort((a, b) => b - a);
-  const yearSelector = document.createElement("div");
-  yearSelector.className = "year-select";
-  for (const year of availableYears) {
-    const option = document.createElement("div");
-    option.className = "year-option";
-    if (year == currentDisplayYear) option.classList.add("active");
-    option.textContent = year;
-    option.addEventListener("click", () => {
-      currentDisplayYear = year;
-      yearSelector.querySelectorAll(".year-option").forEach((o) => {
-        o.classList.remove("active");
-      });
-      option.classList.add("active");
-      generateYearContributions(year);
-    })
-    yearSelector.appendChild(option);
-  }
-
-  outerBox.insertBefore(yearSelector, innerBox);
-
-  const tilesContainer = document.createElement("div");
-  tilesContainer.className = "tiles";
 
   const generateYearContributions = (year) => {
     tilesContainer.innerHTML = "";
     calendarContainer.querySelectorAll(".month").forEach((m) => m.remove());
     calendarContainer.querySelectorAll(".total").forEach((t) => t.remove());
-    contributionData = allContributionData[year];
-    const firstDate = new Date(contributionData[0].date);
-    const startRow = firstDate.getDay();
-    const monthLabels = [];
-    let totalStatistical = {
-      count: 0,
-      post: 0
-    };
+    const data = allContributionData[year];
+    const startRow = new Date(data[0].date).getDay();
     let latestMonth = -1;
 
-    // 创建日历格子
-    const tiles = contributionData.map((c, i) => {
-      const date = new Date(c.date);
-      const month = date.getMonth();
-      totalStatistical = {
-        count: totalStatistical.count + c.count,
-        post: totalStatistical.post + c.post
-      };
-      // 处理月份标签
-      if (date.getDay() === 0 && month !== latestMonth) {
-        const gridColumn = 2 + Math.floor((i + startRow) / 7);
-        latestMonth = month;
-        const monthLabel = document.createElement("span");
-        monthLabel.className = "month";
-        monthLabel.textContent = MONTH_NAMES[month];
-        monthLabel.style.gridColumn = gridColumn;
-        monthLabels.push(monthLabel);
-      }
-      // 创建日历格子
-      const tile = document.createElement("i");
-      tile.className = "tile";
-      tile.dataset.level = c.level;
-      tile.title = getTooltip(c, date);
-      return tile;
-    });
+    const monthFragment = document.createDocumentFragment();
+    const tilesFragment = document.createDocumentFragment();
+
+    const [tiles, totalStatistical] = data.reduce(
+      ([tiles, stats], c, i) => {
+        const date = new Date(c.date);
+        const month = date.getMonth();
+
+        // 统计逻辑
+        stats.count += c.count;
+        stats.post += c.post;
+
+        // 处理月份标签
+        if (date.getDay() === 0 && month !== latestMonth) {
+          const gridColumn = 2 + Math.floor((i + startRow) / 7);
+          latestMonth = month;
+          const monthLabel = document.createElement("span");
+          monthLabel.className = "month";
+          monthLabel.textContent = MONTH_NAMES[month];
+          monthLabel.style.gridColumn = gridColumn;
+          monthFragment.append(monthLabel);
+        }
+        // 创建日历格子
+        const tile = document.createElement("i");
+        tile.className = "tile";
+        tile.dataset.level = c.level;
+        tile.title = getTooltip(c, date);
+        tiles.push(tile);
+        return [tiles, stats];
+      },
+      [[], { count: 0, post: 0 }],
+    );
 
     // 处理首格位置
     if (tiles[0]) {
       tiles[0].style.gridRow = startRow + 1;
     }
 
-    // 添加月份标签
-    monthLabels.forEach((month) => calendarContainer.appendChild(month));
-    tiles.forEach((tile) => tilesContainer.appendChild(tile));
-    calendarContainer.appendChild(tilesContainer);
+    tilesFragment.append(...tiles);
 
-    // 添加统计信息
-    const totalLabel = document.createElement("div");
-    totalLabel.className = "total";
-    totalLabel.textContent = `${totalStatistical.post} posts ${totalStatistical.count} words in the last year`;
-    calendarContainer.appendChild(totalLabel);
+    calendarContainer.append(monthFragment);
+    tilesContainer.append(tilesFragment);
+
+    calendarContainer.insertAdjacentHTML(
+      "beforeend",
+      `<div class="total">${pluralize(totalStatistical.post, "post")} ${pluralize(totalStatistical.count, "word")} in ${year}</div>`,
+    );
   };
 
   // 初始化显示当前年份的日历
   generateYearContributions(currentDisplayYear);
 
-  // 添加到页面
-  innerBox.appendChild(calendarContainer);
   // 添加样式
-  setStyle(containerClassName);
+  setStyle();
 }
 
-// export default createCalendar;
-
 function completeContributionData(userData) {
-  const startTime = new Date().getTime();
-
   // 对用户数据按日期排序
   userData.sort((a, b) => a.date - b.date);
 
@@ -395,6 +325,13 @@ function completeContributionData(userData) {
 
   // 初始化结果数组
   const allData = {};
+  // 创建映射表
+  const userDataMap = {};
+  userData.forEach((data) => {
+    const dataDate = new Date(data.date);
+    const key = `${dataDate.getFullYear()}-${dataDate.getMonth()}-${dataDate.getDate()}`;
+    userDataMap[key] = data;
+  });
 
   // 遍历年份
   for (
@@ -402,92 +339,35 @@ function completeContributionData(userData) {
     year <= currentDate.getFullYear();
     year++
   ) {
-    const yearEnd = new Date(year + 1, 0, 1);
+    const [startYear, endYear] =
+      year === currentDate.getFullYear()
+        ? [
+            new Date(
+              new Date(currentDate).setDate(currentDate.getDate() - 365),
+            ),
+            new Date(currentDate.getTime() + 86400000),
+          ]
+        : [new Date(year, 0, 1), new Date(year + 1, 0, 1)];
 
     const yearData = [];
-
-    if (year === currentDate.getFullYear()) {
-      // 最后一年，从当前日期往前推365天
-      const endDate = new Date(currentDate);
-      const startDate = new Date(endDate);
-      startDate.setDate(startDate.getDate() - 365);
-
-      // 使用对象存储用户数据，减少查找时间
-      const userDataMap = {};
-      userData.forEach((data) => {
-        const dataDate = new Date(data.date);
-        const key = `${dataDate.getFullYear()}-${dataDate.getMonth()}-${dataDate.getDate()}`;
-        userDataMap[key] = data;
-      });
-
-      for (
-        let d = new Date(endDate);
-        d >= startDate;
-        d.setDate(d.getDate() - 1)
-      ) {
-        const timestamp = d.getTime();
-        const currentDate = new Date(timestamp);
-        const key = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`;
-        const existingData = userDataMap[key];
-        if (existingData) {
-          yearData.push(existingData);
-        } else {
-          yearData.push({
-            level: 0,
-            date: timestamp,
-            count: 0,
-            post: 0
-          });
-        }
-      }
-    } else {
-      // 非最后一年，生成全年数据
-      // 使用对象存储用户数据，减少查找时间
-      const userDataMap = {};
-      userData.forEach((data) => {
-        const dataDate = new Date(data.date);
-        const key = `${dataDate.getFullYear()}-${dataDate.getMonth()}-${dataDate.getDate()}`;
-        userDataMap[key] = data;
-      });
-
-      for (
-        let d = new Date(year, 0, 1);
-        d < yearEnd;
-        d.setDate(d.getDate() + 1)
-      ) {
-        const timestamp = d.getTime();
-        const currentDate = new Date(timestamp);
-        const key = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`;
-        const existingData = userDataMap[key];
-        if (existingData) {
-          yearData.push(existingData);
-        } else {
-          yearData.push({
-            level: 0,
-            date: timestamp,
-            count: 0,
-            post: 0
-          });
-        }
-      }
+    for (let d = startYear; d < endYear; d.setDate(d.getDate() + 1)) {
+      const key = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+      yearData.push(
+        userDataMap[key] || {
+          level: 0,
+          date: d.getTime(),
+          count: 0,
+          post: 0,
+        },
+      );
     }
-
-    // 对数据按日期排序
-    yearData.sort((a, b) => a.date - b.date);
-
-    // 将年份数据添加到结果数组
     allData[year] = yearData;
   }
-
-  const endTime = new Date().getTime();
-
-  // console.log(`执行时间为：${endTime - startTime} 毫秒`);
   return allData;
 }
 
 // 获取日期数据
 const articleStats = {{ $articlesData }};
-
 
 function getLevelFromWordCount(totalCount) {
   const levelStandard = {{ $levelStandard }}.split(",").map(Number);
@@ -499,34 +379,22 @@ function getLevelFromWordCount(totalCount) {
 }
 
 function transformArticlesData(articlesData) {
-  const mergedByDay = new Map();
-
-  // 1. 按日期归并
-  for (const article of articlesData) {
-    const dateKey = article.date;
-    if (!mergedByDay.has(dateKey)) {
-      mergedByDay.set(dateKey, { count: 0, post: 0 });
-    }
-    mergedByDay.get(dateKey).count += article.wordcount;
-    mergedByDay.get(dateKey).post += 1;
-  }
-
-  // 2. 生成目标格式
-  const result = [];
-  for (const [dayStr, { count, post }] of mergedByDay) {
-    const dayTimestamp = new Date(dayStr).getTime();
-    const level = getLevelFromWordCount(count);
-    console.log("level:", level);
-    result.push({
-      level,
-      date: dayTimestamp,
-      count,
-      post
+  const dailyStats = articlesData.reduce((map, { date, wordcount }) => {
+    const entry = map.get(date) ?? { count: 0, post: 0 };
+    return map.set(date, {
+      count: entry.count + wordcount,
+      post: entry.post + 1,
     });
-  }
+  }, new Map());
 
-  return result;
+  return Array.from(dailyStats, ([dayStr, { count, post }]) => ({
+    level: getLevelFromWordCount(count),
+    date: new Date(dayStr).getTime(),
+    count,
+    post,
+  }));
 }
 
-createCalendar('#heatmap', transformArticlesData(articleStats))
+createCalendar("#heatmap", transformArticlesData(articleStats));
+
 </script>
