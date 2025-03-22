@@ -11,27 +11,6 @@ var debounce = (func: (...args: any[]) => void, delay: number) => {
   };
 };
 
-var throttle = (func: (...args: any[]) => void, limit: number) => {
-  let lastFunc: number | undefined, lastRan: number;
-
-  return (...args) => {
-    const context = this;
-    if (!lastRan || Date.now() - lastRan >= limit) {
-      func.apply(context, args);
-      lastRan = Date.now();
-    } else {
-      clearTimeout(lastFunc);
-      lastFunc = setTimeout(
-        () => {
-          func.apply(context, args);
-          lastRan = Date.now();
-        },
-        limit - (Date.now() - lastRan),
-      );
-    }
-  };
-};
-
 var __aosScrollHandler: (...args: any[]) => void;
 var __aosResizeHandler: (...args: any[]) => void;
 var __observer: MutationObserver;

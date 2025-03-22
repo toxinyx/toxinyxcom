@@ -4,6 +4,7 @@ fastly_jsdelivr_gh: https://fastly.jsdelivr.net/gh/
 fastly_jsdelivr_npm: https://fastly.jsdelivr.net/npm/
 unpkg: https://unpkg.com/
 webcache: https://npm.webcache.cn/
+local: /resource/
 
 
 js:
@@ -47,8 +48,8 @@ js:
     src: webcache|mermaid@9.4.3/dist/mermaid.min.js
     integrity: sha384-aG3Gai4tbCHF0iXo48HwLoOZyut7mBl50oMC9GD1m75xyHfJDv6w8hD/kZRD47aJ
   firework:
-    src: webcache|mouse-firework@0.1.0/dist/index.umd.js
-    integrity: sha384-KM6i7tu43nYd6e0beIljxHMC5tZc58XBDu7pPA58w50h18Jsx7gLdimfS09RXlKv
+    src: webcache|mouse-firework@0.1.1/dist/index.umd.js
+    integrity: sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d
   pjax:
     src: webcache|theme-shokax-pjax@0.0.3/dist/index.umd.js
     integrity: sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD+jAPU55x/jj3wlf
@@ -91,11 +92,14 @@ js:
   dompurify:
     src: webcache|dompurify@3.2.4/dist/purify.min.js
     integrity: sha384-eEu5CTj3qGvu9PdJuS+YlkNi7d2XxQROAFYOr59zgObtlcux1ae1Il3u7jvdCSWu
+  material_theme:
+    src: webcache|material-theme@1.0.0/dist/material-theme.umd.js
+    integrity: sha384-vLev0II0HKFaxkcm+/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK
 css:
   photoswipe: webcache|photoswipe@5.4.4/dist/photoswipe.css
   katex: webcache|katex@0.16.9/dist/katex.min.css
   waline: webcache|@waline/client@2.15.8/dist/waline.css
-  gitalk: webcache|gitalk/dist/gitalk.css
+  gitalk: webcache|gitalk@1.8.0/dist/gitalk.css
   fontawesome:
     high_priority:
       - webcache|@fortawesome/fontawesome-free@6.5.1/css/regular.min.css

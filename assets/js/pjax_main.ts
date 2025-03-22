@@ -382,3 +382,12 @@ _$(".share-icon.icon-weixin")
         });
     });
   });
+
+const imgElement = _$("#header > img") as HTMLImageElement;
+if (imgElement.src || imgElement.style.background) {
+  window.bannerElement = imgElement;
+} else {
+  window.bannerElement = _$("#header > picture img") as HTMLImageElement;
+}
+
+window.generateSchemeHandler?.();
