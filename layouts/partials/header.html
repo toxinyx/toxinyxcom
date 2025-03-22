@@ -34,7 +34,7 @@
     <img style="position: absolute;top: 0;left: 0;width: 100%;height: 150%;z-index: -2;display: block;background: {{ .Params.cover | safeCSS }};mask: linear-gradient(to top, transparent, #fff 50%);"></img>
   {{ else if .Params.cover }}
     <picture></picture>
-    <img crossorigin="anonymous" fetchpriority="high" src="{{ .Params.cover | relURL }}" alt="{{ .Title }}">
+    <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Params.cover | relURL }}" alt="{{ .Title }}">
   {{ else if eq .Params.cover false }}
     <picture></picture>
     <img style="visibility:hidden"></img>
@@ -45,7 +45,7 @@
         <img style="position: absolute;top: 0;left: 0;width: 100%;height: 150%;z-index: -2;display: block;background: {{ .Site.Params.cover | safeCSS }};mask: linear-gradient(to top, transparent, #fff 50%);"></img>
       {{ else if .Site.Params.cover }}
         <picture></picture>
-        <img crossorigin="anonymous" fetchpriority="high" src="{{ .Site.Params.cover | relURL }}" alt="{{ .Title }}">
+        <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.cover | relURL }}" alt="{{ .Title }}">
       {{ else if eq .Site.Params.cover false }}
         <picture></picture>
         <img style="visibility:hidden"></img>
@@ -55,13 +55,13 @@
             {{ range .Site.Params.banner_srcset.srcset  }}
               <source media="{{ .media }}" srcset="{{ .src | relURL }}">
             {{ end }}
-            <img crossorigin="anonymous" fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+            <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
           {{ end }}
         </picture>
         {{ if .Site.Params.banner_srcset.enable }}
           <img alt="{{ .Title }}" style="visibility: hidden;">
         {{ else }}
-          <img crossorigin="anonymous" fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+          <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
         {{ end }}
       {{ end }}
     {{ else }}
@@ -70,13 +70,13 @@
           {{ range .Site.Params.banner_srcset.srcset  }}
             <source media="{{ .media }}" srcset="{{ .src | relURL }}">
           {{ end }}
-          <img crossorigin="anonymous" fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+          <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
         {{ end }}
       </picture>
       {{ if .Site.Params.banner_srcset.enable }}
         <img alt="{{ .Title }}" style="visibility: hidden;">
       {{ else }}
-        <img crossorigin="anonymous" fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
+        <img {{ if .Site.Params.material_theme.enable }}crossorigin="anonymous"{{ end }} fetchpriority="high" src="{{ .Site.Params.banner | relURL }}" alt="{{ .Title }}">
       {{ end }}
     {{ end }}
   {{ end }}

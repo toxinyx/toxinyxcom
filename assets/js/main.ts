@@ -138,16 +138,19 @@ window.throttle = (func: (...args: any[]) => void, limit: number) => {
 
   // generateScheme
   if (window.materialTheme) {
-    const extractor = new materialTheme.ColorThemeExtractor({ needTransition: false });
+    const extractor = new materialTheme.ColorThemeExtractor({
+      needTransition: false,
+    });
     async function generateScheme(imageFile: HTMLImageElement) {
       const scheme = await extractor.generateThemeSchemeFromImage(imageFile);
-      // extractor.applyTheme(scheme, {
-      //   target: document.documentElement,
-      //   brightnessSuffix: true
-      // });
-
-      document.documentElement.style.setProperty('--md-sys-color-primary-light', extractor.hexFromArgb(scheme.schemes.light.props.primary));
-      document.documentElement.style.setProperty('--md-sys-color-primary-dark', extractor.hexFromArgb(scheme.schemes.dark.props.primary));
+      document.documentElement.style.setProperty(
+        "--md-sys-color-primary-light",
+        extractor.hexFromArgb(scheme.schemes.light.props.primary),
+      );
+      document.documentElement.style.setProperty(
+        "--md-sys-color-primary-dark",
+        extractor.hexFromArgb(scheme.schemes.dark.props.primary),
+      );
 
       const existingStyle = _$("#reimu-generated-theme-style");
       if (existingStyle) {
@@ -205,6 +208,21 @@ window.throttle = (func: (...args: any[]) => void, limit: number) => {
             { once: true },
           );
         }
+      } else if (window.bannerElement?.style.background) {
+        const rgba = window.bannerElement.style.background.match(/\d+/g);
+        const scheme = extractor.generateThemeScheme({
+          r: parseInt(rgba[0]),
+          g: parseInt(rgba[1]),
+          b: parseInt(rgba[2]),
+        });
+        document.documentElement.style.setProperty(
+          "--md-sys-color-primary-light",
+          extractor.hexFromArgb(scheme.schemes.light.props.primary),
+        );
+        document.documentElement.style.setProperty(
+          "--md-sys-color-primary-dark",
+          extractor.hexFromArgb(scheme.schemes.dark.props.primary),
+        );
       }
     };
   }
