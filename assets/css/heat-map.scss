@@ -4,6 +4,21 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 10px 0;
+
+  --heat-level-0: color-mix(in srgb, var(--red-0) 10%, white);
+  --heat-level-1: color-mix(in srgb, var(--red-0) 40%, white);
+  --heat-level-2: color-mix(in srgb, var(--red-0) 80%, white);
+  --heat-level-3: var(--red-0);
+  --heat-level-4: color-mix(in srgb, var(--red-0) 80%, black);
+}
+
+[data-theme="dark"] .outer-box {
+  --heat-level-0: #161b22;
+  --heat-level-1: color-mix(in srgb, var(--red-0) 30%, transparent);
+  --heat-level-2: color-mix(in srgb, var(--red-0) 50%, transparent);
+  --heat-level-3: color-mix(in srgb, var(--red-0) 70%, transparent);
+  --heat-level-4: var(--red-0);
 }
 
 .calendar-container {
@@ -52,23 +67,24 @@
   width: 10px;
   height: 10px;
   border-radius: 2px;
-  outline: 1px solid rgba(27, 35, 36, 0.06);
+  outline: 1px solid color-mix(in srgb, var(--red-2) 10%, transparent);
   outline-offset: -1px;
 }
 .tile[data-level="0"] {
-  background: color-mix(in srgb, var(--red-0) 10%, white);
+  background: var(--heat-level-0);
+  outline: none;
 }
 .tile[data-level="1"] {
-  background: color-mix(in srgb, var(--red-0) 40%, white);
+  background: var(--heat-level-1);
 }
 .tile[data-level="2"] {
-  background: color-mix(in srgb, var(--red-0) 80%, white);
+  background: var(--heat-level-2);
 }
 .tile[data-level="3"] {
-  background: var(--red-0);
+  background: var(--heat-level-3);
 }
 .tile[data-level="4"] {
-  background: color-mix(in srgb, var(--red-0) 80%, black);
+  background: var(--heat-level-4);
 }
 
 .total {
@@ -106,11 +122,11 @@
 }
 
 .year-option:hover {
-  background-color: color-mix(in srgb, var(--red-0) 20%, white);
+  background-color: var(--heat-level-1);
 }
 
 .year-option.active {
-  background-color: color-mix(in srgb, var(--red-0) 50%, white);
+  background-color: var(--heat-level-2);
   color: white;
 }
 

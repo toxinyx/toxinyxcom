@@ -23,7 +23,7 @@
 <div id="heatmap"></div>
 
 <script>
-const MONTH_NAMES = [
+var MONTH_NAMES = [
   "Jan",
   "Feb",
   "Mar",
@@ -38,7 +38,7 @@ const MONTH_NAMES = [
   "Dec",
 ];
 
-const pluralize = (num, word) => (`${num} ${word}${num <= 1 ? '' : 's'}`);
+var pluralize = (num, word) => (`${num} ${word}${num <= 1 ? '' : 's'}`);
 
 function getTooltip(contributionDay, contributionDate) {
   // 修正日期转换逻辑，确保日期一致
@@ -58,9 +58,10 @@ function getTooltip(contributionDay, contributionDate) {
   return `${postText} ${wordText} on ${formattedDate}`;
 }
 
-function createCalendar(selector, contributionData) {
-  const element = document.querySelector(selector);
-
+function createCalendar(element, contributionData) {
+  if (!element) {
+    return;
+  }
   element.innerHTML = `
     <div class="outer-box">
       <div class="year-select"></div>
@@ -213,7 +214,7 @@ function completeContributionData(userData) {
 }
 
 // 获取日期数据
-const articleStats = {{ $articlesData }};
+var articleStats = {{ $articlesData }};
 
 function getLevelFromWordCount(totalCount) {
   const levelStandard = {{ $levelStandard }}.split(",").map(Number);
@@ -241,6 +242,5 @@ function transformArticlesData(articlesData) {
   }));
 }
 
-createCalendar("#heatmap", transformArticlesData(articleStats));
-
+createCalendar(document.querySelector("#heatmap"), transformArticlesData(articleStats));
 </script>
