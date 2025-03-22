@@ -4,12 +4,19 @@
 {{- $articlesData := slice -}}
 {{- $dateFormat := $.Site.Params.dateFormat | default "2006-01-02" -}}
 {{- range where .Site.RegularPages "File.Path" "ne" $currentPath -}}
-  {{- $articlesData = $articlesData | append (dict 
-    "title" .Title 
-    "date" ( .Date | time.Format $dateFormat ) 
+  {{ $rawContent := .RawContent }}
+  {{ $postLinkCardPattern := `\{\{<\s*postLinkCard.*?>\}\}` }}
+  {{ $heatMapCardPattern := `\{\{<\s*heatMapCard.*?>\}\}` }}
+
+  {{ $step1 := replaceRE $postLinkCardPattern "" $rawContent }}
+  {{ $cleanContent := replaceRE $heatMapCardPattern "" $step1 }}
+  {{- $articlesData = $articlesData | append (dict
+    "title" .Title
+    "date" ( .Date | time.Format $dateFormat )
     "lastmod" ( .Lastmod | time.Format $dateFormat )
-    "wordcount" .WordCount
-  ) -}}
+    "wordcount" ($cleanContent | $.Page.RenderString | string | countwords)
+    )
+  -}}
 {{- end -}}
 
 <div id="heatmap"></div>
@@ -72,7 +79,7 @@ function setStyle(calendarContainerClassName) {
       justify-content: center;
       align-items: center;
     }
-    
+
     .${calendarContainerClassName}  {
       display: grid;
       grid-template-columns: auto repeat(53, 10px);
@@ -172,14 +179,14 @@ function setStyle(calendarContainerClassName) {
     }
 
     .year-option:hover {
-      background-color: color-mix(in srgb, var(--red-0) 20%, white); 
+      background-color: color-mix(in srgb, var(--red-0) 20%, white);
     }
 
     .year-option.active {
-      background-color: color-mix(in srgb, var(--red-0) 50%, white); 
+      background-color: color-mix(in srgb, var(--red-0) 50%, white);
     }
 
-    
+
     @media screen and (max-width: 768px) {
       .year-select {
         width: 100%;
@@ -296,7 +303,7 @@ function createCalendar(
       currentDisplayYear = year;
       yearSelector.querySelectorAll(".year-option").forEach((o) => {
         o.classList.remove("active");
-      }); 
+      });
       option.classList.add("active");
       generateYearContributions(year);
     })
@@ -496,7 +503,7 @@ function transformArticlesData(articlesData) {
 
   // 1. 按日期归并
   for (const article of articlesData) {
-    const dateKey = article.date; 
+    const dateKey = article.date;
     if (!mergedByDay.has(dateKey)) {
       mergedByDay.set(dateKey, { count: 0, post: 0 });
     }
