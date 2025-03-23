@@ -95,7 +95,7 @@ function createCalendar(element, contributionData) {
 
   yearSelector.addEventListener("click", ({ target }) => {
     if (target.classList.contains("year-option")) {
-      document.querySelector(".active")?.classList.remove("active");
+      element.querySelector(".active")?.classList.remove("active");
       target.classList.add("active");
       generateYearContributions(target.textContent);
     }
@@ -133,7 +133,7 @@ function createCalendar(element, contributionData) {
         }
         // 创建日历格子
         const tile = document.createElement("i");
-        tile.className = "tile";
+        tile.className = "tile";d
         tile.dataset.level = c.level;
         tile.title = getTooltip(c, date);
         tiles.push(tile);
