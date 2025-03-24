@@ -8,7 +8,7 @@
   💘 博麗 霊夢 💘
   </p>
 
-[演示网站](https://d-sketon.github.io/hugo-theme-reimu) | [迁移指南](https://d-sketon.github.io/20241110/hexo-to-hugo-guide/)
+[演示网站](https://d-sketon.github.io/hugo-theme-reimu) | [迁移指南](https://d-sketon.github.io/20241110/hexo-to-hugo-guide/) | [Change Log](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/CHANGELOG.md)
 
 简体中文 | [English](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/README.en.md)
 
@@ -77,8 +77,10 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - 内部链接
   - 外部链接
   - 友情链接
+  - 热力图
+- 🎨 动态适配主题色
 - ©️ 文章版权声明
-- 🌐 自定义 CDN 源配置
+- 🌐 自定义 CDN 源 / 本地配置
 - 🎨 分享卡片功能
 
 ## 安装
@@ -148,6 +150,7 @@ defaultContentLanguage = 'zh-CN'
 [languages.zh-CN]
 languageName = '简体中文'
 weight = 1
+hasCJKLanguage = true
 ```
 
 </details>
@@ -791,12 +794,31 @@ home_categories:
 
 其中第一个参数为文章的标题；第二个参数为文章的外部链接，第三个参数（可选）为卡片展示的封面，如果设置为 `auto` 则自动使用缺省封面
 
+#### heatMapCard 文章热力图 (v0.8.0+ 实验性功能)
+
+```yaml
+{{< heatMapCard levelStandard="?" >}}
+```
+
+其中第一个参数为热力图的等级标准（按照文章字数分级），默认为 `"1000,5000,10000"`
+
 </details>
 
 <details>
 <summary>自定义主题</summary>
 
-#### 定制主题颜色
+#### 动态适配主题色 (v0.8.0+ 实验性功能)
+
+默认关闭，打开后会基于 Google's Material You 的设计规范根据文章头图的主色调动态生成主题色
+
+```yml
+material_theme:
+  enable: false # true | false
+```
+
+> 注意：当开启该功能时，会在 banner 的 img 元素上添加 `crossorigin="anonymous"` 属性，以获取图片的主色调，所以请确保你的图片服务器支持跨域访问，或使用第三方图片代理。
+
+#### 手动定制主题颜色
 
 hugo-theme-reimu 主题支持通过 CSS 变量定制主题颜色，你可以通过修改 `:root` 伪类下的 CSS 变量来定制你的主题颜色。
 
@@ -962,6 +984,7 @@ hugo-theme-reimu 的 `vendor` 结构非常灵活，其支持以下几种形式�
   fastly_jsdelivr_npm: https://fastly.jsdelivr.net/npm/ # 仅针对npm加速
   unpkg: https://unpkg.com/ # 仅针对npm加速
   webcache: https://npm.webcache.cn/ # 仅针对npm加速
+  local: /resources/ # 本地资源
   ```
   用户可根据网络状况自行切换 CDN 源。
 - `https://:path` 开头：直接使用绝对链接，如 `https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css` 

@@ -3,11 +3,11 @@
 {{ $js := .Site.Data.vendor.js }}
 {{ $css := .Site.Data.vendor.css }}
 
-{{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.lazysizes "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.lazysizes)) 0)) }}
-{{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.clipboard "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.clipboard)) 0)) }}
+{{ partial "helpers/js.html" (dict "raw" $js.lazysizes "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.lazysizes "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.lazysizes)) 0)) }}
+{{ partial "helpers/js.html" (dict "raw" $js.clipboard "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.clipboard "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.clipboard)) 0)) }}
 
 {{ if $params.material_theme.enable }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.material_theme "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.material_theme)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.material_theme "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.material_theme "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.material_theme)) 0)) }}
 {{ end }}
 
 {{ partial "helpers/ts.html" (dict "source" "js/main.ts" "ctx" .) }}
@@ -52,13 +52,13 @@
       }
     };
   </script>
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.algolia "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.algolia)) 0)) }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.instantsearch "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.instantsearch)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.algolia "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.algolia "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.algolia)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.instantsearch "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.instantsearch "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.instantsearch)) 0)) }}
   {{ partial "helpers/ts.html" (dict "source" "js/algolia_search.ts" "ctx" .) }}
 {{ end }}
 
 {{ if $params.firework.enable }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.firework "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.firework)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.firework "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.firework "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.firework)) 0)) }}
 <script>
   if (window.firework) {
     const options = JSON.parse({{ $params.firework.options | jsonify }});
@@ -70,7 +70,7 @@
 {{ end }}
 
 {{ if $params.pjax.enable }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.pjax "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.pjax)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.pjax "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.pjax "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.pjax)) 0)) }}
   <script>
     function loadScripts(scripts, index) {
       if (index < scripts.length) {
@@ -155,13 +155,13 @@
   function initLive2d() {
     live2d.init('{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d.base "ctx" $site)) 0 }}', {themeTipsPath: ""});
   }
-</script> {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d.js "ctx" $site)) 0) "async" true "onload" "initLive2d()") }}
+</script> {{ partial "helpers/js.html" (dict "raw" $js.live2d.js "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d.js "ctx" $site)) 0) "async" true "onload" "initLive2d()") }}
 {{ else if $params.live2d_widgets.enable }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d_widgets "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.live2d_widgets)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.live2d_widgets "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.live2d_widgets "ctx" $site)) 0) "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.live2d_widgets)) 0)) }}
 {{ end }}
 
 {{ if $params.quicklink.enable }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.quicklink "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.quicklink)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.quicklink "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.quicklink "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.quicklink)) 0)) }}
   <script data-pjax>
     window.quicklink?.listen({
       timeout: {{ $params.quicklink.timeout }},
@@ -193,8 +193,8 @@
       </script>
     {{ end }}
     {{ if and (.Store.Get "hasMermaid") .Params.mermaid }}
-      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mermaid "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mermaid)) 0)) }}
-      {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.dompurify "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.dompurify)) 0)) }}
+      {{ partial "helpers/js.html" (dict "raw" $js.mermaid "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mermaid "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mermaid)) 0)) }}
+      {{ partial "helpers/js.html" (dict "raw" $js.dompurify "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.dompurify "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.dompurify)) 0)) }}
       <script data-pjax>
         if (window.mermaid) {
           // https://github.com/mermaid-js/mermaid/issues/1945
@@ -278,21 +278,32 @@
       {{ $photoswipe := index (partial "helpers/vendorCdn.html" (dict "item" $js.photoswipe "ctx" $site)) 0 }}
       {{ $photoswipe_integrity := index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.photoswipe)) 0 }}
       <script type="module" data-pjax>
+        {{ if (partial "helpers/vendorLocalCheck.html" $js.photoswipe_lightbox) }}
+        import PhotoSwipeLightbox from '{{ $photoswipe_lightbox }}';
+        {{ else }}
         const PhotoSwipeLightbox = (await safeImport("{{ $photoswipe_lightbox }}", "{{ $photoswipe_lightbox_integrity }}")).default;
-
+        {{ end }}
         const pswp = () => {
           if (_$$('.article-entry a.article-gallery-item').length > 0) {
             new PhotoSwipeLightbox({
               gallery: '.article-entry',
               children: 'a.article-gallery-item',
+              {{ if (partial "helpers/vendorLocalCheck.html" $js.photoswipe) }}
+              pswpModule: () => import('{{ $photoswipe }}'),
+              {{ else }}
               pswpModule: () => safeImport("{{ $photoswipe }}", "{{ $photoswipe_integrity }}")
+              {{ end }}
             }).init();
           }
           if(_$$('.article-gallery a.article-gallery-item').length > 0) {
             new PhotoSwipeLightbox({
               gallery: '.article-gallery',
               children: 'a.article-gallery-item',
+              {{ if (partial "helpers/vendorLocalCheck.html" $js.photoswipe) }}
+              pswpModule: () => import('{{ $photoswipe }}'),
+              {{ else }}
               pswpModule: () => safeImport("{{ $photoswipe }}", "{{ $photoswipe_integrity }}")
+              {{ end }}
             }).init();
           }
           window.lightboxStatus = 'done';
@@ -306,14 +317,14 @@
       </script>
       {{ partialCached "post/comment.html" . }}
       {{ if and (reflect.IsSlice .Site.Params.share) (in .Site.Params.share "weixin") }}
-        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.qrcode "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.qrcode)) 0)) }}
-        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.html2image "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.html2image)) 0)) }}
+        {{ partial "helpers/js.html" (dict "raw" $js.qrcode "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.qrcode "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.qrcode)) 0)) }}
+        {{ partial "helpers/js.html" (dict "raw" $js.html2image "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.html2image "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.html2image)) 0)) }}
       {{ end }}
     {{ end }}
     {{ if .Params.math }}
       {{ if .Site.Params.math.katex.enable }}
-        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex)) 0)) }}
-        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex_auto_render "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex_auto_render)) 0)) }}
+        {{ partial "helpers/js.html" (dict "raw" $js.katex "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex)) 0)) }}
+        {{ partial "helpers/js.html" (dict "raw" $js.katex_auto_render "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.katex_auto_render "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.katex_auto_render)) 0)) }}
         <script data-pjax>
           var renderMath = () => {
             if (!window.renderMathInElement) return;
@@ -337,7 +348,7 @@
         <script data-pjax>
           window.MathJax = JSON.parse({{ .Site.Params.math.mathjax.options | jsonify }})[0];
         </script>
-        {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mathjax "ctx" $site)) 0) "defer" true "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mathjax)) 0)) }}
+        {{ partial "helpers/js.html" (dict "raw" $js.mathjax "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mathjax "ctx" $site)) 0) "defer" true "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mathjax)) 0)) }}
       {{ end }}
     {{ end }}
   </div>
@@ -366,7 +377,7 @@
 {{ end }}
 
 {{ if $params.footer.busuanzi }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.busuanzi "ctx" $site)) 0) "async" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.busuanzi)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.busuanzi "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.busuanzi "ctx" $site)) 0) "async" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.busuanzi)) 0)) }}
 {{ end }}
 
 {{ if $params.service_worker.enable }}
@@ -402,7 +413,7 @@
 </script>
 
 {{ if $params.player.aplayer.enable }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.aplayer "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.aplayer)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.aplayer "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.aplayer "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.aplayer)) 0)) }}
   {{ if not $params.player.meting.enable }}
     <script>
       const ap = new APlayer({
@@ -424,7 +435,7 @@
 {{ end }}
 
 {{ if $params.player.meting.enable }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.meting "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.meting)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.meting "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.meting "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.meting)) 0)) }}
   {{ if $params.player.meting.meting_api }}
     <script>
       var meting_api = '{{ $params.player.meting.meting_api }}';
@@ -433,7 +444,7 @@
 {{ end }}
 
 {{ if .Site.Params.pangu.enable }}
-  {{ partial "helpers/js.html" (dict "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.pangu "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.pangu)) 0)) }}
+  {{ partial "helpers/js.html" (dict "raw" $js.pangu "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.pangu "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.pangu)) 0)) }}
   <script data-pjax>
     if (document.readyState === "loading") {
       document.addEventListener('DOMContentLoaded', () => {

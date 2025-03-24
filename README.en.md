@@ -9,7 +9,7 @@
   💘 Hakurei Reimu 💘
   </p>
 
-[Demo](https://d-sketon.github.io/hugo-theme-reimu)
+[Demo](https://d-sketon.github.io/hugo-theme-reimu) | [Change Log](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/CHANGELOG.md)
 
 [简体中文](https://github.com/D-Sketon/hugo-theme-reimu/blob/main/README.md) | English
 
@@ -78,8 +78,10 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - Internal links
   - External links
   - Friend links
+  - Heatmap
+- 🎨 Dynamic theme color adaptation
 - ©️ Article copyright declaration
-- 🌐 Custom CDN source configuration
+- 🌐 Custom CDN source / local source configuration
 - 🎨 Share card functionality
 
 ## Installation
@@ -773,12 +775,31 @@ The first parameter is the article's `path`; the second parameter (optional) is 
 
 The first parameter is the article's title; the second parameter is the external link to the article; the third parameter (optional) is the cover image shown on the card - if set to `auto`, it will automatically use the default cover
 
+#### Heat Map Card Article Heatmap (Experimental Feature in v0.8.0+)
+
+```yaml
+{{< heatMapCard levelStandard="?" >}}
+```
+
+The first parameter is the level standard for the heatmap (graded based on the word count of the articles), with the default value being `"1000,5000,10000"`. 
+
 </details>
 
 <details>
 <summary>Customize theme</summary>
 
-#### Customizing Theme Colors
+#### Dynamic Theme Color Adaptation (Experimental Feature in v0.8.0+)
+
+Disabled by default. When enabled, it dynamically generates theme colors based on the dominant color of the article's banner image, following Google's Material You design guidelines.
+
+```yml
+material_theme:
+  enable: false # true | false
+```
+
+> Note: When this feature is enabled, the `crossorigin="anonymous"` attribute will be added to the `img` element of the banner to fetch the dominant color of the image. Please ensure your image server supports cross-origin access or use a third-party image proxy.
+
+#### Manual Customizing Theme Colors
 
 hugo-theme-reimu supports customizing theme colors through CSS variables. You can customize your theme colors by modifying the CSS variables under the `:root` pseudo-class.
 
@@ -942,6 +963,7 @@ The `vendor` structure in hugo-theme-reimu is very flexible and supports the fol
   fastly_jsdelivr_npm: https://fastly.jsdelivr.net/npm/ # NPM acceleration only
   unpkg: https://unpkg.com/ # NPM acceleration only
   webcache: https://npm.webcache.cn/ # NPM acceleration only
+  local: /resources/ # Local resources
   ```
   Users can switch CDN sources based on their network conditions.
 - Starting with `https://:path`: Uses absolute links directly, such as `https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css`
