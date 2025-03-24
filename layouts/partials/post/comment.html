@@ -104,7 +104,6 @@
     // 隐藏所有评论容器
     const hideAllComments = () => {
       const commentContainers = document.querySelectorAll('.comment');
-      console.log("commentContainers:", commentContainers);
       commentContainers.forEach(container => {
         container.style.display = 'none';
       });
@@ -174,7 +173,6 @@
 
       // 检查是否需要加载默认评论系统
       if (defaultComment) {
-        console.log("defaultComment:", defaultComment);
         const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
         if (!defaultSelectorItem) return;
         defaultSelectorItem.style.display = 'block';
