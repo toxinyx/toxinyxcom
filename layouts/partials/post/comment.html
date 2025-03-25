@@ -11,6 +11,39 @@
   var gitalkEnable = {{ if and $params.gitalk.enable $params.gitalk.clientID $params.gitalk.clientSecret }}true{{ else }}false{{ end }};
   var giscusEnable = {{ if and $params.giscus.enable }}true{{ else }}false{{ end }};
 
+  if (valineEnable) {
+    var walineSource = '{{ $js.waline.src }}';
+  }
+
+  if (walineEnable) {
+    var walineSource = '{{ $js.waline.src }}';
+
+    var walinePath = '{{ $params.waline.serverURL }}';
+    var walineLocale = JSON.parse({{ $params.waline.locale | jsonify }});
+    var walineEmoji = JSON.parse({{ $params.waline.emoji | jsonify }});
+    var walineMeta = JSON.parse({{ $params.waline.meta | jsonify }});
+    var walineRequiredMeta = JSON.parse({{ $params.waline.requiredMeta | jsonify }});
+    var walineWordLimit = {{ $params.waline.wordLimit }};
+    var walinePageSize = {{ $params.waline.pageSize }};
+    var walinePageview = {{ $params.waline.pageview }};
+  }
+
+  if (twikooEnable) {
+    var twikooSource = '{{ $js.twikoo.src }}';
+  }
+
+  if (gitalkEnable) {
+    var gitalkSource = '{{ $js.gitalk.src }}';
+
+    var gitalkMd5 = {{ $params.gitalk.md5 }};
+    if (gitalkMd5) {
+      var gitalkMd5 = window.md5 ? window.md5(location.pathname) : location.pathname
+    } else {
+      location.pathname;
+    }
+    var gitalkAdmin = JSON.parse({{ $params.gitalk.admin | jsonify }});
+  }
+
   /* 获取默认评论系统 */
 
   var defaultComment = '';
@@ -63,27 +96,6 @@
         defaultComment = 'giscus';
       }
     }
-  }
-
-  if (walineEnable) {
-    var walinePath = '{{ $params.waline.serverURL }}';
-    var walineLocale = JSON.parse({{ $params.waline.locale | jsonify }});
-    var walineEmoji = JSON.parse({{ $params.waline.emoji | jsonify }});
-    var walineMeta = JSON.parse({{ $params.waline.meta | jsonify }});
-    var walineRequiredMeta = JSON.parse({{ $params.waline.requiredMeta | jsonify }});
-    var walineWordLimit = {{ $params.waline.wordLimit }};
-    var walinePageSize = {{ $params.waline.pageSize }};
-    var walinePageview = {{ $params.waline.pageview }};
-  }
-
-  if (gitalkEnable) {
-    var gitalkMd5 = {{ $params.gitalk.md5 }};
-    if (gitalkMd5) {
-      var gitalkMd5 = window.md5 ? window.md5(location.pathname) : location.pathname
-    } else {
-      location.pathname;
-    }
-    var gitalkAdmin = JSON.parse({{ $params.gitalk.admin | jsonify }});
   }
 </script>
 {{ end }}
@@ -192,7 +204,10 @@
     // 加载 Valine 脚本
     const script = document.createElement('script');
     script.src = '{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.valine "ctx" $site)) 0 }}';
-    script.integrity = '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.valine)) 0 }}';
+    
+    if (!valineSource.startsWith('local')){
+      script.integrity = '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.valine)) 0 }}';
+    }
     script.crossOrigin = 'anonymous';
     script.onload = function () {
       const GUEST_INFO = ['nick', 'mail', 'link'];
@@ -226,9 +241,23 @@
     if (!container) return;
     container.style.display = 'block';
 
-    // 使用模块方式加载 Waline
-    const { init } = await safeImport('{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.waline "ctx" $site)) 0 }}', '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.waline "ctx" $site)) 0 }}');
-    window.walineInstance = init({
+    let walineInit;
+    const walineCdn = '{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.waline "ctx" $site)) 0 }}';
+    
+    if (walineSource.startsWith('local')) {
+      // 本地资源不使用 integrity
+      const module = await safeImport(walineCdn);
+      walineInit = module.init;
+    } else {
+      // 远程资源使用 integrity
+      const module = await safeImport(
+        walineCdn, 
+        '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.waline "ctx" $site)) 0 }}'
+      );
+      walineInit = module.init;
+    }
+    
+    window.walineInstance = walineInit({
       el: '.waline-comment',
       serverURL: '{{ $params.waline.serverURL }}',
       lang: '{{ $params.waline.lang }}',
@@ -252,7 +281,9 @@
     // 加载 Twikoo 脚本
     const script = document.createElement('script');
     script.src = '{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.twikoo "ctx" $site)) 0 }}';
-    script.integrity = '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.twikoo)) 0 }}';
+    if(!twikooSource.startsWith('local')){
+      script.integrity = '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.twikoo)) 0 }}';
+    }
     script.crossOrigin = 'anonymous';
     script.onload = function () {
       twikoo.init({
@@ -272,7 +303,9 @@
     // 加载 Gitalk 脚本
     const script = document.createElement('script');
     script.src = '{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.gitalk "ctx" $site)) 0 }}';
-    script.integrity = '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.gitalk)) 0 }}';
+    if (!gitalkSource.startsWith('local')){
+      script.integrity = '{{ index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.gitalk)) 0 }}';
+    }
     script.crossOrigin = 'anonymous';
     script.onload = function () {
 
