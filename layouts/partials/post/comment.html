@@ -236,7 +236,7 @@
     
     // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
     if (!defaultComment) {
-      defaultComment = commentConfigKeys.find(sys => commentSystems[sys].enable) || '';
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
     }
   }
 
