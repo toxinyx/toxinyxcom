@@ -13,7 +13,7 @@
 
 <div class="post-link-card-wrap">
   <div class="post-link-card">
-    <a href="{{ $page.Permalink }}" title="{{ $safeTitle }}"></a>
+    <a href="{{ $page.Permalink | relURL }}" title="{{ $safeTitle }}"></a>
     {{ if eq $cover "auto" }}
       <div class="post-link-card-cover-wrap">
         <img

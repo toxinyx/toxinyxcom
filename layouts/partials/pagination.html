@@ -15,7 +15,7 @@
 {{ end }}
 <nav id="page-nav" data-aos="{{ .Site.Params.animation.options.archive.nav }}">
   {{ if $pag.HasPrev }}
-    <a class="extend prev" rel="prev" href="{{ $pag.Prev.URL }}">
+    <a class="extend prev" rel="prev" href="{{ $pag.Prev.URL | relURL }}">
       &laquo;
       {{ i18n "prev" -}}
     </a>
@@ -25,12 +25,12 @@
       {{ if eq $p $pag }}
         <span class="page-number current">{{ $p.PageNumber }}</span>
       {{ else }}
-        <a class="page-number" href="{{ $p.URL }}">{{ $p.PageNumber }}</a>
+        <a class="page-number" href="{{ $p.URL | relURL }}">{{ $p.PageNumber }}</a>
       {{ end }}
     {{ end }}
   {{ end }}
   {{ if $pag.HasNext }}
-    <a class="extend next" rel="next" href="{{ $pag.Next.URL }}">
+    <a class="extend next" rel="next" href="{{ $pag.Next.URL | relURL }}">
       {{- i18n "next" }} &raquo;
     </a>
   {{ end }}

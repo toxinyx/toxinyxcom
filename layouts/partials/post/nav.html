@@ -30,7 +30,7 @@
             />
           {{ end }}
         {{ end }}
-        <a href="{{ .PrevInSection.Permalink }}"></a>
+        <a href="{{ .PrevInSection.Permalink | relURL }}"></a>
         <div class="article-nav-caption">{{ i18n "newer" }}</div>
         <h3 class="article-nav-title">
           {{ if .PrevInSection.Title }}
@@ -69,7 +69,7 @@
             />
           {{ end }}
         {{ end }}
-        <a href="{{ .NextInSection.Permalink }}"></a>
+        <a href="{{ .NextInSection.Permalink | relURL }}"></a>
         <div class="article-nav-caption">{{ i18n "older" }}</div>
         <h3 class="article-nav-title">
           {{ if .NextInSection.Title }}

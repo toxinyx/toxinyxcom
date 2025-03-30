@@ -25,7 +25,7 @@
     {{ else }}
       <a
         class="post-link"
-        href="{{ $page.Permalink }}"
+        href="{{ $page.Permalink | relURL }}"
         aria-label="{{ $page.Title }}"
       >
       </a>

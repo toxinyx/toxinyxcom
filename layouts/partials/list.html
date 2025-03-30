@@ -28,7 +28,7 @@
               >{{ .Title }}</a
             >
           {{ else if .Title }}
-            <a class="archive-article-title" href="{{ .Permalink }}"
+            <a class="archive-article-title" href="{{ .Permalink | relURL }}"
               >{{ .Title }}</a
             >
           {{ end }}

@@ -47,7 +47,7 @@
       {{ if and (not (eq .Params.comments false)) .Site.Params.valine.enable .Site.Params.valine.appId .Site.Params.valine.appKey }}
         <a
           data-aos="{{ .Site.Params.animation.options.article.comment }}"
-          href="{{ .Permalink }}#comments"
+          href="{{ .Permalink | relURL }}#comments"
           class="article-comment-link"
         >
           <span
@@ -62,7 +62,7 @@
       {{ if and (not (eq .Params.comments false)) .Site.Params.waline.enable .Site.Params.waline.serverURL }}
         <a
           data-aos="{{ .Site.Params.animation.options.article.comment }}"
-          href="{{ .Permalink }}#comments"
+          href="{{ .Permalink | relURL }}#comments"
           class="article-comment-link"
         >
           <span
@@ -77,7 +77,7 @@
       {{ if and (not (eq .Params.comments false)) .Site.Params.twikoo.enable .Site.Params.twikoo.envId }}
         <a
           data-aos="{{ .Site.Params.animation.options.article.comment }}"
-          href="{{ .Permalink }}#comments"
+          href="{{ .Permalink | relURL }}#comments"
           class="article-comment-link"
         >
           <span
