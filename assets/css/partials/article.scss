@@ -240,7 +240,11 @@
   summary {
     font-size: 1.1em;
     font-weight: bold;
-    cursor: pointer;
+    @if $reimu_cursor {
+      cursor: var(--cursor-pointer);
+    } @else {
+      cursor: pointer;
+    }
     padding: 8px;
     border: none;
     border-radius: 10px;
@@ -354,6 +358,7 @@
 .article-visitor-link {
   color: var(--red-1);
   margin-top: $article-padding;
+  margin-left: $article-padding;
 }
 
 .article-tag-list-item {
