@@ -358,7 +358,6 @@
 .article-visitor-link {
   color: var(--red-1);
   margin-top: $article-padding;
-  margin-left: $article-padding;
 }
 
 .article-tag-list-item {
@@ -396,6 +395,7 @@
   font-size: 14px;
   background: var(--red-5);
   border-radius: $post-radius;
+  margin-left: $article-padding;
   padding: 8px 15px;
 }
 
