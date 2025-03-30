@@ -17,8 +17,12 @@
     {{ end }}
     <div>
       <span class="icon-copyright"></span>
-      {{ .Site.Params.footer.since }} -
-      {{ now.Format .Site.Params.yearFormat }}
+      {{ if eq (string .Site.Params.footer.since) (now.Format .Site.Params.yearFormat) }}
+        {{ now.Format .Site.Params.yearFormat }}
+      {{ else }}
+        {{ .Site.Params.footer.since }} -
+        {{ now.Format .Site.Params.yearFormat }}
+      {{ end }}
       <span class="footer-info-sep {{ if .Site.Params.footer.icon.rotate }}rotate{{ end }}"></span>
       {{ .Site.Params.author | default .Site.Title }}
     </div>
