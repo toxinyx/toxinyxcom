@@ -1,5 +1,7 @@
 ## v0.8.0
 
+未发布
+
 ### 特性
 
 - 新增了 `heatMapCard` shortcode 用于展示文章热力图
@@ -24,8 +26,17 @@
     src: local|clipboard@2.0.11/dist/clipboard.min.js
     integrity: sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q
   ```
+- 支持了多评论系统同时使用
+  全局评论系统配置：
 
+  ```yaml
+  comment:
+    title: 说些什么吧！ # 评论框标题
+    default: waline # 多评论下，默认使用的评论系统
+  ```
 ---
+
+Not yet released
 
 ### Features
 
@@ -50,6 +61,14 @@
   clipboard: 
     src: local|clipboard@2.0.11/dist/clipboard.min.js
     integrity: sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q
+  ```
+- Support for multiple comment systems simultaneously
+  Global comment system configuration:
+
+  ```yaml
+  comment:
+    title: Say something! # Title of the comment box  
+    default: waline # Default comment system used when multiple are enabled
   ```
 
 ## v0.7.0
