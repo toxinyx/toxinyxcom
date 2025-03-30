@@ -315,7 +315,7 @@
           window.addEventListener('lightbox:ready', pswp);
         }
       </script>
-      {{ partialCached "post/comment.html" . }}
+      {{ partial "post/comment.html" . }}
       {{ if and (reflect.IsSlice .Site.Params.share) (in .Site.Params.share "weixin") }}
         {{ partial "helpers/js.html" (dict "raw" $js.qrcode "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.qrcode "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.qrcode)) 0)) }}
         {{ partial "helpers/js.html" (dict "raw" $js.html2image "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.html2image "ctx" $site)) 0) "pjax" true "defer" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.html2image)) 0)) }}

@@ -240,7 +240,11 @@
   summary {
     font-size: 1.1em;
     font-weight: bold;
-    cursor: pointer;
+    @if $reimu_cursor {
+      cursor: var(--cursor-pointer);
+    } @else {
+      cursor: pointer;
+    }
     padding: 8px;
     border: none;
     border-radius: 10px;
@@ -391,6 +395,7 @@
   font-size: 14px;
   background: var(--red-5);
   border-radius: $post-radius;
+  margin-left: $article-padding;
   padding: 8px 15px;
 }
 
