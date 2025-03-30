@@ -2,6 +2,11 @@
 
 未发布
 
+### 修复
+
+- 使用 `relURL` 作用于内部链接，以消除潜在的 baseURL 错误问题
+- 优化 footer 的年份显示
+
 ### 特性
 
 - 新增了 `heatMapCard` shortcode 用于展示文章热力图
@@ -37,6 +42,11 @@
 ---
 
 Not yet released
+
+### Fixes
+
+- Used `relURL` for internal links to eliminate potential baseURL errors.
+- Optimized the display of the year in the footer.
 
 ### Features
 
