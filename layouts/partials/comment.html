@@ -61,7 +61,7 @@
 
     {{ if and (.Site.Params.gitalk.enable) (.Site.Params.gitalk.clientID)
     (.Site.Params.gitalk.clientSecret) }}
-    <div class="comment gitalk-tcomment" data-aos="{{ .Site.Params.animation.options.article.whole }}"></div>
+    <div id="gitalk-comment" class="comment gitalk-comment" data-aos="{{ .Site.Params.animation.options.article.whole }}"></div>
     {{ end }}
 
     {{ if and (.Site.Params.giscus.enable) }}

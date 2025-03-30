@@ -3,7 +3,7 @@
 {{ $js := .Site.Data.vendor.js }}
 
 {{ if and (not (eq .Params.comments false)) $params.comment.enable }}
-<script>
+<script data-pjax>
   var commentEnable = {{ if and $params.comment.enable }}true{{ else }}false{{ end }};
   var valineEnable = {{ if and $params.valine.enable $params.valine.appId $params.valine.appKey }}true{{ else }}false{{ end }};
   var walineEnable = {{ if and $params.waline.enable $params.waline.serverURL }}true{{ else }}false{{ end }};
@@ -12,20 +12,11 @@
   var giscusEnable = {{ if and $params.giscus.enable }}true{{ else }}false{{ end }};
 
   if (valineEnable) {
-    var walineSource = '{{ $js.waline.src }}';
+    var valineSource = '{{ $js.valine.src }}';
   }
 
   if (walineEnable) {
     var walineSource = '{{ $js.waline.src }}';
-
-    var walinePath = '{{ $params.waline.serverURL }}';
-    var walineLocale = JSON.parse({{ $params.waline.locale | jsonify }});
-    var walineEmoji = JSON.parse({{ $params.waline.emoji | jsonify }});
-    var walineMeta = JSON.parse({{ $params.waline.meta | jsonify }});
-    var walineRequiredMeta = JSON.parse({{ $params.waline.requiredMeta | jsonify }});
-    var walineWordLimit = {{ $params.waline.wordLimit }};
-    var walinePageSize = {{ $params.waline.pageSize }};
-    var walinePageview = {{ $params.waline.pageview }};
   }
 
   if (twikooEnable) {
@@ -34,14 +25,6 @@
 
   if (gitalkEnable) {
     var gitalkSource = '{{ $js.gitalk.src }}';
-
-    var gitalkMd5 = {{ $params.gitalk.md5 }};
-    if (gitalkMd5) {
-      var gitalkMd5 = window.md5 ? window.md5(location.pathname) : location.pathname
-    } else {
-      location.pathname;
-    }
-    var gitalkAdmin = JSON.parse({{ $params.gitalk.admin | jsonify }});
   }
 
   /* 获取默认评论系统 */
@@ -97,12 +80,8 @@
       }
     }
   }
-</script>
-{{ end }}
 
-{{ if and (not (eq .Params.comments false)) $params.comment.enable }}
-<script data-pjax>
-  const loadComments = () => {
+  function loadComments() {
     if (!commentEnable) return;
     // 评论组件加载状态跟踪
     const loadedComments = {
@@ -261,15 +240,15 @@
       el: '.waline-comment',
       serverURL: '{{ $params.waline.serverURL }}',
       lang: '{{ $params.waline.lang }}',
-      locale: walineLocale,
-      emoji: walineEmoji,
-      meta: walineMeta,
-      requiredMeta: walineRequiredMeta,
-      wordLimit: walineWordLimit,
+      locale: JSON.parse({{ $params.waline.locale | jsonify }}),
+      emoji: JSON.parse({{ $params.waline.emoji | jsonify}}),
+      meta: JSON.parse({{ $params.waline.meta | jsonify }}),
+      requiredMeta: JSON.parse({{ $params.waline.requiredMeta | jsonify }}),
+      wordLimit: {{ $params.waline.wordLimit }},
       comment: true,
-      pageSize: walinePageSize,
+      pageSize: {{ $params.waline.pageSize }},
       dark: 'html[data-theme="dark"]',
-      pageview: walinePageview,
+      pageview: {{ $params.waline.pageview }},
     });
   }
 
@@ -309,7 +288,7 @@
     script.crossOrigin = 'anonymous';
     script.onload = function () {
 
-      if (gitalkMd5) {
+      if ({{ $params.gitalk.md5 }}) {
         // 如果需要 md5，加载 md5 脚本
         const md5Script = document.createElement('script');
         md5Script.src = '{{ index (partial "helpers/vendorCdn.html" (dict "item" $js.md5 "ctx" $site)) 0 }}';
@@ -330,11 +309,11 @@
         clientSecret: '{{ $params.gitalk.clientSecret}}',
         repo: '{{ $params.gitalk.repo }}',
         owner: '{{ $params.gitalk.owner }}',
-        admin: gitalkAdmin,
-        id: gitalkId,
+        admin: JSON.parse({{ $params.gitalk.admin | jsonify }}),
+        id: {{ if $params.gitalk.md5 }}'window.md5 ? window.md5(location.pathname) : location.pathname'{{ else }}'location.pathname'{{ end }},
         distractionFreeMode: false
       });
-      gitalk.render('comments');
+      gitalk.render('gitalk-comment');
     }
   }
 
