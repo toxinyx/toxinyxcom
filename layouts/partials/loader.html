@@ -3,7 +3,7 @@
     <div class="loading-left-bg loading-bg"></div>
     <div class="loading-right-bg loading-bg"></div>
     <div class="spinner-box">
-      <div class="loading-taichi">
+      <div class="loading-taichi {{ if .Site.Params.preloader.rotate }}rotate{{ end }}">
         {{ if .Site.Params.preloader.icon }}
           <img src="{{ .Site.Params.preloader.icon | relURL }}" alt="loading" />
         {{ else }}
