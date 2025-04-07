@@ -416,11 +416,23 @@
   {{ partial "helpers/js.html" (dict "raw" $js.aplayer "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.aplayer "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.aplayer)) 0)) }}
   {{ if not $params.player.meting.enable }}
     <script>
+      var isMobile = window.matchMedia('(max-width: 959px)').matches;
+      if (isMobile) {
+      const aplayer = _$('#aplayer');
+        if (aplayer) {
+          const aside = aplayer.parentNode;
+          if (aside?.tagName === 'ASIDE') {
+            aplayer.removeAttribute('data-aos');
+            aside.removeChild(aplayer);
+            document.body.appendChild(aplayer);
+          }
+        }
+      }
       const ap = new APlayer({
           theme: "var(--color-link)",
           container: document.getElementById('aplayer'),
           audio: JSON.parse({{ $params.player.aplayer.options.audio | jsonify }}) || [],
-          fixed: {{ $params.player.aplayer.options.fixed }} || false,
+          fixed: isMobile ? true : ({{ $params.player.aplayer.options.fixed }} || false),
           autoplay: {{ $params.player.aplayer.options.autoplay }} || false,
           loop: '{{ $params.player.aplayer.options.loop }}' || 'all',
           order: '{{ $params.player.aplayer.options.order }}' || 'list',
@@ -435,12 +447,26 @@
 {{ end }}
 
 {{ if $params.player.meting.enable }}
-  {{ partial "helpers/js.html" (dict "raw" $js.meting "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.meting "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.meting)) 0)) }}
   {{ if $params.player.meting.meting_api }}
     <script>
       var meting_api = '{{ $params.player.meting.meting_api }}';
     </script>
   {{ end }}
+  <script>
+    var isMobile = window.matchMedia('(max-width: 959px)').matches;
+    if (isMobile) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          aside.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script>
+  {{ partial "helpers/js.html" (dict "raw" $js.meting "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.meting "ctx" $site)) 0) "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.meting)) 0)) }}
 {{ end }}
 
 {{ if .Site.Params.pangu.enable }}
