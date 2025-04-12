@@ -156,6 +156,21 @@
   }
 }
 
+.code-figcaption-bottom {
+  font-size: .85em;
+  color: var(--highlight-comment);
+  line-height: 1em;
+  display: flow-root;
+}
+
+.code-name {
+  float: left;
+}
+
+.code-link {
+  float: right;
+}
+
 .code-left-wrap,
 .code-right-wrap {
   display: flex;

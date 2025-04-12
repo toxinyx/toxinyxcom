@@ -9,6 +9,10 @@
       <div class="code-copy icon-copy"></div>
       <div class="icon-chevron-down code-expand"></div>
     </div>
+  </div>
+  <div class="code-figcaption-bottom">
+    <span class="code-name"></span>
+    <a class="code-link"></a>
   </div>`;
   const reimuConfig = window.siteConfig?.code_block || {};
   const expandThreshold = reimuConfig.expand;
@@ -24,6 +28,30 @@
       ) {
         element.classList.add("code-closed");
       }
+    }
+    const codeFigcaptionBottom = element.querySelector(
+      ".code-figcaption-bottom",
+    ) as HTMLDivElement;
+    const fileName = element.getAttribute("name");
+    const codeName = element.querySelector(".code-name") as HTMLDivElement;
+    if (fileName) {
+      codeName.innerText = fileName;
+      codeFigcaptionBottom.style.marginBottom = '1em';
+    } else {
+      codeName.innerText = "";
+      codeFigcaptionBottom.style.marginBottom = '0';
+    }
+    const url = element.getAttribute("url");
+    const linkText = element.getAttribute("link_text");
+    const codeLink = element.querySelector(".code-link") as HTMLDivElement;
+    if (url) {
+      codeLink.setAttribute("href", url);
+      codeLink.innerText = linkText || url;
+      codeFigcaptionBottom.style.marginBottom = '1em';
+    } else {
+      codeLink.setAttribute("href", "");
+      codeLink.innerText = "";
+      codeFigcaptionBottom.style.marginBottom = '0';
     }
   });
   // 代码收缩
