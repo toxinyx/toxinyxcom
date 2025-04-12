@@ -933,6 +933,7 @@ preloader:
   enable: true
   text: 少女祈祷中...
   icon: # Default uses inline SVG when empty, you can enter a link like '/images/taichi.png'
+  rotate: true
 ```
 
 ##### Anchor Icon

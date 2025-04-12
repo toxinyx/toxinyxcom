@@ -1,3 +1,57 @@
+## v0.8.1
+
+**2025-04-12**
+
+### 修复
+
+- 优化了移动端 aplayer 的展示逻辑：现在若开启了播放器，移动端将强制展示 fixed 类型的播放器，且不会被 live2d 遮挡
+- 修复 hugo v0.146.0 以上版本 partial 报错的问题
+
+### 特性
+
+- preloader 新增 rotate 配置，用于控制加载动画是否旋转，默认开启
+  ```yaml
+  preloader:
+    rotate: true # whether to rotate the icon
+  ```
+- 代码块现在支持展示文件名/文件链接
+  ``````markdown
+  ```rust {name="example.rs",url="https://example.com",link_text="example"}
+  #[derive(Debug)]
+  pub enum State {
+      Start,
+      Transient,
+      Closed,
+  }
+  ```
+  ``````
+
+---
+
+### Fixes  
+
+- Optimized the display logic of APlayer on mobile: Now, if the player is enabled, mobile devices will **forcefully display a fixed-type player** and it will not be obscured by Live2D.  
+- Fixed an issue where Hugo v0.146.0+ would report errors with `partial`.  
+
+### Features  
+
+- Preloader now supports a `rotate` configuration to control whether the loading animation spins (enabled by default).  
+  ```yaml  
+  preloader:  
+    rotate: true # whether to rotate the icon  
+  ```  
+- Code blocks now support displaying filenames/file links.  
+  ``````markdown  
+  ```rust {name="example.rs", url="https://example.com", link_text="example"}  
+  #[derive(Debug)]  
+  pub enum State {  
+      Start,  
+      Transient,  
+      Closed,  
+  }  
+  ```  
+  ``````  
+
 ## v0.8.0
 
 **2025-04-03**
