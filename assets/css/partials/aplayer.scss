@@ -77,6 +77,7 @@ body .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap,
 .aplayer .aplayer-list-cur,
 .aplayer .aplayer-list-index,
 .aplayer .aplayer-list-author,
-.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon {
+body .aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap,
+.aplayer .aplayer-icon {
   cursor: var(--cursor-pointer) !important;
 }
