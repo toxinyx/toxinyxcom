@@ -6,7 +6,6 @@
 
   @media #{$mg-normal} {
     flex-direction: column;
-    gap: 40px;
   }
 
   &.aos-animate {
@@ -34,12 +33,6 @@
       img {
         opacity: 0.6 !important;
         transform: scale(1.05);
-      }
-    }
-
-    @media #{$mq-normal} {
-      &:hover {
-        box-shadow: 0 0 10px 3px var(--color-hover-shadow);
       }
     }
   }

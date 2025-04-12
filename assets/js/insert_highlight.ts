@@ -36,10 +36,8 @@
     const codeName = element.querySelector(".code-name") as HTMLDivElement;
     if (fileName) {
       codeName.innerText = fileName;
-      codeFigcaptionBottom.style.marginBottom = '1em';
     } else {
       codeName.innerText = "";
-      codeFigcaptionBottom.style.marginBottom = '0';
     }
     const url = element.getAttribute("url");
     const linkText = element.getAttribute("link_text");
@@ -47,13 +45,16 @@
     if (url) {
       codeLink.setAttribute("href", url);
       codeLink.innerText = linkText || url;
-      codeFigcaptionBottom.style.marginBottom = '1em';
       codeFigcaptionBottom.classList.add("has-link");
     } else {
       codeLink.setAttribute("href", "");
       codeLink.innerText = "";
-      codeFigcaptionBottom.style.marginBottom = '0';
       codeFigcaptionBottom.classList.remove("has-link");
+    }
+    if (fileName || url) {
+      codeFigcaptionBottom.style.marginBottom = '0.5em';
+    } else {
+      codeFigcaptionBottom.style.marginBottom = '0';
     }
   });
   // 代码收缩

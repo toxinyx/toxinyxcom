@@ -63,11 +63,11 @@
 
 #loader.loading {
   .loading-left-bg {
-    transform: translate(-100%, 0);
+    transform: translateX(-100%);
   }
 
   .loading-right-bg {
-    transform: translate(100%, 0);
+    transform: translateX(100%);
   }
 
   .spinner-box {
@@ -77,7 +77,7 @@
 }
 
 @keyframes rotate-all {
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
