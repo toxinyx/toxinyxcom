@@ -6,7 +6,9 @@
   background-size: 50px 4px;
   background-repeat: repeat-x;
   filter: drop-shadow(0px 0px 2px var(--red-1));
-  transition: opacity 0.3s, color 0.3s;
+  transition:
+    opacity 0.3s,
+    color 0.3s;
 
   &:hover {
     opacity: 0.5;
@@ -142,6 +144,57 @@
       text-decoration: underline;
     }
   }
+
+  a:not(
+      h1 a,
+      h2 a,
+      h3 a,
+      h4 a,
+      h5 a,
+      h6 a,
+      .code-figcaption-bottom a,
+      .post-link-card a,
+      .friend-item-wrap a,
+      :has(code),
+      a.article-gallery-item
+    ), .code-figcaption-bottom.has-link a {
+    &::after {
+      @if $icon_font {
+        font-family: $font-icon;
+        content: "\e639";
+      } @else {
+        font-family: var(--font-icon);
+        content: "\f0c1";
+      }
+      font-size: 0.5em;
+      margin-left: 0.5em;
+      vertical-align: bottom;
+    }
+  } 
+
+  a:not(
+      h1 a,
+      h2 a,
+      h3 a,
+      h4 a,
+      h5 a,
+      h6 a,
+      .code-figcaption-bottom a
+    ) {
+    code::after {
+      @if $icon_font {
+        font-family: $font-icon;
+        content: "\e639";
+      } @else {
+        font-family: var(--font-icon);
+        content: "\f0c1";
+      }
+      font-size: 0.5em;
+      margin-left: 0.5em;
+      vertical-align: bottom;
+    }
+  }
+  
 
   ul,
   ol,
@@ -519,7 +572,7 @@
   display: flex !important;
 }
 
-.katex-display>.katex>.katex-html>.tag {
+.katex-display > .katex > .katex-html > .tag {
   position: relative !important;
   float: right;
   margin-left: 0.25rem;

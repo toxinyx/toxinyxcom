@@ -48,10 +48,12 @@
       codeLink.setAttribute("href", url);
       codeLink.innerText = linkText || url;
       codeFigcaptionBottom.style.marginBottom = '1em';
+      codeFigcaptionBottom.classList.add("has-link");
     } else {
       codeLink.setAttribute("href", "");
       codeLink.innerText = "";
       codeFigcaptionBottom.style.marginBottom = '0';
+      codeFigcaptionBottom.classList.remove("has-link");
     }
   });
   // 代码收缩
