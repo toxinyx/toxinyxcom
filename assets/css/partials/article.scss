@@ -293,11 +293,7 @@
   summary {
     font-size: 1.1em;
     font-weight: bold;
-    @if $reimu_cursor {
-      cursor: var(--cursor-pointer);
-    } @else {
-      cursor: pointer;
-    }
+    cursor: var(--cursor-pointer) !important;
     padding: 8px;
     border: none;
     border-radius: 10px;
@@ -576,4 +572,12 @@
   position: relative !important;
   float: right;
   margin-left: 0.25rem;
+}
+
+mjx-container {
+  display: inline-grid;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  min-width: auto !important;
 }

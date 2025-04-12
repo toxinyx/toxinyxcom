@@ -45,10 +45,6 @@
   --highlight-aqua: #479d9d;
   --highlight-blue: #1973b8;
   --highlight-purple: #7135ac;
-
-  --cursor-default: url(#{$cursor-default}), auto;
-  --cursor-pointer: url(#{$cursor-pointer}), pointer;
-  --cursor-text: url(#{$cursor-text}), text;
 }
 
 [data-theme="dark"] {

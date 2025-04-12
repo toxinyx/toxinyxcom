@@ -39,19 +39,11 @@
       background-color: #c9ccd0;
       transition: 0.3s;
       padding: 0.31rem 0.32rem;
-      @if $reimu_cursor {
-        cursor: var(--cursor-pointer) !important
-      } @else {
-        cursor: pointer !important;
-      }
+      cursor: var(--cursor-pointer) !important;
       font-weight: bold;
 
       span {
-        @if $reimu_cursor {
-          cursor: var(--cursor-pointer) !important;
-        } @else {
-          cursor: pointer !important;
-        }
+        cursor: var(--cursor-pointer) !important;
       }
 
       [data-theme="dark"] & {
@@ -102,4 +94,12 @@
 
 .wl-header input {
   font-size: revert !important;
+}
+
+.wl-action, .wl-sort li {
+  cursor: var(--cursor-pointer) !important;
+}
+
+.wl-header label {
+  cursor: var(--cursor-default) !important;
 }

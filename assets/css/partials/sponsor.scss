@@ -67,12 +67,7 @@
   justify-content: center;
   border: 10px var(--color-red-3-shadow) double;
   transition: border 0.5s;
-
-  @if $reimu_cursor {
-    cursor: var(--cursor-pointer);
-  } @else {
-    cursor: pointer;
-  }
+  cursor: var(--cursor-pointer) !important;
 
   &:hover {
     border: 10px var(--color-h2-after) double;

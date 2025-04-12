@@ -2,10 +2,11 @@
   margin: 0 0 40px !important;
   border-radius: $post-radius !important;
   background: var(--color-wrap) !important;
-  transition: all .3s;
+  transition: all 0.3s;
   font-family: $font-basic !important;
 
-  button, .aplayer-icon {
+  button,
+  .aplayer-icon {
     &:hover {
       path {
         fill: var(--color-link) !important;
@@ -20,30 +21,32 @@
 
 .aplayer.aplayer-fixed .aplayer-body {
   background: var(--color-wrap) !important;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .aplayer.aplayer-fixed .aplayer-info {
-  transition: all .3s;
+  transition: all 0.3s;
   border-top: 1px solid var(--color-h2-border) !important;
 }
 
 .aplayer.aplayer-fixed .aplayer-list {
   border: 1px solid var(--color-h2-border) !important;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .aplayer.aplayer-withlist .aplayer-info {
-  transition: all .3s;
+  transition: all 0.3s;
   border-bottom: 1px solid var(--color-h2-border) !important;
 }
 
-.aplayer-title, .aplayer-list-title, .aplayer-music {
+.aplayer-title,
+.aplayer-list-title,
+.aplayer-music {
   color: var(--color-link) !important;
 }
 
 .aplayer .aplayer-list ol li {
-  transition: all .3s;
+  transition: all 0.3s;
   border-top: 1px solid var(--color-h2-border) !important;
 }
 
@@ -62,4 +65,19 @@
 
 .aplayer .aplayer-list ol li:hover {
   background: var(--color-hover-shadow) !important;
+}
+
+.aplayer .aplayer-lrc .aplayer-lrc-contents,
+.aplayer .aplayer-info .aplayer-music {
+  cursor: var(--cursor-default) !important;
+}
+
+.aplayer .aplayer-pic,
+body .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap,
+.aplayer .aplayer-list ol li .aplayer-list-cur,
+.aplayer .aplayer-list ol li .aplayer-list-index,
+.aplayer .aplayer-list ol li .aplayer-list-author,
+.aplayer .aplayer-list ol li,
+.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon {
+  cursor: var(--cursor-pointer) !important;
 }

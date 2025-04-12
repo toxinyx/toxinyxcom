@@ -36,6 +36,16 @@ $share-keys: {{ delimit (apply $share_keys "printf" "'%s'" "." ) "," }};
   --footer-icon: url({{ $params.footer.icon.url }});
   --top-icon: url({{ $params.top.icon.url }});
   --sponsor-icon: url({{ $params.sponsor.icon.url }});
+
+  @if $reimu_cursor {
+    --cursor-default: url(#{$cursor-default}), auto;
+    --cursor-pointer: url(#{$cursor-pointer}), pointer;
+    --cursor-text: url(#{$cursor-text}), text;
+  } @else {
+    --cursor-default: auto;
+    --cursor-pointer: pointer;
+    --cursor-text: text;
+  }
 }
 
 @import "_reset";
@@ -69,9 +79,7 @@ input, button {
 html, body, #container {
   height: 100%;
   scroll-behavior: smooth;
-  @if $reimu_cursor {
-    cursor: var(--cursor-default);
-  }
+  cursor: var(--cursor-default);
 }
 
 body {
@@ -89,44 +97,34 @@ body {
   }
 }
 
-@if $reimu_cursor {
-  a, .main-nav-icon, .popup-btn-close {
-    cursor: var(--cursor-pointer) !important;
+a, .main-nav-icon, .popup-btn-close, button {
+  cursor: var(--cursor-pointer) !important;
+}
+
+.site-search {
+  input {
+    cursor: var(--cursor-text) !important;
+  }
+}
+
+#main {
+  span, p, code, kbd, input, textarea {
+    cursor: var(--cursor-text) !important;
   }
 
-  .site-search {
-    input {
-      cursor: var(--cursor-text) !important;
+  nav {
+    span {
+      cursor: var(--cursor-default) !important;
     }
   }
+}
 
-  #main {
-    span, p, code, kbd, input, textarea {
-      cursor: var(--cursor-text) !important;
-    }
+.code-copy, .code-lang, .code-expand {
+  cursor: var(--cursor-pointer) !important;
+}
 
-    nav {
-      span {
-        cursor: var(--cursor-default) !important;
-      }
-    }
-  }
-
-  .code-copy, .code-lang, .code-expand {
-    cursor: var(--cursor-pointer) !important;
-  }
-
-  .reimu-powered {
-    cursor: var(--cursor-default) !important;
-  }
-} @else {
-  .code-copy, .code-lang, .code-expand {
-    cursor: pointer !important;
-  }
-
-  .main-nav-icon, .popup-btn-close {
-    cursor: pointer !important;
-  }
+.reimu-powered {
+  cursor: var(--cursor-default) !important;
 }
 
 #container {
