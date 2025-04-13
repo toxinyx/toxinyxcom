@@ -1,3 +1,9 @@
+{{ $params := .Site.Params }}
+{{ $local_basic_families := default "" (delimit (apply (default slice $params.local_font.article) "printf" "'%s'" ".") ",") }}
+$local-basic-families: {{ $local_basic_families }};
+$basic-families: {{ default $local_basic_families (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }};
+$font-basic: $basic-families, $local-basic-families;
+
 [data-theme="dark"] {
   #loader {
     .loading-bg {
@@ -50,13 +56,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font:
-        700 1.2rem Mulish,
-        "Noto Serif SC",
-        "Noto Serif JP",
-        -apple-system,
-        "PingFang SC",
-        "Microsoft YaHei",
-        sans-serif;
+        700 1.2rem $font-basic;
     }
   }
 }
