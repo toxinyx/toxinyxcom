@@ -103,8 +103,8 @@
 }
 
 // Fonts
-$font-basic: $basic-families, $local-basic-families;
-$font-code: $code-families, $local-code-families;
+$font-basic: $custom-basic-families, $basic-families, $local-basic-families;
+$font-code: $custom-code-families, $code-families, $local-code-families;
 
 $font-size: 14px;
 $line-height: 1.8em;

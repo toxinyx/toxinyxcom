@@ -1,13 +1,33 @@
 {{ $params := .Site.Params }}
 {{ $local_basic_families := default "" (delimit (apply (default slice $params.local_font.article) "printf" "'%s'" ".") ",") }}
 {{ $local_code_families := default "" (delimit (apply (default slice $params.local_font.code) "printf" "'%s'" ".") ",") }}
+{{ $basic_families := default $local_basic_families (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }}
+{{ $code_families := default $local_code_families (delimit (apply (default slice $params.font.code) "printf" "'%s'" "." ) ",") }}
 
 $icon_font: {{ $params.icon_font }};
 $reimu_cursor: {{ if reflect.IsMap $params.reimu_cursor }}{{ $params.reimu_cursor.enable }}{{ else }}{{ $params.reimu_cursor }}{{ end }};
-$basic-families: {{ default $local_basic_families (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }};
-$code-families: {{ default $local_code_families (delimit (apply (default slice $params.font.code) "printf" "'%s'" "." ) ",") }};
+
+$basic-families: {{ $basic_families }};
+$code-families: {{ $code_families }};
 $local-basic-families: {{ $local_basic_families }};
 $local-code-families: {{ $local_code_families }};
+
+{{- $custom_basic_font := .Site.Params.custom_font.article -}}
+{{ $_custom_basic_families := slice }}
+{{ range $custom_basic_font }}
+  {{ $_custom_basic_families = $_custom_basic_families | append (default "" (printf "'%s'" .name)) }}
+{{ end }}
+{{ $custom_basic_families := delimit $_custom_basic_families "," }}
+
+{{- $custom_code_font := .Site.Params.custom_font.code -}}
+{{ $_custom_code_families := slice }}
+{{ range $custom_code_font }}
+  {{ $_custom_code_families = $_custom_code_families | append (default "" (printf "'%s'" .name)) }}
+{{ end }}
+{{ $custom_code_families := delimit $_custom_code_families "," }}
+
+$custom-basic-families: {{ default $basic_families $custom_basic_families }};
+$custom-code-families: {{ default $code_families $custom_code_families }};
 
 $footer_icon_mask: {{  $params.footer.icon.mask }};
 $top_icon_mask: {{  $params.top.icon.mask }};

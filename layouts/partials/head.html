@@ -37,7 +37,13 @@
 {{ partialCached "head/analytics.html" . }}
 {{ partialCached "head/config.html" . }}
 
-{{ partialCached "helpers/vendorFont.html" . }}
+{{ if .Site.Params.custom_font.enable }}
+  {{ partialCached "helpers/vendorFont.html" . }}
+{{ end }}
+
+{{ if .Site.Params.font.enable }}
+  {{ partialCached "helpers/vendorGoogleFont.html" . }}
+{{ end }}
 
 {{ $js := .Site.Data.vendor.js }}
 {{ $css := .Site.Data.vendor.css }}
