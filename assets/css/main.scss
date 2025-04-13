@@ -48,6 +48,53 @@ $share-keys: {{ delimit (apply $share_keys "printf" "'%s'" "." ) "," }};
   }
 }
 
+$light-red-0: {{ default "#ff0000" (index $params.internal_theme.light "--red-0") }};
+$light-red-1: {{ default "#ff5252" (index $params.internal_theme.light "--red-1") }};
+$light-red-2: {{ default "#ff7c7c" (index $params.internal_theme.light "--red-2") }};
+$light-red-3: {{ default "#ffafaf" (index $params.internal_theme.light "--red-3") }};
+$light-red-4: {{ default "#ffd0d0" (index $params.internal_theme.light "--red-4") }};
+$light-red-5: {{ default "#ffecec" (index $params.internal_theme.light "--red-5") }};
+$light-red-5-5: {{ default "#fff3f3" (index $params.internal_theme.light "--red-5-5") }};
+$light-red-6: {{ default "#fff7f7" (index $params.internal_theme.light "--red-6") }};
+
+$light-color-red-6-shadow: {{ default "rgba(255, 78, 78, 0.6)" (index $params.internal_theme.light "--color-red-6-shadow") }};
+$light-color-red-3-shadow: {{ default "rgba(255, 78, 78, 0.3)" (index $params.internal_theme.light "--color-red-3-shadow") }};
+
+$light-highlight-nav: {{ default "#e6e6e6" (index $params.internal_theme.light "--highlight-nav") }};
+$light-highlight-scrollbar: {{ default "#d6d6d6" (index $params.internal_theme.light "--highlight-scrollbar") }};
+$light-highlight-background: {{ default "#f7f7f7" (index $params.internal_theme.light "--highlight-background") }};
+$light-highlight-current-line: {{ default "#dadada" (index $params.internal_theme.light "--highlight-current-line") }};
+$light-highlight-selection: {{ default "#e9e9e9" (index $params.internal_theme.light "--highlight-selection") }};
+$light-highlight-foreground: {{ default "#4d4d4d" (index $params.internal_theme.light "--highlight-foreground") }};
+$light-highlight-comment: {{ default "#7d7d7d" (index $params.internal_theme.light "--highlight-comment") }};
+$light-highlight-red: {{ default "#c8362b" (index $params.internal_theme.light "--highlight-red") }};
+$light-highlight-orange: {{ default "#b66014" (index $params.internal_theme.light "--highlight-orange") }};
+$light-highlight-yellow: {{ default "#cb911d" (index $params.internal_theme.light "--highlight-yellow") }};
+$light-highlight-green: {{ default "#2ea52e" (index $params.internal_theme.light "--highlight-green") }};
+$light-highlight-aqua: {{ default "#479d9d" (index $params.internal_theme.light "--highlight-aqua") }};
+$light-highlight-blue: {{ default "#1973b8" (index $params.internal_theme.light "--highlight-blue") }};
+$light-highlight-purple: {{ default "#7135ac" (index $params.internal_theme.light "--highlight-purple") }};
+
+$dark-red-4: {{ default "rgba(255, 208, 208, 0.5)" (index $params.internal_theme.dark "--red-4") }};
+$dark-red-5: {{ default "rgba(255,228,228,0.15)" (index $params.internal_theme.dark "--red-5") }};
+$dark-red-5-5: {{ default "rgba(255,236,236,0.05)" (index $params.internal_theme.dark "--red-5-5") }};
+$dark-red-6: {{ default "rgba(255, 243, 243, 0.2)" (index $params.internal_theme.dark "--red-6") }};
+
+$dark-highlight-nav: {{ default "#2e353f" (index $params.internal_theme.dark "--highlight-nav") }};
+$dark-highlight-scrollbar: {{ default "#454d59" (index $params.internal_theme.dark "--highlight-scrollbar") }};
+$dark-highlight-background: {{ default "#22272e" (index $params.internal_theme.dark "--highlight-background") }};
+$dark-highlight-current-line: {{ default "#393939" (index $params.internal_theme.dark "--highlight-current-line") }};
+$dark-highlight-selection: {{ default "#515151" (index $params.internal_theme.dark "--highlight-selection") }};
+$dark-highlight-foreground: {{ default "#cccccc" (index $params.internal_theme.dark "--highlight-foreground") }};
+$dark-highlight-comment: {{ default "#999999" (index $params.internal_theme.dark "--highlight-comment") }};
+$dark-highlight-red: {{ default "#f47067" (index $params.internal_theme.dark "--highlight-red") }};
+$dark-highlight-orange: {{ default "#f69d50" (index $params.internal_theme.dark "--highlight-orange") }};
+$dark-highlight-yellow: {{ default "#ffcc66" (index $params.internal_theme.dark "--highlight-yellow") }};
+$dark-highlight-green: {{ default "#99cc99" (index $params.internal_theme.dark "--highlight-green") }};
+$dark-highlight-aqua: {{ default "#66cccc" (index $params.internal_theme.dark "--highlight-aqua") }};
+$dark-highlight-blue: {{ default "#54b6ff" (index $params.internal_theme.dark "--highlight-blue") }};
+$dark-highlight-purple: {{ default "#dcbdfb" (index $params.internal_theme.dark "--highlight-purple") }};
+
 @import "_reset";
 @import "_variables";
 @import "_animation";
