@@ -66,11 +66,11 @@
     margin-right: 10px;
   }
 }
-
+ 
 .article-entry {
   @include base-style;
   @include clearfix;
-
+  overflow: hidden;
   color: var(--color-default);
   padding: 0 $article-padding + 15px;
 
@@ -551,6 +551,9 @@
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .katex {
@@ -580,4 +583,7 @@ mjx-container {
   overflow-y: hidden;
   max-width: 100%;
   min-width: auto !important;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

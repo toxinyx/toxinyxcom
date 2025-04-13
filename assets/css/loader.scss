@@ -1,8 +1,21 @@
 {{ $params := .Site.Params }}
 {{ $local_basic_families := default "" (delimit (apply (default slice $params.local_font.article) "printf" "'%s'" ".") ",") }}
+{{ $basic_families := default $local_basic_families (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }}
+
+$basic-families: {{ $basic_families }};
 $local-basic-families: {{ $local_basic_families }};
-$basic-families: {{ default $local_basic_families (delimit (apply (default slice $params.font.article) "printf" "'%s'" ".") ",") }};
-$font-basic: $basic-families, $local-basic-families;
+
+{{- $custom_basic_font := .Site.Params.custom_font.article -}}
+{{ $_custom_basic_families := slice }}
+{{ range $custom_basic_font }}
+  {{ $_custom_basic_families = $_custom_basic_families | append (default "" (printf "'%s'" .name)) }}
+{{ end }}
+{{ $custom_basic_families := delimit $_custom_basic_families "," }}
+
+
+$custom-basic-families: {{ default $basic_families $custom_basic_families }};
+
+$font-basic: $custom-basic-families, $basic-families, $local-basic-families;
 
 [data-theme="dark"] {
   #loader {
