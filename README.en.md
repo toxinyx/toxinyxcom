@@ -82,6 +82,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 🎨 Dynamic theme color adaptation
 - ©️ Article copyright declaration
 - 🌐 Custom CDN source / local source configuration
+- 📜 Custom Font Family
 - 🎨 Share card functionality
 
 ## Installation
@@ -813,31 +814,58 @@ material_theme:
 
 hugo-theme-reimu supports customizing theme colors through CSS variables. You can customize your theme colors by modifying the CSS variables under the `:root` pseudo-class.
 
-The variables file is located at `assets/css/_variables.scss`. You can find all CSS variables there, but you only need to modify the variables under these pseudo-classes:
+~~The variables file is located at `assets/css/_variables.scss`. You can find all CSS variables there, but you only need to modify the variables under these pseudo-classes~~
 
-```scss
-:root {
-  --red-0: hsl(0, 100%, 50%);
-  --red-1: hsl(0, 100%, 66%);
-  --red-2: hsl(0, 100%, 74%);
-  --red-3: hsl(0, 100%, 84%);
-  --red-4: hsl(0, 100%, 91%);
-  --red-5: hsl(0, 100%, 95%);
-  --red-5-5: hsl(0, 100%, 96%);
-  --red-6: hsl(0, 100%, 98%);
+v0.9.0 added `internal_theme` configuration to customize theme colors. You can change the theme colors by modifying the `internal_theme` configuration in `params.yml`. The default theme colors are as follows:
 
-  --color-red-6-shadow: hsla(0, 100%, 65%, 0.6);
-  --color-red-3-shadow: hsla(0, 100%, 65%, 0.3);
-}
+```yaml
+internal_theme:
+  light:
+    --red-0: '#ff0000'
+    --red-1: '#ff5252'
+    --red-2: '#ff7c7c'
+    --red-3: '#ffafaf'
+    --red-4: '#ffd0d0'
+    --red-5: '#ffecec'
+    --red-5-5: '#fff3f3'
+    --red-6: '#fff7f7'
+    --color-red-6-shadow: 'rgba(255, 78, 78, 0.6)'
+    --color-red-3-shadow: 'rgba(255, 78, 78, 0.3)'
 
-[data-theme="dark"] {
-  &:root {
-    --red-4: hsla(0, 100%, 91%, 0.5);
-    --red-5: hsla(0, 100%, 95%, 0.2);
-    --red-5-5: hsla(0, 100%, 96%, 0.1);
-    --red-6: hsla(0, 100%, 98%, 0.2);
-  }
-}
+    --highlight-nav: '#e6e6e6'
+    --highlight-scrollbar: '#d6d6d6'
+    --highlight-background: '#f7f7f7'
+    --highlight-current-line: '#dadada'
+    --highlight-selection: '#e9e9e9'
+    --highlight-foreground: '#4d4d4d'
+    --highlight-comment: '#7d7d7d'
+    --highlight-red: '#c8362b'
+    --highlight-orange: '#b66014'
+    --highlight-yellow: '#cb911d'
+    --highlight-green: '#2ea52e'
+    --highlight-aqua: '#479d9d'
+    --highlight-blue: '#1973b8'
+    --highlight-purple: '#7135ac'
+  dark:
+    --red-4: 'rgba(255, 208, 208, 0.5)'
+    --red-5: 'rgba(255,228,228,0.15)'
+    --red-5-5: 'rgba(255,236,236,0.05)'
+    --red-6: 'rgba(255, 243, 243, 0.2)'
+
+    --highlight-nav: '#2e353f'
+    --highlight-scrollbar: '#454d59'
+    --highlight-background: '#22272e'
+    --highlight-current-line: '#393939'
+    --highlight-selection: '#515151'
+    --highlight-foreground: '#cccccc'
+    --highlight-comment: '#999999'
+    --highlight-red: '#f47067'
+    --highlight-orange: '#f69d50'
+    --highlight-yellow: '#ffcc66'
+    --highlight-green: '#99cc99'
+    --highlight-aqua: '#66cccc'
+    --highlight-blue: '#54b6ff'
+    --highlight-purple: '#dcbdfb'
 ```
 
 #### Customize theme font
@@ -847,6 +875,7 @@ You can define Google Fonts through the following configuration:
 ```yaml
 # https://fonts.google.com/
 font:
+  enable: true # Enable Google Fonts
   article:
     - Mulish
     - Noto Serif SC
@@ -870,6 +899,17 @@ local_font:
     - Monaco
     - Consolas
     - monospace
+```
+
+v0.9.0 added `custom_font` configuration for defining custom fonts, which has the highest priority:
+
+```yaml
+custom_font:
+  enable: true
+  article:
+    - css: https://fontsapi.zeoseven.com/292/main/result.css # font css
+      name: LXGW WenKai # font css
+  code:
 ```
 
 #### Customizing Icons

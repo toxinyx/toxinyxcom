@@ -1,3 +1,73 @@
+## v0.9.0
+
+**2025-04-13**
+
+### 修复
+
+- 统一光标
+- 修复 material_theme 开启时渐变色不生效的问题
+- 修复了 MathJax 溢出屏幕的问题
+- 修复了 preloader 的加载动画字体无法自定义的问题
+
+### 特性
+
+- 增强了 markdown 中链接的样式
+- 主题 token 现在可以直接通过 `internal_theme` 配置进行修改
+  ```yaml
+  internal_theme:
+    light:
+      --red-0: '#ff0000'
+      # ...
+    dark:
+      --red-4: 'rgba(255, 208, 208, 0.5)'
+      # ...
+  ```
+- 新增 `custom_font` 配置用于自定义字体，其优先级最高，默认为空，使用方式如下：
+  ```yaml
+  custom_font:
+    enable: true # true | false
+    article:
+      - css: https://fontsapi.zeoseven.com/292/main/result.css # 字体css，支持本地和远程
+        name: LXGW WenKai # 字体名称
+    code:
+      # - css: # 字体css，支持本地和远程
+      # - name: # 字体名称
+  ```
+
+---
+
+### Fixes  
+
+- Unified cursor style  
+- Fixed gradient colors not working when `material_theme` is enabled  
+- Fixed MathJax content overflowing the screen  
+- Fixed the issue where the font of the preloader animation couldn't be customized  
+
+### Features  
+
+- Enhanced link styling in Markdown  
+- Theme tokens can now be directly modified via the `internal_theme` configuration:  
+  ```yaml  
+  internal_theme:  
+    light:  
+      --red-0: '#ff0000'  
+      # ...  
+    dark:  
+      --red-4: 'rgba(255, 208, 208, 0.5)'  
+      # ...  
+  ```  
+- Added `custom_font` configuration for custom fonts, which takes the highest priority. Defaults to empty. Usage:  
+  ```yaml  
+  custom_font:  
+    enable: true # true | false  
+    article:  
+      - css: https://fontsapi.zeoseven.com/292/main/result.css # Font CSS, supports local and remote  
+        name: LXGW WenKai # Font name  
+    code:  
+      # - css: # Font CSS, supports local and remote  
+      # - name: # Font name  
+  ```
+
 ## v0.8.1
 
 **2025-04-12**

@@ -169,8 +169,8 @@ icon_font: 4552607_0khxww3tj3q9
 custom_font:
   enable: false
   article:
-    # - css: https://fontsapi.zeoseven.com/292/main/result.css
-    #   name: LXGW WenKai
+    # - css: https://fontsapi.zeoseven.com/292/main/result.css # font css
+    #   name: LXGW WenKai # font name
   code:
 
 # https://fonts.google.com/
