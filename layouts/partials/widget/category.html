@@ -7,7 +7,7 @@
       <div style="display: flex; justify-content: space-between;">
         <h3 class="widget-title">{{ i18n "categories" }}</h3>
         {{ if gt (len .Site.Taxonomies.categories) .Site.Params.category_limits }}
-          <a class="widget-link" href="{{ "categories/" | relURL }}">{{ i18n "more" }}</a>
+          <a class="widget-link" href="{{ "categories/" | relLangURL }}">{{ i18n "more" }}</a>
         {{ end }}
       </div>
       <div class="widget">

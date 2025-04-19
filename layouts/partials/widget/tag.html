@@ -7,7 +7,7 @@
       <div style="display: flex; justify-content: space-between;">
         <h3 class="widget-title">{{ i18n "tags" }}</h3>
         {{ if gt (len .Site.Taxonomies.tags) .Site.Params.tag_limits }}
-          <a class="widget-link" href="{{ "tags/" | relURL }}">{{ i18n "more" }}</a>
+          <a class="widget-link" href="{{ "tags/" | relLangURL }}">{{ i18n "more" }}</a>
         {{ end }}
       </div>
       <div class="widget">

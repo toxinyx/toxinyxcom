@@ -14,7 +14,7 @@
             {{ end }}
           {{ end }}
         </div>
-        <a class="main-nav-link" href="{{ .url | relURL }}">{{ i18n .name }}</a>
+        <a class="main-nav-link" href="{{ .url | relLangURL }}">{{ i18n .name }}</a>
       </span>
     {{ end }}
     <a id="main-nav-toggle" class="nav-icon"></a>
@@ -84,7 +84,7 @@
   <div id="header-outer">
     <div id="header-title">
       {{ if eq .Type "404" }}
-        <a href="{{ "" | relURL }}" id="logo">
+        <a href="{{ "" | relLangURL }}" id="logo">
           <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ i18n "not_found.title" }}</h1>
         </a>
       {{ else }}
@@ -104,7 +104,7 @@
         {{ end }}
   
         {{ if $title }}
-          <a href="{{ "" | relURL }}" id="logo">
+          <a href="{{ "" | relLangURL }}" id="logo">
             <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ $title }}</h1>
           </a>
         {{ end }}
@@ -112,7 +112,7 @@
   
       {{ if eq .Type "404" }}
         <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
-          <a href="{{ "" | relURL }}" id="subtitle">{{ i18n "not_found.subtitle" }}</a>
+          <a href="{{ "" | relLangURL }}" id="subtitle">{{ i18n "not_found.subtitle" }}</a>
         </h2>
       {{ else }}
         {{ $subtitle := "" }}
@@ -125,7 +125,7 @@
         {{ end }}
         <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
           {{ if $subtitle }}
-            <a href="{{ "" | relURL }}" id="subtitle">{{ $subtitle }}</a>
+            <a href="{{ "" | relLangURL }}" id="subtitle">{{ $subtitle }}</a>
           {{ end }}
         </h2>
       {{ end }}

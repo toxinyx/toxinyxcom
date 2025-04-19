@@ -44,7 +44,7 @@
     <div class="sidebar-menu-link-wrap">
       <a
         class="sidebar-menu-link-dummy"
-        href="{{ .url | relURL }}"
+        href="{{ .url | relLangURL }}"
         aria-label="{{ i18n .name }}"
       ></a>
       <div class='sidebar-menu-icon icon {{ if or (and (eq .icon "e62b") ($params.icon_font)) (and (eq .icon "f6ad") (not $params.icon_font)) (not .icon) }}rotate{{ end }}'>
