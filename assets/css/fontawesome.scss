@@ -87,6 +87,11 @@
   content: "\f042";
 }
 
+#nav-language-btn:before {
+  font-family: var(--font-icon);
+  content: "\f1ab";
+}
+
 .icon-copy:before {
   font-family: var(--font-icon);
   content: "\f0c5";

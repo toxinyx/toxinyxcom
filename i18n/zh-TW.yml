@@ -70,3 +70,6 @@ article_copyright:
   updated: 本文更新時間：
   license: 本文版權：
   license_content: 本部落格所有文章除特別聲明外，均採用 {{ . }} 授權協議。轉載請註明出處！
+
+multi_language:
+  not_found: 本文章沒有找到對應的語言版本

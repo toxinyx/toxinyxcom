@@ -70,3 +70,6 @@ article_copyright:
   updated: 本文更新时间：
   license: 本文版权：
   license_content: 本博客所有文章除特别声明外，均采用 {{ . }} 许可协议。转载请注明出处！
+
+multi_language:
+  not_found: 本文章没有找到对应的语言版本

@@ -70,3 +70,6 @@ article_copyright:
   updated: "更新日: "
   license: "ライセンス: "
   license_content: 本ブログのすべての文書は、特に指定されていない限り、{{ . -}} ライセンスに従っています。引用の際は出典を明記してください！
+
+multi_language:
+  not_found: 本文書は対応する言語バージョンが見つかりません

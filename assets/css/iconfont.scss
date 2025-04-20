@@ -93,6 +93,11 @@ $icon-url: "//at.alicdn.com/t/c/font_#{$icon_font}.woff2";
   content: "\e641";
 }
 
+#nav-language-btn:before {
+  font-family: $font-icon;
+  content: "\e642";
+}
+
 .icon-copy:before {
   font-family: $font-icon;
   content: "\e60c";
