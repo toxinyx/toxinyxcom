@@ -47,6 +47,7 @@
           const recordIP = JSON.parse('{{ $params.valine.recordIP }}');
           const highlight = JSON.parse('{{ $params.valine.highlight }}');
           const visitor = JSON.parse('{{ $params.valine.visitor }}');
+          const serverURLs = {{ if $params.valine.serverURLs }}'{{ $params.valine.serverURLs }}'{{ else }}undefined{{ end }};
 
           new Valine({
             el: '.valine-comment',
@@ -60,7 +61,8 @@
             highlight: highlight,
             visitor: visitor,
             requiredFields: guest_info,
-            path: window.location.pathname
+            path: window.location.pathname,
+            serverURLs,
           });
         };
         document.head.appendChild(script);
@@ -161,7 +163,7 @@
             repo: '{{ $params.gitalk.repo }}',
             owner: '{{ $params.gitalk.owner }}',
             admin: JSON.parse({{ $params.gitalk.admin | jsonify }}),
-            id: {{ if $params.gitalk.md5 }}'window.md5 ? window.md5(location.pathname) : location.pathname'{{ else }}'location.pathname'{{ end }},
+            id: {{ if $params.gitalk.md5 }}window.md5 ? window.md5(location.pathname) : location.pathname{{ else }}location.pathname{{ end }},
             distractionFreeMode: false
           });
           gitalk.render('gitalk-comment');
