@@ -73,3 +73,6 @@ article_copyright:
 
 multi_language:
   not_found: 本文章没有找到对应的语言版本
+
+comments:
+  title: 说些什么吧！

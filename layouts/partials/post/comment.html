@@ -56,7 +56,7 @@
             placeholder: "{{ $params.valine.placeholder }}",
             pageSize: '{{ $params.valine.pageSize }}',
             avatar: '{{ $params.valine.avatar }}',
-            lang: '{{ $params.valine.lang }}',
+            lang: document.documentElement.lang || 'en',
             recordIP: recordIP,
             highlight: highlight,
             visitor: visitor,
@@ -94,7 +94,7 @@
         window.walineInstance = walineInit({
           el: '.waline-comment',
           serverURL: '{{ $params.waline.serverURL }}',
-          lang: '{{ $params.waline.lang }}',
+          lang: document.documentElement.lang || 'en',
           locale: JSON.parse({{ $params.waline.locale | jsonify }}),
           emoji: JSON.parse({{ $params.waline.emoji | jsonify}}),
           meta: JSON.parse({{ $params.waline.meta | jsonify }}),

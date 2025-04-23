@@ -73,3 +73,6 @@ article_copyright:
 
 multi_language:
   not_found: 本文書は対応する言語バージョンが見つかりません
+
+comments:
+  title: "何か言ってみて！"

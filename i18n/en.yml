@@ -73,3 +73,6 @@ article_copyright:
 
 multi_language:
   not_found: This article does not have a corresponding language version
+
+comments:
+  title: "Say something!"

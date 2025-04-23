@@ -18,7 +18,7 @@
 {{ if and (not (eq .Params.comments false)) (len $activeSystems) }}
 <section id="comments" data-aos="{{ $params.animation.options.article.whole }}">
 <div class="comment-header">
-  <h2 class="comment-title">{{ $params.comment.title }}</h2>
+  <h2 class="comment-title">{{ i18n "comments.title" }}</h2>
   <div class="comment-selector">
     <div class="comment-selector-wrap">
       {{ range $name, $enabled := $commentSystems }}
