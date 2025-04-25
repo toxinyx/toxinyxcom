@@ -124,6 +124,7 @@
             envId: '{{ $params.twikoo.envId }}',
             el: '.twikoo-comment',
             region: '{{ $params.twikoo.region }}',
+            lang: document.documentElement.lang || 'en',
           });
         };
         document.head.appendChild(script);
@@ -164,7 +165,8 @@
             owner: '{{ $params.gitalk.owner }}',
             admin: JSON.parse({{ $params.gitalk.admin | jsonify }}),
             id: {{ if $params.gitalk.md5 }}window.md5 ? window.md5(location.pathname) : location.pathname{{ else }}location.pathname{{ end }},
-            distractionFreeMode: false
+            distractionFreeMode: false,
+            language: document.documentElement.lang || 'en',
           });
           gitalk.render('gitalk-comment');
         }
@@ -197,7 +199,7 @@
         giscusScript.setAttribute('data-emit-metadata', '{{ $params.giscus.emitMetadata }}');
         giscusScript.setAttribute('data-input-position', '{{ $params.giscus.inputPosition }}');
         giscusScript.setAttribute('data-theme', domMode === 'dark' ? 'dark' : 'light');
-        giscusScript.setAttribute('data-lang', '{{ $params.giscus.lang }}');
+        giscusScript.setAttribute('data-lang', document.documentElement.lang || 'en');
         giscusScript.setAttribute('crossorigin', 'anonymous');
         giscusScript.async = true;
         container.appendChild(giscusScript);
