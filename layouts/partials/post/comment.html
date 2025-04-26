@@ -1,23 +1,23 @@
-{{ $site := .Site }}
-{{ $params := .Site.Params }}
-{{ $js := .Site.Data.vendor.js }}
+{{- $site := .Site -}}
+{{- $params := .Site.Params -}}
+{{- $js := .Site.Data.vendor.js -}}
 
-{{ $commentSystems := dict 
+{{- $commentSystems := dict 
   "valine" (cond (and $params.valine.enable $params.valine.appId $params.valine.appKey) true false)
   "waline" (cond (and $params.waline.enable $params.waline.serverURL) true false)
   "twikoo" (cond (and $params.twikoo.enable $params.twikoo.envId) true false)
   "gitalk" (cond (and $params.gitalk.enable $params.gitalk.clientID $params.gitalk.clientSecret) true false)
   "giscus" (cond $params.giscus.enable true false)
-}}
+-}}
 
-{{ $activeSystems := slice }}
-{{ range $key, $value := $commentSystems }}
-  {{ if $value }}
-    {{ $activeSystems = $activeSystems | append $key }}
-  {{ end }}
-{{ end }}
+{{- $activeSystems := slice -}}
+{{- range $key, $value := $commentSystems -}}
+  {{- if $value -}}
+    {{- $activeSystems = $activeSystems | append $key -}}
+  {{- end -}}
+{{- end -}}
 
-{{ if and (not (eq .Params.comments false)) (len $activeSystems) }}
+{{- if and (not (eq .Params.comments false)) (len $activeSystems) -}}
 <script data-pjax>
   var loadScript = (src, integrity) => {
     const script = document.createElement('script');
@@ -325,4 +325,4 @@
   };
   loadComments();
 </script>
-{{ end }}
+{{- end -}}

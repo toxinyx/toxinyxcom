@@ -1,15 +1,15 @@
-{{ $levelStandard := .Get "levelStandard" | default "1000,5000,10000" }}
+{{- $levelStandard := .Get "levelStandard" | default "1000,5000,10000" -}}
 
 {{- $currentPath := .Page.File.Path -}}
 {{- $articlesData := slice -}}
 {{- $dateFormat := $.Site.Params.dateFormat | default "2006-01-02" -}}
 {{- range where .Site.RegularPages "File.Path" "ne" $currentPath -}}
-  {{ $rawContent := .RawContent }}
-  {{ $postLinkCardPattern := `\{\{<\s*postLinkCard.*?>\}\}` }}
-  {{ $heatMapCardPattern := `\{\{<\s*heatMapCard.*?>\}\}` }}
+  {{- $rawContent := .RawContent -}}
+  {{- $postLinkCardPattern := `\{\{<\s*postLinkCard.*?>\}\}` -}}
+  {{- $heatMapCardPattern := `\{\{<\s*heatMapCard.*?>\}\}` -}}
 
-  {{ $step1 := replaceRE $postLinkCardPattern "" $rawContent }}
-  {{ $cleanContent := replaceRE $heatMapCardPattern "" $step1 }}
+  {{- $step1 := replaceRE $postLinkCardPattern "" $rawContent -}}
+  {{- $cleanContent := replaceRE $heatMapCardPattern "" $step1 -}}
   {{- $articlesData = $articlesData | append (dict
     "title" .Title
     "date" ( .Date | time.Format $dateFormat )
@@ -19,7 +19,7 @@
   -}}
 {{- end -}}
 
-{{ partial "helpers/scss.html" (dict "source" "css/heat-map.scss" "temp" "heat-map.scss" "target" "css/heat-map.css" "ctx" .) }}
+{{- partial "helpers/scss.html" (dict "source" "css/heat-map.scss" "temp" "heat-map.scss" "target" "css/heat-map.css" "ctx" .) -}}
 <div id="heatmap"></div>
 
 <script>

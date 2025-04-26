@@ -1,12 +1,12 @@
-{{ $paginator := .paginator }}
-{{ $ctx := .ctx }}
-{{ range $paginator }}
+{{- $paginator := .paginator -}}
+{{- $ctx := .ctx -}}
+{{- range $paginator -}}
   <section class="archives-wrap" data-aos="{{ $ctx.Site.Params.animation.options.archive.section }}">
     <div class="archive-year-wrap">
       <a href="" class="archive-year">{{ .Key }}</a>
     </div>
     <ul>
-      {{ range .Pages }}
+      {{- range .Pages -}}
         <li class="archive-article">
           <div class="archive-article-date-wrap">
             <span>
@@ -18,7 +18,7 @@
               >
             </span>
           </div>
-          {{ if .Params.link }}
+          {{- if .Params.link -}}
             <a
               class="archive-article-title"
               href="{{ .Params.link }}"
@@ -27,13 +27,13 @@
               rel="noopener external nofollow noreferrer"
               >{{ .Title }}</a
             >
-          {{ else if .Title }}
+          {{- else if .Title -}}
             <a class="archive-article-title" href="{{ .Permalink | relURL }}"
               >{{ .Title }}</a
             >
-          {{ end }}
+          {{- end -}}
         </li>
-      {{ end }}
+      {{- end -}}
     </ul>
   </section>
-{{ end }}
+{{- end -}}

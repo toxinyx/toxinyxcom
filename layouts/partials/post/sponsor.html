@@ -5,14 +5,14 @@
     <div class="sponsor-icon {{ if .Site.Params.sponsor.icon.rotate }}rotate{{ end }}"></div>
   </div>
   <div class="sponsor-tip">{{ .Site.Params.sponsor.tip }}</div>
-  {{ if .Site.Params.sponsor.qr }}
+  {{- if .Site.Params.sponsor.qr -}}
     <div class="sponsor-qr">
-      {{ range .Site.Params.sponsor.qr }}
+      {{- range .Site.Params.sponsor.qr -}}
         <div class="sponsor-qr-image-wrapper">
           <img src="{{ .src | relURL }}" alt="{{ .name }}" width="200" />
           <p class="sponsor-qr-name">{{ .name }}</p>
         </div>
-      {{ end }}
+      {{- end -}}
     </div>
-  {{ end }}
+  {{- end -}}
 </div>
