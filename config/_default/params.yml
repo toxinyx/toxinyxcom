@@ -153,11 +153,6 @@ rss:
   limit: 10             # The number of recent articles to be output, write -1 to output all
   showFullContent: false # output full content or description
   showCopyright: false   # If true, add copyright to the end of article.
-  copyright:            # Only plain text is allowed.
-    en: "Unless otherwise stated, all posts on this blog are licensed under the BY-NC-SA license. Please credit the source when reposting!"
-    zh_cn: "本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！"
-    zh_tw: "本部落格所有文章除特別聲明外，皆採用 BY-NC-SA 授權條款。轉載請註明出處！"
-    ja: "特別な記載がない限り、このブログのすべての記事は BY-NC-SA ライセンスの下で提供されています。転載の際は出典を明記してください！"
 
 ########################################
 # CSS
@@ -443,6 +438,7 @@ article_copyright:
     date: false
     updated: false
     license: true
+    license_type: by-nc-sa # https://creativecommons.org/licenses
 
 # Clipboard configuration
 clipboard:
@@ -451,7 +447,7 @@ clipboard:
   copyright:
     enable: false
     count: 50 # The number of characters when the copyright is displayed
-    content: 本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！
+    license_type: by-nc-sa # https://creativecommons.org/licenses
 
 # Back To Top
 top:
@@ -466,12 +462,7 @@ top:
 outdate:
   enable: false
   daysAgo: 180 # The number of days after which the article is considered outdated
-  message:
-    zh-CN: 本文最后更新于 {time}，请注意文中内容可能已不适用。
-    zh-tW: 本文最後更新於 {time}，請注意文中內容可能已不適用。
-    en: This article was last updated on {time}. Please note that the content may no longer be applicable.
-    ja: この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。
-
+  # message: # deprecated, use i18n instead
 # ICP 备案
 icp:
   icpnumber: # ICP备案号

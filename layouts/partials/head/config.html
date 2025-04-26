@@ -11,6 +11,7 @@
 {{ end }}
 <script>
   window.siteConfig = JSON.parse({{ $siteConfig | jsonify }});
+  window.siteConfig.clipboard.copyright.content = {{ i18n "article_copyright.license_content" (.Site.Params.article_copyright.content.license_type | upper) }}
   {{ if .Site.Params.service_worker.enable }}
   window.siteConfig.swPath = '{{ "sw.js" | relURL }}';
   {{ end }}

@@ -25,8 +25,9 @@
   {{ end }}
   {{ if $articleCopyright.content.license }}
     <p>
+      {{ $licenseDom := printf "<a href=\"https://creativecommons.org/licenses/%s/4.0/deed.zh\" rel=\"noopener external nofollow noreferrer\" target=\"_blank\"><span class=\"icon-creative-commons\"></span>%s</a>" $articleCopyright.content.license_type ($articleCopyright.content.license_type | upper) }}
       <strong><span class="icon-copyright icon"></span>{{ i18n "article_copyright.license" }}</strong>
-      {{ i18n "article_copyright.license_content" "<a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh\" rel=\"noopener external nofollow noreferrer\" target=\"_blank\"><span class=\"icon-creative-commons\"></span>BY-NC-SA</a>" | safeHTML }}
+      {{ i18n "article_copyright.license_content" $licenseDom | safeHTML }}
     </p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   {{ end }}

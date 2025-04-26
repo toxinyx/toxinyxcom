@@ -76,3 +76,10 @@ multi_language:
 
 comments:
   title: 说些什么吧！
+
+rss:
+  author: 作者：{{ .name }}（{{ .email }}）
+  date: 本文{{ .pubDate }}首发于{{ .content }}，最后修改于{{ .lastmod }}
+
+outdate:
+  message: 本文最后更新于 {time}，请注意文中内容可能已不适用。

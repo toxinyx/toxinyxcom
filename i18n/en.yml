@@ -76,3 +76,10 @@ multi_language:
 
 comments:
   title: "Say something!"
+
+rss:
+  author: "Author: {{ .name }}({{ .email }})"
+  date: Published on {{ .pubDate }} at {{ .content }}, last modified on {{ .lastmod }}
+
+outdate:
+  message: This article was last updated on {time}. Please note that the content may no longer be applicable.

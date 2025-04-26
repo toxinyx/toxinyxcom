@@ -414,18 +414,10 @@
       const now = new Date();
       const diff = now - update;
       const days = diff / 86400000;
-      const { daysago: daysAgo, message: template } = window.siteConfig.outdate;
+      const { daysago: daysAgo } = window.siteConfig.outdate;
       if (days >= daysAgo) {
-        let message = `This article was last updated on ${updateTime}. Please note that the content may no longer be applicable.`;
-        if (typeof template === 'string') {
-          message = template.replace(/{time}/, updateTime);
-        } else if (typeof template === 'object') {
-          const lang = document.documentElement.lang;
-          const messageKey = Object.keys(template).find(key => key.toLowerCase() === lang.toLowerCase());
-          if (messageKey && template[messageKey]) {
-            message = template[messageKey].replace(/{time}/, updateTime);
-          }
-        }
+        let message = '{{ i18n "outdate.message" }}';
+        message = message.replace(/{time}/, updateTime);
         const blockquote = _$('#outdate-blockquote');
         if (blockquote) {
           blockquote.querySelector('p').innerText = message;

@@ -1,41 +1,10 @@
-{{- /* 初始化作者邮箱变量 */ -}}
-{{- $authorEmail := "" }}
-{{- /* 初始化作者姓名变量 */ -}}
-{{- $authorName := "" }}
-{{- /* 从站点参数中获取作者信息 */ -}}
-{{- with site.Params }}
-  {{- if reflect.IsMap . }}
-    {{- with .email }}{{ $authorEmail = . }}{{ end }}
-    {{- with .author }}{{ $authorName = . }}{{ end }}
-  {{- else }}
-    {{- $authorName = . }}
-  {{- end }}
-{{- end }}
+{{- $authorEmail := site.Params.email }}
+{{- $authorName := site.Params.author }}
 
 {{- $showFullContent := .Site.Params.rss.showFullContent | default false }}
 {{- $showCopyright := .Site.Params.rss.showCopyright | default false }}
 {{- $currentLanguage := .Language.Lang | default "en" }}
-
-{{- /* 修正语言标识符处理 */ -}}
-{{- $lang := replace $currentLanguage "-" "_" | lower }}
-
-{{- /* 获取多语言版权信息 */ -}}
-{{- $copyright := "" }}
-{{- with .Site.Params.rss.copyright }}
-  {{- if eq $lang "en" }}
-    {{- $copyright = .en }}
-  {{- else if eq $lang "zh_cn" }}
-    {{- $copyright = .zh_cn }}
-  {{- else if eq $lang "zh_tw" }}
-    {{- $copyright = .zh_tw }}
-  {{- else if eq $lang "ja" }}
-    {{- $copyright = .ja }}
-  {{- else }}
-    {{- $copyright = .en }}
-  {{- end }}
-{{- else }}
-  {{- $copyright = "All website licensed under CC BY 4.0" }}
-{{- end }}
+{{- $copyright := i18n "article_copyright.license_content" (.Site.Params.article_copyright.content.license_type | upper) -}}
 
 {{- /* 确定页面上下文 */ -}}
 {{- $pctx := . }}
@@ -75,32 +44,13 @@
 
     {{ range $pages }}
     {{- /* 构建多语言文章头部 */ -}}
-    {{ $articleHeader := "" }}
-    {{- if eq $lang "en" }}
-      {{ $articleHeader = printf "<![CDATA[<h1>%s</h1><p>Author: %s (%s)</p>" .Title $authorName $authorEmail }}
-    {{- else if eq $lang "zh_cn" }}
-      {{ $articleHeader = printf "<![CDATA[<h1>%s</h1><p>作者：%s（%s）</p>" .Title $authorName $authorEmail }}
-    {{- else if eq $lang "zh_tw" }}
-      {{ $articleHeader = printf "<![CDATA[<h1>%s</h1><p>作者：%s（%s）</p>" .Title $authorName $authorEmail }}
-    {{- else if eq $lang "ja" }}
-      {{ $articleHeader = printf "<![CDATA[<h1>%s</h1><p>著者：%s（%s）</p>" .Title $authorName $authorEmail }}
-    {{- end }}
+    {{- $articleHeaderI18n := i18n "rss.author" (dict "name" $authorName "email" $authorEmail) -}}
+    {{- $articleHeader := printf "<![CDATA[<h1>%s</h1><p>%s</p>" .Title $articleHeaderI18n -}}
 
     {{- /* 构建多语言文章尾部 */ -}}
-    {{ $articleFooter := "" }}
-    {{- if eq $lang "en" }}
-      {{ $articleFooter = printf "<hr><p>Published on %s at <a href='%s'>%s</a>, last modified on %s</p>"
-        (.Date.Format "2006-01-02") .Site.BaseURL .Site.Title (.Lastmod.Format "2006-01-02") }}
-    {{- else if eq $lang "zh_cn" }}
-      {{ $articleFooter = printf "<hr><p>本文 %s 首发于 <a href='%s'>%s</a>，最后修改于 %s</p>"
-        (.Date.Format "2006-01-02") .Site.BaseURL .Site.Title (.Lastmod.Format "2006-01-02") }}
-    {{- else if eq $lang "zh_tw" }}
-      {{ $articleFooter = printf "<hr><p>本文 %s 首發於 <a href='%s'>%s</a>，最後修改於 %s</p>"
-        (.Date.Format "2006-01-02") .Site.BaseURL .Site.Title (.Lastmod.Format "2006-01-02") }}
-    {{- else if eq $lang "ja" }}
-      {{ $articleFooter = printf "<hr><p>この記事は%sに<a href='%s'>%s</a>で公開され、最終更新日は%sです</p>"
-        (.Date.Format "2006-01-02") .Site.BaseURL .Site.Title (.Lastmod.Format "2006-01-02") }}
-    {{- end }}
+    {{- $articleFooterContent := printf "<a href='%s'>%s</a>" .Site.BaseURL .Site.Title -}}
+    {{- $articleFooterI18n := i18n "rss.date" (dict "pubDate" (.Date.Format "2006-01-02") "lastmod" (.Lastmod.Format "2006-01-02") "content" ($articleFooterContent | safeHTML)) -}}
+    {{- $articleFooter := printf "<hr><p>%s</p>" $articleFooterI18n -}}
 
     {{- if $showCopyright }}
       {{ $articleFooter = printf "%s<p>%s</p>" $articleFooter $copyright }}

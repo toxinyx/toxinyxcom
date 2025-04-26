@@ -76,3 +76,10 @@ multi_language:
 
 comments:
   title: "何か言ってみて！"
+
+rss:
+  author: "著者: {{ .name }}({{ .email }})"
+  date: この記事は{{ .pubDate }}に{{ .content }}で公開され、最終更新日は{{ .lastmod }}です
+
+outdate:
+  message: この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。
