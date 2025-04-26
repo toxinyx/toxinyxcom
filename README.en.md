@@ -253,16 +253,24 @@ noClasses = false
 ```
 
 Code blocks also provide code copying functionality. Click the copy button in the top right corner of the code block to copy the code. You can configure the copy functionality in `params.yml`.  
-`success` is the prompt shown when copying is successful, `fail` is the prompt shown when copying fails. Additionally, you can configure copyright notices - when the copied text exceeds `count` characters, the `content` copyright notice will be added after the copied content.
+`success` is the prompt shown when copying is successful, `fail` is the prompt shown when copying fails. Additionally, you can configure copyright notices - when the copied text exceeds `count` characters, the copyright notice will be added after the copied content.
 
 ```yaml
 clipboard:
-  success: 复制成功(*^▽^*)
-  fail: 复制失败 (ﾟ⊿ﾟ)ﾂ
+  success: 
+    en: Copy successfully (*^▽^*)
+    zh-CN: 复制成功 (*^▽^*)
+    zh-tW: 複製成功 (*^▽^*)
+    ja: コピー成功 (*^▽^*)
+  fail: 
+    en: Copy failed (ﾟ⊿ﾟ)ﾂ
+    zh-CN: 复制失败 (ﾟ⊿ﾟ)ﾂ
+    zh-tW: 複製失敗 (ﾟ⊿ﾟ)ﾂ
+    ja: コピー失敗 (ﾟ⊿ﾟ)ﾂ
   copyright:
     enable: false
     count: 50 # The number of characters when the copyright is displayed
-    content: 本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！
+    license_type: by-nc-sa # https://creativecommons.org/licenses
 ```
 
 v0.2.0 added configuration to control the default expansion state of code blocks. `expand` can be set to `true`, `false`, or a number - the number indicates that code blocks will be collapsed by default when the number of lines exceeds this value.
@@ -287,7 +295,11 @@ Global comment system configuration:
 
 ```yaml
 comment:
-  title: Say something! # Title of the comment box  
+  title: # Title of the comment box  
+    en: Leave a comment
+    zh-CN: 说些什么吧！
+    zh-tW: 說些什麼吧！
+    ja: コメントを残す
   default: waline # Default comment system used when multiple are enabled
 ```
 
@@ -308,7 +320,6 @@ Please refer to their [official documentation](https://waline.js.org/guide/get-s
 waline:
   enable: true
   serverURL: "your server url"
-  lang: zh-CN
   locale: {} # https://waline.js.org/guide/features/i18n.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80
   emoji:
     - https://unpkg.com/@waline/emojis@1.2.0/weibo
@@ -354,8 +365,6 @@ giscus:
   reactionsEnabled: 1
   emitMetadata: 0
   inputPosition: bottom
-  # commentTheme: preferred_color_scheme invalid
-  lang: zh-CN
 ```
 
 If using [gitalk](https://gitalk.github.io/)  
@@ -610,6 +619,7 @@ article_copyright:
     date: # true | false Show creation date in copyright card?
     updated: # true | false Show update date in copyright card?
     license: # true | false Show license in copyright card?
+    license_type: by-nc-sa # https://creativecommons.org/licenses
 ```
 
 Additionally, it can be controlled through article front-matter, which takes priority over global configuration
@@ -640,7 +650,11 @@ Disabled by default
 outdate:
   enable: false
   daysAgo: 180 # How many days old before an article is considered outdated
-  message: 本文最后更新于 {time}，请注意文中内容可能已经发生变化。
+  message:
+    en: This article was last updated on {time}. Please note that the content may no longer be applicable.
+    zh-CN: 本文最后更新于 {time}，请注意文中内容可能已不适用。
+    zh-tW: 本文最後更新於 {time}，請注意文中內容可能已不適用。
+    ja: この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。
 ```
 
 #### Sponsorship
@@ -650,7 +664,11 @@ Disabled by default
 ```yaml
 sponsor:
   enable: false # Show sponsorship QR codes?
-  tip: Buy the author a coffee! # Sponsorship tip
+  tip: # Sponsorship tip
+    zh-CN: 请作者喝杯咖啡吧
+    zh-tW: 請作者喝杯咖啡吧
+    en: Buy me a coffee
+    ja: コーヒーを買ってください
   icon:
     url: "../images/taichi.png" # Sponsor icon path relative to css/main.css
     rotate: true # Rotate icon?
@@ -972,7 +990,11 @@ It's not recommended to use large icons to avoid affecting loading speed.
 ```yaml
 preloader:
   enable: true
-  text: 少女祈祷中...
+  text:
+    zh-CN: 少女祈祷中...
+    zh-tW: 少女祈禱中...
+    en: Loading...
+    ja: 少女祈祷中...
   icon: # Default uses inline SVG when empty, you can enter a link like '/images/taichi.png'
   rotate: true
 ```
