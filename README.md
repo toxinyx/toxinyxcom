@@ -33,6 +33,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 🔄 兼容 Hugo 0.116.0 及以上版本
 - 📱 响应式布局
 - 🌙 暗黑模式支持
+- 🅰️ i18n 支持
 
 ### 代码与数学
 - 🖥️ 代码高亮与复制

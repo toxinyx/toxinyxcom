@@ -166,7 +166,7 @@
     e.trigger.classList.add("icon-times");
     e.trigger.classList.remove("icon-copy");
     const failConfig = window.siteConfig.clipboard.fail;
-    let failText = "Copy successfully (*^▽^*)";
+    let failText = "Copy failed (ﾟ⊿ﾟ)ﾂ";
     if (typeof failConfig === "string") {
       failText = failConfig;
     } else if (typeof failConfig === "object") {

@@ -1,3 +1,110 @@
+## v0.10.0
+
+### 修复
+
+- 修复移动端导航栏溢出时无法滚动的问题
+- 修复 gitalk id 错误的问题
+- 修复 `only_show_capsule_in_index` 展示逻辑
+- 修复 `home_categories` 展示和跳转逻辑
+
+### 特性
+
+- 新增 `email` 配置用于 RSS 支持
+  ```yaml
+  email: xxx@example.com
+  ```
+- RSS 支持更多配置
+  ```yml
+  rss:
+    limit: 10             # The number of recent articles to be output, write -1 to output all
+    showFullContent: false # output full content or description
+    showCopyright: false   # If true, add copyright to the end of article.
+  ```
+- 适配和优化 valine / waline / gitalk 样式
+- valine 新增 `serverURLs` 配置用于指定服务器地址
+  ```yaml
+  valine:
+    serverURLs: # valine server url
+  ```
+- 多语言模式下支持切换语言
+- valine / waline / twikoo / gitalk /giscus 支持多语言，且 `valine.lang`、`waline.lang`、`giscus.lang` **配置废弃**
+- `comment.title`、`preloader.text`、`clipboard.success`、`clipboard.fail`、`outdate.message` 支持多语言，且同时兼容旧有字符串写法
+  ```yaml
+  # Example
+  comment:
+    # comment system title
+    title:
+      en: Leave a comment
+      zh-CN: 说些什么吧！
+      zh-tW: 說些什麼吧！
+      ja: コメントを残す
+  ```
+- `algolia_search.label` 和 `clipboard.copyright.license` **配置废弃**，转而使用 i18n 支持多语言
+- `clipboard.copyright` 和 `article_copyright.content` 新增 `license_type` 配置用于配置版权类型，详情见 [creativecommons](https://creativecommons.org/licenses)，默认为 `by-nc-sa`
+  ```yaml
+  article_copyright:
+    content: 
+      license_type: by-nc-sa
+  clipboard:
+    copyright:
+      license_type: by-nc-sa
+  ```
+
+---
+
+### Fixes  
+- Fixed the issue where the mobile navigation bar couldn't scroll when overflowing  
+- Fixed the incorrect Gitalk ID issue  
+- Fixed the display logic for `only_show_capsule_in_index`  
+- Fixed the display and navigation logic for `home_categories`  
+
+### Features  
+
+- Added `email` configuration for RSS support  
+
+  ```yaml  
+  email: xxx@example.com  
+  ```  
+- Enhanced RSS configuration options  
+
+  ```yaml  
+  rss:  
+    limit: 10             # The number of recent articles to be output, write -1 to output all  
+    showFullContent: false # Output full content or description  
+    showCopyright: false   # If true, add copyright to the end of the article  
+  ```  
+- Improved styling compatibility for Valine, Waline, and Gitalk  
+- Added `serverURLs` configuration for Valine to specify server addresses  
+
+  ```yaml  
+  valine:  
+    serverURLs: # Valine server URL  
+  ```  
+- Added language-switching support for multilingual modes  
+- Added multilingual support for Valine, Waline, Twikoo, Gitalk, and Giscus. **Deprecated** `valine.lang`, `waline.lang`, and `giscus.lang` configurations  
+- Added multilingual support for `comment.title`, `preloader.text`, `clipboard.success`, `clipboard.fail`, and `outdate.message`, while maintaining backward compatibility with string-based configurations  
+  ```yaml  
+  # Example:  
+  comment:  
+    # Comment system title  
+    title:  
+      en: Leave a comment  
+      zh-CN: 说些什么吧！  
+      zh-TW: 說些什麼吧！  
+      ja: コメントを残す  
+  ```  
+- **Deprecated** `algolia_search.label` and `clipboard.copyright.license` configurations in favor of i18n support  
+- Added `license_type` configuration for `clipboard.copyright` and `article_copyright.content` to specify license types (default: `by-nc-sa`). Refer to [Creative Commons](https://creativecommons.org/licenses) for details.  
+
+  ```yaml  
+  article_copyright:  
+    content:  
+      license_type: by-nc-sa  
+  clipboard:  
+    copyright:  
+      license_type: by-nc-sa  
+  ```
+
 ## v0.9.0
 
 **2025-04-13**
