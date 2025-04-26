@@ -74,12 +74,11 @@ article_copyright:
 multi_language:
   not_found: This article does not have a corresponding language version
 
-comments:
-  title: "Say something!"
-
 rss:
   author: "Author: {{ .name }}({{ .email }})"
   date: Published on {{ .pubDate }} at {{ .content }}, last modified on {{ .lastmod }}
 
-outdate:
-  message: This article was last updated on {time}. Please note that the content may no longer be applicable.
+algolia:
+  input_placeholder: "Search....."
+  hits_empty: "No results found for 「${query}」"
+  hits_stats: "Found ${hits} results (in ${time} ms)"

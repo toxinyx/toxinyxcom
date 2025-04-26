@@ -45,9 +45,9 @@
           "per_page": parseInt("{{ $params.algolia_search.hits.per_page }}")
         },
         labels: {
-          "input_placeholder": "{{ $params.algolia_search.labels.input_placeholder }}",
-          "hits_empty": "{{ $params.algolia_search.labels.hits_empty }}",
-          "hits_stats": "{{ $params.algolia_search.labels.hits_stats }}"
+          "input_placeholder": '{{ i18n "algolia.input_placeholder" }}',
+          "hits_empty": '{{ i18n "algolia.hits_empty" }}',
+          "hits_stats": '{{ i18n "algolia.hits_stats" }}'
         }
       }
     };
@@ -414,14 +414,17 @@
       const now = new Date();
       const diff = now - update;
       const days = diff / 86400000;
-      const { daysago: daysAgo } = window.siteConfig.outdate;
+      const { daysago: daysAgo, message: template } = window.siteConfig.outdate;
       if (days >= daysAgo) {
-        let message = '{{ i18n "outdate.message" }}';
-        message = message.replace(/{time}/, updateTime);
-        const blockquote = _$('#outdate-blockquote');
-        if (blockquote) {
-          blockquote.querySelector('p').innerText = message;
-          blockquote.style.display = 'block';
+        let message = `This article was last updated on ${updateTime}. Please note that the content may no longer be applicable.`;
+        if (typeof template === 'string') {
+          message = template.replace(/{time}/, updateTime);
+        } else if (typeof template === 'object') {
+          const lang = document.documentElement.lang;
+          const messageKey = Object.keys(template).find(key => key.toLowerCase() === lang.toLowerCase());
+          if (messageKey && template[messageKey]) {
+            message = template[messageKey].replace(/{time}/, updateTime);
+          }
         }
       }
     }

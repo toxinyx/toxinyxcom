@@ -74,12 +74,11 @@ article_copyright:
 multi_language:
   not_found: 本文章沒有找到對應的語言版本
 
-comments:
-  title: 說些什麼吧！
-
 rss:
   author: 作者：{{ .name }}（{{ .email }}）
   date: 本文{{ .pubDate }}首發於{{ .content }}，最後修改於{{ .lastmod }}
 
-outdate:
-  message: 本文最後更新於 {time}，請注意文中內容可能已不適用。
+algolia:
+  input_placeholder: "搜尋....."
+  hits_empty: "未發現與 「${query}」相關內容"
+  hits_stats: "找到${hits}條結果（用時 ${time} ms）"
