@@ -14,7 +14,18 @@
           </svg>
         {{- end -}}
       </div>
-      <div class="loading-word">{{ .Site.Params.preloader.text }}</div>
+      {{- $languageCode := .Site.Language.LanguageCode -}}
+      {{- $text := .Site.Params.preloader.text -}}
+      {{- $realText := "" -}}
+      {{- if reflect.IsMap $text -}}
+        {{- $realText = index $text $languageCode -}}
+        {{- if not $realText -}}
+          {{- $realText = index $text "en" -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $realText = $text -}}
+      {{- end -}}
+      <div class="loading-word">{{ $realText }}</div>
     </div>
   </div>
   </div>
