@@ -426,6 +426,11 @@
             message = template[messageKey].replace(/{time}/, updateTime);
           }
         }
+        const blockquote = _$('#outdate-blockquote');
+        if (blockquote) {
+          blockquote.querySelector('p').innerText = message;
+          blockquote.style.display = 'block';
+        }
       }
     }
   </script>
