@@ -36,7 +36,7 @@
     title:
       en: Leave a comment
       zh-CN: 说些什么吧！
-      zh-tW: 說些什麼吧！
+      zh-TW: 說些什麼吧！
       ja: コメントを残す
   ```
 - `algolia_search.label` 和 `clipboard.copyright.license` **配置废弃**，转而使用 i18n 支持多语言

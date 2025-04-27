@@ -260,12 +260,12 @@ clipboard:
   success: 
     en: Copy successfully (*^▽^*)
     zh-CN: 复制成功 (*^▽^*)
-    zh-tW: 複製成功 (*^▽^*)
+    zh-TW: 複製成功 (*^▽^*)
     ja: コピー成功 (*^▽^*)
   fail: 
     en: Copy failed (ﾟ⊿ﾟ)ﾂ
     zh-CN: 复制失败 (ﾟ⊿ﾟ)ﾂ
-    zh-tW: 複製失敗 (ﾟ⊿ﾟ)ﾂ
+    zh-TW: 複製失敗 (ﾟ⊿ﾟ)ﾂ
     ja: コピー失敗 (ﾟ⊿ﾟ)ﾂ
   copyright:
     enable: false
@@ -298,7 +298,7 @@ comment:
   title: # Title of the comment box  
     en: Leave a comment
     zh-CN: 说些什么吧！
-    zh-tW: 說些什麼吧！
+    zh-TW: 說些什麼吧！
     ja: コメントを残す
   default: waline # Default comment system used when multiple are enabled
 ```
@@ -653,7 +653,7 @@ outdate:
   message:
     en: This article was last updated on {time}. Please note that the content may no longer be applicable.
     zh-CN: 本文最后更新于 {time}，请注意文中内容可能已不适用。
-    zh-tW: 本文最後更新於 {time}，請注意文中內容可能已不適用。
+    zh-TW: 本文最後更新於 {time}，請注意文中內容可能已不適用。
     ja: この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。
 ```
 
@@ -666,7 +666,7 @@ sponsor:
   enable: false # Show sponsorship QR codes?
   tip: # Sponsorship tip
     zh-CN: 请作者喝杯咖啡吧
-    zh-tW: 請作者喝杯咖啡吧
+    zh-TW: 請作者喝杯咖啡吧
     en: Buy me a coffee
     ja: コーヒーを買ってください
   icon:
@@ -992,7 +992,7 @@ preloader:
   enable: true
   text:
     zh-CN: 少女祈祷中...
-    zh-tW: 少女祈禱中...
+    zh-TW: 少女祈禱中...
     en: Loading...
     ja: 少女祈祷中...
   icon: # Default uses inline SVG when empty, you can enter a link like '/images/taichi.png'
