@@ -19,17 +19,18 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 
 ---
 
-|framework|repository|version|stars|
-|-|-|-|-|
-|[Hexo](https://hexo.io/)|[hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu)|<img alt="version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FD-Sketon%2Fhexo-theme-reimu%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=version">|<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/D-Sketon/hexo-theme-reimu">|
-|[Astro](https://astro.build)|[astro-theme-reimu](https://github.com/D-Sketon/astro-theme-reimu)|<img alt="version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FD-Sketon%2Fastro-theme-reimu%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=version">|<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/D-Sketon/astro-theme-reimu">|
-|[Hugo](https://gohugo.io)|[hugo-theme-reimu](https://github.com/D-Sketon/hugo-theme-reimu)|<img alt="version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FD-Sketon%2Fhugo-theme-reimu%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=version">|<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/D-Sketon/hugo-theme-reimu">|
+| framework                    | repository                                                         | version                                                                                                                                                                                     | stars                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| [Hexo](https://hexo.io/)     | [hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu)   | <img alt="version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FD-Sketon%2Fhexo-theme-reimu%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=version">  | <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/D-Sketon/hexo-theme-reimu">  |
+| [Astro](https://astro.build) | [astro-theme-reimu](https://github.com/D-Sketon/astro-theme-reimu) | <img alt="version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FD-Sketon%2Fastro-theme-reimu%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=version"> | <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/D-Sketon/astro-theme-reimu"> |
+| [Hugo](https://gohugo.io)    | [hugo-theme-reimu](https://github.com/D-Sketon/hugo-theme-reimu)   | <img alt="version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FD-Sketon%2Fhugo-theme-reimu%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=version">  | <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/D-Sketon/hugo-theme-reimu">  |
 
 **ISSUE and PR Welcome!**
 
 ## Features
 
 ### Basic Functions
+
 - ✨ Full blog functionality
 - 🔄 Compatible with Hugo 0.116.0+
 - 📱 Responsive layout
@@ -37,11 +38,13 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 🅰️ i18n support
 
 ### Code & Math
+
 - 🖥️ Code highlighting and copying
 - ➗ KaTeX / MathJax3 math formula support
 - 📊 Mermaid flowchart support
 
 ### Search & Comments
+
 - 🔍 Algolia search integration
 - 💬 Multiple comment systems support:
   - Valine
@@ -51,10 +54,12 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - Giscus
 
 ### Statistics & Analytics
+
 - 📊 Article reading statistics (Valine / Waline)
 - 👥 Visitor statistics (Busuanzi)
 
 ### Media & Interactive Features
+
 - 🎵 Music player support:
   - Aplayer
   - Meting
@@ -66,12 +71,14 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 👾 Live2D / Live2D-widgets integration
 
 ### Navigation & Structure
+
 - 📑 Table of Contents (TOC)
 - 🔄 PJAX support
 - 🔧 ServiceWorker implementation
 - 📰 RSS feed
 
 ### Design & Customization
+
 - 🎨 Icon support:
   - Iconfont
   - FontAwesome
@@ -215,7 +222,6 @@ cover: false
 
 - If the article's Front matter contains cover set to `rgb(xxx,xxx,xxx)`, the article header will be a gradient of that solid color (homepage will still show random images)
 
-
 ```yaml
 ---
 title: Hello World
@@ -257,12 +263,12 @@ Code blocks also provide code copying functionality. Click the copy button in th
 
 ```yaml
 clipboard:
-  success: 
+  success:
     en: Copy successfully (*^▽^*)
     zh-CN: 复制成功 (*^▽^*)
     zh-TW: 複製成功 (*^▽^*)
     ja: コピー成功 (*^▽^*)
-  fail: 
+  fail:
     en: Copy failed (ﾟ⊿ﾟ)ﾂ
     zh-CN: 复制失败 (ﾟ⊿ﾟ)ﾂ
     zh-TW: 複製失敗 (ﾟ⊿ﾟ)ﾂ
@@ -295,7 +301,7 @@ Global comment system configuration:
 
 ```yaml
 comment:
-  title: # Title of the comment box  
+  title: # Title of the comment box
     en: Leave a comment
     zh-CN: 说些什么吧！
     zh-TW: 說些什麼吧！
@@ -474,7 +480,14 @@ mermaid: true
 
 ### RSS
 
-RSS is built-in, no additional configuration needed.
+You can configure the RSS in `params.yml`.
+
+```yaml
+rss:
+  limit: 10 # The number of recent articles to be output, write -1 to output all
+  showFullContent: false # output full content or description
+  showCopyright: false # If true, add copyright to the end of article.
+```
 
 </details>
 
@@ -706,7 +719,7 @@ player:
       autoplay:
       loop:
       order:
-      preload: 
+      preload:
       volume:
       mutex:
       listFolded:
@@ -727,7 +740,7 @@ player:
       autoplay:
       loop:
       order:
-      preload: 
+      preload:
       volume:
       mutex:
       listFolded:
@@ -736,9 +749,9 @@ player:
     enable: true
     meting_api: # custom api
     options:
-      id: 
-      server: 
-      type: 
+      id:
+      server:
+      type:
       auto:
 ```
 
@@ -775,7 +788,6 @@ home_categories:
 
 </details>
 
-
 <details>
 <summary>Built-in Card Shortcodes</summary>
 
@@ -811,7 +823,7 @@ The first parameter is the article's title; the second parameter is the external
 {{< heatMapCard levelStandard="?" >}}
 ```
 
-The first parameter is the level standard for the heatmap (graded based on the word count of the articles), with the default value being `"1000,5000,10000"`. 
+The first parameter is the level standard for the heatmap (graded based on the word count of the articles), with the default value being `"1000,5000,10000"`.
 
 </details>
 
@@ -840,51 +852,51 @@ v0.9.0 added `internal_theme` configuration to customize theme colors. You can c
 ```yaml
 internal_theme:
   light:
-    --red-0: '#ff0000'
-    --red-1: '#ff5252'
-    --red-2: '#ff7c7c'
-    --red-3: '#ffafaf'
-    --red-4: '#ffd0d0'
-    --red-5: '#ffecec'
-    --red-5-5: '#fff3f3'
-    --red-6: '#fff7f7'
-    --color-red-6-shadow: 'rgba(255, 78, 78, 0.6)'
-    --color-red-3-shadow: 'rgba(255, 78, 78, 0.3)'
+    --red-0: "#ff0000"
+    --red-1: "#ff5252"
+    --red-2: "#ff7c7c"
+    --red-3: "#ffafaf"
+    --red-4: "#ffd0d0"
+    --red-5: "#ffecec"
+    --red-5-5: "#fff3f3"
+    --red-6: "#fff7f7"
+    --color-red-6-shadow: "rgba(255, 78, 78, 0.6)"
+    --color-red-3-shadow: "rgba(255, 78, 78, 0.3)"
 
-    --highlight-nav: '#e6e6e6'
-    --highlight-scrollbar: '#d6d6d6'
-    --highlight-background: '#f7f7f7'
-    --highlight-current-line: '#dadada'
-    --highlight-selection: '#e9e9e9'
-    --highlight-foreground: '#4d4d4d'
-    --highlight-comment: '#7d7d7d'
-    --highlight-red: '#c8362b'
-    --highlight-orange: '#b66014'
-    --highlight-yellow: '#cb911d'
-    --highlight-green: '#2ea52e'
-    --highlight-aqua: '#479d9d'
-    --highlight-blue: '#1973b8'
-    --highlight-purple: '#7135ac'
+    --highlight-nav: "#e6e6e6"
+    --highlight-scrollbar: "#d6d6d6"
+    --highlight-background: "#f7f7f7"
+    --highlight-current-line: "#dadada"
+    --highlight-selection: "#e9e9e9"
+    --highlight-foreground: "#4d4d4d"
+    --highlight-comment: "#7d7d7d"
+    --highlight-red: "#c8362b"
+    --highlight-orange: "#b66014"
+    --highlight-yellow: "#cb911d"
+    --highlight-green: "#2ea52e"
+    --highlight-aqua: "#479d9d"
+    --highlight-blue: "#1973b8"
+    --highlight-purple: "#7135ac"
   dark:
-    --red-4: 'rgba(255, 208, 208, 0.5)'
-    --red-5: 'rgba(255,228,228,0.15)'
-    --red-5-5: 'rgba(255,236,236,0.05)'
-    --red-6: 'rgba(255, 243, 243, 0.2)'
+    --red-4: "rgba(255, 208, 208, 0.5)"
+    --red-5: "rgba(255,228,228,0.15)"
+    --red-5-5: "rgba(255,236,236,0.05)"
+    --red-6: "rgba(255, 243, 243, 0.2)"
 
-    --highlight-nav: '#2e353f'
-    --highlight-scrollbar: '#454d59'
-    --highlight-background: '#22272e'
-    --highlight-current-line: '#393939'
-    --highlight-selection: '#515151'
-    --highlight-foreground: '#cccccc'
-    --highlight-comment: '#999999'
-    --highlight-red: '#f47067'
-    --highlight-orange: '#f69d50'
-    --highlight-yellow: '#ffcc66'
-    --highlight-green: '#99cc99'
-    --highlight-aqua: '#66cccc'
-    --highlight-blue: '#54b6ff'
-    --highlight-purple: '#dcbdfb'
+    --highlight-nav: "#2e353f"
+    --highlight-scrollbar: "#454d59"
+    --highlight-background: "#22272e"
+    --highlight-current-line: "#393939"
+    --highlight-selection: "#515151"
+    --highlight-foreground: "#cccccc"
+    --highlight-comment: "#999999"
+    --highlight-red: "#f47067"
+    --highlight-orange: "#f69d50"
+    --highlight-yellow: "#ffcc66"
+    --highlight-green: "#99cc99"
+    --highlight-aqua: "#66cccc"
+    --highlight-blue: "#54b6ff"
+    --highlight-purple: "#dcbdfb"
 ```
 
 #### Customize theme font
