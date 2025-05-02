@@ -27,6 +27,10 @@
           element.querySelectorAll("code[data-lang] .line").length > expandThreshold)
       ) {
         element.classList.add("code-closed");
+        // force rerender element to refresh AOS
+        element.style.display = "none";
+        void element.offsetWidth;
+        element.style.display = "";
       }
     }
     const codeFigcaptionBottom = element.querySelector(
@@ -61,11 +65,7 @@
   _$$(".code-expand").forEach((element) => {
     element.off("click").on("click", () => {
       const figure = element.closest("div.highlight");
-      if (figure.classList.contains("code-closed")) {
-        figure.classList.remove("code-closed");
-      } else {
-        figure.classList.add("code-closed");
-      }
+      figure.classList.toggle("code-closed");
     });
   });
 
@@ -194,5 +194,10 @@
       },
       { once: true },
     );
+  }
+
+  // Since we add code-closed class to the figure element, we need to refresh AOS
+  if (window.AOS) {
+    AOS.refresh();
   }
 })();
