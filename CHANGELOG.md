@@ -1,3 +1,19 @@
+## v0.10.1
+
+**2025-05-02**
+
+### 修复
+
+- 修复了当开启 `expand` 配置时，AOS 运行异常导致部分元素无法正常显示的问题
+- 优化 Aplayer 样式
+
+---
+
+### Fixes
+
+- Fixed the issue where AOS was running abnormally when the `expand` configuration was enabled, causing some elements to not display properly
+- Optimized Aplayer styles
+
 ## v0.10.0
 
 **2025-04-28**
