@@ -1098,6 +1098,10 @@ js:
 
 [![](https://contributors-img.web.app/image?repo=D-Sketon/hugo-theme-reimu)](https://github.com/D-Sketon/hugo-theme-reimu/graphs/contributors)
 
+## 赞助 💘
+
+[爱发电-afdian](https://afdian.tv/a/dsketon)
+
 ## 许可
 
 MIT
