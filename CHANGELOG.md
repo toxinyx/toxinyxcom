@@ -1,3 +1,47 @@
+## v0.11.0
+
+未发布
+
+### 重大修改
+
+- Hugo 最低版本要求升级至 v0.124.0 及以上
+
+### 修复
+
+- 修复 twikoo 评论系统无法正常使用的问题
+
+### 特性
+
+- `anchor_icon` 支持传递 `false` 以隐藏锚点图标
+
+### 杂项
+
+- 更新 mermaid 至 v11.6.0
+- 更新 katex 至 v0.16.22
+- 更新 twikoo 至 v1.6.44
+
+---
+
+Not Published
+
+### Major Changes
+
+- Minimum Hugo version requirement upgraded to v0.124.0 or higher
+
+### Fixes
+
+- Fixed an issue where the Twikoo comment system could not be used properly
+
+### Features
+
+- `anchor_icon` now supports passing `false` to hide the anchor icon
+
+### Miscellaneous
+
+- Updated Mermaid to v11.6.0
+- Updated KaTeX to v0.16.22
+- Updated Twikoo to v1.6.44
+
 ## v0.10.2
 
 **2025-05-11**
