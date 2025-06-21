@@ -185,10 +185,7 @@
   }
 }
 
-.wl-content,
-.vcontent,
-.gt-header-preview.markdown-body,
-.gt-comment-content .gt-comment-body.markdown-body {
+@mixin base-comment-style {
   color: var(--color-default) !important;
   @include base-style;
   p,
@@ -349,5 +346,24 @@
     padding: 1px 5px !important;
     border-radius: 5px !important;
     color: var(--color-link) !important;
+  }
+}
+
+@if $waline {
+  .wl-content {
+    @include base-comment-style;
+  }
+}
+
+@if $valine {
+  .vcontent {
+    @include base-comment-style;
+  }
+}
+
+@if $gitalk {
+  .gt-header-preview.markdown-body,
+  .gt-comment-content .gt-comment-body.markdown-body {
+    @include base-comment-style;
   }
 }
