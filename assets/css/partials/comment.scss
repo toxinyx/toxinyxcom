@@ -270,10 +270,10 @@
     border-radius: $post-radius;
     transition: 0.3s;
     padding: 1px 10px !important;
-    box-shadow: 0 0 5px 2px var(--color-meta-shadow);
+    box-shadow: var(--shadow-meta);
 
     &:hover {
-      box-shadow: 0 0 6px 4px var(--color-meta-shadow);
+      box-shadow: var(--shadow-meta-hover);
     }
 
     footer {
@@ -294,11 +294,11 @@
     padding: 18px 12px;
     border-radius: $post-radius;
     background-color: var(--red-5-5);
-    box-shadow: 0 0 5px 2px var(--color-meta-shadow);
+    box-shadow: var(--shadow-meta);
     transition: 0.3s;
 
     &:hover {
-      box-shadow: 0 0 6px 4px var(--color-meta-shadow);
+      box-shadow: var(--shadow-meta-hover);
     }
   }
 
