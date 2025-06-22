@@ -154,6 +154,18 @@ rss:
   showFullContent: false # output full content or description
   showCopyright: false   # If true, add copyright to the end of article.
 
+# Sort order configuration
+# Available values: time, weight, weight-reverse
+# time: default
+# weight: sorted by weight in ascending order
+# weight_reverse: sorted by weight in descending order
+sort_order:
+  taxonomy:
+    category: time # controlled by categories_weight
+    tag: time # controlled by tags_weight
+  archive: time # controlled by weight
+  home: time # controlled by weight
+
 ########################################
 # CSS
 ########################################

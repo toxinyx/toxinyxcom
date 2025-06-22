@@ -29,7 +29,7 @@
       >
       </a>
     {{- end -}}
-    {{- if $page.Params.weight -}}
+    {{- if and $page.Params.weight (eq $ctx.Site.Params.sort_order.home "time") -}}
       <div class="post-sticky">{{ i18n "sticky" }}</div>
     {{- end -}}
     <div
