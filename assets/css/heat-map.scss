@@ -87,6 +87,8 @@ i.tile:hover {
   outline: 1px solid var(--red-2);
 }
 
+$line-height: 1.8em;
+
 #heatmap-tooltip {
   position: fixed;
   z-index: 1000;
@@ -99,6 +101,33 @@ i.tile:hover {
   color: var(--color-default);
   max-width: 250px;
   display: none; /* Initially hidden */
+
+  ul {
+    margin: 0 20px;
+    line-height: $line-height;
+    list-style: disc;
+    margin-top: ($line-height / 2);
+    margin-bottom: ($line-height / 2);
+  }
+
+  li {
+    &:hover {
+      &::marker {
+        transition: color 0.2s;
+        color: var(--red-1);
+      }
+    }
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration: none;
+    word-break: break-word;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   .tooltip-header {
     display: flex;
