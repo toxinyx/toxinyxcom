@@ -155,17 +155,18 @@ rss:
   showCopyright: false   # If true, add copyright to the end of article.
 
 # Sort order configuration
-# Available values: time, time-reverse, weight, weight-reverse
-# time: sorted by time in descending order (newest first, default)
-# time-reverse: sorted by time in ascending order (oldest first)
+# Available values: default, date, date-reverse, weight, weight-reverse
+# default: hugo's default sort order for page collections, see https://gohugo.io/quick-reference/page-collections/#sort
+# date: sorted by date in ascending order (oldest first)
+# date-reverse: sorted by date in descending order (newest first)
 # weight: sorted by weight in ascending order
 # weight-reverse: sorted by weight in descending order
 sort_order:
   taxonomy:
-    category: time # controlled by categories_weight
-    tag: time # controlled by tags_weight
-  archive: time # controlled by weight
-  home: time # controlled by weight
+    category: date-reverse # controlled by categories_weight
+    tag: date-reverse # controlled by tags_weight
+  archive: date-reverse # controlled by weight
+  home: default # controlled by weight
 
 ########################################
 # CSS

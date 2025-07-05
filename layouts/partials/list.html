@@ -2,7 +2,7 @@
 {{- $ctx := .ctx -}}
 {{- $type := $ctx.Type -}}
 
-{{- $sort_config := "time" -}}
+{{- $sort_config := "date-reverse" -}}
 {{- if eq $type "categories" -}}
   {{- $sort_config = $ctx.Site.Params.sort_order.taxonomy.category -}}
 {{- else if eq $type "tags" -}}
@@ -11,7 +11,7 @@
   {{- $sort_config = $ctx.Site.Params.sort_order.archive -}}
 {{- end -}}
 
-{{- if or (eq $sort_config "weight") (eq $sort_config "weight-reverse") -}}
+{{- if or (eq $sort_config "weight") (eq $sort_config "weight-reverse") (eq $sort_config "default") -}}
   <section class="archives-wrap" data-aos="{{ $ctx.Site.Params.animation.options.archive.section }}">
     <ul>
       {{- range $paginator -}}
