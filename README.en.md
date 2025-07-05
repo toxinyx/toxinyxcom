@@ -832,7 +832,7 @@ The first parameter is the level standard for the heatmap (graded based on the w
 
 #### tagRoulette
 
-```
+```yaml
 {{< tagRoulette tags="?" icon="?" >}}
 ```
 

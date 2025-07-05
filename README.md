@@ -855,7 +855,7 @@ home_categories:
 
 #### tagRoulette 标签轮盘
 
-```
+```yaml
 {{< tagRoulette tags="?" icon="?" >}}
 ```
 
