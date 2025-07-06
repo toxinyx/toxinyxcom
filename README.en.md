@@ -87,6 +87,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - External links
   - Friend links
   - Heatmap
+  - Tag Roulette
 - 🎨 Dynamic theme color adaptation
 - ©️ Article copyright declaration
 - 🌐 Custom CDN source / local source configuration
@@ -830,20 +831,16 @@ The first parameter is the article's title; the second parameter is the external
 
 The first parameter is the level standard for the heatmap (graded based on the word count of the articles), with the default value being `"1000,5000,10000"`.
 
-#### tagRoulette
+#### tagRoulette (Experimental Feature in v0.12.0+)
 
 ```yaml
 {{< tagRoulette tags="?" icon="?" >}}
 ```
 
-**tagRoulette** is an interactive element that provides a random tag display feature. When the button is clicked, a tag is randomly selected and displayed from a predefined pool of tags.  
+tagRoulette is an interactive element that provides a random tag display feature. When the button is clicked, a tag is randomly selected and displayed from a predefined pool of tags.
 
-**tags**: Optional parameter specifying the tag pool. Multiple tags should be separated by English commas (,). If not provided, a few example tags will be used by default.  
-  Example: `tags="memory decline, loss of expression, increased laziness, numbness, so sleepy"`  
-
-**icon**: Optional parameter to customize the trigger button's icon.  
-  **Default**: 🕹️ (game controller emoji)  
-  Can be replaced with any emoji or text, such as 🎲, 🎯, 🔄, etc.
+- tags: Optional parameter specifying the tag pool. Multiple tags should be separated by English commas (,). If not provided, a few example tags will be used by default. Example: `tags="memory decline, loss of expression, increased laziness, numbness, so sleepy"`
+- icon: Optional parameter to customize the trigger button's icon. Default: 🕹️ (game controller emoji), can be replaced with any emoji or text, such as 🎲, 🎯, 🔄, etc.
 </details>
 
 <details>

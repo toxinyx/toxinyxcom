@@ -1,6 +1,6 @@
 ## v0.12.0
 
-未发布
+**2025-07-06**
 
 ### 修复
 
@@ -17,7 +17,7 @@
   - `--shadow-red-6-shadow`
 - Algolia 使用 SHA1 哈希作为 objectID
 - 侧边栏支持 tag 和 category 的页面跳转
-- 新增 `sort_order` 配置，用于控制分类、标签、归档和首页的排序方式
+- 实验性新增 `sort_order` 配置，用于控制分类、标签、归档和首页的排序方式，未来可能会有重大变化
   - 支持的排序方式：`default`、`date`、`date-reverse`、`weight`、`weight-reverse`
   - `default` 为 hugo 默认排序方式，详见 [Hugo 文档](https://gohugo.io/quick-reference/page-collections/#sort)
   - `date` 为按日期排序，`date-reverse` 为按日期倒序排序
@@ -63,7 +63,7 @@
   - `--shadow-red-6-shadow`  
 - Algolia now uses SHA1 hash as objectID  
 - Sidebar now supports page navigation for tags and categories  
-- Added `sort_order` configuration to control the sorting method for categories, tags, archives, and the homepage:  
+- Added `sort_order` configuration to control the sorting method for categories, tags, archives, and the homepage (Experimental Feature, may be majorly changed in the future):  
   - Supported sorting methods: `default`, `date`, `date-reverse`, `weight`, `weight-reverse`  
   - `default` follows Hugo's default sorting method. Refer to the [Hugo documentation](https://gohugo.io/quick-reference/page-collections/#sort) for details.  
   - `date` sorts by date, while `date-reverse` sorts by date in reverse order.  
