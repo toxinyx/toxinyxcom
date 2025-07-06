@@ -99,7 +99,7 @@ declare global {
   var ClipboardJS: any;
   var Pjax: any;
   var QRCode: any;
-  var htmlToImage: any;
+  var snapdom: any;
   var materialTheme: any;
   var bannerElement: HTMLImageElement | undefined;
   var generateSchemeHandler: () => void;
