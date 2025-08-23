@@ -14,6 +14,13 @@
     }
   }
 
+  .aplayer-after-sidebar &,
+  &.aplayer-after-sidebar,
+  .aplayer-after-widget &,
+  &.aplayer-after-widget {
+    margin: 40px 0 0 0 !important;
+  }
+
   .aplayer-miniswitcher {
     background: var(--red-5-5) !important;
   }
@@ -70,7 +77,6 @@
   }
 }
 
-
 .aplayer .aplayer-lrc .aplayer-lrc-contents,
 .aplayer .aplayer-info .aplayer-music {
   cursor: var(--cursor-default) !important;
@@ -82,7 +88,13 @@ body .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap,
 .aplayer .aplayer-list-index,
 .aplayer .aplayer-list-author,
 body .aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap,
-.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb,
+.aplayer
+  .aplayer-info
+  .aplayer-controller
+  .aplayer-bar-wrap
+  .aplayer-bar
+  .aplayer-played
+  .aplayer-thumb,
 .aplayer .aplayer-icon {
   cursor: var(--cursor-pointer) !important;
 }

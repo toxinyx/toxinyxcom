@@ -148,7 +148,7 @@ tagcloud_limits: 20
 # Archive behavior
 only_show_capsule_in_index: false # If you have hugo amounts of tags and categories, you can set this to true to only show the capsule in the index page for better performance
 
-show_update_time: true # If you want to show the update time, please set this to true
+show_update_time: false # If you want to show the update time, please set this to true
 
 # RSS output
 rss:
@@ -591,6 +591,7 @@ pace:
 # Experimental
 # Please turn on pjax to use this feature
 player:
+  position: before_sidebar # before_sidebar | after_sidebar | after_widget
   # if you enable meting, you must enable aplayer first
   aplayer:
     # https://github.com/DIYgod/APlayer
