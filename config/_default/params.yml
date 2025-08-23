@@ -148,6 +148,8 @@ tagcloud_limits: 20
 # Archive behavior
 only_show_capsule_in_index: false # If you have hugo amounts of tags and categories, you can set this to true to only show the capsule in the index page for better performance
 
+show_update_time: true # If you want to show the update time, please set this to true
+
 # RSS output
 rss:
   limit: 10             # The number of recent articles to be output, write -1 to output all
@@ -181,7 +183,7 @@ reimu_cursor:
     pointer: ../images/cursor/reimu-cursor-pointer.png
     text: ../images/cursor/reimu-cursor-text.png
 
-icon_font: 4552607_cp3b72wuupu
+icon_font: 4552607_cs6s86l0wm9
 
 # Font loading strategy
 # Custom Font -> Google Fonts -> Local FallBack Font

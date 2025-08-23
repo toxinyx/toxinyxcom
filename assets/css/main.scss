@@ -35,6 +35,7 @@ $sponsor_icon_mask: {{  $params.sponsor.icon.mask }};
 $live2d_position: {{ $params.live2d.position }};
 $live2d_widgets_position: {{ $params.live2d_widgets.position }};
 $top_position: {{ $params.top.position }};
+$show_update_time: {{ $params.show_update_time }};
 
 $cursor-default: {{ if reflect.IsMap $params.reimu_cursor }}"{{ $params.reimu_cursor.cursor.default }}"{{ else }}"../images/cursor/reimu-cursor-default.png"{{ end }};
 $cursor-pointer: {{ if reflect.IsMap $params.reimu_cursor }}"{{ $params.reimu_cursor.cursor.pointer }}"{{ else }}"../images/cursor/reimu-cursor-pointer.png"{{ end }};
