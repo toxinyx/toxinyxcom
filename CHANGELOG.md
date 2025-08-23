@@ -1,3 +1,63 @@
+## v0.12.1
+
+未发布，开发中
+
+### 特性
+
+- 新增 `player.position` 配置用于控制播放器的位置，可选择在 sidebar 之前、之后或 widget 之后，默认在 sidebar 之后
+  ```yaml
+  player:
+    position: before_sidebar # before_sidebar / after_sidebar / after_widget
+  ```
+- 新增 `show_update_time` 配置用于控制是否展示文章更新时间，默认关闭
+  ```yaml
+  show_update_time: true # true | false
+  ```
+- 新增 `moe_icp` 配置用于控制是否展示萌 ICP 备案信息，默认关闭
+  ```yaml
+  moe_icp:
+    icpnumber: # 萌国ICP备案号
+  ```
+- 多语言增加对葡萄牙语（巴西）的支持
+- 使用 snapdom 替代 html2image 生成截图
+
+### 杂项
+
+- 更新 mermaid 至 v11.10.1
+- 更新 qrcode 至 v1.5.1
+- 更新 dompurify 至 v3.2.6
+- 更新 fontawesome 至 v7.0.0
+
+---
+
+Not released, in development
+
+### Features
+
+- Added `player.position` configuration to control the player's position, which can be placed before the sidebar, after the sidebar, or after the widget. Defaults to after the sidebar.
+  ```yaml
+  player:
+    position: before_sidebar # before_sidebar / after_sidebar / after_widget
+  ```
+- Added `show_update_time` configuration to control whether to display the article update time. Disabled by default.
+  ```yaml
+  show_update_time: true # true | false
+  ```
+- Added `moe_icp` configuration to control whether to display Moe ICP filing information. Disabled by default.
+  ```yaml
+  moe_icp:
+    icpnumber: # Moe ICP filing number
+  ```
+- Added support for Portuguese (Brazil) in multilingual settings.
+- Replaced html2image with snapdom for generating screenshots.
+
+### Miscellaneous
+
+- Updated mermaid to v11.10.1
+- Updated qrcode to v1.5.1
+- Updated dompurify to v3.2.6
+- Updated fontawesome to v7.0.0
+
 ## v0.12.0
 
 **2025-07-06**

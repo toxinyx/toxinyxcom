@@ -72,7 +72,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 
 ### Navigation & Structure
 
-- 📑 Table of Contents (TOC)
+- 📑 Table of Contents
 - 🔄 PJAX support
 - 🔧 ServiceWorker implementation
 - 📰 RSS feed
@@ -81,7 +81,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 
 - 🎨 Icon support:
   - Iconfont
-  - FontAwesome
+  - FontAwesome7
 - 🔗 Custom shortcodes for:
   - Internal links
   - External links
@@ -244,6 +244,44 @@ banner: "images/banner.webp"
 #### Favicon
 
 The favicon is saved at `themes/hugo-theme-reimu/static/favicon.ico`. You can replace it with your own file.
+
+</details>
+<details>
+<summary>Footer</summary>
+
+### Footer
+
+#### Basic Information
+
+The footer section allows you to configure basic display information and statistics.
+
+```yaml
+footer:
+  since: 2020 # The starting year displayed in the copyright information (e.g., 2020-current year)
+  powered: true # Whether to display copyright information
+  count: true # Whether to display word count and reading time statistics
+  busuanzi: true # Whether to enable Busuanzi visitor counting statistics
+```
+
+#### ICP Filing
+
+For websites hosted in mainland China, you can display ICP filing information as required by regulations.
+
+```yaml
+icp:
+  icpnumber: # ICP filing number
+  beian: # Public Security Bureau filing number
+  recordcode: # Record code parameter from the Public Security Bureau filing link
+```
+
+#### Moe ICP Filing (v0.12.1+)
+
+[Moe ICP Filing](https://icp.gov.moe/)
+
+```yaml
+moe_icp:
+  icpnumber: # Moe ICP filing number
+```
 
 </details>
 <details>
@@ -711,6 +749,15 @@ sponsor: true # Show sponsorship QR codes?
 
 Uses Aplayer + Meting (optional), disabled by default
 
+##### Music Player Position (v0.12.1+)
+
+Default is after sidebar
+
+```yml
+player:
+  position: before_sidebar # before_sidebar / after_sidebar / after_widget
+```
+
 ##### Pure Aplayer
 
 Set `player.aplayer.enable` to `true` and configure `player.aplayer.options` according to [Aplayer Docs](https://aplayer.js.org/#/home?id=options)
@@ -792,6 +839,20 @@ home_categories:
       cover:
 ```
 
+#### Injector (v0.6.3+)
+
+Used to inject custom code, similar to [Hexo#Injector](https://hexo.io/api/injector), supports `head`, `body` and `sidebar` injection
+
+```yaml
+injector:
+  head_begin: # Inject code snippet right after <head>
+  head_end: # Inject code snippet right before </head>
+  body_begin: # Inject code snippet right after <body>
+  body_end: # Inject code snippet right before </body>
+  sidebar_begin: # Inject code snippet right after <aside>
+  sidebar_end: # Inject code snippet right before </aside>
+```
+
 </details>
 
 <details>
@@ -823,7 +884,7 @@ The first parameter is the article's `path`; the second parameter (optional) is 
 
 The first parameter is the article's title; the second parameter is the external link to the article; the third parameter (optional) is the cover image shown on the card - if set to `auto`, it will automatically use the default cover
 
-#### Heat Map Card Article Heatmap (Experimental Feature in v0.8.0+)
+#### Heat Map Card Article Heatmap (v0.8.0+)
 
 ```yaml
 {{< heatMapCard levelStandard="?" >}}
@@ -831,7 +892,7 @@ The first parameter is the article's title; the second parameter is the external
 
 The first parameter is the level standard for the heatmap (graded based on the word count of the articles), with the default value being `"1000,5000,10000"`.
 
-#### tagRoulette (Experimental Feature in v0.12.0+)
+#### tagRoulette (v0.12.0+)
 
 ```yaml
 {{< tagRoulette tags="?" icon="?" >}}
