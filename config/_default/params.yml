@@ -181,7 +181,7 @@ reimu_cursor:
     pointer: ../images/cursor/reimu-cursor-pointer.png
     text: ../images/cursor/reimu-cursor-text.png
 
-icon_font: 4552607_0khxww3tj3q9
+icon_font: 4552607_cp3b72wuupu
 
 # Font loading strategy
 # Custom Font -> Google Fonts -> Local FallBack Font

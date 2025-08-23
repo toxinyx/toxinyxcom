@@ -1,5 +1,5 @@
 :root {
-  --font-icon: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome";
+  --font-icon: "Font Awesome 7 Free", "Font Awesome 7 Brands", "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome";
 }
 
 .archives-tag-list-link:before {
@@ -15,11 +15,13 @@
 .article-date-link:before {
   font-family: var(--font-icon);
   content: "\f017";
+  font-weight: 900;
 }
 
 .article-category-link:before {
   font-family: var(--font-icon);
   content: "\f02e";
+  font-weight: 900;
 }
 
 .article-tag-list-link:before {
@@ -30,6 +32,7 @@
 .article-comment-link:before {
   font-family: var(--font-icon);
   content: "\f075";
+  font-weight: 900;
 }
 
 .icon-copyright:before {
@@ -50,11 +53,13 @@
 .icon-eye:before {
   font-family: var(--font-icon);
   content: "\f06e";
+  font-weight: 900;
 }
 
 .icon-user:before {
   font-family: var(--font-icon);
   content: "\f007";
+  font-weight: 900;
 }
 
 #main-nav-toggle:before {
@@ -75,11 +80,13 @@
 #nav-sun-btn:before {
   font-family: var(--font-icon);
   content: "\f185";
+  font-weight: 900;
 }
 
 #nav-moon-btn:before {
   font-family: var(--font-icon);
   content: "\f186";
+  font-weight: 900;
 }
 
 #nav-circle-half-stroke-btn:before {
@@ -114,7 +121,8 @@
 
 .icon-calendar:before {
   font-family: var(--font-icon);
-  content: "\f073";
+  content: "\f133";
+  font-weight: 900;
 }
 
 .icon-pencil:before {
@@ -125,16 +133,19 @@
 .icon-clock:before {
   font-family: var(--font-icon);
   content: "\f252";
+  font-weight: 900;
 }
 
 .post-sticky:before {
   font-family: var(--font-icon);
   content: "\f164";
+  font-weight: 900;
 }
 
 .popup-btn-close:before {
   font-family: var(--font-icon);
   content: "\f057";
+  font-weight: 900;
 }
 
 .reimu-search-input-icon:before {
@@ -299,6 +310,7 @@
 @if index($social-keys, "email") {
   .icon-email:before {
     content: "\f0e0";
+    font-weight: 900;
   }
 }
 
@@ -325,6 +337,7 @@
 .icon-globe:before {
   font-family: var(--font-icon);
   content: "\f0ac";
+  font-weight: 900;
 }
 
 .icon-creative-commons:before {
@@ -354,6 +367,7 @@
 .icon-image:before {
   font-family: var(--font-icon);
   content: "\f03e";
+  font-weight: 900;
 }
 
 .icon {
