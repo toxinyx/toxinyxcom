@@ -18,6 +18,18 @@
   moe_icp:
     icpnumber: # 萌国ICP备案号
   ```
+- 对于 Hugo v0.132.0 以下版本，新增 `alertBlockquote` shortcode 用于展示块引用，支持多种类型
+  ```yaml
+  {{< alertBlockquote type="?" >}}
+  Your content here
+  {{</alertBlockquote>}}
+  ```
+  - type：块引用的类型，可选参数为：`note`、`tip`、`important`、`warning`、`danger`
+- 对于 Hugo v0.132.0 及以上版本 支持使用 Hugo Blockquote render hooks 展示 Alert 块引用
+  ```markdown
+  > [!NOTE]
+  > Useful information that users should know, even when skimming content.
+  ```
 - 多语言增加对葡萄牙语（巴西）的支持
 - 使用 snapdom 替代 html2image 生成截图
 
@@ -47,6 +59,18 @@ Not released, in development
   ```yaml
   moe_icp:
     icpnumber: # Moe ICP filing number
+  ```
+- For Hugo versions below v0.132.0, a new `alertBlockquote` shortcode has been added to display blockquotes, supporting multiple types  
+  ```yaml  
+  {{< alertBlockquote type="?" >}}  
+  Your content here  
+  {{</alertBlockquote>}}  
+  ```  
+  - type: specifies the type of blockquote. Available options: `note`, `tip`, `important`, `warning`, `danger`  
+- For Hugo v0.132.0 and above, support for using Hugo Blockquote render hooks to display Alert blockquotes  
+  ```markdown  
+  > [!NOTE]  
+  > Useful information that users should know, even when skimming content.  
   ```
 - Added support for Portuguese (Brazil) in multilingual settings.
 - Replaced html2image with snapdom for generating screenshots.

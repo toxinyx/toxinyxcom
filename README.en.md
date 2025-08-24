@@ -88,6 +88,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - Friend links
   - Heatmap
   - Tag Roulette
+  - Alert Blockquote
 - 🎨 Dynamic theme color adaptation
 - ©️ Article copyright declaration
 - 🌐 Custom CDN source / local source configuration
@@ -902,6 +903,19 @@ tagRoulette is an interactive element that provides a random tag display feature
 
 - tags: Optional parameter specifying the tag pool. Multiple tags should be separated by English commas (,). If not provided, a few example tags will be used by default. Example: `tags="memory decline, loss of expression, increased laziness, numbness, so sleepy"`
 - icon: Optional parameter to customize the trigger button's icon. Default: 🕹️ (game controller emoji), can be replaced with any emoji or text, such as 🎲, 🎯, 🔄, etc.
+
+#### alertBlockquote (v0.12.1+)
+
+```yaml
+{{< alertBlockquote type="?" >}}
+Your content here
+{{</alertBlockquote>}}
+```
+
+It is applicable to scenarios where Hugo v0.132.0 or lower cannot use Hugo Blockquote render hooks.
+
+The first parameter is the type of block quote, with the following optional parameters: `note`, `tip`, `important`, `warning`, `danger`
+
 </details>
 
 <details>
