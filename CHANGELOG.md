@@ -1,6 +1,11 @@
 ## v0.12.1
 
-未发布，开发中
+**2025-08-24**
+
+### 修复
+
+- 修复热力图未来日期的处理逻辑，确保只统计过去的文章数据
+- 修复热力图日期标签重叠的问题
 
 ### 特性
 
@@ -42,7 +47,10 @@
 
 ---
 
-Not released, in development
+### Fixes
+
+- Fixed the issue where future dates were incorrectly processed in the heatmap, ensuring that only past article data is counted.
+- Fixed the issue of overlapping date labels in the heatmap.
 
 ### Features
 
