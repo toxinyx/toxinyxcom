@@ -288,6 +288,7 @@ a, .main-nav-icon, .popup-btn-close, button {
 @import "partials/friend";
 @import "partials/card";
 @import "partials/sidebar";
+@import "partials/container";
 
 {{ if $params.top.enable }}
 @import "partials/top";
