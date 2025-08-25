@@ -151,9 +151,9 @@
   <div id="header-outer">
     <div id="header-title">
       {{- if eq .Type "404" -}}
-        <a href="{{ "" | relLangURL }}" id="logo">
+        <span id="logo">
           <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ i18n "not_found.title" }}</h1>
-        </a>
+        </span>
       {{- else -}}
         {{- $title := "" -}}
         {{- if .IsHome -}}
@@ -171,15 +171,15 @@
         {{- end -}}
   
         {{- if $title -}}
-          <a href="{{ "" | relLangURL }}" id="logo">
+          <span id="logo">
             <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ $title }}</h1>
-          </a>
+          </span>
         {{- end -}}
       {{- end -}}
   
       {{- if eq .Type "404" -}}
         <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
-          <a href="{{ "" | relLangURL }}" id="subtitle">{{ i18n "not_found.subtitle" }}</a>
+          <span id="subtitle">{{ i18n "not_found.subtitle" }}</span>
         </h2>
       {{- else -}}
         {{- $subtitle := "" -}}
@@ -189,10 +189,14 @@
           {{- $subtitle = .Title -}}
         {{- else if and (eq .Type "tags") (not (eq .Title "Tags")) -}}
           {{- $subtitle = .Title -}}
+        {{- else if and .Site.Params.show_summary (in .Site.Params.mainSections .Type) -}}
+          {{- if .Summary -}}
+            {{- $subtitle = .Summary | plainify | truncate 200 -}}
+          {{- end -}}
         {{- end -}}
         <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
           {{- if $subtitle -}}
-            <a href="{{ "" | relLangURL }}" id="subtitle">{{ $subtitle }}</a>
+            <span id="subtitle">{{ $subtitle }}</span>
           {{- end -}}
         </h2>
       {{- end -}}
