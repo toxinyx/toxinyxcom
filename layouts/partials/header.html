@@ -151,9 +151,9 @@
   <div id="header-outer">
     <div id="header-title">
       {{- if eq .Type "404" -}}
-        <span id="logo">
+        <a href="{{ "" | relLangURL }}" id="logo">
           <h1 data-aos="{{ .Site.Params.animation.options.header.title }}">{{ i18n "not_found.title" }}</h1>
-        </span>
+        </a>
       {{- else -}}
         {{- $title := "" -}}
         {{- if .IsHome -}}
@@ -179,7 +179,7 @@
   
       {{- if eq .Type "404" -}}
         <h2 id="subtitle-wrap" data-aos="{{ .Site.Params.animation.options.header.subTitle }}">
-          <span id="subtitle">{{ i18n "not_found.subtitle" }}</span>
+          <a href="{{ "" | relLangURL }}" id="subtitle">{{ i18n "not_found.subtitle" }}</a>
         </h2>
       {{- else -}}
         {{- $subtitle := "" -}}
