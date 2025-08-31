@@ -28,6 +28,10 @@
   padding: $article-padding $article-padding + 15px 0;
 }
 
+.article-summary {
+  margin: 0 0 $article-padding 0 !important;
+}
+
 @mixin article-meta-tag {
   text-decoration: none;
   text-transform: uppercase;

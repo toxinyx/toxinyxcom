@@ -189,7 +189,7 @@
           {{- $subtitle = .Title -}}
         {{- else if and (eq .Type "tags") (not (eq .Title "Tags")) -}}
           {{- $subtitle = .Title -}}
-        {{- else if and .Site.Params.show_summary (in .Site.Params.mainSections .Type) -}}
+        {{- else if and .Site.Params.summary.enable (eq .Site.Params.summary.style "subtitle") (in .Site.Params.mainSections .Type) -}}
           {{- if .Summary -}}
             {{- $subtitle = .Summary | plainify | truncate 200 -}}
           {{- end -}}
