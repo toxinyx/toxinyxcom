@@ -1,3 +1,45 @@
+## v0.12.2
+
+**2025-09-06**
+
+### 修复
+
+- 修复 v0.12.1 改变结构后 “开启播放器后移动端将强制展示 fixed 类型的播放器” 特性失效的问题
+- RSS 中排除 shortcode 内容
+
+### 特性
+
+- 新增 `summary` 配置用于控制是否展示文章摘要，默认关闭。可选择 `subtitle` 或 `blockquote` 样式
+  ```yaml
+  summary:
+    enable: false # true | false
+    style: 'subtitle' # 'subtitle' or 'blockquote'
+  ```
+
+### 性能
+
+- CSS 持续性优化
+
+---
+
+### Fixes
+
+- Fixed the issue where the "when the player is enabled, the fixed type player will be forcibly displayed on the mobile end" feature in v0.12.1 was disabled
+- Excluded shortcode content in RSS
+
+### Features
+
+- Added `summary` configuration to control whether to display the article summary, disabled by default. Can choose `subtitle` or `blockquote` style
+  ```yaml
+  summary:
+    enable: false # true | false
+    style: 'subtitle' # 'subtitle' or 'blockquote'
+  ```
+
+### Performance
+
+- Continuous CSS optimization
+
 ## v0.12.1
 
 **2025-08-24**
