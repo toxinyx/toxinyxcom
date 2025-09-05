@@ -116,18 +116,6 @@
   }
 }
 
-@mixin sidebar-state-content {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: center;
-  padding: 0 20px;
-
-  div {
-    margin: 5px 0;
-  }
-}
-
 .sidebar-state {
   display: flex;
   justify-content: center;
@@ -139,6 +127,18 @@
   &:hover {
     opacity: 1;
   }
+
+  > div, > a {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0 20px;
+
+    div {
+      margin: 5px 0;
+    }
+  }
 }
 
 .sidebar-state a {
@@ -147,16 +147,10 @@
 }
 
 .sidebar-state-article {
-  @include sidebar-state-content;
   border-right: 1px solid var(--red-1);
 }
 
-.sidebar-state-category {
-  @include sidebar-state-content;
-}
-
 .sidebar-state-tag {
-  @include sidebar-state-content;
   border-left: 1px solid var(--red-1);
 }
 
@@ -564,30 +558,6 @@
   padding: 10px 0;
 }
 
-@mixin siderbar-btn-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background: var(--red-3);
-  color: white;
-  font-weight: bold;
-  box-shadow: var(--shadow-red-6-shadow);
-  border-radius: $post-radius;
-  margin: 20px;
-  transition: 0.3s;
-  will-change: transform;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  [data-theme="dark"] & {
-    filter: brightness(0.8);
-  }
-}
-
 .sidebar-btn-wrapper {
   display: flex;
   justify-content: center;
@@ -598,7 +568,27 @@
 
   .sidebar-toc-btn,
   .sidebar-common-btn {
-    @include siderbar-btn-icon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: var(--red-3);
+    color: white;
+    font-weight: bold;
+    box-shadow: var(--shadow-red-6-shadow);
+    border-radius: $post-radius;
+    margin: 20px;
+    transition: 0.3s;
+    will-change: transform;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    [data-theme="dark"] & {
+      filter: brightness(0.8);
+    }
   }
 
   .current {

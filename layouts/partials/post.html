@@ -5,9 +5,9 @@
 <div class="post-wrapper">
   <div
     class="{{ if mod $index 2 }}
-      post-wrap-right
+      post-wrap right
     {{ else }}
-      post-wrap-left
+      post-wrap left
     {{ end }}"
     data-aos="{{ $ctx.Site.Params.animation.options.home.post }}"
   >
@@ -34,9 +34,9 @@
     {{- end -}}
     <div
       class="{{ if mod $index 2 }}
-        post-cover-right
+        post-cover right
       {{ else }}
-        post-cover-left
+        post-cover left
       {{ end }}"
     >
       {{- if and $page.Params.cover (not (hasPrefix $page.Params.cover "rgb")) -}}

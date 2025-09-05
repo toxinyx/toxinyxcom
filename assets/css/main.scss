@@ -135,7 +135,6 @@ $giscus: {{ (cond $params.giscus.enable true false) }};
 @include global-reset;
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-basic;
   font-weight: 700;
 }
 

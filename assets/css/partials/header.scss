@@ -61,7 +61,6 @@
 }
 
 #header-title {
-  font-family: $font-basic;
   font-weight: 700;
   text-align: center;
   position: absolute;
@@ -138,25 +137,6 @@
   padding: 20px 15px;
 }
 
-@mixin nav-link-wrap {
-  @include nav-link;
-  padding: 0 15px;
-  display: flex;
-  transition: 0.3s;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  @media #{$mg-large} {
-    padding: 0 10px;
-  }
-
-  @media #{$mg-normal} {
-    padding: 0 4px;
-  }
-}
-
 .nav-icon {
   @include nav-link;
   text-align: center;
@@ -180,7 +160,18 @@
 }
 
 .main-nav-link-wrap {
-  @include nav-link-wrap;
+  @include nav-link;
+  padding: 0 15px;
+  display: flex;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media #{$mg-large} {
+    padding: 0 10px;
+  }
 
   @media #{$mg-normal} {
     display: none;
