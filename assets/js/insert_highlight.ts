@@ -108,9 +108,6 @@
   // 代码复制
   const clipboard = new ClipboardJS(".code-copy", {
     text: (trigger) => {
-      const selection = window.getSelection();
-      const range = document.createRange();
-
       let td =
         trigger.parentNode.parentNode.parentNode.querySelector(
           "tr td:last-of-type",
@@ -120,11 +117,8 @@
         td = trigger.parentNode.parentNode.parentNode.querySelector("code");
       }
 
-      range.selectNodeContents(td);
-      selection.removeAllRanges();
-      selection.addRange(range);
+      let selectedText = td ? td.innerText : "";
 
-      let selectedText = selection.toString();
       if (window.siteConfig.clipboard.copyright?.enable) {
         if (
           selectedText.length >= window.siteConfig.clipboard.copyright?.count
