@@ -120,6 +120,10 @@ declare global {
    * AOS init
    */
   var aosInit: (() => void) | undefined;
+  /**
+   * PanZoom instances list
+   */
+  var __panZoomList: any[] | undefined;
 
   var siteConfig: {
     icon_font?: string | boolean;
