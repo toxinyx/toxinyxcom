@@ -257,6 +257,9 @@
     {{- if and (.Store.Get "hasMermaid") .Params.mermaid -}}
       {{- partial "helpers/js.html" (dict "raw" $js.mermaid "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.mermaid "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.mermaid)) 0)) -}}
       {{- partial "helpers/js.html" (dict "raw" $js.dompurify "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.dompurify "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.dompurify)) 0)) -}}
+      {{- if $params.mermaid.zoom -}}
+        {{- partial "helpers/js.html" (dict "raw" $js.svg_pan_zoom "src" (index (partial "helpers/vendorCdn.html" (dict "item" $js.svg_pan_zoom "ctx" $site)) 0) "pjax" true "integrity" (index (partial "helpers/vendorCdnIntegrity.html" (dict "item" $js.svg_pan_zoom)) 0)) -}}
+      {{- end -}}
       <script data-pjax>
         if (window.mermaid) {
           // https://github.com/mermaid-js/mermaid/issues/1945
@@ -303,9 +306,24 @@
               }
             });
           };
-          const loadMermaid = (theme) => {
+          const loadMermaid = async (theme) => {
             window.mermaid.initialize({ theme });
-            window.mermaid.init({ theme }, _$$(elementCode));
+            await window.mermaid.run({querySelector: elementCode});
+            if (window.svgPanZoom) {
+              const svgElements = _$$('.mermaid > svg');
+              if (svgElements.length > 0) {
+                svgElements.forEach(el => {
+                  const bbox = el.getBBox();
+                  el.setAttribute('height', Math.max(bbox.height, 80));
+                  window.svgPanZoom(el, {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true
+                  });
+                });
+              }
+            }
           };
           document.body.addEventListener("dark-theme-set", () => {
             saveOriginalData()
