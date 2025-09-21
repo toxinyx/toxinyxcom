@@ -1,6 +1,7 @@
 {{- if or .PrevInSection .NextInSection -}}
   <nav
     id="article-nav"
+    aria-label="Article navigation"
     data-aos="{{ .Site.Params.animation.options.article.nav }}"
   >
     {{- if .PrevInSection -}}
@@ -30,7 +31,14 @@
             />
           {{- end -}}
         {{- end -}}
-        <a href="{{ .PrevInSection.Permalink | relURL }}"></a>
+        <a
+          href="{{ .PrevInSection.Permalink | relURL }}"
+          aria-label="{{ i18n "newer" }}: {{- if .PrevInSection.Title -}}
+            {{- .PrevInSection.Title -}}
+          {{- else -}}
+            (no title)
+          {{- end -}}"
+        ></a>
         <div class="article-nav-caption">{{ i18n "newer" }}</div>
         <h3 class="article-nav-title">
           {{- if .PrevInSection.Title -}}
@@ -69,7 +77,14 @@
             />
           {{- end -}}
         {{- end -}}
-        <a href="{{ .NextInSection.Permalink | relURL }}"></a>
+        <a
+          href="{{ .NextInSection.Permalink | relURL }}"
+          aria-label="{{ i18n "older" }}: {{- if .NextInSection.Title -}}
+            {{- .NextInSection.Title -}}
+          {{- else -}}
+            (no title)
+          {{- end -}}"
+        ></a>
         <div class="article-nav-caption">{{ i18n "older" }}</div>
         <h3 class="article-nav-title">
           {{- if .NextInSection.Title -}}
