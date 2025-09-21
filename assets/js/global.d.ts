@@ -142,6 +142,11 @@ declare global {
     code_block?: {
       expand?: boolean;
     }
+    i18n_languages?: {
+      Lang: string;
+      LanguageName: string;
+    }[];
+    base?: string;
   };
 
   var REIMU_POST: {
