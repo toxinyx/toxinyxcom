@@ -56,7 +56,7 @@
       codeFigcaptionBottom.classList.remove("has-link");
     }
     if (fileName || url) {
-      codeFigcaptionBottom.style.marginBottom = '0.5em';
+      codeFigcaptionBottom.style.marginBottom = '12px';
     } else {
       codeFigcaptionBottom.style.marginBottom = '0';
     }

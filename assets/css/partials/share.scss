@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 8px;
   flex-wrap: wrap;
 }
 
@@ -34,7 +34,7 @@
   width: 300px;
   height: 420px;
   overflow: hidden;
-  border-radius: $post-radius;
+  border-radius: $tag-radius;
   z-index: 50;
   box-shadow: var(--shadow-card);
 
@@ -65,7 +65,7 @@
   img {
     width: 100%;
     height: 100%;
-    border-radius: $post-radius;
+    border-radius: $tag-radius;
   }
 }
 

@@ -45,27 +45,35 @@
 }
 
 .alert-blockquote {
-  margin: 1.8em 0;
+  margin: 28px 0;
   border-radius: $post-radius;
   transition: 0.3s;
-  padding: 1px 10px;
+  display: flow-root;
+  padding: 0 12px;
 
-  &.info, &.note {
+  .alert-heading:before {
+    font-weight: normal;
+    margin-right: 8px;
+    @if $icon_font {
+      font-family: $font-icon;
+    } @else {
+      font-family: var(--font-icon);
+    }
+  }
+
+  &.info,
+  &.note {
     background: var(--color-info-bg);
     color: var(--color-info-text);
     border-left: 6px var(--color-info-text) solid;
     box-shadow: 0 0 5px 2px var(--color-info-shadow);
 
     .alert-heading:before {
-      font-weight: normal;
       @if $icon_font {
-        font-family: $font-icon;
         content: "\e647";
       } @else {
-        font-family: var(--font-icon);
         content: "\f05a";
       }
-      margin-right: 0.5em;
     }
   }
 
@@ -76,35 +84,28 @@
     border-left: 6px var(--color-warning-text) solid;
 
     .alert-heading:before {
-      font-weight: normal;
       @if $icon_font {
-        font-family: $font-icon;
         content: "\e646";
       } @else {
-        font-family: var(--font-icon);
         content: "\f06a";
       }
-      margin-right: 0.5em;
     }
   }
 
-  &.danger, &.caution {
+  &.danger,
+  &.caution {
     background: var(--color-danger-bg);
     color: var(--color-danger-text);
     box-shadow: 0 0 5px 2px var(--color-danger-shadow);
     border-left: 6px var(--color-danger-text) solid;
 
     .alert-heading:before {
-      font-weight: normal;
       @if $icon_font {
-        font-family: $font-icon;
         content: "\e645";
       } @else {
-        font-family: var(--font-icon);
         content: "\f057";
         font-weight: 900;
       }
-      margin-right: 0.5em;
     }
   }
 
@@ -115,16 +116,12 @@
     border-left: 6px var(--color-tip-text) solid;
 
     .alert-heading:before {
-      font-weight: normal;
       @if $icon_font {
-        font-family: $font-icon;
         content: "\e643";
       } @else {
-        font-family: var(--font-icon);
         content: "\f058";
         font-weight: 900;
       }
-      margin-right: 0.5em;
     }
   }
 
@@ -135,25 +132,21 @@
     border-left: 6px var(--color-important-text) solid;
 
     .alert-heading:before {
-      font-weight: normal;
       @if $icon_font {
-        font-family: font-icon;
         content: "\e649";
       } @else {
-        font-family: var(--font-icon);
         content: "\f192";
         font-weight: 900;
       }
-      margin-right: 0.5em;
     }
   }
   p {
-    margin: 0.8em 0;
+    margin: 12px 0;
   }
 }
 
 .alert-heading {
-  margin: 0.8em 0 !important;
-  font-size: 1.1em;
+  margin: 12px 0 !important;
+  font-size: 18px;
   font-weight: bold;
 }

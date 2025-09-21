@@ -9,10 +9,11 @@
     @media #{$mg-large} {
       display: none;
     }
-  
+
     @media #{$mq-large} {
       width: 23%;
-      margin: 0 1%;
+      min-width: 268px;
+      margin: 0 16px;
       height: inherit;
     }
   }
@@ -32,7 +33,7 @@
   &.sticky {
     max-height: calc(100vh - 40px);
     position: sticky;
-    top: 5px;
+    top: 20px;
   }
 }
 
@@ -107,7 +108,7 @@
     font-weight: bold;
     font-size: 20px;
     color: var(--red-2);
-    margin: 10px;
+    margin: 12px;
   }
 
   .sidebar-description {
@@ -119,16 +120,19 @@
 .sidebar-state {
   display: flex;
   justify-content: center;
-  padding: 25px 0;
+  padding: 24px 0;
   color: var(--red-0);
   opacity: 0.8;
-  transition: opacity 0.5s, color 0.5s;
+  transition:
+    opacity 0.5s,
+    color 0.5s;
 
   &:hover {
     opacity: 1;
   }
 
-  > div, > a {
+  > div,
+  > a {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -136,7 +140,7 @@
     padding: 0 20px;
 
     div {
-      margin: 5px 0;
+      margin: 4px 0;
     }
   }
 }
@@ -206,7 +210,6 @@
 @if index($social-keys, "github") {
   .icon-github {
     color: #191717;
-    transition: 1;
   }
 
   [data-theme="dark"] .icon-github {
@@ -364,7 +367,9 @@
   color: var(--color-link);
   opacity: 0.8;
   text-decoration: none;
-  transition: opacity 0.2s, color 0.2s;
+  transition:
+    opacity 0.2s,
+    color 0.2s;
   display: block;
   padding: 10px 15px;
   font-weight: 700;
@@ -380,7 +385,10 @@
   position: relative;
   justify-content: center;
   border: 10px var(--color-red-3-shadow) double;
-  transition: border 0.5s, background 0.5s, color 0.5s;
+  transition:
+    border 0.5s,
+    background 0.5s,
+    color 0.5s;
   width: 70%;
   max-width: 200px;
   margin: 8px auto;
@@ -406,7 +414,10 @@
   @include menu-link;
   font-size: 24px;
   font-weight: 400;
-  transition: transform 0.3s, color 0.3s, opacity 0.3s;
+  transition:
+    transform 0.3s,
+    color 0.3s,
+    opacity 0.3s;
   will-change: transform;
 
   &.rotate {
@@ -468,8 +479,8 @@
   overflow: auto;
 
   &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 8px;
+    height: 8px;
   }
 
   a {
@@ -485,13 +496,17 @@
 
   & ul,
   & ol {
-    margin-left: 15px;
+    margin-left: 16px;
     list-style: none;
   }
 
+  nav > ol, nav > ul {
+    margin-left: 0;
+  }
+
   & li {
-    margin: 7px 0;
-    padding: 2px 0;
+    margin: 8px 0;
+    padding: 1px 0;
 
     &:before {
       content: "";
@@ -500,7 +515,7 @@
       background: var(--color-h2-after);
       display: inline-block;
       vertical-align: middle;
-      margin-right: 11px;
+      margin-right: 12px;
       box-shadow: var(--shadow-red-6-shadow);
       opacity: 0.5;
       transition: 0.3s;
@@ -555,16 +570,12 @@
   color: var(--grey-9);
   line-height: 1em;
   font-weight: bold;
-  padding: 10px 0;
+  padding: 10px 0 12px;
 }
 
 .sidebar-btn-wrapper {
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
 
   .sidebar-toc-btn,
   .sidebar-common-btn {
@@ -577,7 +588,7 @@
     color: white;
     font-weight: bold;
     box-shadow: var(--shadow-red-6-shadow);
-    border-radius: $post-radius;
+    border-radius: $tag-radius;
     margin: 20px;
     transition: 0.3s;
     will-change: transform;
@@ -606,8 +617,8 @@
   min-height: 0;
 
   &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 8px;
+    height: 8px;
   }
 }
 
@@ -615,7 +626,7 @@
   width: 100%;
   flex: 1;
   min-height: 0;
-  padding: 10px 20px;
+  padding: 10px 20px 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

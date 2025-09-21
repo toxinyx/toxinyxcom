@@ -116,7 +116,7 @@ $font-basic: $custom-basic-families, $basic-families, $local-basic-families;
 $font-code: $custom-code-families, $code-families, $local-code-families;
 
 $font-size: 14px;
-$line-height: 1.8em;
+$line-height: 1.67;
 $line-height-title: 1.2em;
 
 // Header
@@ -125,7 +125,6 @@ $subtitle-size: 18px;
 $banner-height: 35vh;
 
 // Layout
-$block-margin: 50px;
 $article-padding: 20px;
 $mobile-nav-width: 280px;
 
@@ -140,3 +139,4 @@ $mg-large: "screen and (max-width: 959px)";
 $mq-extra-large: "screen and (min-width: 1242px)";
 $mg-extra-large: "screen and (max-width: 1241px)";
 $post-radius: 10px;
+$tag-radius: 8px;
