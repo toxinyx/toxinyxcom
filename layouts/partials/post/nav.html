@@ -38,6 +38,11 @@
           {{- else -}}
             (no title)
           {{- end -}}"
+          title="{{ i18n "newer" }}: {{- if .PrevInSection.Title -}}
+            {{- .PrevInSection.Title -}}
+          {{- else -}}
+            (no title)
+          {{- end -}}"
         ></a>
         <div class="article-nav-caption">{{ i18n "newer" }}</div>
         <h3 class="article-nav-title">
@@ -80,6 +85,11 @@
         <a
           href="{{ .NextInSection.Permalink | relURL }}"
           aria-label="{{ i18n "older" }}: {{- if .NextInSection.Title -}}
+            {{- .NextInSection.Title -}}
+          {{- else -}}
+            (no title)
+          {{- end -}}"
+          title="{{ i18n "older" }}: {{- if .NextInSection.Title -}}
             {{- .NextInSection.Title -}}
           {{- else -}}
             (no title)
