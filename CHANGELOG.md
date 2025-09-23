@@ -1,3 +1,87 @@
+## v0.13.0
+
+未发布
+
+### 修复
+
+- 修复折叠代码块的复制按钮无法复制的问题
+
+### 特性
+
+- 新增 mermaid 的 `zoom` 配置，用于控制是否启用缩放，默认关闭
+  ```yaml
+  mermaid:
+    zoom: false # true | false
+  ```
+
+### 重构
+
+- 重构样式以提升一致性与美观度
+  - 调整卡片、评论与容器的内外边距，优化留白
+  - 改进小部件与侧边栏样式，优化对齐与间距
+  - 统一圆角值，增强视觉一致性
+  - 优化友链、页脚与页眉的响应式布局
+  - 更新热力图样式，提升可读性与清晰度
+  - 规范按钮与通知样式，统一交互与状态
+  - 调整字体大小与行高，提升阅读体验
+  - 优化移动端与桌面端滚动条样式
+  - 优化代码块样式，提升可读性与一致性
+  - 为标题添加淡入模糊动画
+- 增强可访问性（a11y）
+  - 为布局、导航与交互控件补充 aria-label
+  - 为可能截断的内容补充 title 提示
+  - 优化搜索弹窗的可访问性与交互，完善键盘导航与关闭逻辑
+
+### 性能
+
+- 精简 HTML，本人博客总体积大约减少了 8%
+  - 移除链接不必要的 external 属性
+  - 外置 pjax 相关 js 逻辑
+  - 精简 after-footer 与 loader 逻辑
+  - 按需动态生成评论系统配置，减少无效代码输出
+
+---
+
+Unreleased
+
+### Fixes
+
+- Fixed copy button in folded code blocks failing to copy content
+
+### Features
+
+- Added `zoom` configuration for mermaid to control whether zoom is enabled, defaults to false
+  ```yaml
+  mermaid:
+    zoom: false # true | false
+  ```
+
+### Refactor
+
+- Refactored styles to improve consistency and aesthetics
+  - Adjusted padding and margins for cards, comments, and containers to optimize whitespace
+  - Improved widget and sidebar styles for better alignment and spacing
+  - Unified border-radius values for enhanced visual consistency
+  - Optimized responsive layout for friend links, footer, and header
+  - Updated heatmap styles for better readability and clarity
+  - Standardized button and notification styles for consistent interaction and states
+  - Adjusted font sizes and line heights to improve reading experience
+  - Optimized scrollbar styles for mobile and desktop
+  - Enhanced code block styles for better readability and consistency
+  - Added fade-in blur animation for headings
+- Enhanced accessibility (a11y)
+  - Added aria-labels for layout, navigation, and interactive controls
+  - Added title hints for potentially truncated content
+  - Improved accessibility and interaction of the search modal, enhancing keyboard navigation and close logic
+
+### Performance
+
+- Streamlined HTML, reducing total blog size by approximately 8%
+  - Removed unnecessary external attributes from links
+  - Externalized pjax-related JavaScript logic
+  - Simplified after-footer and loader logic
+  - Dynamically generated comment system configurations on-demand to reduce invalid code output
+
 ## v0.12.2
 
 **2025-09-06**
