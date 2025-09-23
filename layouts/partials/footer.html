@@ -30,10 +30,12 @@
         {{ i18n "powered_by" }}&nbsp;<a
           href="https://gohugo.io/"
           target="_blank"
+          rel="noopener nofollow noreferrer"
           >Hugo</a
         >&nbsp; Theme.<a
           href="https://github.com/D-Sketon/hugo-theme-reimu"
           target="_blank"
+          rel="noopener nofollow noreferrer"
           >Reimu</a
         >
       </div>
@@ -58,7 +60,7 @@
     {{- end -}}
     {{- if .Site.Params.icp.icpnumber -}}
       <div class="footer-beian">
-        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"
+        <a target="_blank" rel="noopener nofollow noreferrer" href="https://beian.miit.gov.cn"
           >{{ .Site.Params.icp.icpnumber }}</a
         >
       </div>
@@ -72,7 +74,7 @@
         />
         <a
           target="_blank"
-          rel="noopener"
+          rel="noopener nofollow noreferrer"
           href="https://beian.mps.gov.cn/#/query/webSearch?code={{ .Site.Params.icp.recordcode }}"
           >{{ .Site.Params.icp.beian }}</a
         >
@@ -89,7 +91,7 @@
         />
         <a
           target="_blank"
-          rel="noopener"
+          rel="noopener nofollow noreferrer"
           href="https://icp.gov.moe/?keyword={{ .Site.Params.moe_icp.icpnumber }}"
           >萌ICP备{{ .Site.Params.moe_icp.icpnumber }}号</a
         >

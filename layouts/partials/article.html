@@ -24,7 +24,11 @@
       {{- if and .Params.excerpt .Params.link -}}
         <p>{{ .Params.excerpt | safeHTML }}</p>
         <p class="article-more-link">
-          <a href="{{ .Params.link }}"
+          <a
+            href="{{ .Params.link }}"
+            target="_blank"
+            itemprop="url"
+            rel="noopener nofollow noreferrer"
             >{{ .Site.Params.excerpt_link | default "Read More" }}</a
           >
         </p>
