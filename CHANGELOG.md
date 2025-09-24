@@ -1,10 +1,11 @@
 ## v0.13.0
 
-未发布
+**2025-09-25**
 
 ### 修复
 
 - 修复折叠代码块的复制按钮无法复制的问题
+- 修复自动主题切换时 mermaid 首次展示主题不正确的问题
 
 ### 特性
 
@@ -27,6 +28,7 @@
   - 优化移动端与桌面端滚动条样式
   - 优化代码块样式，提升可读性与一致性
   - 为标题添加淡入模糊动画
+  - 优化移动端文章内边距，提升阅读体验
 - 增强可访问性（a11y）
   - 为布局、导航与交互控件补充 aria-label
   - 为可能截断的内容补充 title 提示
@@ -47,6 +49,7 @@ Unreleased
 ### Fixes
 
 - Fixed copy button in folded code blocks failing to copy content
+- Fix incorrect theme display on first render of mermaid during automatic theme switching
 
 ### Features
 
@@ -69,6 +72,7 @@ Unreleased
   - Optimized scrollbar styles for mobile and desktop
   - Enhanced code block styles for better readability and consistency
   - Added fade-in blur animation for headings
+  - Optimized article padding on mobile for improved reading experience
 - Enhanced accessibility (a11y)
   - Added aria-labels for layout, navigation, and interactive controls
   - Added title hints for potentially truncated content
