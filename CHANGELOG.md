@@ -44,8 +44,6 @@
 
 ---
 
-Unreleased
-
 ### Fixes
 
 - Fixed copy button in folded code blocks failing to copy content
