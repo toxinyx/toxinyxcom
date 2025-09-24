@@ -228,6 +228,10 @@ a, .main-nav-icon, .popup-btn-close, button {
   @media #{$mg-large} {
     min-width: 100%;
   }
+
+  @media #{$mg-normal} {
+    padding: 0 16px;
+  }
 }
 
 #content {
