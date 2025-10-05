@@ -15,8 +15,21 @@
     <div class="hr-line"></div>
     {{- partial "post/gallery.html" . -}}
     <div class="e-content article-entry" itemprop="articleBody">
-      {{- if .Site.Params.outdate.enable -}}
-        <blockquote id="outdate-blockquote" style="display: none;">
+      {{- if .Params.outdated -}}
+        <blockquote class="alert-blockquote warning">
+          <p class="alert-heading">WARNING</p>
+          <p>
+            {{ $msg := index .Site.Params.outdate.message $.Language.Lang | default "This article was last updated on {time}. Please note that the content may no longer be applicable." }}
+            {{ replace $msg "{time}" ($.Lastmod.Format $.Site.Params.dateFormat) }}
+          </p>
+        </blockquote>
+      {{- else if .Site.Params.outdate.enable -}}
+        <blockquote
+          class="alert-blockquote warning"
+          id="outdate-blockquote"
+          style="display: none;"
+        >
+          <p class="alert-heading">WARNING</p>
           <p></p>
         </blockquote>
       {{- end -}}
