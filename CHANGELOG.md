@@ -1,3 +1,39 @@
+## v0.13.1
+
+**2025-10-05**
+
+### 修复
+
+- 修复当博客页面高度加载发生抖动时，底部 nav 无法正确展示的问题
+
+### 特性
+
+- 优化过期提示的样式，现在其样式和 WARNING 块引用一致
+- Front-matter 中新增 `outdated` 字段用于标记文章过期，其优先级最高，且无视全局配置
+  ```yaml
+  ---
+  outdated: true # true | false
+  ---
+  ```
+  当该字段为 `true` 时，文章顶部会显示过期提示
+
+---
+
+### Fixes
+
+- Fixed an issue where the bottom navigation bar was not displayed correctly when the page height flickered during loading.
+
+### Features
+
+- Optimized the style of the outdated notice, which is now consistent with the WARNING blockquote style.
+- Added an `outdated` field in the front-matter to mark an article as outdated. It has the highest priority and overrides the global configuration.
+  ```yaml
+  ---
+  outdated: true # true | false
+  ---
+  ```
+  When this field is `true`, an outdated notice will be displayed at the top of the article.
+
 ## v0.13.0
 
 **2025-09-25**
