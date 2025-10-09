@@ -69,7 +69,7 @@
         >
           <span
             class="post-comments-count valine-comment-count"
-            data-xid="{{ .Permalink | urlize }}"
+            data-xid="{{ .Permalink | relURL | urlize }}"
             itemprop="commentCount"
           ></span>
           {{ i18n "comment" }}
@@ -84,7 +84,7 @@
         >
           <span
             class="post-comments-count waline-comment-count"
-            data-path="{{ .Permalink | urlize }}"
+            data-path="{{ .Permalink | relURL | urlize }}"
             itemprop="commentCount"
           ></span>
           {{ i18n "comment" }}
