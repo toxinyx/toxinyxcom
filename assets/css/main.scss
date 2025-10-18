@@ -163,6 +163,7 @@ body {
   font-family: $font-basic;
   transition: background 1s;
   color: var(--color-default);
+  text-autospace: normal;
 
   ::selection {
     background: var(--red-1);
