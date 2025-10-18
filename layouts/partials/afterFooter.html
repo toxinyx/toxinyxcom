@@ -108,7 +108,7 @@
       {{- end -}}
       <script data-pjax>
         window.REIMU_POST = {
-          author: "{{ $params.author }}",
+          author: "{{ .Params.author | default $params.author }}",
           title: "{{ .Title }}",
           url: "{{ .Permalink }}",
           description: "{{ $desc }}",
