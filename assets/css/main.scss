@@ -121,6 +121,8 @@ $valine: {{ (cond (and $params.waline.enable $params.waline.serverURL) true fals
 $gitalk: {{ (cond (and $params.gitalk.enable $params.gitalk.clientID $params.gitalk.clientSecret) true false) }};
 $giscus: {{ (cond $params.giscus.enable true false) }};
 
+$github-badge-enable: {{ $params.github_badge.enable }};
+
 @import "_reset";
 @import "_variables";
 @import "_animation";

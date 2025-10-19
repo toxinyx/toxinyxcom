@@ -163,7 +163,7 @@ $icon-url: "//at.alicdn.com/t/c/font_#{$icon_font}.woff2";
   content: "\e630";
 }
 
-@if index($social-keys, "github") {
+@if index($social-keys, "github") or $github-badge-enable {
   .icon-github:before {
     content: "\e619";
   }

@@ -169,7 +169,7 @@
   content: "\f105";
 }
 
-@if index($social-keys, "github") {
+@if index($social-keys, "github") or $github-badge-enable {
   .icon-github:before {
     content: "\f09b";
   }
