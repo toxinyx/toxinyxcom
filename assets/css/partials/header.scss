@@ -298,8 +298,8 @@
   color: #fff;
 }
 
-@if $github-badge-enable {
-  .github-mark {
+@if $triangle-badge-enable {
+  .triangle-badge {
     position: absolute;
     top: -6px;
     right: -26px;
@@ -317,7 +317,7 @@
     }
   }
 
-  .github-mark-icon {
+  .triangle-badge-icon {
     position: absolute;
     top: 12px;
     left: -13px;

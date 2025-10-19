@@ -155,8 +155,9 @@ summary:
   enable: false
   style: 'subtitle' # 'subtitle' or 'blockquote'
 
-github_badge:
+triangle_badge:
   enable: false
+  icon: github # same as the icon in the social config
   link: https://github.com/D-Sketon/hugo-theme-reimu
 
 # RSS output
