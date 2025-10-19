@@ -1,3 +1,71 @@
+## v0.13.2
+
+**2025-10-19**
+
+### 修复
+
+- 修复 valine/waline 评论计数器无法正确展示的问题
+
+### 特性
+
+- 渐进支持了 `text-autospace`，现在 Chrome 140+ 的浏览器会自动在 CJK 和 EN 之间添加间距，无需手动配置
+- 优化分享微信弹出卡片，现在点击分享图标以外的区域会自动关闭卡片
+- 优化顶部 nav 菜单点击热区，现在点击 icon 也能触发菜单跳转
+- Front-matter 中新增 `author` 字段用于标记文章作者 (用于分享卡片和文章版权)，其优先级最高
+  ```yaml
+  ---
+  author: D-Sketon # 文章作者
+  ---
+  ```
+- 新增 `triangle_badge` 配置用于在右上角展示三角徽章，支持自定义链接和图标
+  ```yaml
+  triangle_badge:
+    enable: false # true | false
+    icon: github # 与 social 配置里的 icon 相同
+    link: 
+  ```
+
+### 杂项
+
+- 更新 mermaid 至 v11.12.0
+- 更新 quicklink 至 v3.0.1
+- 更新 katex 至 v0.16.24
+- 更新 snapdom 至 v1.9.14
+- 更新 fontawesome 至 v7.1.0
+
+---
+
+### Fixes
+
+- Fixed the issue where Valine/Waline comment counters could not display correctly.
+
+### Features
+
+- Gradually added support for `text-autospace`. Browsers with Chrome 140+ will now automatically add spacing between CJK and Latin characters, eliminating the need for manual configuration.
+- Optimized the WeChat share card popup. Clicking outside the share icon will now automatically close the card.
+- Improved the clickable area of the top navigation menu. Clicking the icon will now also trigger menu navigation.
+- Added an `author` field in the Front-matter to mark the article author (for share cards and article copyright), with the highest priority.
+  ```yaml
+  ---
+  author: D-Sketon # Article author
+  ---
+  ```
+- Added a `triangle_badge` configuration to display a triangular badge in the upper right corner, supporting custom links and icons.
+  ```yaml
+  triangle_badge:
+    enable: false # true | false
+    icon: github # Same as the icon in the social configuration
+    link: 
+  ```
+
+### Miscellaneous
+
+- Updated Mermaid to v11.12.0
+- Updated Quicklink to v3.0.1
+- Updated KaTeX to v0.16.24
+- Updated Snapdom to v1.9.14
+- Updated FontAwesome to v7.1.0
+
 ## v0.13.1
 
 **2025-10-05**
