@@ -2,7 +2,7 @@
 <div id="header-nav">
   <nav id="main-nav" aria-label="Primary navigation">
     {{- range .Site.Params.menu -}}
-      <span class="main-nav-link-wrap">
+      <a class="main-nav-link-wrap" href="{{ .url | relLangURL }}">
         <div class='main-nav-icon icon {{ if or (and (eq .icon "e62b") ($params.icon_font)) (and (eq .icon "f6ad") (not $params.icon_font)) (not .icon) }}rotate{{ end }}'>
           {{- if .icon -}}
             {{- if and (strings.Contains .icon ".") (strings.Contains .icon "/") -}}
@@ -18,8 +18,8 @@
             {{- end -}}
           {{- end -}}
         </div>
-        <a class="main-nav-link" href="{{ .url | relLangURL }}">{{ i18n .name }}</a>
-      </span>
+        <span class="main-nav-link">{{ i18n .name }}</span>
+      </a>
     {{- end -}}
     <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
   </nav>
